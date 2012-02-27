@@ -2,12 +2,11 @@
 
 = Introduction =
 
-Add your content here.
+I am a junior student in Computer Engineering Department. I am taking CMPE321,350 courses in this semester as well.
 
 
-= Details =
+= Contact Information =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Email:
+  * emresunecli@gmail.com
+  * emre.sunecli@boun.edu.tr
