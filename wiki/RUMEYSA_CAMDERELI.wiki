@@ -1,13 +1,8 @@
-#summary One-sentence summary of this page.
+= Info =
 
-= Introduction =
+I'm a senior student in CMPE. I did not play role in any group projects in CMPE but I have been in so many group works in school clubs so I can be effective about coordinating and maintaining a team work.
+I play electric guitar and teach guitar and basic music classes in a student club.
 
-Add your content here.
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= Contact =
+You can contact me from my mail adress asyemurcan@gmail.com and my facebook account, Rumeysa Çamdereli
