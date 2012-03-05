@@ -12,15 +12,15 @@
 
 #  Decisions:
 
-*  It has to be a fixed time for weekly meetings
+ *  It has to be a fixed time for weekly meetings
 
-*  The method of meetings must be determined
+ *  The method of meetings must be determined
 
-*  Emre will be responsible from the order and design of the project page
+ *  Emre will be responsible from the order and design of the project page
 
-*  Someone must be chosen to manage the group communication
+ *  Someone must be chosen to manage the group communication
 
-*  The last but not the least, a meeting with more participants must be arranged in order to maka more accurate decisions
+ *  The last but not the least, a meeting with more participants must be arranged in order to maka more accurate decisions
 
 #  Subject of Meeting1:
 
