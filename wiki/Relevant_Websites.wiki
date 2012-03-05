@@ -4,3 +4,10 @@
       I also connect with founder of this website,Lewis,he told me which programming languages they utilize from. They used *HTML*, *CSS* and *Javascript/jquery* on the front end, with *PHP* and *MySQL* on the backend.  _by Osman Şamil AKÇELİK_
 
   * [http://www.arabcec.com/ Arabic Computer Engineering Community] is another similar website for our projects.It is more close to our project.They categorized website by articles,forums,shared files and chat._by Osman Şamil AKÇELİK_
+
+<script type="text/javascript" src="https://www.google.com/jsapi">
+function al() {
+alert("osman");
+}
+</script>
+<button type="button" onclick="al()">Click Me!</button> 
