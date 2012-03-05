@@ -1,13 +1,9 @@
-#summary One-sentence summary of this page.
+#summary Notes from first meeting.
 
-= Introduction =
+= First Group Meeting =
 
-Add your content here.
+*Participants:* Osman Şamil AKÇELİK, Özkan Aykut DEMİR, Erdem ORMAN, Emre SÜNEÇLİ
 
+*Date:* 05.03.2012, 17:45 (End of the PS hour)
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+*Place:* ETA A3
