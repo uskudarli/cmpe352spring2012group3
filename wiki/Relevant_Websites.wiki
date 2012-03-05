@@ -1,2 +1,4 @@
-   <a href="http://www.FledgeWing.com">FledgeWing.com</a> is one of the website similar to our project.It is only open for students of determined universities.The supported universities are listed on their website.Our university is not one of them.
-     FledgeWing provides opportunities for student to build teams,start to working on projects and developing ideas.It also creates a bridge between universities and the business world.I also connect with founder of this website,he told me which programming languages utilize from.They used *HTML*, *CSS* and *JavaScript/jQuery* on the front end, with *PHP* and *MySQL* on the backend.
+   <a href="http://www.FledgeWing.com">FledgeWing.com</a> is one of the website similar to our project. It is only open for students of determined universities. The supported universities are listed on their website.Our university is not one of them
+
+     FledgeWing provides opportunities for student to build teams,start to working on projects and developing ideas. It also creates a bridge between universities and the business world.
+I also connect with founder of this website,he told me which programming languages utilize from. They used *HTML*, *CSS* and *JavaScript*/*jQuery* on the front end, with *PHP* and *MySQL* on the backend.
