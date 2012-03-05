@@ -5,6 +5,8 @@
 
   * [http://www.arabcec.com/ Arabic Computer Engineering Community] is another similar website for our projects.It is more close to our project.They categorized website by articles,forums,shared files and chat._by Osman Şamil AKÇELİK_
 
+  * [https://www.kth.se/social/ KTH Social] is a social web application for the students of KTH University. At KTH Social, members can find and contribute with course material and participate in discussions. Members can ask and answer questions and be part of groups discussion on subjects of their interest. Members have a portfolio in which they can create as many pages as they want and a journal in which they can take notes and analyze their progress in their studies and their personal development. You must have a KTH e-mail account to register._by Erdem ORMAN_
+
 <script type="text/javascript" src="https://www.google.com/jsapi">
 function al() {
 alert("osman");
