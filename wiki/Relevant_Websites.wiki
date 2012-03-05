@@ -1,4 +1,4 @@
   * [http://www.fledgewing.com/ FledgeWing.com] is one of the website similar to our project. It is only open for students of determined universities. The supported universities are listed on their website.Our university is not one of them
 
      Fledgewing provides opportunities for student to build teams,start to working on projects and developing ideas. It also creates a bridge between universities and the business world.
-I also connect with founder of this website,he told me which programming languages utilize from. They used *HTML*, *CSS* and *JavaScript*/*jQuery* on the front end, with *PHP* and *MySQL* on the backend.  _by Osman Şamil AKÇELİK_
+     I also connect with founder of this website,Lewis,he told me which programming languages they utilize from. They used *HTML*, *CSS* and *JavaScript*/*jQuery* on the front end, with *PHP* and *MySQL* on the backend.  _by Osman Şamil AKÇELİK_
