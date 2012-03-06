@@ -1,3 +1,5 @@
+=Similar Projects=
+
   * [http://www.fledgewing.com/ FledgeWing.com] is one of the website similar to our project. It is only open for students of determined universities. The supported universities are listed on their website.Our university is not one of them.So I couldn't register.
 
       Fledgewing provides opportunities for student to build teams,start to working on projects and developing ideas. It also creates a bridge between universities and the business world.Why not CMPE Community be like this?
@@ -6,3 +8,5 @@
   * [http://www.arabcec.com/ Arabic Computer Engineering Community] is another similar website for our projects.It's more close to our project.They categorized website by articles,forums,shared files and chat._by Osman Şamil AKÇELİK_
 
   * [https://www.kth.se/social/ KTH Social] is a social web application for the students of KTH University. At KTH Social, members can find and contribute with course material and participate in discussions. Members can ask and answer questions and be part of groups discussion on subjects of their interest. Members have a portfolio in which they can create as many pages as they want and a journal in which they can take notes and analyze their progress in their studies and their personal development. You must have a KTH e-mail account to register._by Erdem ORMAN_
+
+  * [http://www.c-sharpcorner.com/uploadfile/rahul4_saxena/social-networking-website-in-Asp-Net-open-source-project/ An example] ASP.NET project
