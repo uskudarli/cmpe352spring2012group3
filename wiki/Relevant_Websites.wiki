@@ -12,4 +12,4 @@
 
   * [http://www.c-sharpcorner.com/uploadfile/rahul4_saxena/social-networking-website-in-Asp-Net-open-source-project/ An example] ASP.NET project
 
-  * [http://www.webscribble.com/products/webnetwork/ WebNetwork] is a very facebook-like but editable social network software. It is up to user to decide if the network is going to be on WebNetwork server or any other server user chooses. They also provide a administrator panel service which we can take some ideas from.
+  * [http://www.webscribble.com/products/webnetwork/ WebNetwork] is a very facebook-like but editable social network software. It is up to user to decide if the network is going to be on webnetwork server or any other server user chooses. They also provide a administrator panel service which we can take some ideas from._by Emre SÜNEÇLİ_
