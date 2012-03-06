@@ -13,11 +13,3 @@ This Wiki page will contain the initial domain research about the CMPE Community
 
 
   * [http://echophp.wordpress.com/2008/01/28/what-is-php-social-networking-software/ Another article] about PHP social networking
- 
-
-= Similar Projects =
-
-  * [http://www.c-sharpcorner.com/uploadfile/rahul4_saxena/social-networking-website-in-Asp-Net-open-source-project/ An example] ASP.NET project
-
-
-= Notes =
