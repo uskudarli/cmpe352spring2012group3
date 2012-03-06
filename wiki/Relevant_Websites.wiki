@@ -11,3 +11,5 @@
   * [https://www.kth.se/social/ KTH Social] is a social web application for the students of KTH University. At KTH Social, members can find and contribute with course material and participate in discussions. Members can ask and answer questions and be part of groups discussion on subjects of their interest. Members have a portfolio in which they can create as many pages as they want and a journal in which they can take notes and analyze their progress in their studies and their personal development. You must have a KTH e-mail account to register._by Erdem ORMAN_
 
   * [http://www.c-sharpcorner.com/uploadfile/rahul4_saxena/social-networking-website-in-Asp-Net-open-source-project/ An example] ASP.NET project
+
+  * [http://www.webscribble.com/products/webnetwork/ WebNetwork] is a very facebook-like but editable social network software. It is up to user to decide if the network is going to be on WebNetwork server or any other server user chooses. They also provide a administrator panel service which we can take some ideas from.
