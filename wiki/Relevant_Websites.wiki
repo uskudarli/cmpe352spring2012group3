@@ -1,3 +1,4 @@
+#labels Featured,Phase-Requirements
 =Similar Projects=
 
   * [http://www.fledgewing.com/ FledgeWing.com] is one of the website similar to our project. It is only open for students of determined universities. The supported universities are listed on their website.Our university is not one of them.So I couldn't register.
