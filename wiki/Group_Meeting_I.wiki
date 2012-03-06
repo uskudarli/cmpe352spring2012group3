@@ -1,4 +1,5 @@
 #summary Notes from the first meeting.
+#labels Featured
 
 = The First Group Meeting =
 
