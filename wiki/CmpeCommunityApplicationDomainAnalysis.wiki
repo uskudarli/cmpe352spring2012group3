@@ -1,3 +1,4 @@
+#labels Featured,Phase-Requirements
 = Introduction =
 
 This Wiki page will contain the initial domain research about the CMPE Community Application Project.
