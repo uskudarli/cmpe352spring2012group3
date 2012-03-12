@@ -66,7 +66,7 @@
 
 <b>1.9 Validation of a registration</b>
         
-     1.9.1 The user shall be able to register the system by only approval of administrator..
+     1.9.1 The user shall be able to register the system by only approval of administrator
   
      1.9.2 The system shall provide a administration panel to aprove new users.
 
@@ -75,14 +75,17 @@
 ==2. Non-functional Requirements:==
 
    <b>2.1 Usability</b>
+
       2.1.1 The system shall provide an simple interface to ease usage.
  
    <b>2.2 Accessibility</b>
+
       2.2.1 The community should be accessed only by people from CMPE people. 
 
       2.2.2 All users shall have the ability to access CMPE Community all the time, in every circumstances (i.e. non restricted number of profiles and usage time)
     
    <b>2.3 Privacy and Security</b>
+
       2.3.1 The user shall be able to hide his personal information from other users.
 
       2.3.2 The creator or the author of the group shall close the group for undesired people.
@@ -92,15 +95,19 @@
       2.3.4  The system shall keep password as a hashed password. 
   
    <b>2.4 Authentication</b>
+
       2.4.1 In the case of wrong password users shall be obliged to authenticate their information for security.
    
    <b>2.5 Portability</b>
+
       2.5.1 CMPE Community shall have a mobile application for portability. 
 
    <b>2.6 Avaliability</b>
+
       2.6.1 The user interface of the system shall be viewed properly by all internet browsers.  
 
    <b>2.7 Performance and Efficiency</b>
+
      2.7.1 Web pages of the application should be loaded quickly.
 
      2.7.2 The system shall minimize traffic amount between a server and a mobile device.
