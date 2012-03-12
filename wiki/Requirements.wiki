@@ -79,7 +79,7 @@
 ==Non-functional Requirements:==
 
    1-Usability
-        A web design of the system shall be supported by all browsers. 
+        
    2- Accessibility
     
    3-Privacy and Security
@@ -88,7 +88,8 @@
    
    5-Portability
 
-   
+   6-Avaliability
+      A web design of the system shall be supported by all browsers.  
 
 
 
