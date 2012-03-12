@@ -80,9 +80,13 @@
      * The valid user shall be able to sign up for a CMPE Community.
  
    <b>2- Accessibility</b>
+     *  The community should be accessed only by people from CMPE people. 
     
    <b>3-Privacy and Security</b>
      * The user shall be able to hide his personal information from other users.
+     *  The user shall be able to hide his personal information from other users.
+     *  The creator or the author of the group shall close the group for undesired people.
+     *  The creator of the survey shall open the survey only for people decided by himself. 
   
    <b>4- Authentication</b>
    
