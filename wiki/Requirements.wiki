@@ -30,9 +30,9 @@
 
 4. Discussion Forum :	
 
-	Administrators should be able to open categhories	
+	Administrators should be able to open categories	
 	
-	Users should be able to open a topic on discussion forum in predefined categhories
+	Users should be able to open a topic on discussion forum in predefined categories
 
 	Users should be able to write their own comments to the topics
 
