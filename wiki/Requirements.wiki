@@ -72,8 +72,6 @@
 
 <b>10. Mobile Application</b>
 
-
-
 ==Non-functional Requirements:==
 
    <b>1. Usability</b>
@@ -100,7 +98,7 @@
 
    <b>7. Performance and Efficiency</b>
      * Web pages of the application should be loaded quickly.
-     * The system shall minimize data storage as much as possible.
+     * The system shall minimize traffic amount between a server and a mobile device.
 
 
 
