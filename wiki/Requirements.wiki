@@ -70,7 +70,7 @@
   
      * The system shall provide a administration panel to aprove new users.
 
-
+<b>10. Mobile Application</b>
 
 
 
@@ -84,7 +84,6 @@
     
    <b>3. Privacy and Security</b>
      * The user shall be able to hide his personal information from other users.
-     *  The user shall be able to hide his personal information from other users.
      *  The creator or the author of the group shall close the group for undesired people.
      *  The creator of the survey shall open the survey only for people decided by himself. 
   
@@ -93,7 +92,7 @@
    <b>5. Portability</b>
 
    <b>6. Avaliability</b>
-     * The user interface of the system shall be viewed properly by all browsers.  
+     * The user interface of the system shall be viewed properly by all internet browsers.  
 
 
 
