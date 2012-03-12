@@ -1,0 +1,84 @@
+#labels Phase-Requirements
+
+==Functional Requirements:==
+
+1. Member Profiles:
+	
+	User profile shall contain name, surname, profile picture, email, password, phone number, entrance year for each user.
+  	
+	The system shall send an email for confirmation after register
+
+	The system shall provide a password reminder ...
+	
+	The system shall provide an interface for editing profiles for users
+
+	The system shall provide roles for the users (i.e. teacher, student, administrator) 
+
+	
+2. Creation of a space for special interests or topics :
+
+	Users should be able to  ...
+	
+	The creater of the group should be able to give role for group members
+	
+	Users should be able to invite other people to their own groups
+
+	Users should be able to join groups
+
+3. Special purpsose structures for the area of interest must be created
+
+	Users shall be able to creat
+ 
+        Users shall be create an event
+
+4. Discussion Forum :	
+
+	Administrators should be able to open categhories	
+	
+	Users should be able to open a topic on discussion forum in predefined categhories
+
+	Users should be able to write their own comments to the topics
+
+	Users should be able to like or dislike any comments on any topics
+
+5. Surveys :
+
+	Users should be able to create surveys
+
+	Users shall see the results of the survey after voting
+
+	The creator of the survey shall give a due date for the surveys
+
+6. Search/ Advanced Search :
+
+	Users should be able to search for people, group, survey, topic on discussion forum
+
+	The system shall give suggestions to users
+
+	Users should be able to filter the results of the search
+
+7. Browsing :
+
+	Users should be allowed to navigate through user profiles,group,surveys
+
+8-Notification from subscriptions
+
+        The system shall send notifications to users from subscribed pages.
+
+        The system shall send a notification email.
+
+9-Validation of a registration 
+        
+        The user shall be able to register the system by only approval of administrator..
+  
+        The system shall provide a administration panel to aprove new users.
+
+
+
+
+
+==Non-functional Requirements:==
+
+
+
+	
