@@ -24,11 +24,13 @@
 
 1)  From now on, group communication will be on facebook group.
 
-1) Since not all members were available for the meeting, the remaining part of the non-functional requirements will be added by the absent members.
+2) Since not all members were available for the meeting, the remaining part of the non-functional requirements will be added by the absent members.
 
-2) The document will be submitted before the deadline.
+3) The document will be submitted before the deadline.
 
-3) Code page will be updated (requirements will be added) next week.
+4) Code page will be updated (requirements will be added) next week.
+
+5) Researches and works on requirements will continue so that there may be some additions or modifications to requirements documents.
 
 *Subject of Meeting_2:*
 
