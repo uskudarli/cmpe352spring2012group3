@@ -1,7 +1,7 @@
 #labels Phase-Requirements
 ==1.Functional Requirements:==
 
-<b>1.1 Member Profiles:</b>
+<b>1.1 Member Profiles</b>
 	
        1.1.1 User profile shall contain name, surname, profile picture, email, password, phone number, entrance year for each user.
   	
@@ -13,7 +13,6 @@
 
        1.1.5 The system shall provide roles for the users (i.e. instructor, student, administrator) 
 
-	
 <b>1.2 Creation of a space for special interests or topics :</b>
   
        1.2.1 Users should be able to  create groups through their interests.
@@ -28,7 +27,7 @@
   
        1.3.1 Users should create an event with action date.
 
-<b>1.4 Discussion Forum :</b>	
+<b>1.4 Discussion Forum</b>	
   
        1.4.1 Administrators should be able to open categories	
 	
@@ -38,7 +37,7 @@
 
        1.4.4 Users should be able to like or dislike any comments on any topics
 
-<b>1.5 Surveys :</b>
+<b>1.5 Surveys</b>
  
        1.5.1 Users should be able to create surveys
 
@@ -46,7 +45,7 @@
 
        1.5.3 The creator of the survey shall give a due date for the surveys
 
-<b>1.6 Search/ Advanced Search :</b>
+<b>1.6 Search/ Advanced Search</b>
  
        1.6.1 Users should be able to search for people, group, survey, topic on discussion forum
 
@@ -54,7 +53,7 @@
 
        1.6.3 Users should be able to filter the results of the search
 
-<b>1.7 Browsing :</b>
+<b>1.7 Browsing</b>
  
        1.7.1 Users should be allowed to navigate through user profiles,group,surveys
 
