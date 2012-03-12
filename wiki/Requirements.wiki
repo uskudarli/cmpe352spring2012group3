@@ -79,12 +79,16 @@
  
    <b>2.2 Accessibility</b>
       2.2.1 The community should be accessed only by people from CMPE people. 
+
       2.2.2 All users shall have the ability to access CMPE Community all the time, in every circumstances (i.e. non restricted number of profiles and usage time)
     
    <b>2.3 Privacy and Security</b>
       2.3.1 The user shall be able to hide his personal information from other users.
+
       2.3.2 The creator or the author of the group shall close the group for undesired people.
+
       2.3.3  The creator of the survey shall open the survey only for people decided by himself.
+
       2.3.4  The system shall keep password as a hashed password. 
   
    <b>2.4 Authentication</b>
@@ -98,6 +102,7 @@
 
    <b>2.7 Performance and Efficiency</b>
      2.7.1 Web pages of the application should be loaded quickly.
+
      2.7.2 The system shall minimize traffic amount between a server and a mobile device.
 
 
