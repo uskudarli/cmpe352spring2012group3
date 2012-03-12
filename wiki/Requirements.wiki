@@ -3,72 +3,72 @@
 
 <b>1. Member Profiles:</b>
 	
-     	User profile shall contain name, surname, profile picture, email, password, phone number, entrance year for each user.
+     * User profile shall contain name, surname, profile picture, email, password, phone number, entrance year for each user.
   	
-	The system shall send an email for confirmation after register.
+     * The system shall send an email for confirmation after register.
 
-	The system shall provide a password reminder via e-mail.
+     * The system shall provide a password reminder via e-mail.
 	
-	The system shall provide an interface for editing profiles for users
+     * The system shall provide an interface for editing profiles for users
 
-	The system shall provide roles for the users (i.e. instructor, student, administrator) 
+     * The system shall provide roles for the users (i.e. instructor, student, administrator) 
 
 	
 <b>2. Creation of a space for special interests or topics :</b>
 
-	Users should be able to  create groups through their interests.
+     * Users should be able to  create groups through their interests.
 	
-	The creater of the group should be able to give role for group members
+     * The creator of the group should be able to give role for group members
 	
-	Users should be able to invite other people to their own groups
+     * Users should be able to invite other people to their own groups
 
-	Users should be able to join groups
+     * Users should be able to join groups
 
 <b>3. Special purpsose structures for the area of interest:</b>
  
-        Users should create an event with action date.
+     * Users should create an event with action date.
 
 <b>4. Discussion Forum :</b>	
 
-	Administrators should be able to open categories	
+     * Administrators should be able to open categories	
 	
-	Users should be able to open a topic on discussion forum in predefined categories
+     * Users should be able to open a topic on discussion forum in predefined categories
 
-	Users should be able to write their own comments to the topics
+     * Users should be able to write their own comments to the topics
 
-	Users should be able to like or dislike any comments on any topics
+     * Users should be able to like or dislike any comments on any topics
 
 <b>5. Surveys :</b>
 
-	Users should be able to create surveys
+     * Users should be able to create surveys
 
-	Users shall see the results of the survey after voting
+     * Users shall see the results of the survey after voting
 
-	The creator of the survey shall give a due date for the surveys
+     * The creator of the survey shall give a due date for the surveys
 
 <b>6. Search/ Advanced Search :</b>
 
-	Users should be able to search for people, group, survey, topic on discussion forum
+     * Users should be able to search for people, group, survey, topic on discussion forum
 
-	The system shall give suggestions to users
+     * The system shall give suggestions to users
 
-	Users should be able to filter the results of the search
+     * Users should be able to filter the results of the search
 
 <b>7. Browsing :</b>
 
-	Users should be allowed to navigate through user profiles,group,surveys
+     * Users should be allowed to navigate through user profiles,group,surveys
 
 <b>8-Notification from subscriptions</b>
 
-        The system shall send notifications to users from subscribed pages.
+     * The system shall send notifications to users from subscribed pages.
 
-        The system shall send a notification email.
+     * The system shall send a notification email.
 
 <b>9-Validation of a registration</b>
         
-        The user shall be able to register the system by only approval of administrator..
+     * The user shall be able to register the system by only approval of administrator..
   
-        The system shall provide a administration panel to aprove new users.
+     * The system shall provide a administration panel to aprove new users.
 
 
 
@@ -77,19 +77,19 @@
 ==Non-functional Requirements:==
 
    <b>1-Usability</b>
-        The valid user shall be able to sign up for a CMPE Community.
+     * The valid user shall be able to sign up for a CMPE Community.
  
    <b>2- Accessibility</b>
     
    <b>3-Privacy and Security</b>
-     The user shall be able to hide his personal information from other users.
+     * The user shall be able to hide his personal information from other users.
   
    <b>4- Authentication</b>
    
    <b>5-Portability</b>
 
    <b>6-Avaliability</b>
-      The user interface of the system shall be viewed properly by all browsers.  
+     * The user interface of the system shall be viewed properly by all browsers.  
 
 
 
