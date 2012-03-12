@@ -15,9 +15,9 @@
 
 	
 <b>1.2 Creation of a space for special interests or topics :</b>
-
+  
        1.2.1 Users should be able to  create groups through their interests.
-	
+	 
        1.2.2 The creator of the group should be able to give role for group members
 	
        1.2.3 Users should be able to invite other people to their own groups
@@ -25,11 +25,11 @@
        1.2.4 Users should be able to join groups
 
 <b>1.3 Special purpsose structures for the area of interest:</b>
- 
+  
        1.3.1 Users should create an event with action date.
 
 <b>1.4 Discussion Forum :</b>	
-
+  
        1.4.1 Administrators should be able to open categories	
 	
        1.4.2 Users should be able to open a topic on discussion forum in predefined categories
@@ -39,7 +39,7 @@
        1.4.4 Users should be able to like or dislike any comments on any topics
 
 <b>1.5 Surveys :</b>
-
+ 
        1.5.1 Users should be able to create surveys
 
        1.5.2 Users shall see the results of the survey after voting
@@ -47,7 +47,7 @@
        1.5.3 The creator of the survey shall give a due date for the surveys
 
 <b>1.6 Search/ Advanced Search :</b>
-
+ 
        1.6.1 Users should be able to search for people, group, survey, topic on discussion forum
 
        1.6.2 The system shall give suggestions to users
@@ -55,23 +55,23 @@
        1.6.3 Users should be able to filter the results of the search
 
 <b>1.7 Browsing :</b>
-
+ 
        1.7.1 Users should be allowed to navigate through user profiles,group,surveys
 
 <b>1.8 Notification from subscriptions</b>
-
+ 
        1.8.1 The system shall send notifications to users from subscribed pages.
 
        1.8.2 The system shall send a notification email.
 
 <b>1.9 Validation of a registration</b>
-        
+         
        1.9.1 The user shall be able to register the system by only approval of administrator
   
        1.9.2 The system shall provide a administration panel to aprove new users.
 
 <b>1.10 Mobile Application</b>
-
+ 
 ==2. Non-functional Requirements:==
 
    <b>2.1 Usability</b>
