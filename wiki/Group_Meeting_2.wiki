@@ -9,7 +9,7 @@ Place: ETA A2
 Meeting Notes:
 
 1) Functional requirements of the project are decided. 
-2) These requirements are written down to upload to the code page, also to be submitted as assignment2. 
+2) These requirements are written down to upload to the code page, also to be submitted as assignment3. 
 3) The non-functional requirements are discussed, and planned to be added to the document before submission.
 
 Decisions:
