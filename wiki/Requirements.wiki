@@ -77,7 +77,7 @@
 ==Non-functional Requirements:==
 
    <b>1. Usability</b>
-     * The valid user shall be able to sign up for a CMPE Community.
+     * The system shall provide an simple interface to ease usage.
  
    <b>2. Accessibility</b>
      * The community should be accessed only by people from CMPE people. 
