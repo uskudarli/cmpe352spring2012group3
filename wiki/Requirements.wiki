@@ -14,7 +14,7 @@
 	The system shall provide roles for the users (i.e. instructor, student, administrator) 
 
 	
-2. Creation of a space for special interests or topics :
+<b>2. Creation of a space for special interests or topics :</b>
 
 	Users should be able to  create groups through their interests.
 	
@@ -24,11 +24,11 @@
 
 	Users should be able to join groups
 
-3. Special purpsose structures for the area of interest must be created
+<b>3. Special purpsose structures for the area of interest:</b>
  
         Users should create an event with action date.
 
-4. Discussion Forum :	
+<b>4. Discussion Forum :</b>	
 
 	Administrators should be able to open categories	
 	
@@ -38,7 +38,7 @@
 
 	Users should be able to like or dislike any comments on any topics
 
-5. Surveys :
+<b>5. Surveys :</b>
 
 	Users should be able to create surveys
 
@@ -46,7 +46,7 @@
 
 	The creator of the survey shall give a due date for the surveys
 
-6. Search/ Advanced Search :
+<b>6. Search/ Advanced Search :</b>
 
 	Users should be able to search for people, group, survey, topic on discussion forum
 
@@ -54,17 +54,17 @@
 
 	Users should be able to filter the results of the search
 
-7. Browsing :
+<b>7. Browsing :</b>
 
 	Users should be allowed to navigate through user profiles,group,surveys
 
-8-Notification from subscriptions
+<b>8-Notification from subscriptions</b>
 
         The system shall send notifications to users from subscribed pages.
 
         The system shall send a notification email.
 
-9-Validation of a registration 
+<b>9-Validation of a registration</b>
         
         The user shall be able to register the system by only approval of administrator..
   
@@ -76,19 +76,19 @@
 
 ==Non-functional Requirements:==
 
-   1-Usability
+   <b>1-Usability</b>
         The valid user shall be able to sign up for a CMPE Community.
  
-   2- Accessibility
+   <b>2- Accessibility</b>
     
-   3-Privacy and Security
+   <b>3-Privacy and Security</b>
      The user shall be able to hide his personal information from other users.
   
-   4- Authentication
+   <b>4- Authentication</b>
    
-   5-Portability
+   <b>5-Portability</b>
 
-   6-Avaliability
+   <b>6-Avaliability</b>
       The user interface of the system shall be viewed properly by all browsers.  
 
 
