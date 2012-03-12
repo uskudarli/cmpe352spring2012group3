@@ -5,9 +5,9 @@
 	
      	User profile shall contain name, surname, profile picture, email, password, phone number, entrance year for each user.
   	
-	The system shall send an email for confirmation after register
+	The system shall send an email for confirmation after register.
 
-	The system shall provide a password reminder ...
+	The system shall provide a password reminder via e-mail.
 	
 	The system shall provide an interface for editing profiles for users
 
@@ -16,7 +16,7 @@
 	
 2. Creation of a space for special interests or topics :
 
-	Users should be able to  ...
+	Users should be able to  create groups through their interests.
 	
 	The creater of the group should be able to give role for group members
 	
