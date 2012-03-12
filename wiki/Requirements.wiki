@@ -58,13 +58,13 @@
 
      * Users should be allowed to navigate through user profiles,group,surveys
 
-<b>8-Notification from subscriptions</b>
+<b>8. Notification from subscriptions</b>
 
      * The system shall send notifications to users from subscribed pages.
 
      * The system shall send a notification email.
 
-<b>9-Validation of a registration</b>
+<b>9. Validation of a registration</b>
         
      * The user shall be able to register the system by only approval of administrator..
   
@@ -76,23 +76,23 @@
 
 ==Non-functional Requirements:==
 
-   <b>1-Usability</b>
+   <b>1. Usability</b>
      * The valid user shall be able to sign up for a CMPE Community.
  
-   <b>2- Accessibility</b>
+   <b>2. Accessibility</b>
      *  The community should be accessed only by people from CMPE people. 
     
-   <b>3-Privacy and Security</b>
+   <b>3. Privacy and Security</b>
      * The user shall be able to hide his personal information from other users.
      *  The user shall be able to hide his personal information from other users.
      *  The creator or the author of the group shall close the group for undesired people.
      *  The creator of the survey shall open the survey only for people decided by himself. 
   
-   <b>4- Authentication</b>
+   <b>4. Authentication</b>
    
-   <b>5-Portability</b>
+   <b>5. Portability</b>
 
-   <b>6-Avaliability</b>
+   <b>6. Avaliability</b>
      * The user interface of the system shall be viewed properly by all browsers.  
 
 
