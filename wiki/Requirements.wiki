@@ -1,10 +1,9 @@
 #labels Phase-Requirements
-
 ==Functional Requirements:==
 
 1. Member Profiles:
 	
-	User profile shall contain name, surname, profile picture, email, password, phone number, entrance year for each user.
+     	User profile shall contain name, surname, profile picture, email, password, phone number, entrance year for each user.
   	
 	The system shall send an email for confirmation after register
 
@@ -78,6 +77,27 @@
 
 
 ==Non-functional Requirements:==
+
+
+1. Member Profiles:
+
+2. Creation of a space for special interests or topics :
+
+3. Special purpsose structures for the area of interest must be created
+
+4. Discussion Forum :	
+
+5. Surveys :
+
+6. Search/ Advanced Search :
+
+7. Browsing :
+
+8-Notification from subscriptions:
+
+9-Validation of a registration: 
+
+10-Android Application:
 
 
 
