@@ -14,7 +14,7 @@
        1.1.5 The system shall provide roles for the users (i.e. instructor, student, administrator) 
 
    <b>1.2 Creation of a space for special interests or topics :</b>
-  
+
        1.2.1 Users should be able to  create groups through their interests.
 	 
        1.2.2 The creator of the group should be able to give role for group members
