@@ -1,7 +1,7 @@
 #labels Phase-Requirements
-==1.Functional Requirements:==
+==1.Functional Requirements==
 
-  <b> 1.1. Member Profiles</b>
+  <b>1.1. Member Profiles</b>
  
      1.1.1. User profile shall contain name, surname, profile picture, email, password, phone number, entrance year for each user.
   	
@@ -33,25 +33,25 @@
 	
        1.4.2. Users should be able to open a topic on discussion forum in predefined categories
 
-       1.4.3 Users should be able to write their own comments to the topics
+       1.4.3. Users should be able to write their own comments to the topics
 
-       1.4.4 Users should be able to like or dislike any comments on any topics
+       1.4.4. Users should be able to like or dislike any comments on any topics
 
    <b>1.5 Surveys</b>
  
        1.5.1 Users should be able to create surveys
 
-       1.5.2 Users shall see the results of the survey after voting
+       1.5.2. Users shall see the results of the survey after voting
 
-       1.5.3 The creator of the survey shall give a due date for the surveys
+       1.5.3. The creator of the survey shall give a due date for the surveys
 
    <b>1.6 Search/ Advanced Search</b>
  
-       1.6.1 Users should be able to search for people, group, survey, topic on discussion forum
+       1.6.1. Users should be able to search for people, group, survey, topic on discussion forum
 
-       1.6.2 The system shall give suggestions to users
+       1.6.2. The system shall give suggestions to users
 
-       1.6.3 Users should be able to filter the results of the search
+       1.6.3. Users should be able to filter the results of the search
 
    <b>1.7. Browsing</b>
  
@@ -63,14 +63,14 @@
 
        1.8.2. The system shall send a notification email.
 
-   <b>1.9 Validation of a registration</b>
+   <b>1.9. Validation of a registration</b>
          
        1.9.1. The user shall be able to register the system by only approval of administrator
   
        1.9.2. The system shall provide a administration panel to aprove new users.
 
  
-==2. Non-functional Requirements:==
+==2. Non-functional Requirements==
 
    <b>2.1. Usability</b>
 
