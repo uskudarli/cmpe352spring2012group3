@@ -69,7 +69,6 @@
   
        1.9.2 The system shall provide a administration panel to aprove new users.
 
-   <b>1.10 Mobile Application</b>
  
 ==2. Non-functional Requirements:==
 
