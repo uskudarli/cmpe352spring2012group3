@@ -3,7 +3,7 @@
 
   <b> 1.1 Member Profiles</b>
  
-   1.1.1  User profile shall contain name, surname, profile picture, email, password, phone number, entrance year for each user.
+     1.1.1. User profile shall contain name, surname, profile picture, email, password, phone number, entrance year for each user.
   	
      1.1.2 The system shall send an email for confirmation after register.
 
