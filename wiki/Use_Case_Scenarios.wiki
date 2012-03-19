@@ -23,7 +23,7 @@ A new user whose main interest is making old style kites registers to the site. 
 
 *1.SIGN UP*
 
-<t><b>Actors:</b> Users and Admins
+<b>Actors:</b> Users and Admins
 
 <b>Goal:</b> Become a part of the CMPE community web site by creating a user profile.
 
@@ -43,7 +43,7 @@ A new user whose main interest is making old style kites registers to the site. 
    - If the user is accepted, the system sends a confirmation mail to the user
 
    - The account of the user is created
-</t>
+
 
 *2.LOGIN*
 
@@ -84,3 +84,114 @@ A new user whose main interest is making old style kites registers to the site. 
 <b>Postconditions:</b>
 
    - The suggested groups show up on each users profile page, accourding to his/her interests
+
+   - User becomes the owner of the group
+
+
+*4.SET PROPERTIES OF A GROUP*
+
+<b>Actors:</b> Users
+
+<b>Goal:</b> Editing the properties of a group
+
+<b>Preconditions:</b> Owning a group
+
+<b>Steps:</b>
+
+   - The owner edits the group page.
+
+   - System checks the database to make personal suggestions to each user, according to the belonging groups
+
+
+<b>Postconditions:</b>
+
+   - The suggested groups show up on each users profile page, accourding to his/her interests
+
+   - Properties of the group changes
+
+
+*4.SEARCH*
+
+<b>4.1 SEARCH GROUP</b>
+
+    <b>Actors:</b> Users, Admins and System
+
+    <b>Goal:</b> Editing the properties of a group
+
+    <b>Preconditions:</b> Owning a group
+
+    <b>Steps:</b>
+
+       - The owner edits the group page.
+
+       - System checks the database to make personal suggestions to each user, according to the belonging groups
+
+
+    <b>Postconditions:</b>
+
+       - The suggested groups show up on each users profile page, accourding to his/her interests
+
+       - Properties of the group changes
+
+<b>4.2 SEARCH SERVEY</b>
+
+    <b>Actors:</b> Users, Admins and System
+
+    <b>Goal:</b> Editing the properties of a group
+
+    <b>Preconditions:</b> Owning a group
+
+    <b>Steps:</b>
+
+       - The owner edits the group page.
+
+       - System checks the database to make personal suggestions to each user, according to the belonging groups
+
+
+    <b>Postconditions:</b>
+
+       - The suggested groups show up on each users profile page, accourding to his/her interests
+
+       - Properties of the group changes
+
+<b>4.3 SEARCH PEOPLE</b>
+
+    <b>Actors:</b> Users, Admins and System
+
+    <b>Goal:</b> Editing the properties of a group
+
+    <b>Preconditions:</b> Owning a group
+
+    <b>Steps:</b>
+
+       - The owner edits the group page.
+
+       - System checks the database to make personal suggestions to each user, according to the belonging groups
+
+
+    <b>Postconditions:</b>
+
+       - The suggested groups show up on each users profile page, accourding to his/her interests
+
+       - Properties of the group changes
+
+<b>4.4 SEARCH EVENTS</b>
+
+    <b>Actors:</b> Users, Admins and System
+
+    <b>Goal:</b> Editing the properties of a group
+
+    <b>Preconditions:</b> Owning a group
+
+    <b>Steps:</b>
+
+       - The owner edits the group page.
+
+       - System checks the database to make personal suggestions to each user, according to the belonging groups
+
+
+    <b>Postconditions:</b>
+
+       - The suggested groups show up on each users profile page, accourding to his/her interests
+
+       - Properties of the group changes
