@@ -209,7 +209,7 @@ A user wants to setup a BarCamp organization about Jquerry.
 
 2)Registered user logs into the system.
 
-3)User creates an event by entering the name of the event and “BarCamp” as the organization type,“Jquerry” as the subject of the event with specified date,location.
+3)User creates an event by entering the name of the event and “ BarCamp ” as the organization type,“Jquerry” as the subject of the event with specified date,location.
 
 4)User invites the people to the event.
 
