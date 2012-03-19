@@ -110,9 +110,10 @@ A new user whose main interest is making old style kites registers to the site. 
    - Properties of the group changes
 
 
-*4.SEARCH*
+*5.SEARCH*
+
   
-<b>4.1 SEARCH PEOPLE</b>
+<b>5.1 SEARCH PEOPLE</b>
 
     <b>Actors:</b> Users and System
 
