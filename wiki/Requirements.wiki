@@ -29,7 +29,7 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
    <b>2.3. Special purpsose structures for the area of interes</b>
   
-       3.1. Users should create an event with action date.
+       2.3.1. Users should create an event with action date.
 
    <b>2.4 Discussion Forum</b>	
   
@@ -100,11 +100,11 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
       3.4.1. In the case of wrong password users shall be obliged to authenticate their information for security.
    
-   <b>5. Portability</b>
+   <b>3.5. Portability</b>
 
       3.5.1 CMPE Community shall have a mobile application for portability. 
 
-   <b>6. Avaliability</b>
+   <b>3.6. Avaliability</b>
 
       3.6.1. The user interface of the system shall be viewed properly by all internet browsers.  
 
