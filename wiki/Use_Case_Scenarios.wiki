@@ -163,3 +163,70 @@ A user wants to setup a <a href="http://en.wikipedia.org/wiki/BarCamp">BarCamp</
 3)Although event has occured, the system could not delete the event.
 
 4)Uninvited people are trying to access the event.
+
+
+= Use Cases =
+
+*1.INVITE PEOPLE TO EVENT*
+
+<b>Actors:</b> Users and Admins
+
+<b>Goal:</b> Become a part of the CMPE community web site by creating a user profile.
+
+<b>Preconditions:</b> Be a part of CMPE community
+
+<b>Steps:</b>
+
+   - New user enters personal info for creating an account
+
+   - System provides this info to the admin
+
+   - Admin checks if the user is a part of CMPE community
+
+
+<b>Postconditions:</b>
+
+   - If the user is accepted, the system sends a confirmation mail to the user
+
+   - The account of the user is created
+
+
+*2.SEND A NOTIFICATION*
+
+<b>Actors:</b> Users and Admins
+
+<b>Goal:</b> Enter the system.
+
+<b>Preconditions:</b> Have an account in the system.
+
+<b>Steps:</b>
+
+   - User provides username and password.
+
+   - System checks if username and password are valid
+
+<b>Postconditions:</b>
+
+   - User enters the system
+
+
+*3.CHECK USER FOR OWNERSHIP VALIDATION*
+  
+<b>4.1 SEARCH PEOPLE</b>
+
+    <b>Actors:</b> Users and System
+
+    <b>Goal:</b> Searching the system according to a given key word 
+
+    <b>Preconditions:</b> Being a part of CMPE community group
+
+    <b>Steps:</b>
+
+       - The user will give, or the system will provide a key word.
+
+       - System searches the database
+
+
+    <b>Postconditions:</b>
+
+       - The system will return the result of the query
