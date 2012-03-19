@@ -201,7 +201,7 @@ A new user whose main interest is making old style kites registers to the site. 
 
 *Description :*
 
-A user wants to setup a BarCamp organization about Jquerry.
+A user wants to setup a <a href="http://en.wikipedia.org/wiki/BarCamp">BarCamp</a> organization about Jquerry.
 
 *Main Scenario :*
 
@@ -209,7 +209,7 @@ A user wants to setup a BarCamp organization about Jquerry.
 
 2)Registered user logs into the system.
 
-3)User creates an event by entering the name of the event and “ BarCamp ” as the organization type,“Jquerry” as the subject of the event with specified date,location.
+3)User creates an event by entering the name of the event and <a href="http://en.wikipedia.org/wiki/BarCamp">BarCamp</a> as the organization type,“Jquerry” as the subject of the event with specified date,location.
 
 4)User invites the people to the event.
 
