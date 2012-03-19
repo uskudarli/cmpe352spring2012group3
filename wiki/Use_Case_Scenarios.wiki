@@ -1,5 +1,6 @@
 #summary One-sentence summary of this page.
 
+
 = Scenario 1 =
 
 *Description :*
@@ -8,12 +9,12 @@ A new user whose main interest is making old style kites registers to the site. 
 
 *Main Scenario :*
 
-*  User registers the page with his/her name, surname, password, e-mail and entrance year.
+#  User registers the page with his/her name, surname, password, e-mail and entrance year.
 
-*  Registered user logs into the system.
+#  Registered user logs into the system.
 
-*  User creates the group as his/her interest page.
+#  User creates the group as his/her interest page.
 
-*  User edit the group settings.
+#  User edit the group settings.
 
-*  System searches the groups, people, survey databases for relevant groups by checking the words “old”, “style”, “kites”, “old style”, “old kites”, “style kites” and “old style kites” and shows the result in the user’s group page.
+#  System searches the groups, people, survey databases for relevant groups by checking the words “old”, “style”, “kites”, “old style”, “old kites”, “style kites” and “old style kites” and shows the result in the user’s group page.
