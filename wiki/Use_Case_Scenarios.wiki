@@ -195,3 +195,36 @@ A new user whose main interest is making old style kites registers to the site. 
        - The suggested groups show up on each users profile page, accourding to his/her interests
 
        - Properties of the group changes
+
+
+= Scenario 2 =
+
+*Description :*
+
+A user wants to setup a BarCamp organization about Jquerry.
+
+*Main Scenario :*
+
+1)User registers the page with his/her name, surname, password, e-mail and entrance year.
+
+2)Registered user logs into the system.
+
+3)User creates an event by entering the name of the event and “BarCamp” as the organization type,“Jquerry” as the subject of the event with specified date,location.
+
+4)User invites the people to the event.
+
+5)System sends a notification of the events.
+
+6)Invited people view the event and decides to attend or not attend.
+
+7)Systems remove the event after action date or creator may cancel it.
+
+*Alternative Scenario :*
+
+1)This event is already exists in the system.
+
+2)An invited user is trying to cancel the event.
+
+3)Although event has occured, the system could not delete the event.
+
+4)Uninvited people are trying to access the event.
