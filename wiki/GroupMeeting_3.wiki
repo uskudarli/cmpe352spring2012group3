@@ -10,11 +10,13 @@
 
 1) Feedbacks on requirements analysis from previous week are evaluated.
 
-2) We have to improve group communication in order to have better works.
+2) Use case analysis is plotted in general, to be evaluated later in the online meeting. 
 
-3) Work distribution is done.
+3) We have to improve group communication in order to have better works.
 
-4) After use case analysis some additions and corrections are done on requirements analysis.
+4) Work distribution is done.
+
+5) After use case analysis some additions and corrections are done on requirements analysis.
 
 
 *Decisions :*
