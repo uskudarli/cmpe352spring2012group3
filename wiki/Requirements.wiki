@@ -1,115 +1,117 @@
 #labels Phase-Requirements
-==Functional Requirements==
+==1.General Description
 
-  <b>1. Member Profiles</b>
+==2.Functional Requirements==
 
-       1.1. User profile shall contain name, surname, profile picture, email, password, phone number, entrance year for each user.
+  <b>2.1. Member Profiles</b>
+
+       2.1.1. User profile shall contain name, surname, profile picture, email, password, phone number, entrance year for each user.
 
 
-       1.2. The system shall send an email for confirmation after register.
+       2.1.2. The system shall send an email for confirmation after register.
 
-       1.3. The system shall provide a password reminder via e-mail.
+       2.1.3. The system shall provide a password reminder via e-mail.
 	
-       1.4. The system shall provide an interface for editing profiles for users
+       2.1.4. The system shall provide an interface for editing profiles for users
 
-       1.5. The system shall provide roles for the users (i.e. instructor, student, administrator) 
+       2.1.5. The system shall provide roles for the users (i.e. instructor, student, administrator) 
 
-   <b>2. Creation of a space for special interests or topics</b>
+   <b>2.2 Creation of a space for special interests or topics</b>
 
-       2.1. Users should be able to  create groups through their interests.
+       2.2.1. Users should be able to  create groups through their interests.
 	 
-       2.2. The creator of the group should be able to give role for group members
+       2.2.2. The creator of the group should be able to give role for group members
 	
-       2.3. Users should be able to invite other people to their own groups
+       2.2.3. Users should be able to invite other people to their own groups
 
-       2.4. Users should be able to join groups
+       2.2.4. Users should be able to join groups
 
-   <b>3. Special purpsose structures for the area of interes</b>
+   <b>2.3. Special purpsose structures for the area of interes</b>
   
        3.1. Users should create an event with action date.
 
-   <b>1.4 Discussion Forum</b>	
+   <b>2.4 Discussion Forum</b>	
   
-       4.1. Administrators should be able to open categories	
+       2.4.1. Administrators should be able to open categories	
 	
-       4.2. Users should be able to open a topic on discussion forum in predefined categories
+       2.4.2. Users should be able to open a topic on discussion forum in predefined categories
 
-       4.3. Users should be able to write their own comments to the topics
+       2.4.3. Users should be able to write their own comments to the topics
 
-       4.4. Users should be able to like or dislike any comments on any topics
+       2.4.4. Users should be able to like or dislike any comments on any topics
 
-   <b>5. Surveys</b>
+   <b>2.5. Surveys</b>
  
-       5.1 Users should be able to create surveys
+       2.5.1 Users should be able to create surveys
 
-       5.2. Users shall see the results of the survey after voting
+       2.5.2. Users shall see the results of the survey after voting
 
-       5.3. The creator of the survey shall give a due date for the surveys
+       2.5.3. The creator of the survey shall give a due date for the surveys
 
-   <b>6. Search/ Advanced Search</b>
+   <b>2.6. Search/ Advanced Search</b>
  
-       6.1. Users should be able to search for people, group, survey, topic on discussion forum
+       2.6.1. Users should be able to search for people, group, survey, topic on discussion forum
 
-       6.2. The system shall give suggestions to users
+       2.6.2. The system shall give suggestions to users
 
-       6.3. Users should be able to filter the results of the search
+       2.6.3. Users should be able to filter the results of the search
 
-   <b>7. Browsing</b>
+   <b>2.7. Browsing</b>
  
-       7.1. Users should be allowed to navigate through user profiles,group,surveys
+       2.7.1. Users should be allowed to navigate through user profiles,group,surveys
 
-   <b>8. Notification from subscriptions</b>
+   <b>2.8. Notification from subscriptions</b>
  
-       8.1. The system shall send notifications to users from subscribed pages.
+       2.8.1. The system shall send notifications to users from subscribed pages.
 
-       8.2. The system shall send a notification email.
+       2.8.2. The system shall send a notification email.
 
-   <b>9. Validation of a registration</b>
+   <b>2.9. Validation of a registration</b>
          
-       9.1. The user shall be able to register the system by only approval of administrator
+       2.9.1. The user shall be able to register the system by only approval of administrator
   
-       9.2. The system shall provide a administration panel to aprove new users.
+       2.9.2. The system shall provide a administration panel to aprove new users.
 
  
-== Non-functional Requirements==
+==3.Non-functional Requirements==
 
-   <b>1. Usability</b>
+   <b>3.1. Usability</b>
 
-      1.1. The system shall provide an simple interface to ease usage.
+      3.1.1. The system shall provide an simple interface to ease usage.
  
    <b>2. Accessibility</b>
 
-      2.1. The community should be accessed only by people from CMPE people. 
+      3.2.1. The community should be accessed only by people from CMPE people. 
 
-      2.2. All users shall have the ability to access CMPE Community all the time, in every circumstances (i.e. non restricted number of profiles and usage time)
+      3.2.2. All users shall have the ability to access CMPE Community all the time, in every circumstances (i.e. non restricted number of profiles and usage time)
     
-   <b>3. Privacy and Security</b>
+   <b>3.3. Privacy and Security</b>
 
-      3.1. The user shall be able to hide his personal information from other users.
+      3.3.1. The user shall be able to hide his personal information from other users.
 
-      3.2. The creator or the author of the group shall close the group for undesired people.
+      3.3.2. The creator or the author of the group shall close the group for undesired people.
 
-      3.3.  The creator of the survey shall open the survey only for people decided by himself.
+      3.3.3.  The creator of the survey shall open the survey only for people decided by himself.
 
-      3.4.  The system shall keep password as a hashed password. 
+      3.3.4.  The system shall keep password as a hashed password. 
   
-   <b>4. Authentication</b>
+   <b>3.4. Authentication</b>
 
-      4.1. In the case of wrong password users shall be obliged to authenticate their information for security.
+      3.4.1. In the case of wrong password users shall be obliged to authenticate their information for security.
    
    <b>5. Portability</b>
 
-      5.1 CMPE Community shall have a mobile application for portability. 
+      3.5.1 CMPE Community shall have a mobile application for portability. 
 
    <b>6. Avaliability</b>
 
-      6.1. The user interface of the system shall be viewed properly by all internet browsers.  
+      3.6.1. The user interface of the system shall be viewed properly by all internet browsers.  
 
-   <b>7. Performance and Efficiency</b>
+   <b>3.7. Performance and Efficiency</b>
 
-     7.1. Web pages of the application should be loaded quickly.
+     3.7.1. Web pages of the application should be loaded quickly.
 
-     7.2. The system shall minimize traffic amount between a server and a mobile device.
+     3.7.2. The system shall minimize traffic amount between a server and a mobile device.
 
 
 
