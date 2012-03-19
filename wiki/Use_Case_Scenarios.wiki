@@ -193,17 +193,16 @@ A user wants to setup a <a href="http://en.wikipedia.org/wiki/BarCamp">BarCamp</
 
 <b>Goal:</b> Enter the system.
 
-<b>Preconditions:</b> Have an account in the system.
+<b>Preconditions:</b> An incomming invitation.
 
 <b>Steps:</b>
 
-   - User provides username and password.
+   - System checks the user info from the database.
 
-   - System checks if username and password are valid
 
 <b>Postconditions:</b>
 
-   - User enters the system
+   - A notification is sent
 
 
 *3.CHECK USER FOR OWNERSHIP VALIDATION*
