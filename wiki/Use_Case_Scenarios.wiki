@@ -22,13 +22,18 @@ A new user whose main interest is making old style kites registers to the site. 
 = Use Cases =
 
 *1.SIGN UP*
+
 Actors: Users and Admins
+
 Goal: Become a part of the CMPE community web site by creating a user profile.
+
 Preconditions: Be a part of CMPE community
+
 Steps:
    - New user enters personal info for creating an account
    - System provides this info to the admin
    - Admin checks if the user is a part of CMPE community
+
 Postconditions:
    - If the user is accepted, the system sends a confirmation mail to the user
    - The account of the user is created
