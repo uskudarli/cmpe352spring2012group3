@@ -23,13 +23,13 @@ A new user whose main interest is making old style kites registers to the site. 
 
 *1.SIGN UP*
 
-Actors: Users and Admins
+<b>Actors:</b> Users and Admins
 
-Goal: Become a part of the CMPE community web site by creating a user profile.
+</b>Goal:</b> Become a part of the CMPE community web site by creating a user profile.
 
-Preconditions: Be a part of CMPE community
+</b>Preconditions:</b> Be a part of CMPE community
 
-Steps:
+</b>Steps:</b>
 
    - New user enters personal info for creating an account
 
@@ -38,7 +38,7 @@ Steps:
    - Admin checks if the user is a part of CMPE community
 
 
-Postconditions:
+</b>Postconditions:</b>
 
    - If the user is accepted, the system sends a confirmation mail to the user
 
