@@ -78,7 +78,7 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
    <b>3.1. Usability</b>
 
-      3.1.1. The system shall provide an simple interface to ease usage.
+      3.1.1. The system shall provide a user friendly,simple interface to ease usage.
  
    <b>2. Accessibility</b>
 
@@ -122,7 +122,11 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
    <b>3.9. Reliability</b>
 
-     3.9.1. When the system breaks down,The code and tables should be backed up periodically to minimize loss of data.     
+     3.9.1. When the system breaks down, code and tables should be backed up periodically to minimize loss of data.     
+
+   <b>3.10. Dependability</b>
+     
+     3.10.1 The project shall be implemented using Java with Apache Tomcat Server on the front side, MySQL on the back side.
 
 
 
