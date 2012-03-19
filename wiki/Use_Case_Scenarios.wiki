@@ -3,11 +3,11 @@
 = Scenario 1 =
 
 *Description :*
+A new user whose main interest is making old style kites registers to the site. System recommends people and communities for this person whom he might enjoy.
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+*Main Scenario :*
+*  User registers the page with his/her name, surname, password, e-mail and entrance year.
+*  Registered user logs into the system.
+*  User creates the group as his/her interest page.
+*  User edit the group settings.
+*  System searches the groups, people, survey databases for relevant groups by checking the words “old”, “style”, “kites”, “old style”, “old kites”, “style kites” and “old style kites” and shows the result in the user’s group page.
