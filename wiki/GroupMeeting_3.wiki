@@ -10,28 +10,23 @@
 
 1) Feedbacks on requirements analysis from previous week are evaluated.
 
-2)  
+2) We have to improve group communication in order to have better works.
 
-3) These requirements are written down to upload to the code page, also to be submitted as assignment3. 
+3) Work distribution is done.
 
-4) The non-functional requirements are discussed, and planned to be added to the document before submission.
+4) After use case analysis some additions and corrections are done on requirements analysis.
 
-5)  A facebook group is created for group communication.
-
-6) Format of the document for asignment3 is decided.
 
 *Decisions :*
 
-1)  From now on, group communication will be on facebook group.
+1) From now on, group communication will be on facebook group.
 
-2) Since not all members were available for the meeting, the remaining part of the non-functional requirements will be added by the absent members.
+2) Some improvements must be done on google code page.
 
-3) The document will be submitted before the deadline.
+3) Emre will draw Use Case Diagrams, improvements will be done and google code page will be ready for lecture.
 
-4) Code page will be updated (requirements will be added) next week.
+4) An available time for meetings before mondays must be found and will be discussed on facebook group.
 
-5) Researches and works on requirements will continue so that there may be some additions or modifications to requirements documents.
-
-*Subject of Meeting_2:*
+*Subject of Meeting_3:*
 
 This was a planned meeting for deciding and working on use case analysis.
