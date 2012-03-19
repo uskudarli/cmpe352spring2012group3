@@ -208,6 +208,7 @@ A user wants to setup a <a href="http://en.wikipedia.org/wiki/BarCamp">BarCamp</
 
 *3.CHECK USER FOR OWNERSHIP VALIDATION*
   
+
 <b>4.1 SEARCH PEOPLE</b>
 
     <b>Actors:</b> Users and System
