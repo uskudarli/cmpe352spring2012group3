@@ -169,26 +169,22 @@ A user wants to setup a <a href="http://en.wikipedia.org/wiki/BarCamp">BarCamp</
 
 *1.INVITE PEOPLE TO EVENT*
 
-<b>Actors:</b> Users and Admins
+<b>Actors:</b> Users
 
-<b>Goal:</b> Become a part of the CMPE community web site by creating a user profile.
+<b>Goal:</b> Inviting users to the users own event.
 
-<b>Preconditions:</b> Be a part of CMPE community
+<b>Preconditions:</b> Owning an event
 
 <b>Steps:</b>
 
-   - New user enters personal info for creating an account
+   - Enter username of the people to be invited to the group
 
-   - System provides this info to the admin
-
-   - Admin checks if the user is a part of CMPE community
+   - System sends a notification of the event to the user.
 
 
 <b>Postconditions:</b>
 
-   - If the user is accepted, the system sends a confirmation mail to the user
-
-   - The account of the user is created
+   - Invited people view the event and decides to attend or not attend.
 
 
 *2.SEND A NOTIFICATION*
