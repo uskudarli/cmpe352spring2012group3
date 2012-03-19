@@ -44,8 +44,42 @@ A new user whose main interest is making old style kites registers to the site. 
 
    - The account of the user is created
 
-
 *2.LOGIN*
 
+<b>Actors:</b> Users and Admins
+
+<b>Goal:</b> Enter the system.
+
+<b>Preconditions:</b> Have an account in the system.
+
+<b>Steps:</b>
+
+   - User provides username and password.
+
+   - System checks if username and password are valid
+
+<b>Postconditions:</b>
+
+   - User enters the system
+
+
 *3.CREATE GROUP*
-  
+
+<b>Actors:</b> Users and System
+
+<b>Goal:</b> Creating a group page for meeting with people sharing the same interests.
+
+<b>Preconditions:</b> Have an account in the system.
+
+<b>Steps:</b>
+
+   - User enters the required group info such as interest type, subject.
+
+   - System creates a group.
+
+   - System checks the database to make personal suggestions to each user, according to the belonging groups
+
+
+<b>Postconditions:</b>
+
+   - The suggested groups show up on each users profile page, accourding to his/her interests
