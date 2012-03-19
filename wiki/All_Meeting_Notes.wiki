@@ -1,0 +1,11 @@
+#summary One-sentence summary of this page.
+
+= Group Meeting Notes =
+
+All previous meeting notes can be viewed from below.
+
+<a href="http://code.google.com/p/cmpe352spring2012group3/wiki/Group_Meeting_I">Meeting1 - 05.03.2012</a> 
+
+<a href="http://code.google.com/p/cmpe352spring2012group3/wiki/Group_Meeting_2">Meeting2 - 12.03.2012</a> 
+
+<a href="http://code.google.com/p/cmpe352spring2012group3/wiki/GroupMeeting_3">Meeting3 - 19.03.2012</a> 
