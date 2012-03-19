@@ -30,14 +30,22 @@ Goal: Become a part of the CMPE community web site by creating a user profile.
 Preconditions: Be a part of CMPE community
 
 Steps:
+
    - New user enters personal info for creating an account
+
    - System provides this info to the admin
+
    - Admin checks if the user is a part of CMPE community
 
+
 Postconditions:
+
    - If the user is accepted, the system sends a confirmation mail to the user
+
    - The account of the user is created
 
+
 *2.LOGIN*
+
 *3.CREATE GROUP*
   
