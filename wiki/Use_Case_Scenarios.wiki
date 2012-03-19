@@ -221,7 +221,7 @@ A user wants to setup a BarCamp organization about Jquerry.
 
 *Alternative Scenario :*
 
-1)This event is already exists in the system.
+1)This event already exists in the system.
 
 2)An invited user is trying to cancel the event.
 
