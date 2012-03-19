@@ -23,7 +23,7 @@ A new user whose main interest is making old style kites registers to the site. 
 
 *1.SIGN UP*
 
-<b>Actors:</b> Users and Admins
+<t><b>Actors:</b> Users and Admins
 
 <b>Goal:</b> Become a part of the CMPE community web site by creating a user profile.
 
@@ -43,6 +43,7 @@ A new user whose main interest is making old style kites registers to the site. 
    - If the user is accepted, the system sends a confirmation mail to the user
 
    - The account of the user is created
+</t>
 
 *2.LOGIN*
 
