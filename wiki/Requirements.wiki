@@ -115,11 +115,13 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
      3.7.2. The system shall minimize traffic amount between a server and a mobile device.
 
    <b>3.8. Capacity</b>
+
      3.8.1. The application should avoid from unnecessary tables in the database to minimize data size.
 
-     3.8.2. The common module(javascript functions,HTML code generator) should be constructed for web pages having some common properties.  
+     3.8.2. The common module(javascript functions,HTML code generator) should be constructed for web pages having some common properties.Hence writability and readibility of code increases.  
 
    <b>3.9. Reliability</b>
+
      3.9.1. When the system breaks down,The code and tables should be backed up to minimize loss of data     
 
 
