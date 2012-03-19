@@ -9,12 +9,12 @@ A new user whose main interest is making old style kites registers to the site. 
 
 *Main Scenario :*
 
-#  User registers the page with his/her name, surname, password, e-mail and entrance year.
+1) User registers the page with his/her name, surname, password, e-mail and entrance year.
 
-#  Registered user logs into the system.
+2) Registered user logs into the system.
 
-#  User creates the group as his/her interest page.
+3) User creates the group as his/her interest page.
 
-#  User edit the group settings.
+4) User edit the group settings.
 
-#  System searches the groups, people, survey databases for relevant groups by checking the words “old”, “style”, “kites”, “old style”, “old kites”, “style kites” and “old style kites” and shows the result in the user’s group page.
+5) System searches the groups, people, survey databases for relevant groups by checking the words “old”, “style”, “kites”, “old style”, “old kites”, “style kites” and “old style kites” and shows the result in the user’s group page.
