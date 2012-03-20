@@ -71,7 +71,7 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
        2.6.3. Users should be able to filter the results of the search
 
-       2.6.3. _The system shall list the result of search or filtered search_
+       2.6.4. _The system shall list the result of search or filtered search_
 
    <b>2.7. Browsing</b>
  
@@ -81,11 +81,11 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
  
        2.8.1. The system shall send notifications to users from subscribed pages.
 
-       2.8.1. _The system shall send notifications to invited users._
+       2.8.2. _The system shall send notifications to invited users._
 
-       2.8.1. _The system shall recommends groups to users according to his/her interest via notification._
+       2.8.3. _The system shall recommends groups to users according to his/her interest via notification._
 
-       2.8.2. The system shall send a notification email.
+       2.8.4. The system shall send a notification email.
 
    <b>2.9. Validation of a registration</b>
          
