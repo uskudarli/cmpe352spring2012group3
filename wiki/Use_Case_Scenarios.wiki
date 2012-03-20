@@ -1,5 +1,3 @@
-
-
 = Scenario 1 =
 
 <img src="http://cmpe352spring2012group3.googlecode.com/files/Scenario%201.png" />
@@ -91,7 +89,7 @@ A new user whose main interest is making old style kites registers to the site. 
 
 *4.SET PROPERTIES OF A GROUP*
 
-<b>Actors:</b> Users
+<b>Actors:</b> Group Owner
 
 <b>Goal:</b> Editing the properties of a group
 
@@ -106,7 +104,7 @@ A new user whose main interest is making old style kites registers to the site. 
 
 <b>Postconditions:</b>
 
-   - The suggested groups show up on each users profile page, accourding to his/her interests
+   - The suggested groups show up on each users profile page, according to his/her interests
 
    - Properties of the group changes
 
@@ -171,19 +169,39 @@ A user wants to setup a <a href="http://en.wikipedia.org/wiki/BarCamp">BarCamp</
 
 = Use Cases =
 
-*1.INVITE PEOPLE TO EVENT*
+*1.CREATE AN EVENT*
 
 <b>Actors:</b> Users
 
-<b>Goal:</b> Inviting users to the users own event.
+<b>Goal:</b> Creating an event for a specific purpose
+
+<b>Preconditions:</b> Being a user of the CMPE community
+
+<b>Steps:</b>
+
+   - Enter a name for the event
+
+   - Provide necessary information (such as time and place) for the event
+
+
+<b>Postconditions:</b>
+
+   - Event creator invites people to the event.
+
+
+*2.INVITE PEOPLE TO EVENT*
+
+<b>Actors:</b> Event Creator
+
+<b>Goal:</b> Inviting users to the event.
 
 <b>Preconditions:</b> Owning an event
 
 <b>Steps:</b>
 
-   - Enter username of the people to be invited to the group
+   - Enter user name of the people to be invited to the group
 
-   - System sends a notification of the event to the user.
+   - System sends a notification of the event to the invited users.
 
 
 <b>Postconditions:</b>
@@ -191,13 +209,48 @@ A user wants to setup a <a href="http://en.wikipedia.org/wiki/BarCamp">BarCamp</
    - Invited people view the event and decides to attend or not attend.
 
 
-*2.SEND A NOTIFICATION*
+*3.EDIT EVENT PROPERTIES*
 
-<b>Actors:</b> Users and Admins
+<b>Actors:</b> Event Creator
 
-<b>Goal:</b> Enter the system.
+<b>Goal:</b> Editing properties of the event.
 
-<b>Preconditions:</b> An incomming invitation.
+<b>Preconditions:</b> Owning an event
+
+<b>Steps:</b>
+
+   - Update event properties such as time and place.
+
+
+<b>Postconditions:</b>
+
+   - Invited/attending people notified the update.
+
+*4.DELETE AN EVENT*
+
+<b>Actors:</b> Event Creator
+
+<b>Goal:</b> Deleting an event
+
+<b>Preconditions:</b> Owning the event
+
+<b>Steps:</b>
+
+   - Event deletion is confirmed and removed from active events.
+
+
+<b>Postconditions:</b>
+
+   - Attending or invited people are notified that event is canceled.
+
+
+*5.RECEIVE A NOTIFICATION*
+
+<b>Actors:</b> Users
+
+<b>Goal:</b> Getting an invitation or event update.
+
+<b>Preconditions:</b> An incoming invitation, or being in event which is recently updated.
 
 <b>Steps:</b>
 
@@ -206,7 +259,58 @@ A user wants to setup a <a href="http://en.wikipedia.org/wiki/BarCamp">BarCamp</
 
 <b>Postconditions:</b>
 
-   - A notification is sent
+   - A notification is shown to user.
 
 
-*3.CHECK USER FOR OWNERSHIP VALIDATION*
+*5.UPDATE ATTENDANCE STATUS*
+
+<b>Actors:</b> Users
+
+<b>Goal:</b> Updating attendance status to an event.
+
+<b>Preconditions:</b> Being invited to the event
+
+<b>Steps:</b>
+
+   - User select whether to attend or not attend to the event.
+
+
+<b>Postconditions:</b>
+
+   - User's attendance status is updated.
+
+
+*6.VIEW AN EVENT*
+
+<b>Actors:</b> Users
+
+<b>Goal:</b> Viewing details of an event.
+
+<b>Preconditions:</b> Being invited to the event.
+
+<b>Steps:</b>
+
+   - System provides information about the event to the user.
+
+
+<b>Postconditions:</b>
+
+   - Users are able to view details of an event.
+
+
+*7.CHECK FOR INVITATION*
+
+<b>Actors:</b> System
+
+<b>Goal:</b> Providing privacy for the event.
+
+<b>Preconditions:</b> A user requested to view or attend to an event
+
+<b>Steps:</b>
+
+   - System checks if the user was invited to the event.
+
+
+<b>Postconditions:</b>
+
+   - Only allowed users can view the event.
