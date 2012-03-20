@@ -1,7 +1,8 @@
-#summary One-sentence summary of this page.
 
 
 = Scenario 1 =
+
+<img src="http://cmpe352spring2012group3.googlecode.com/files/Scenario%201.png" />
 
 *Description :*
 
@@ -135,6 +136,8 @@ A new user whose main interest is making old style kites registers to the site. 
 
 = Scenario 2 =
 
+<img src="http://cmpe352spring2012group3.googlecode.com/files/Scene%202.png" />
+
 *Description :*
 
 A user wants to setup a <a href="http://en.wikipedia.org/wiki/BarCamp">BarCamp</a> organization about Jquerry.
@@ -207,23 +210,3 @@ A user wants to setup a <a href="http://en.wikipedia.org/wiki/BarCamp">BarCamp</
 
 
 *3.CHECK USER FOR OWNERSHIP VALIDATION*
-  
-
-<b>4.1 SEARCH PEOPLE</b>
-
-    <b>Actors:</b> Users and System
-
-    <b>Goal:</b> Searching the system according to a given key word 
-
-    <b>Preconditions:</b> Being a part of CMPE community group
-
-    <b>Steps:</b>
-
-       - The user will give, or the system will provide a key word.
-
-       - System searches the database
-
-
-    <b>Postconditions:</b>
-
-       - The system will return the result of the query
