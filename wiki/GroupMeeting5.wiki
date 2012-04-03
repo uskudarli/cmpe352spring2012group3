@@ -1,1 +1,34 @@
-sabah dersten önce edit edeceğim, anasayfaya da biraz bakıp son iki haftanın dökümanlarının linklerini koyarım.
+*Participants :* Osman Şamil AKÇELİK, Özkan Aykut DEMİR, Çiğdem KOÇBERBER
+
+*Date :* 02.04.2012, 17:15 
+
+*Duration :* 1,5 hour
+
+*Place :* ETA A5
+
+*Subject of Meeting_4:*
+
+Complete assignment 6, and start to create a new scenario for the next weeks presentation.
+
+*Meeting Notes :* 
+ 
+1) A new use case scenario is created.
+
+2) Use cases of the new scenario is prepared.
+
+3) Use case diagram is prepared.
+
+4) For this weeks assignment, system architucture is prepared.
+
+
+*Decisions :*
+
+1) A new use case scenario needs to be created, and all documentation (diagrams, use cases etc.) about the scenario needs to be prepared. Thus, we will have a better, corrected and completed scenario.
+
+2) Activity diagram of the new scenario will be prepared. (Çiğdem --> 10.04.2012)
+
+3) Use case diagram of the new scenario will be prepared.(Osman --> 10.04.2012)
+
+4) Prepared material for the new scenario will be uploaded to code page(Özkan --> 10.04.2012)
+
+5) System architecture diagram will be uploaded to code page. (Özkan --> 03.04.2012, before class)
