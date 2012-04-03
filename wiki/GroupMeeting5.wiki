@@ -12,6 +12,7 @@ Complete assignment 6, and start to create a new scenario for the next weeks pre
 
 *Meeting Notes :* 
  
+
 1) A new use case scenario is created.
 
 2) Use cases of the new scenario is prepared.
