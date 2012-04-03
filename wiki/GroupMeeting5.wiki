@@ -18,7 +18,7 @@ Complete assignment 6, and start to create a new scenario for the next weeks pre
 
 3) Use case diagram is prepared.
 
-4) For this weeks assignment, system architucture is prepared.
+4) For this weeks assignment, system architecture is prepared.
 
 
 *Decisions :*
