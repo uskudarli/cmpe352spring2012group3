@@ -1,3 +1,4 @@
+#labels Phase-Design,Featured
 = Scenario 1 =
 
 <img src="http://cmpe352spring2012group3.googlecode.com/files/Scenario%201.png" />
