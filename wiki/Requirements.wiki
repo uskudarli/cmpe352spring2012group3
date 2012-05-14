@@ -1,4 +1,4 @@
-#labels Phase-Requirements
+#labels Phase-Requirements,Featured
 ==1.General Description==
          This application shall be social web application to create an environment where members of CMPE community can express and share 
 their ideas,hobies with groups,forum,events,survey by categorizing them according to their interest  
