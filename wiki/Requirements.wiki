@@ -17,6 +17,12 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
        2.1.5. The system shall provide roles for the users (i.e. instructor, student, administrator) 
 
+       2.1.6. The system shall allow users to follow other users.
+
+       2.1.7. The system shall allow users to enter status updates.
+
+       2.1.8. The system shall allow users to comment on their friends' status updates.
+
    <b>2.2 Creation of a space for special interests or topics</b>
 
        2.2.1. Users should be able to  create groups through their interests.
