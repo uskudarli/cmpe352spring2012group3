@@ -1,5 +1,9 @@
 ==New Use Case Scenario==
 
+<img src="http://cmpe352spring2012group3.googlecode.com/files/NewUse.png" />
+
+*Description*
+
 Ayşe logins to the system and sees that Ali wants to follow her. She accepts his request. Ayşe enters a new status and Ali comments on Ayşe's status. Ayşe finds Ali's comment disturbing and repots him to the admin. Admin closes Ali's profile.
 
 
