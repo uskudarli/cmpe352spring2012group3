@@ -93,6 +93,10 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
        2.8.4. The system shall send a notification email.
 
+       2.8.5. The system shall send notification to users whose status is commented by other users.
+
+       2.8.6. The system shall send notification to requested users.
+
    <b>2.9. Validation of a registration</b>
          
        2.9.1. The user shall be able to register the system by only approval of administrator
@@ -123,6 +127,8 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
       3.3.3.  The creator of the survey shall open the survey only for people decided by himself.
 
       3.3.4.  The system shall keep password as a hashed password. 
+
+      3.3.5.  The system shall alloe admin to delete a profile, a group or a survey when s/he decides that content or user is not appropriate.
   
    <b>3.4. Authentication</b>
 
