@@ -40,3 +40,7 @@ Ayşe logins to the system and sees that Ali wants to follow her. She accepts hi
 status.
 
 3)  Admin indicates that Ali's comment is not disturbing or annoying.
+
+==Sequence Diagram==
+
+<img src='http://cmpe352spring2012group3.googlecode.com/files/New_Sequence_Diagram.png' />
