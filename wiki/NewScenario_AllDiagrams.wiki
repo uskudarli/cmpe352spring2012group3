@@ -44,3 +44,6 @@ status.
 ==Sequence Diagram==
 
 <img src='http://cmpe352spring2012group3.googlecode.com/files/New_Sequence_Diagram.png' />
+
+==Activity Diagram==
+[http://cmpe352spring2012group3.googlecode.com/files/Activity%20Diagram_New.docx Activity Diagram]
