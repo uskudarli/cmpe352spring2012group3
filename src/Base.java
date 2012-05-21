@@ -1,6 +1,6 @@
 public class Base {
 
-  public boolean prime(int number){
+  public boolean isPrime(int number){
   
     if(number ==1) return false;
     
