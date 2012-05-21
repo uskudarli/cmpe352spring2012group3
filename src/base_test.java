@@ -10,6 +10,8 @@ public class base_test {
 		Base tester = new Base();
 		assertEquals("Result", false, tester.prime(3));
 		
+		assertEquals("Result", true, tester.prime(7));
+		
 	}
 
 }
