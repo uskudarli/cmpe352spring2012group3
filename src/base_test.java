@@ -12,6 +12,8 @@ public class base_test {
 		
 		assertEquals("Result", true, tester.prime(7));
 		
+      assertEquals("Result", false, tester.prime(1));
+      
 	}
 
 }
