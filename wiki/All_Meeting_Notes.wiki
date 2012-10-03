@@ -3,9 +3,9 @@
 
 = Group Meeting Notes =
 
-<a href="http://code.google.com/p/cmpe352spring2012group3/wiki/Group_Meeting_6">Meeting6 - 03.10.2012</a>
-
 All previous meeting notes can be viewed from below.
+
+<a href="http://code.google.com/p/cmpe352spring2012group3/wiki/Group_Meeting_6">Meeting6 - 03.10.2012</a>
 
 <a href="http://code.google.com/p/cmpe352spring2012group3/wiki/Group_Meeting_I">Meeting1 - 05.03.2012</a> 
 
