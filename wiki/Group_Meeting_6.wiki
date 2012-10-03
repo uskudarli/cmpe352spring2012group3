@@ -14,7 +14,7 @@
 
 *Decisions :*
 
-1) Emre will update the project page for new member Alper and help Alper to use google code.
+1) Emre will update the group members in the project page and create a wiki page for Alper.
 
 2) Çiğdem and Erdem will upload new reguirements document and project plan to group page.
 
