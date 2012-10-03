@@ -26,24 +26,22 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
    <b>2.2 Creation of a space for special interests or topics</b>
 
        2.2.1. Users should be able to  create groups through their interests.
-	 
-       2.2.2. The creator of the group should be able to give privacy level for group visibility and accessibility.
 
-       2.2.3._The creator of the event should be able to edit settings of event._
+       2.2.2.The creator of the event should be able to edit settings of group.
 	
-       2.2.4. Users should be able to invite other people to their own groups
+       2.2.3. Users should be able to invite other people to their own groups
 
-       2.2.5. Users should be able to join groups
+       2.2.4. Users should be able to join groups
 
-       2.2.6. _The system shall recommend users to attend groups,accourding to his/her interests._
+       2.2.5. The system shall recommend users to attend groups, according to his/her interests.
 
-       2.2.7. _The users shall view his/her suggested groups._ 
+       2.2.6. The users shall view his/her suggested groups.
 
    <b>2.3. Special purpsose structures for the area of interes</b>
   
        2.3.1. Users should create an event with action date,location.
  
-       2.3.2. _The creator of the event should invite other members to attend his events._
+       2.3.2. The creator of the event should invite other members to attend his events.
 
        2.3.3. _The creator of the event should be able to edit settings of event._
   
@@ -89,28 +87,24 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
        2.8.2. _The system shall send notifications to invited users._
 
-       2.8.3. _The system shall recommends groups to users according to his/her interest via notification._
+       2.8.3. The system shall send notification to users whose status is commented by other users.
 
-       2.8.4. The system shall send a notification email.
-
-       2.8.5. The system shall send notification to users whose status is commented by other users.
-
-       2.8.6. The system shall send notification to requested users.
+       2.8.4. The system shall send notification to requested users.
 
    <b>2.9. Validation of a registration</b>
          
-       2.9.1. The user shall be able to register the system by only approval of administrator
+       2.9.1. Admin should load email information of instructors & students to system each semester
   
-       2.9.2. The system shall provide a administration panel to aprove new users.
+       2.9.2. On registration system shall check if the user’s email exists in the system.
 
  
 ==3.Non-functional Requirements==
 
    <b>3.1. Usability</b>
 
-      3.1.1. The system shall provide a user friendly,simple interface to ease usage.
+      3.1.1. The system shall provide a user friendly, simple interface to ease usage.
  
-      3.1.2. _The application shall be easily understandable and avaliable even by elder members of CMPE Community_
+      3.1.2. _The application shall be easily understandable and available even by elder members of CMPE Community_
  
    <b>2. Accessibility</b>
 
@@ -122,21 +116,19 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
       3.3.1. The user shall be able to hide his personal information from other users.
 
-      3.3.2. The creator or the author of the group shall close the group for undesired people.
+      3.3.2. The creator of the survey shall open the survey only for a group, or public(for all users).
 
-      3.3.3.  The creator of the survey shall open the survey only for people decided by himself.
+      3.3.3. The system shall keep password as a hashed password.
 
-      3.3.4.  The system shall keep password as a hashed password. 
+      3.3.4. The system shall allow admin to delete a profile, a group or a survey when s/he decides that content or user is not appropriate.
 
-      3.3.5.  The system shall alloe admin to delete a profile, a group or a survey when s/he decides that content or user is not appropriate.
-  
    <b>3.4. Authentication</b>
 
       3.4.1. In the case of wrong password users shall be obliged to authenticate their information for security.
    
    <b>3.5. Portability</b>
 
-      3.5.1 CMPE Community shall have a mobile application for portability. 
+      3.5.1 CMPE Community shall have an Android application for portability. 
 
    <b>3.6. Avaliability</b>
 
@@ -156,11 +148,11 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
    <b>3.9. Reliability</b>
 
-     3.9.1. _When the system breaks down, code and tables should be backed up periodically to minimize loss of data._     
+     3.9.1. On an unexpected situation (power loss, system crash), the system will prevent loss of data.     
 
    <b>3.10. Dependability</b>
      
-     3.10.1 _The project shall be implemented using Java with Apache Tomcat Server on the front side, MySQL on the back side._
+     3.10.1 The project shall be implemented using Java with Apache Tomcat Server on the front side, MySQL on the back side.
 
 
 
