@@ -15,9 +15,9 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 	
        2.1.4. The system shall provide an interface for editing profiles for users
 
-       2.1.5. The system shall provide roles for the users (i.e. instructor, student, administrator) 
+       2.1.5. The system shall provide roles for the users (i.e. user, administrator) 
 
-       2.1.6. The system shall allow users to follow other users.
+       2.1.6. The system shall allow users to follow other users status updates.
 
        2.1.7. The system shall allow users to enter status updates.
 
