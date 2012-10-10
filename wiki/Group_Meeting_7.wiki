@@ -8,7 +8,7 @@ Place : Computer Engineering Student Lounge
 
 Meeting Notes :
 
-1) A project is being created and participants complete local configuration.
+1) A project is created on code page and participants complete local configuration.
 
 
 Decisions :
