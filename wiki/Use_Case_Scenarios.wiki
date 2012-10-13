@@ -1,7 +1,7 @@
 #labels Phase-Design,Featured
 =Use Case Diagram=
 
-<img src="http://cmpe352spring2012group3.googlecode.com/files/Final_UseCaseDiagram.png" />
+<img src="http://cmpe352spring2012group3.googlecode.com/files/UseCaseScenario.jpg" />
 
 = Scenario 1 =
 
