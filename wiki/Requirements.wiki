@@ -4,7 +4,7 @@
 their ideas,hobies with groups,forum,events,survey by categorizing them according to their interest  
 ==2.Functional Requirements==
 
-  <b>2.1. Member Profiles</b>
+  =<b>2.1. Member Profiles</b>=
 
        2.1.1. User profile shall contain name, surname, profile picture, email, password, phone number, <b>_preferred tags_</b>, entrance year for each user.
 
