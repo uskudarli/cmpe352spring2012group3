@@ -15,13 +15,13 @@ Ahmet, whose main interest is making old style kites registers to the site. Syst
 
 2) Ahmet logs into the system.
 
-3) Ahmet finds a tag "Old Style Kites", and adds the tag to himself.
+3) Ahmet finds a tag "Old Style Kites" in "Recommended Tags" section of his profile page, and adds the tag to himself.
 
-4) Ahmet enters the tag page.
+4) Ahmet enters the "Old Style Kites"s page.
 
-5) System recommends other users having "Old Style Kites" tags & popular tags of those users.
+5) System recommends other users having "Old Style Kites" tags & popular tags of those users on the tag page.
 
-5) Ahmet posts on "Old Style Kites" tag page that he is going to buy a new kite on weekend.
+5) Ahmet posts on "Old Style Kites" tag page that he is going to buy some materials for his new kite on weekend.
 
 6) Ahmet's post will appear on the profile page of other users having "Old Style Kites" tag.
 
@@ -70,28 +70,26 @@ Ahmet, whose main interest is making old style kites registers to the site. Syst
    - User enters the system
 
 
-*3.ADD A TAG*
+*3.ADD A TAG TO HIMSELF/HERSELF*
 
 <b>Actors:</b> Users and System
 
-<b>Goal:</b> Creating a group page for meeting with people sharing the same interests.
+<b>Goal:</b> Adding a tag to himself/herself in order to meet with people sharing same interest & informed by recent updates of the tag.
 
 <b>Preconditions:</b> Have an account in the system.
 
 <b>Steps:</b>
 
-   - User enters the required group info such as interest type, subject.
+   - System checks the database to make personal suggestions to each  user, according to his tags & his friend's tags.
 
-   - System creates a group.
-
-   - System checks the database to make personal suggestions to each user, according to the belonging groups
+   - User finds a tag via "Recommended Tags" section on his profile.
 
 
 <b>Postconditions:</b>
 
-   - The suggested groups show up on each users profile page, accourding to his/her interests
+   - The suggested tags show up on each users profile page
 
-   - User becomes the owner of the group
+   - User will receive notifications from the tag page
 
 
 *4.SET PROPERTIES OF A GROUP*
