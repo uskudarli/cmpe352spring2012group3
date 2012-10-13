@@ -151,11 +151,11 @@ A user wants to setup a <a href="http://en.wikipedia.org/wiki/BarCamp">BarCamp</
 
 3)User creates an event by entering the name of the event and <a href="http://en.wikipedia.org/wiki/BarCamp">BarCamp</a> as the organization type,“Jquerry” as the subject of the event with specified date,location.
 
-4)User invites the people to the event.
+4)User invites Ayşe to the event.
 
-5)System sends a notification of the events.
+5)System sends a notification of the event to Ayşe.
 
-6)Invited people view the event and decides to attend or not attend.
+6)Ayşe view the event and decides to attend or not attend.
 
 7)Systems remove the event after action date or creator may cancel it.
 
