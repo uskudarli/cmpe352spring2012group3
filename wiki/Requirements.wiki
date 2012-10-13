@@ -75,7 +75,7 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
        2.4.4. Users should be able to like or dislike any comments on any topics
 
-   ==b>2.5. Surveys</b>==
+   ==<b>2.5. Surveys</b>==
  
        2.5.1 Users should be able to create surveys
 
