@@ -50,9 +50,8 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
       <b>_2.2.9. The users shall reply on post, appearing on tag page._</b>
 
-      <b>_2.2.10. The system shall send notification to users when there is a reply to their posts on tag pages._</b>
 
-      <b>_2.2.11 The users shall view replies from the tag page._</b>
+      <b>_2.2.10 The users shall view replies from the tag page._</b>
 
    <b>2.3. Special purpsose structures for the area of interes</b>
   
@@ -92,21 +91,23 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
        2.6.3. Users should be able to filter the results of the search
 
-       2.6.4. _The system shall list the result of search or filtered search_
+       2.6.4. The system shall list the result of search or filtered search
 
    <b>2.7. Browsing</b>
  
-       2.7.1. _Users should be allowed to navigate through user profiles,group,surveys,events and discussion forums_
+       2.7.1. Users should be allowed to navigate through user profiles,group,surveys,events and discussion forums
 
    <b>2.8. Notification from subscriptions</b>
  
        2.8.1. The system shall send notifications to users from subscribed pages.
 
-       2.8.2. _The system shall send notifications to invited users._
+       2.8.2. The system shall send notifications when a user is invited to an event.
 
        2.8.3. The system shall send notification to users whose status is commented by other users.
 
        2.8.4. The system shall send notification to requested users.
+
+     <b>_2.8.5. The system shall send notification to users when there is a reply to their posts on tag pages._</b>
 
    <b>2.9. Validation of a registration</b>
          
@@ -121,7 +122,7 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
       3.1.1. The system shall provide a user friendly, simple interface to ease usage.
  
-      3.1.2. _The application shall be easily understandable and available even by elder members of CMPE Community_
+      3.1.2. The application shall be easily understandable and available even by elder members of CMPE Community
  
    <b>2. Accessibility</b>
 
@@ -149,7 +150,7 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
    <b>3.6. Avaliability</b>
 
-      3.6.1. _The user interface of the system shall be viewed properly by Firefox and Chrome._  
+      3.6.1. The user interface of the system shall be viewed properly by Firefox and Chrome.
 
    <b>3.7. Performance and Efficiency</b>
 
@@ -159,9 +160,9 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
    <b>3.8. Capacity</b>
 
-     3.8.1. _The application should avoid from unnecessary tables in the database to minimize data size._
+     3.8.1. The application should avoid from unnecessary tables in the database to minimize data size.
 
-     3.8.2. _The common module(javascript functions,HTML code generator) should be constructed for web pages having some common properties.Hence writability and readibility of code increase._  
+     3.8.2. The common module(javascript functions,HTML code generator) should be constructed for web pages having some common properties.Hence writability and readibility of code increase.
 
    <b>3.9. Reliability</b>
 
