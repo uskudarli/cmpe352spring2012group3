@@ -17,7 +17,7 @@ Ahmet, whose main interest is making old style kites registers to the site. Syst
 
 3) Ahmet finds a tag "Old Style Kites" in "Recommended Tags" section of his profile page, and adds the tag to himself.
 
-4) Ahmet enters the "Old Style Kites"s page.
+4) Ahmet enters the "Old Style Kites"s tag page.
 
 5) System recommends other users having "Old Style Kites" tags & popular tags of those users on the tag page.
 
