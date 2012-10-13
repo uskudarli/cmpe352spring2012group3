@@ -1,10 +1,10 @@
 #labels Featured
-==1.General Description==
+=1.General Description=
          This application shall be social web application to create an environment where members of CMPE community can express and share 
 their ideas,hobies with groups,forum,events,survey by categorizing them according to their interest  
-==2.Functional Requirements==
+=2.Functional Requirements=
 
-  =<b>2.1. Member Profiles</b>=
+  ==<b>2.1. Member Profiles</b>==
 
        2.1.1. User profile shall contain name, surname, profile picture, email, password, phone number, <b>_preferred tags_</b>, entrance year for each user.
 
@@ -29,7 +29,7 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
        <b>_2.1.11. The "Recommended Tags" section shall introduce tags used by users's friends(connected users)._</b>
 
-   <b>2.2 Creation of a space for special interests or topics</b>
+   ==<b>2.2 Creation of a space for special interests or topics</b>==
 
       <b>_ 2.2.1. Users should be able to create tags about their interests or temprary occasions._</b>
 
@@ -53,7 +53,7 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
       <b>_2.2.10 The users shall view replies from the tag page._</b>
 
-   <b>2.3. Special purpsose structures for the area of interes</b>
+   ==<b>2.3. Special purpsose structures for the area of interes</b>==
   
        2.3.1. Users should create an event with action date,location.
  
@@ -65,7 +65,7 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
        2.3.5. The system shall remove the event from website after timeout or cancellation of the creator.
 
-   <b>2.4 Discussion Forum</b>	
+   ==<b>2.4 Discussion Forum</b>==	
   
        2.4.1. Administrators should be able to open categories	
 	
@@ -75,7 +75,7 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
        2.4.4. Users should be able to like or dislike any comments on any topics
 
-   <b>2.5. Surveys</b>
+   ==b>2.5. Surveys</b>==
  
        2.5.1 Users should be able to create surveys
 
@@ -83,7 +83,7 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
        2.5.3. The creator of the survey shall give a due date for the surveys
 
-   <b>2.6. Search/ Advanced Search</b>
+  == <b>2.6. Search/ Advanced Search</b>==
  
        2.6.1. Users should be able to search for people, group, event, survey, topic on discussion forum
 
@@ -93,11 +93,11 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
        2.6.4. The system shall list the result of search or filtered search
 
-   <b>2.7. Browsing</b>
+  == <b>2.7. Browsing</b>==
  
        2.7.1. Users should be allowed to navigate through user profiles,group,surveys,events and discussion forums
 
-   <b>2.8. Notification from subscriptions</b>
+  == <b>2.8. Notification from subscriptions</b>==
  
        2.8.1. The system shall send notifications to users from subscribed pages.
 
@@ -109,28 +109,28 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
      <b>_2.8.5. The system shall send notification to users when there is a reply to their posts on tag pages._</b>
 
-   <b>2.9. Validation of a registration</b>
+   ==<b>2.9. Validation of a registration</b>==
          
        2.9.1. Admin should load email information of instructors & students to system each semester
   
        2.9.2. On registration system shall check if the user’s email exists in the system.
 
  
-==3.Non-functional Requirements==
+=3.Non-functional Requirements=
 
-   <b>3.1. Usability</b>
+  == <b>3.1. Usability</b>==
 
       3.1.1. The system shall provide a user friendly, simple interface to ease usage.
  
       3.1.2. The application shall be easily understandable and available even by elder members of CMPE Community
  
-   <b>2. Accessibility</b>
+   ==<b>2. Accessibility</b>==
 
       3.2.1. The community should be accessed only by people from CMPE people. 
 
       3.2.2. All users shall have the ability to access CMPE Community all the time, in every circumstances (i.e. non restricted number of profiles and usage time)
     
-   <b>3.3. Privacy and Security</b>
+   ==<b>3.3. Privacy and Security</b>==
 
       3.3.1. The user shall be able to hide his personal information from other users.
 
@@ -140,35 +140,35 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
       3.3.4. The system shall allow admin to delete a profile, a group or a survey when s/he decides that content or user is not appropriate.
 
-   <b>3.4. Authentication</b>
+   ==<b>3.4. Authentication</b>==
 
       3.4.1. In the case of wrong password users shall be obliged to authenticate their information for security.
    
-   <b>3.5. Portability</b>
+  == <b>3.5. Portability</b>==
 
       3.5.1 CMPE Community shall have an Android application for portability. 
 
-   <b>3.6. Avaliability</b>
+   ==<b>3.6. Avaliability</b>==
 
       3.6.1. The user interface of the system shall be viewed properly by Firefox and Chrome.
 
-   <b>3.7. Performance and Efficiency</b>
+   ==<b>3.7. Performance and Efficiency</b>==
 
      3.7.1. Web pages of the application should be loaded quickly.
 
      3.7.2. The system shall minimize traffic amount between a server and a mobile device.
 
-   <b>3.8. Capacity</b>
+   ==<b>3.8. Capacity</b>==
 
      3.8.1. The application should avoid from unnecessary tables in the database to minimize data size.
 
      3.8.2. The common module(javascript functions,HTML code generator) should be constructed for web pages having some common properties.Hence writability and readibility of code increase.
 
-   <b>3.9. Reliability</b>
+  == <b>3.9. Reliability</b>==
 
      3.9.1. On an unexpected situation (power loss, system crash), the system will prevent loss of data.     
 
-   <b>3.10. Dependability</b>
+  == <b>3.10. Dependability</b>==
      
      3.10.1 The project shall be implemented using Java with Apache Tomcat Server on the front side, MySQL on the back side.
 
