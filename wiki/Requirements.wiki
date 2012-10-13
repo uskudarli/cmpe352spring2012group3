@@ -6,7 +6,7 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
   <b>2.1. Member Profiles</b>
 
-       2.1.1. User profile shall contain name, surname, profile picture, email, password, phone number, entrance year for each user.
+       2.1.1. User profile shall contain name, surname, profile picture, email, password, phone number, <b>_preferred tags_</b>, entrance year for each user.
 
 
        2.1.2. The system shall send an email for confirmation after register.
@@ -23,19 +23,28 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
        2.1.8. The system shall allow users to comment on their friends' status updates.
 
+       <b>_2.1.9. The system shall recommend tags to users while registering._</b>
+
+       <b>_2.1.10. The system shall recommend tags in the "Recommended Tags" section of the users profile page._</b>
+
+       <b>_2.1.11. The "Recommended Tags" section shall introduce tags used by users's friends(connected users)._</b>
+
    <b>2.2 Creation of a space for special interests or topics</b>
 
-       2.2.1. Users should be able to  create groups through their interests.
+      <b>_ 2.2.1. Users should be able to create tags about their interests or temprary occasions._</b>
 
-       2.2.2.The creator of the event should be able to edit settings of group.
+       2.2.2. The system shall create a page for each tag.
 	
-       2.2.3. Users should be able to invite other people to their own groups
+       2.2.3. Users should be able add tag to other users.
 
-       2.2.4. Users should be able to join groups
+       2.2.4. Users should be able to add tags to themselves.
 
-       2.2.5. The system shall recommend users to attend groups, according to his/her interests.
+       2.2.5. The system shall recommend tags to users in the "Recommended Tags" section of the tag page.
 
-       2.2.6. The users shall view his/her suggested groups.
+       2.2.6. The "Recommended Tags" section shall introduce tags added by users's of the current tag.
+
+
+       2.2.7. The system shall list users having the current tag, in the "Recommended Users" section of the tag page.
 
    <b>2.3. Special purpsose structures for the area of interes</b>
   
@@ -43,11 +52,11 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
  
        2.3.2. The creator of the event should invite other members to attend his events.
 
-       2.3.3. _The creator of the event should be able to edit settings of event._
+       2.3.3. The creator of the event should be able to edit settings of event.
   
-       2.3.4. _Invited users shall comment on events._
+       2.3.4. Invited users shall comment on events.
 
-       2.3.5. _The system shall remove the event from website after timeout or cancellation of the creator._
+       2.3.5. The system shall remove the event from website after timeout or cancellation of the creator.
 
    <b>2.4 Discussion Forum</b>	
   
