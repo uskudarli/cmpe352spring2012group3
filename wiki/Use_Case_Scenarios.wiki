@@ -7,19 +7,23 @@
 
 *Description :*
 
-A new user whose main interest is making old style kites registers to the site. System recommends people and communities for this person whom he might enjoy.
+Ahmet, whose main interest is making old style kites registers to the site. System recommends people and tags for this person whom he might enjoy.
 
 *Main Scenario :*
 
-1) User registers the page with his/her name, surname, password, e-mail and entrance year.
+1) Ahmet registers the page with his/her name, surname, password, e-mail, preferred tags and entrance year.
 
-2) Registered user logs into the system.
+2) Ahmet logs into the system.
 
-3) User creates the group as his/her interest page.
+3) Ahmet finds a tag "Old Style Kites", and adds the tag to himself.
 
-4) User edit the group settings.
+4) Ahmet enters the tag page.
 
-5) System searches the groups, people, survey databases for relevant groups by checking the words “old”, “style”, “kites”, “old style”, “old kites”, “style kites” and “old style kites” and shows the result in the user’s group page.
+5) System recommends other users having "Old Style Kites" tags & popular tags of those users.
+
+5) Ahmet posts on "Old Style Kites" tag page that he is going to buy a new kite on weekend.
+
+6) Ahmet's post will appear on the profile page of other users having "Old Style Kites" tag.
 
 = Use Cases =
 
@@ -66,7 +70,7 @@ A new user whose main interest is making old style kites registers to the site. 
    - User enters the system
 
 
-*3.CREATE GROUP*
+*3.ADD A TAG*
 
 <b>Actors:</b> Users and System
 
