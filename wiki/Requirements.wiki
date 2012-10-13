@@ -1,4 +1,4 @@
-#labels Phase-Requirements,Featured
+#labels Featured
 ==1.General Description==
          This application shall be social web application to create an environment where members of CMPE community can express and share 
 their ideas,hobies with groups,forum,events,survey by categorizing them according to their interest  
@@ -33,18 +33,26 @@ their ideas,hobies with groups,forum,events,survey by categorizing them accordin
 
       <b>_ 2.2.1. Users should be able to create tags about their interests or temprary occasions._</b>
 
-       2.2.2. The system shall create a page for each tag.
+       <b>_2.2.2. The system shall create a page for each tag._</b>
 	
-       2.2.3. Users should be able add tag to other users.
+       <b>_2.2.3. Users should be able add tag to other users._</b>
 
-       2.2.4. Users should be able to add tags to themselves.
+      <b>_ 2.2.4. Users should be able to add tags to themselves._</b>
 
-       2.2.5. The system shall recommend tags to users in the "Recommended Tags" section of the tag page.
+       <b>_2.2.5. The system shall recommend tags to users in the "Recommended Tags" section of the tag page._</b>
 
-       2.2.6. The "Recommended Tags" section shall introduce tags added by users's of the current tag.
+      <b>_ 2.2.6. The "Recommended Tags" section shall introduce tags added by users's of the current tag._</b>
 
 
-       2.2.7. The system shall list users having the current tag, in the "Recommended Users" section of the tag page.
+      <b>_ 2.2.7. The system shall list users having the current tag, in the "Recommended Users" section of the tag page._</b>
+
+      <b>_ 2.2.8. The users shall post on tag page._</b>
+
+      <b>_2.2.9. The users shall reply on post, appearing on tag page._</b>
+
+      <b>_2.2.10. The system shall send notification to users when there is a reply to their posts on tag pages._</b>
+
+      <b>_2.2.11 The users shall view replies from the tag page._</b>
 
    <b>2.3. Special purpsose structures for the area of interes</b>
   
