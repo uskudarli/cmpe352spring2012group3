@@ -23,9 +23,9 @@
 
        2.1.8. The system shall allow users to comment on their friends' status updates.
 
-       <b>_2.2.9. Users should be able add tag to other users from their profile page._</b>
+       <b>_2.1.9. Users should be able add tag to other users from their profile page._</b>
 
-       <b>_ 2.2.10. Users should be able to add tags to themselves._</b>
+       <b>_ 2.1.10. Users should be able to add tags to themselves._</b>
 
        <b>_2.1.11. The system shall recommend tags to users while registering._</b>
 
