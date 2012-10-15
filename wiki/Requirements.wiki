@@ -1,6 +1,7 @@
 #labels Featured
 =1.General Description=
-         This application shall be social web application to create an environment where members of CMPE community can express and share their ideas, hobbies with groups, forum, events, survey by categorizing them according to their interests.
+         This application shall be a social web application which aims to create an environment where members of the community can share interests with anyone and express their ideas accordingly in the community.
+
 =2.Functional Requirements=
 
   ==<b>2.1. Member Profiles</b>==
