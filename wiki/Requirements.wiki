@@ -6,7 +6,7 @@
 
   ==<b>2.1. Member Profiles</b>==
 
-       2.1.1. User profile shall contain name, surname, profile picture, email, password, phone number, <b>_preferred tags_</b>, entrance year for each user.
+       2.1.1. User profile shall contain name, surname, profile picture, email, password, phone number, <b>_interest tags_</b>, entrance year for each user.
 
 
        2.1.2. The system shall send an email for confirmation after register.
@@ -23,37 +23,36 @@
 
        2.1.8. The system shall allow users to comment on their friends' status updates.
 
-       <b>_2.1.9. The system shall recommend tags to users while registering._</b>
+       <b>_2.2.9. Users should be able add tag to other users from their profile page._</b>
 
-       <b>_2.1.10. The system shall recommend tags in the "Recommended Tags" section of the users profile page._</b>
+       <b>_ 2.2.10. Users should be able to add tags to themselves._</b>
 
-       <b>_2.1.11. The "Recommended Tags" section shall introduce tags used by users's friends(connected users)._</b>
+       <b>_2.1.11. The system shall recommend tags to users while registering._</b>
+
+       <b>_2.1.12. The system shall recommend tags in the "Recommended Tags" section of the users profile page._</b>
+
+       <b>_2.1.13. The "Recommended Tags" section shall introduce tags used by users's friends(connected users)._</b>
 
    ==<b>2.2 Creation of a space for special interests or topics</b>==
 
-      <b>_ 2.2.1. Users should be able to create tags about their interests or temprary occasions._</b>
+      <b>_ 2.2.1. Users should be able to create tags about their interests or temporary occasions._</b>
 
        <b>_2.2.2. The system shall create a page for each tag._</b>
-	
-       <b>_2.2.3. Users should be able add tag to other users._</b>
 
-      <b>_ 2.2.4. Users should be able to add tags to themselves._</b>
+       <b>_2.2.3. The system shall recommend tags to users in the "Recommended Tags" section of the tag page._</b>
 
-       <b>_2.2.5. The system shall recommend tags to users in the "Recommended Tags" section of the tag page._</b>
-
-      <b>_ 2.2.6. The "Recommended Tags" section shall introduce tags added by users's of the current tag._</b>
+      <b>_ 2.2.4. The "Recommended Tags" section shall introduce tags added by users's of the current tag._</b>
 
 
-      <b>_ 2.2.7. The system shall list users having the current tag, in the "Recommended Users" section of the tag page._</b>
+      <b>_ 2.2.5. The system shall list users having the current tag, in the "Recommended Users" section of the tag page._</b>
 
-      <b>_ 2.2.8. The users shall post on tag page._</b>
+      <b>_ 2.2.6. The users shall post on tag page._</b>
 
-      <b>_2.2.9. The users shall reply on post, appearing on tag page._</b>
+      <b>_ 2.2.7. The users shall reply on post, appearing on tag page._</b>
 
+      <b>_ 2.2.8 The users shall view replies from the tag page._</b>
 
-      <b>_2.2.10 The users shall view replies from the tag page._</b>
-
-   ==<b>2.3. Special purpsose structures for the area of interes</b>==
+   ==<b>2.3 Special purpose structures for the area of interests </b>==
   
        2.3.1. Users should create an event with action date,location.
  
