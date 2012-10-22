@@ -33,12 +33,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="container">
-	<div class="row">
-			<div class="span3">Erdem</div>
-		<div class="span6">Erdem</div>
-		<div class="span3">Erdem</div>
-	
-	</div>
-	</div>
+
 </html>
