@@ -63,7 +63,7 @@ function isAValidMail(str){
 	return true;
 }
 </script>
-<form name="form1" method="post" action="/CmpeCommunityWeb/default">
+<form name="form1" method="post" action="/CmpeCommunityWeb/ProfilePage.jsp">
 
 	<!-- Navbar -->
 	<input class="FormText" type="hidden" name="clickedButton" id="clickedButton" value="" >
