@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class defaultServlet
  */
 @WebServlet("/default")
-public class defaultServlet extends HttpServlet {
+public class DefaultServlet extends HttpServlet {
 
 	//TODO fix indexes removing CmpeCommunityWeb from url
 	//[0] => "",
@@ -30,7 +30,7 @@ public class defaultServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public defaultServlet() {
+    public DefaultServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
