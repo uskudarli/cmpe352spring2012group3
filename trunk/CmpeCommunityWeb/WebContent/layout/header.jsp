@@ -6,33 +6,33 @@
 <head>
 <meta charset="UTF-8">
 	<title>Cmpe Community</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap.min.css">
 	<style type="text/css">
 	body { padding-top: 60px; }
 	
 	</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap-responsive.min.css">
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-				<a href="/" class="brand">Cmpe Community</a>
+				<a href="/CmpeCommunityWeb/" class="brand">Cmpe Community</a>
 				<div class="nav-collapse">
 					<ul class="nav">
-						<li><a href="/home">Home</a></li>
-						<li><a href="/forum">Forum</a></li>
+						<li><a href="/CmpeCommunityWeb/Profile">Home</a></li>
+						<li><a href="#">Forum</a></li>
 					</ul>
 
-					<form action="/search" class="navbar-search">
+					<form action="#" class="navbar-search">
 						<input type="text" placeholder="Search" class="search-query span3"
 							name="q" value="" /> <input type="hidden" name="scope"
 							id="search_scope" value="posts">
 					</form>
 					<ul class="nav pull-right">
-						<li><a href="/logout">Account</a></li>
-						<li><a href="/logout">Logout</a></li>
+						<li><a href="/CmpeCommunityWeb/User/logout">Account</a></li>
+						<li><a href="/CmpeCommunityWeb/User/logout">Logout</a></li>
 					</ul>
 				</div>
 				
@@ -43,7 +43,7 @@
 		<table class="table span3 table-hover">
 			<thead>
 				<tr>
-					<th><img src="img/minions.jpg"></th>
+					<th><img src="/CmpeCommunityWeb/img/minions.jpg"></th>
 				</tr>
 				<tr>
 					<th class="well">Cigdem Kocberber</th>
@@ -51,7 +51,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td onclick="window.location='default.jsp'">Tags</td>
+					<td onclick="window.location='Tags'">Tags</td>
 				</tr>
 				<tr>
 					<td>Events</td>
