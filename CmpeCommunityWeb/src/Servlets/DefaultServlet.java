@@ -110,16 +110,16 @@ public class DefaultServlet extends HttpServlet {
 				args[i-PARAMETER_START] = parts[i];
 			method.invoke(object, convertArgs(method, args));
 		} catch (ClassNotFoundException | InstantiationException
-				| IllegalAccessException | NoSuchMethodException
-				| InvocationTargetException e) {
+				| IllegalAccessException | NoSuchMethodException e) {
 			// TODO show 404 error
 			//e.printStackTrace();
 			System.err.println(e.toString());
 			return;
-		} catch(Exception e){
+		} catch(InvocationTargetException e){
 			//Catch possible exceptions thrown from invoked method.
 			//TODO show server error page
-			System.err.println(e.toString());
+			System.err.print(e.toString()+" in "+method.getClass().getName()+"."+method.getName()+" : ");
+			System.err.println(e.getTargetException().toString());
 			return;
 		}
     }
