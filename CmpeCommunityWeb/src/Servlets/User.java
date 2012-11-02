@@ -6,6 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import UtilityPack.HashString;
+
+import drivers.UserDriver;
+
 public class User extends ServletBase {
 
 	public User(HttpServletRequest request, HttpServletResponse response) {
@@ -21,8 +25,7 @@ public class User extends ServletBase {
 		String password = request.getParameter("password_login");
 		if(email==null || password==null )
 			request.getRequestDispatcher("/User/login").forward(request, response);
-		//TODO call data model method for login
-		if(email.equalsIgnoreCase("emresunecli@gmail.com") && password.equalsIgnoreCase("123456")){
+		if(UserDriver.isCredentialsValid(email, password)){
 			//TODO record login to session
 			request.getRequestDispatcher("/Profile").forward(request, response);
 		}
@@ -32,8 +35,30 @@ public class User extends ServletBase {
 		}
 	}
 	
-	public void registerAction(){
-		//TODO register action similar to login action
+	public void registerAction() throws ServletException, IOException{
+		String email = request.getParameter("email_signup");
+		String name = request.getParameter("first-name")+request.getParameter("last-name");
+		String password = request.getParameter("password_signup");
+		if(password.equals(request.getParameter("re-password"))){
+			//TODO passwords does not match
+		}
+		//TODO real values for dates
+		String birthDate = "1970-01-01";
+		String registerDate = "1970-01-01";
+		Tables.UserTable user = null;
+		try {
+			user = new Tables.UserTable(email, name, HashString.encrypt(password), birthDate, registerDate);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		if(UserDriver.createUser(user)){
+			request.getRequestDispatcher("/Profile/index").forward(request, response);
+		}
+		else{
+			System.err.println("Error during user creation");
+			//TODO error
+		}
 	}
 	
 	public void logout() throws ServletException, IOException{

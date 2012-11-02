@@ -1,20 +1,15 @@
 package Receivers;
 
-import java.io.IOException;
 import java.sql.*;
 
 import DBPack.DBStatement;
-import Tables.Users;
+import Tables.UserTable;
 import UtilityPack.HashString;
-import WebPack.MainServlet;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import com.mysql.jdbc.PreparedStatement;
 
 public class defaultReceiver {
 	HttpServletRequest req;
@@ -29,7 +24,7 @@ public class defaultReceiver {
 		
 		return result;
 	}
-	public boolean performSignUp(Users user) throws Exception {
+	public boolean performSignUp(UserTable user) throws Exception {
 		boolean result=false;
 		DBStatement db=new DBStatement();
 		try {
@@ -53,7 +48,7 @@ public class defaultReceiver {
 		}
 		return result;
 	}
-	public boolean performLogin(Users user) throws Exception {
+	public boolean performLogin(UserTable user) throws Exception {
 		boolean result=false;
 		return result;
 	}
