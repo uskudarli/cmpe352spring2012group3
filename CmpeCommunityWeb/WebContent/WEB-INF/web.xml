@@ -3,7 +3,7 @@
   <display-name>CmpeCommunityWeb</display-name>
   <servlet>
     <servlet-name>defaultServlet</servlet-name>
-    <servlet-class>Servlets.defaultServlet</servlet-class>
+    <servlet-class>Servlets.DefaultServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>defaultServlet</servlet-name>

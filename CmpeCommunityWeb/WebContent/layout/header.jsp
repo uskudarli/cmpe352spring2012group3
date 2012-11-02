@@ -43,7 +43,7 @@
 		<table class="table span3 table-hover">
 			<thead>
 				<tr>
-					<th><img src="img\minions.jpg"></th>
+					<th><img src="img/minions.jpg"></th>
 				</tr>
 				<tr>
 					<th class="well">Cigdem Kocberber</th>
