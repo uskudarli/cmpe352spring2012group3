@@ -31,15 +31,17 @@ public abstract class UserDriver {
 	
 	public static boolean isCredentialsValid(String email, String password){
 		try{
-		DBStatement db=new DBStatement();
-			String query="SELECT * FROM `users` WHERE `email`=? AND `password`=?";
+			DBStatement db=new DBStatement();
+			String query="SELECT * FROM `users` WHERE `email`=? AND `password_hash`=?";
 			PreparedStatement ps=(PreparedStatement) db.getConnection().prepareStatement(query);
 			ps.setString(1, email);
-			ps.setString(2, HashString.encrypt(password));
+			ps.setString(2, password);
 			return ps.executeQuery().next();
 		} catch(SQLException e) {
+			System.err.println(e.getMessage());
 			return false;
 		} catch (Exception e) {
+			System.err.println(e.getMessage());
 			return false;
 		}
 	}
