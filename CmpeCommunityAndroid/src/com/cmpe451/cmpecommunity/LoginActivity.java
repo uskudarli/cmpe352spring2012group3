@@ -1,0 +1,101 @@
+package com.cmpe451.cmpecommunity;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class LoginActivity extends Activity {
+	
+	private EditText emailText, passwordText;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.login);
+
+		emailText = (EditText) findViewById(R.id.email);
+		passwordText = (EditText) findViewById(R.id.password);
+
+		TextView registerScreen = (TextView) findViewById(R.id.link_to_register);
+		// Listening to register new account link
+		registerScreen.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				// Switching to Register screen
+				Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+				startActivity(i);
+			}
+		});
+
+
+		Button loginButton = (Button) findViewById(R.id.btnLogin);
+		loginButton.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				// Creating HTTP client
+				HttpClient httpClient = new DefaultHttpClient();
+
+				// Creating HTTP Post
+				HttpPost httpPost = new HttpPost("http://192.168.1.105:8082/CmpeCommunityWeb/AndroidApi/login");
+
+				// Building post parameters, key and value pair
+				List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
+				nameValuePair.add(new BasicNameValuePair("email", emailText.getText().toString()));
+				nameValuePair.add(new BasicNameValuePair("password", passwordText.getText().toString()));
+
+				// Url Encoding the POST parameters
+				try {
+					httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
+					
+					// Making HTTP Request
+					HttpResponse response = httpClient.execute(httpPost);
+
+					JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity()));
+					
+					
+					if(json.getBoolean("success"))
+					{
+						Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+						startActivity(i);
+					}
+					else
+					{
+						Toast.makeText(LoginActivity.this, json.getString("error"), Toast.LENGTH_SHORT).show();
+					}
+
+				} catch (ClientProtocolException e) {
+					// writing exception to log
+					e.printStackTrace();
+
+				} catch (IOException e) {
+					// writing exception to log
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// writing exception to log
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+}
