@@ -40,9 +40,6 @@ public class AndroidApi extends ServletBase {
 		String email = request.getParameter("email");
 		String name = request.getParameter("name")+" "+request.getParameter("last_name");
 		String password = request.getParameter("password");
-		if(password.equals(request.getParameter("password_repeated"))){
-			response.getOutputStream().println("{'success': false, 'error': 'Passwords do not match.'}");
-		}
 		System.out.println(email+" "+name+" "+password);
 		String birthDate = "1970-01-01";
 		String registerDate = "1970-01-01";
