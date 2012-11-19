@@ -16,7 +16,8 @@
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
             android:name=".LoginActivity"
-            android:launchMode="singleInstance" >
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +29,8 @@
         <activity
             android:name=".RegisterActivity"
             android:label="Register New Account"
-            android:launchMode="singleInstance" >
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme" >
         </activity>
         <activity
             android:name="com.cmpe451.cmpecommunity.HomeActivity"

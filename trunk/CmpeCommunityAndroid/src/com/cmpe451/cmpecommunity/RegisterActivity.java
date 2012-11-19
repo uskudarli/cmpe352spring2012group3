@@ -18,8 +18,10 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,6 +35,7 @@ public class RegisterActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// Set View to register.xml
+		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);  
 		setContentView(R.layout.register);
 
 		firstnameText = (EditText) findViewById(R.id.reg_name);
@@ -62,55 +65,85 @@ public class RegisterActivity extends Activity {
 					return;
 				}
 
-				// Switching to Register screen
-				// Creating HTTP client
-				HttpClient httpClient = new DefaultHttpClient();
-
-				// Creating HTTP Post
-				HttpPost httpPost = new HttpPost("http://192.168.1.105:8082/CmpeCommunityWeb/AndroidApi/register");
-
-				// Building post parameters, key and value pair
-				List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
-
-				nameValuePair.add(new BasicNameValuePair("name", firstnameText.getText().toString()));
-				nameValuePair.add(new BasicNameValuePair("last_name", lastnameText.getText().toString()));
-				nameValuePair.add(new BasicNameValuePair("email", emailText.getText().toString()));
-				nameValuePair.add(new BasicNameValuePair("password", passwordText.getText().toString()));
-
-				// Url Encoding the POST parameters
-				try {
-					httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
-
-					// Making HTTP Request
-					HttpResponse response = httpClient.execute(httpPost);
-
-					JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity()));
-
-
-					if(json.getBoolean("success"))
-					{
-						Toast.makeText(RegisterActivity.this, "Your registration is successful. Thank you for joining us.", Toast.LENGTH_SHORT).show();
-						finish();
-						Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-						startActivity(i);
-					}
-					else
-					{
-						Toast.makeText(RegisterActivity.this, json.getString("error"), Toast.LENGTH_SHORT).show();
-					}
-
-				} catch (ClientProtocolException e) {
-					// writing exception to log
-					e.printStackTrace();
-
-				} catch (IOException e) {
-					// writing exception to log
-					e.printStackTrace();
-				} catch (JSONException e) {
-					// writing exception to log
-					e.printStackTrace();
-				}
+				new HttpTask().execute();
 			}
 		});
+	}
+
+	final class HttpTask extends AsyncTask<Void, Boolean, String> {
+		@Override
+		protected String doInBackground(Void... param) {
+			publishProgress(true);
+
+			// Creating HTTP client
+			HttpClient httpClient = new DefaultHttpClient();
+
+			// Creating HTTP Post
+			HttpPost httpPost = new HttpPost("http://192.168.1.105:8082/CmpeCommunityWeb/AndroidApi/register");
+
+			// Building post parameters, key and value pair
+			List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
+
+			nameValuePair.add(new BasicNameValuePair("name", firstnameText.getText().toString()));
+			nameValuePair.add(new BasicNameValuePair("last_name", lastnameText.getText().toString()));
+			nameValuePair.add(new BasicNameValuePair("email", emailText.getText().toString()));
+			nameValuePair.add(new BasicNameValuePair("password", passwordText.getText().toString()));
+
+			try {
+
+				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
+
+				// Making HTTP Request
+				HttpResponse response = httpClient.execute(httpPost);
+
+				return EntityUtils.toString(response.getEntity());
+
+			} catch (ClientProtocolException e) {
+				// writing exception to log
+				e.printStackTrace();
+
+			} catch (IOException e) {
+				// writing exception to log
+				e.printStackTrace();
+			}
+
+			return null;
+		}
+
+		@Override
+		protected void onProgressUpdate(Boolean... progress) {
+			RegisterActivity.this.setProgressBarIndeterminateVisibility(progress[0]);
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			publishProgress(false);
+
+			if(result == null)
+			{
+				Toast.makeText(RegisterActivity.this, "Server connection error!", Toast.LENGTH_SHORT).show();
+				return;
+			}
+
+			try
+			{
+				JSONObject json = new JSONObject(result);
+
+				if(json.getBoolean("success"))
+				{
+					Toast.makeText(RegisterActivity.this, "Your registration is successful. Thank you for joining us.", Toast.LENGTH_SHORT).show();
+					finish();
+					Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+					startActivity(i);
+				}
+				else
+				{
+					Toast.makeText(RegisterActivity.this, json.getString("error"), Toast.LENGTH_SHORT).show();
+				}
+			} catch (JSONException e) {
+				// writing exception to log
+				e.printStackTrace();
+			}
+		}
 	}
 }
