@@ -18,20 +18,24 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity {
-	
+
 	private EditText emailText, passwordText;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);  
 		setContentView(R.layout.login);
 
 		emailText = (EditText) findViewById(R.id.email);
@@ -53,49 +57,80 @@ public class LoginActivity extends Activity {
 		loginButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				// Creating HTTP client
-				HttpClient httpClient = new DefaultHttpClient();
-
-				// Creating HTTP Post
-				HttpPost httpPost = new HttpPost("http://192.168.1.105:8082/CmpeCommunityWeb/AndroidApi/login");
-
-				// Building post parameters, key and value pair
-				List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
-				nameValuePair.add(new BasicNameValuePair("email", emailText.getText().toString()));
-				nameValuePair.add(new BasicNameValuePair("password", passwordText.getText().toString()));
-
-				// Url Encoding the POST parameters
-				try {
-					httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
-					
-					// Making HTTP Request
-					HttpResponse response = httpClient.execute(httpPost);
-
-					JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity()));
-					
-					
-					if(json.getBoolean("success"))
-					{
-						Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-						startActivity(i);
-					}
-					else
-					{
-						Toast.makeText(LoginActivity.this, json.getString("error"), Toast.LENGTH_SHORT).show();
-					}
-
-				} catch (ClientProtocolException e) {
-					// writing exception to log
-					e.printStackTrace();
-
-				} catch (IOException e) {
-					// writing exception to log
-					e.printStackTrace();
-				} catch (JSONException e) {
-					// writing exception to log
-					e.printStackTrace();
-				}
+				new HttpTask().execute();
 			}
 		});
+	}
+
+	final class HttpTask extends AsyncTask<Void, Boolean, String> {
+		@Override
+		protected String doInBackground(Void... param) {
+		    publishProgress(true);
+
+			// Creating HTTP client
+			HttpClient httpClient = new DefaultHttpClient();
+
+			// Creating HTTP Post
+			HttpPost httpPost = new HttpPost("http://192.168.1.105:8082/CmpeCommunityWeb/AndroidApi/login");
+
+			// Building post parameters, key and value pair
+			List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
+			nameValuePair.add(new BasicNameValuePair("email", emailText.getText().toString()));
+			nameValuePair.add(new BasicNameValuePair("password", passwordText.getText().toString()));
+
+			// Url Encoding the POST parameters
+			try {
+				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
+
+				// Making HTTP Request
+				HttpResponse response = httpClient.execute(httpPost);
+
+				return EntityUtils.toString(response.getEntity());
+
+			} catch (ClientProtocolException e) {
+				// writing exception to log
+				e.printStackTrace();
+
+			} catch (IOException e) {
+				// writing exception to log
+				e.printStackTrace();
+			}
+
+			return null;
+		}
+
+		@Override
+		protected void onProgressUpdate(Boolean... progress) {
+			LoginActivity.this.setProgressBarIndeterminateVisibility(progress[0]);
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			publishProgress(false);
+
+			if(result == null)
+			{
+				Toast.makeText(LoginActivity.this, "Server connection error!", Toast.LENGTH_SHORT).show();
+				return;
+			}
+
+			try
+			{
+				JSONObject json = new JSONObject(result);
+
+				if(json.getBoolean("success"))
+				{
+					Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+					startActivity(i);
+				}
+				else
+				{
+					Toast.makeText(LoginActivity.this, json.getString("error"), Toast.LENGTH_SHORT).show();
+				}
+			} catch (JSONException e) {
+				// writing exception to log
+				e.printStackTrace();
+			}
+		}
 	}
 }
