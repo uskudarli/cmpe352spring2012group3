@@ -47,15 +47,20 @@ public class User extends ServletBase {
 		String birthDate = "1970-01-01";
 		String registerDate = "1970-01-01";
 		Tables.UserTable user = null;
-		Tables.TagsTable tags = null;
+		Tables.TagsTable[] tagsTable = null;
+	
 		try {
 			user = new Tables.UserTable(email, name, HashString.encrypt(password), birthDate, registerDate);
-			tags = new Tables.TagsTable(tags);
+			String[] tags_arr = tags.split(",");
+			tagsTable = new Tables.TagsTable[tags_arr.length];
+			for (int i = 0;i<tags_arr.length;i++){
+				tagsTable[i] = new Tables.TagsTable(tags_arr[i]);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
-		if(UserDriver.createUser(user) && TagsDriver.createTags(tags)){
+		if(UserDriver.createUser(user) && TagsDriver.createTags(tagsTable,user)){
 			request.getRequestDispatcher("/Profile/index").forward(request, response);
 		}
 		

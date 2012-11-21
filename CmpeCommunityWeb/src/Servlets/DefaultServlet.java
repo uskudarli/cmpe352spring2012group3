@@ -109,8 +109,16 @@ public class DefaultServlet extends HttpServlet {
 			for(int i=PARAMETER_START; i<parts.length; i++)
 				args[i-PARAMETER_START] = parts[i];
 			method.invoke(object, convertArgs(method, args));
-		} catch (ClassNotFoundException | InstantiationException
-				| IllegalAccessException | NoSuchMethodException e) {
+		} catch (ClassNotFoundException e) {
+			System.err.println(e.toString());
+			return;
+		} catch (InstantiationException e) {
+			System.err.println(e.toString());
+			return;
+		} catch (NoSuchMethodException e) {
+			System.err.println(e.toString());
+			return;
+		} catch (IllegalAccessException e) {
 			// TODO show 404 error
 			//e.printStackTrace();
 			System.err.println(e.toString());
