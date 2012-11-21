@@ -35,7 +35,7 @@ public abstract class UserDriver {
 			String query="SELECT * FROM `users` WHERE `email`=? AND `password_hash`=?";
 			PreparedStatement ps=(PreparedStatement) db.getConnection().prepareStatement(query);
 			ps.setString(1, email);
-			ps.setString(2, password);
+			ps.setString(2, HashString.encrypt(password));
 			return ps.executeQuery().next();
 		} catch(SQLException e) {
 			System.err.println(e.getMessage());
