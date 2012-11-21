@@ -7,6 +7,8 @@
 	<meta charset="UTF-8">
 	<title>Cmpe Community</title>
 	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap-tagmanager.css">
+	
 	<style type="text/css">
 	body { padding-top: 60px; }
 	.brand
@@ -109,6 +111,7 @@ function isAValidMail(str){
 							<input type="text" id="email_signup" name="email_signup" class="input-xlarge" placeholder="E-Mail">
 							<input type="password" id="password_signup" name="password_signup" class="input-xlarge" placeholder="Password">
 							<input type="password" id="re-password" name="re-password" class="input-xlarge" placeholder="Retype Password">
+							<input type="text" name="tags" placeholder="Tags" class="tagManager"/>
 							<input type="button" class="btn btn-info btn-block" value="Create Account" onclick="signUp()"/>
 						</div>
 					</fieldset>
@@ -116,9 +119,14 @@ function isAValidMail(str){
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="/CmpeCommunityWeb/js/jquery-1.8.2.min.js"></script>
+	
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script type="text/javascript" src="/CmpeCommunityWeb/js/bootstrap.js"></script>
 	<script type="text/javascript" src="/CmpeCommunityWeb/js/bootstrap-alert.js"></script>
+	<script type="text/javascript" src="/CmpeCommunityWeb/js/bootstrap-tagmanager.js"></script>
+	<script>
+	  jQuery(".tagManager").tagsManager();
+	</script>
 </body>
 </html>
 
