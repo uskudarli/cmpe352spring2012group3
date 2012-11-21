@@ -27,7 +27,7 @@ public class User extends ServletBase {
 			request.getRequestDispatcher("/User/login").forward(request, response);
 		if(UserDriver.isCredentialsValid(email, password)){
 			//TODO record login to session
-			request.getRequestDispatcher("/Profile").forward(request, response);
+			request.getRequestDispatcher("/Profile/index").forward(request, response);
 		}
 		else{
 			request.setAttribute("loginFailed", 1);
@@ -39,6 +39,7 @@ public class User extends ServletBase {
 		String email = request.getParameter("email_signup");
 		String name = request.getParameter("first-name")+request.getParameter("last-name");
 		String password = request.getParameter("password_signup");
+		String tags =  request.getParameter("hidden-tags");
 		if(password.equals(request.getParameter("re-password"))){
 			//TODO passwords does not match
 		}
@@ -46,15 +47,18 @@ public class User extends ServletBase {
 		String birthDate = "1970-01-01";
 		String registerDate = "1970-01-01";
 		Tables.UserTable user = null;
+		Tables.TagsTable tags = null;
 		try {
 			user = new Tables.UserTable(email, name, HashString.encrypt(password), birthDate, registerDate);
+			tags = new Tables.TagsTable(tags);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
-		if(UserDriver.createUser(user)){
+		if(UserDriver.createUser(user) && TagsDriver.createTags(tags)){
 			request.getRequestDispatcher("/Profile/index").forward(request, response);
 		}
+		
 		else{
 			System.err.println("Error during user creation");
 			//TODO error
