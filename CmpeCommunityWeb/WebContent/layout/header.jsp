@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+<%@ page import="Tables.UserTable" %>
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap-responsive.min.css">
 </head>
 <body>
+<%UserTable user=(UserTable)request.getSession().getAttribute("user_info");%>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -46,7 +47,7 @@
 					<th><img src="/CmpeCommunityWeb/img/minions.jpg"></th>
 				</tr>
 				<tr>
-					<th class="well">Cigdem Kocberber</th>
+					<th class="well"><%=user.getName()%></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -56,14 +57,35 @@
 				<tr>
 					<td>Events</td>
 				</tr>
-				<tr>
+				<tr class="text-info">
 					<td>Surveys</td>
 				</tr>
-				<tr>
+				<tr class="text-info">
 					<td>Discussion Forum</td>
 				</tr>
-				<tr>
+				<tr class="text-info">
 					<td>Advance Search</td>
 				</tr>
+				<tr class="text-success">
+		 	 	<td>Emre Sunecli</td>
+		 	 </tr>
+			 <tr class="text-success">
+			 	<td>Suzan Uskudarli</td>
+			 </tr>
+			 <tr class="text-success">
+			 	<td>Alper Gungormusler</td>
+			 </tr>
+			 <tr>
+			 	<th class = "well">Recommended Tags</th>
+			 </tr>
+			 <tr class="text-error">
+			 	<td>Deep Purple</td>
+			 </tr>
+			 <tr class="text-error">
+			 	<td>Pizza</td>
+			 </tr>
+			 <tr class="text-error">
+			 	<td>Tennis</td>
+			 </tr>
 			</tbody>
 		</table>
