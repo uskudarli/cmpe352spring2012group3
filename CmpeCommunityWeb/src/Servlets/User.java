@@ -5,10 +5,12 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import Tables.UserTable;
 import UtilityPack.HashString;
 
-import drivers.UserDriver;
+import drivers.*;
 
 public class User extends ServletBase {
 
@@ -27,19 +29,26 @@ public class User extends ServletBase {
 			request.getRequestDispatcher("/User/login").forward(request, response);
 		if(UserDriver.isCredentialsValid(email, password)){
 			//TODO record login to session
-			request.getRequestDispatcher("/Profile/index").forward(request, response);
+			UserTable user = drivers.UserDriver.getByEmail(email);
+			 HttpSession session = request.getSession();
+			 session.setAttribute("user_info",user);
+			response.sendRedirect("/CmpeCommunityWeb/Profile/index");
+			//request.getRequestDispatcher("/Profile/index").forward(request, response);
 		}
 		else{
 			request.setAttribute("loginFailed", 1);
-			request.getRequestDispatcher("/User/login").forward(request, response);
+			request.getRequestDispatcher("/User/loginAction").forward(request, response);
 		}
 	}
 	
-	public void registerAction() throws ServletException, IOException{
+	public void registerAction() throws Exception{
 		String email = request.getParameter("email_signup");
-		String name = request.getParameter("first-name")+request.getParameter("last-name");
+		String name = request.getParameter("first-name")+" "+request.getParameter("last-name");
 		String password = request.getParameter("password_signup");
 		String tags =  request.getParameter("hidden-tags");
+		if (email==null) {
+			return;
+		}
 		if(password.equals(request.getParameter("re-password"))){
 			//TODO passwords does not match
 		}
@@ -61,10 +70,10 @@ public class User extends ServletBase {
 			System.out.println(e.getMessage());
 		}
 		if(UserDriver.createUser(user) && TagsDriver.createTags(tagsTable,user)){
+			request.setAttribute("user_info",user);
 			request.getRequestDispatcher("/Profile/index").forward(request, response);
-		}
-		
-		else{
+		} else{
+			request.getRequestDispatcher("/User/loginAction").forward(request, response);
 			System.err.println("Error during user creation");
 			//TODO error
 		}
@@ -72,6 +81,7 @@ public class User extends ServletBase {
 	
 	public void logout() throws ServletException, IOException{
 		//TODO logout action with session
+		request.getSession().removeAttribute("user_info");
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
 	}
 }
