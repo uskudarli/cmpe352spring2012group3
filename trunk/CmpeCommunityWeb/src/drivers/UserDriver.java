@@ -26,7 +26,7 @@ public abstract class UserDriver {
 			System.err.println(e.getMessage());
 			return false;
 		}
-		return false;
+		return true;
 	}
 	
 	public static boolean isCredentialsValid(String email, String password){
