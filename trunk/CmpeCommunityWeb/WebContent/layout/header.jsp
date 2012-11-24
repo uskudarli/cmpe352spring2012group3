@@ -54,7 +54,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td onclick="window.location='Tags'">Tags</td>
+					<td onclick="/CMPECommunity/Profile/tags/ <%=user.getId()%>">Tags</td>
 				</tr>
 				<tr>
 					<td>Events</td>
@@ -63,31 +63,8 @@
 					<td>Surveys</td>
 				</tr>
 				<tr class="text-info">
-					<td>Discussion Forum</td>
-				</tr>
-				<tr class="text-info">
 					<td>Advance Search</td>
 				</tr>
-				<tr class="text-success">
-		 	 	<td>Emre Sunecli</td>
-		 	 </tr>
-			 <tr class="text-success">
-			 	<td>Suzan Uskudarli</td>
-			 </tr>
-			 <tr class="text-success">
-			 	<td>Alper Gungormusler</td>
-			 </tr>
-			 <tr>
-			 	<th class = "well">Recommended Tags</th>
-			 </tr>
-			 <tr class="text-error">
-			 	<td>Deep Purple</td>
-			 </tr>
-			 <tr class="text-error">
-			 	<td>Pizza</td>
-			 </tr>
-			 <tr class="text-error">
-			 	<td>Tennis</td>
-			 </tr>
+			
 			</tbody>
 		</table>
