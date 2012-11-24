@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import drivers.PostDriver;
 import drivers.UserDriver;
 
 import Tables.PostsTable;
@@ -26,7 +27,15 @@ public class Profile extends ServletBase {
 		details(user.getId());
 	}
 
-	public void posts(Integer userId) throws ServletException, IOException{
+	public void wall(Integer userId) throws ServletException, IOException{
+		if(getCurrentUser() == null)
+			return;
+		PostsTable[] posts = PostDriver.getPostsByUserId(userId);
+		request.setAttribute("posts", posts);
+		request.getRequestDispatcher("/PostListView.jsp").include(request, response);
+	}
+
+	public void news(Integer userId) throws ServletException, IOException{
 		if(getCurrentUser() == null)
 			return;
 		PostsTable[] posts = {
@@ -47,11 +56,14 @@ public class Profile extends ServletBase {
 			return;
 		}
 		response.setContentType("text/html");
+		System.out.println("hi "+ userId);
 		UserTable user = UserDriver.getById(userId);
+		System.out.println(user);
 		if(user == null){
 			//TODO show 404
 			return;
 		}
+		System.out.println("loading");
 		request.setAttribute("user", user);
 		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
 		request.getRequestDispatcher("/ProfilePage.jsp").include(request, response);
