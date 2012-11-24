@@ -9,7 +9,7 @@ import Tables.PostsTable;
 
 public class PostDriver {
 
-	public static PostsTable[] getByUserId(int id){
+	public static PostsTable[] getPostsByUserId(int id){
 		try {
 			String query="SELECT * FROM `posts` WHERE `owner_id`=? ORDER BY posting_time desc";
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
