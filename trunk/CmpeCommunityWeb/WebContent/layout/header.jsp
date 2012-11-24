@@ -54,7 +54,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td onclick="/CMPECommunity/Profile/tags/ <%=user.getId()%>">Tags</td>
+					<td onclick="window.location='/CMPECommunity/Profile/tags/<%=user.getId()%>'">Tags</td>
 				</tr>
 				<tr>
 					<td>Events</td>
