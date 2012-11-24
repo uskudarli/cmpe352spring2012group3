@@ -22,6 +22,7 @@ public class Profile extends ServletBase {
 			request.getRequestDispatcher("/User/login").forward(request, response);
 			return;
 		}
+		request.setAttribute("user",user);
 		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
 		request.getRequestDispatcher("/ProfilePage.jsp").include(request, response);
 		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
