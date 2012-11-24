@@ -43,11 +43,11 @@ public class DefaultServlet extends HttpServlet {
 		for (Class<?> p : parameterTypes) {
 			String name = p.getName();
 			try{
-				if(name.equalsIgnoreCase("integer"))
+				if(name.equalsIgnoreCase("java.lang.Integer"))
 					Integer.parseInt(parts[PARAMETER_START+i]);
-				else if(name.equalsIgnoreCase("string"))
+				else if(name.equalsIgnoreCase("java.lang.String"))
 					continue;
-				else if(name.equalsIgnoreCase("double"))
+				else if(name.equalsIgnoreCase("java.lang.Double"))
 					Double.parseDouble(parts[PARAMETER_START+i]);
 				else
 					return false;

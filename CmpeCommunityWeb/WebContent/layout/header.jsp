@@ -13,6 +13,8 @@
 	</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap-responsive.min.css">
+	<script type="text/javascript" src="/CmpeCommunityWeb/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/CmpeCommunityWeb/js/main.js"></script>
 </head>
 <body>
 <%UserTable user=(UserTable)request.getAttribute("user");%>
