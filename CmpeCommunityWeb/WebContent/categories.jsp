@@ -23,7 +23,7 @@ body {
 	<div class="navbar navbar-fixed-top navbar-inverse">
 		<div class="navbar-inner">
 			<div class="container">
-				<a class="brand" href="/">Cmpe Community</a>
+				<a class="brand" href="/CmpeCommunityWeb/">Cmpe Community</a>
 				<ul class="nav pull-right">
 					<li><a href="/User/logout"> <i class="icon-off icon-white"></i>
 							Logout
@@ -42,7 +42,7 @@ body {
 
 		<ul class="breadcrumb">
 			<li><i class="icon-home"></i><a
-				href="/CmpeCommunityWeb/categories.jsp"> Board Index</a></li>
+				href="/CmpeCommunityWeb/Forum"> Board Index</a></li>
 		</ul>
 
 		<%
