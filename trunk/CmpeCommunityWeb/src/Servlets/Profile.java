@@ -6,11 +6,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import drivers.PostDriver;
-import drivers.UserDriver;
-
 import Tables.PostsTable;
+import Tables.TagsTable;
 import Tables.UserTable;
+import drivers.PostDriver;
+import drivers.TagsDriver;
+import drivers.UserDriver;
 
 public class Profile extends ServletBase {
 
@@ -56,17 +57,36 @@ public class Profile extends ServletBase {
 			return;
 		}
 		response.setContentType("text/html");
-		System.out.println("hi "+ userId);
 		UserTable user = UserDriver.getById(userId);
-		System.out.println(user);
 		if(user == null){
 			//TODO show 404
 			return;
 		}
-		System.out.println("loading");
 		request.setAttribute("user", user);
 		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
 		request.getRequestDispatcher("/ProfilePage.jsp").include(request, response);
+		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
+	}
+	
+	public void tags(Integer userId) throws ServletException, IOException{
+		if(getCurrentUser() == null){
+			request.getRequestDispatcher("/User/login").forward(request, response);
+			return;
+		}
+		
+		UserTable user = UserDriver.getById(userId);
+		if(user == null){
+			//TODO show 404
+			return;
+		}
+		request.setAttribute("user", user);
+		
+		TagsTable[] tags = TagsDriver.getByUserId(userId);
+		request.setAttribute("tags", tags);
+		
+		response.setContentType("text/html");
+		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
+		request.getRequestDispatcher("/TagList.jsp").include(request, response);
 		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
 	}
 }
