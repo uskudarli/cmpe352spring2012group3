@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Tables.UserTable;
 
@@ -21,8 +22,8 @@ public class Profile extends ServletBase {
 			request.getRequestDispatcher("/User/login").forward(request, response);
 			return;
 		}
-		request.setAttribute("user", user);
 		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
+		request.getRequestDispatcher("/ProfilePage.jsp").include(request, response);
 		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
 	}
 	
