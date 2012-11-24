@@ -16,11 +16,12 @@ public class Profile extends ServletBase {
 	
 	public void index() throws IOException, ServletException{
 		response.setContentType("text/html");
-		UserTable user = (UserTable)request.getSession().getAttribute("user_info");
+		UserTable user = getCurrentUser();
 		if(user == null){
 			request.getRequestDispatcher("/User/login").forward(request, response);
 			return;
 		}
+		request.setAttribute("user", user);
 		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
 		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
 	}
