@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap-responsive.min.css">
 </head>
 <body>
-<%UserTable user=(UserTable)request.getSession().getAttribute("user_info");%>
+<%UserTable user=(UserTable)request.getAttribute("user");%>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -23,7 +23,7 @@
 				<div class="nav-collapse">
 					<ul class="nav">
 						<li><a href="/CmpeCommunityWeb/Profile">Home</a></li>
-						<li><a href="#">Forum</a></li>
+						<li><a href="/CmpeCommunityWeb/Forum">Forum</a></li>
 					</ul>
 
 					<form action="#" class="navbar-search">
