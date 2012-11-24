@@ -11,9 +11,8 @@ import UtilityPack.HashString;
 public abstract class UserDriver {
 	public static boolean createUser(UserTable user){
 		try{
-			DBStatement db=new DBStatement();
 			String query="INSERT INTO users(email, password_hash, name, birth_date, register_date) VALUES (?, ?, ?, NOW(), NOW())";
-			PreparedStatement ps=(PreparedStatement) db.getConnection().prepareStatement(query);
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setString(1, user.getEmail());
 			ps.setString(2, user.getPassword_hash());
 			ps.setString(3, user.getName());
@@ -31,9 +30,8 @@ public abstract class UserDriver {
 	
 	public static boolean isCredentialsValid(String email, String password){
 		try{
-			DBStatement db=new DBStatement();
 			String query="SELECT * FROM `users` WHERE `email`=? AND `password_hash`=?";
-			PreparedStatement ps=(PreparedStatement) db.getConnection().prepareStatement(query);
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setString(1, email);
 			ps.setString(2, HashString.encrypt(password));
 			return ps.executeQuery().next();
@@ -48,9 +46,8 @@ public abstract class UserDriver {
 	
 	public static UserTable getById(int id){
 		try{
-		DBStatement db=new DBStatement();
 			String query="SELECT * FROM `users` WHERE `id`=?";
-			PreparedStatement ps=(PreparedStatement) db.getConnection().prepareStatement(query);
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, id);
 			ResultSet result = ps.executeQuery();
 			if(result.next()){
@@ -67,9 +64,8 @@ public abstract class UserDriver {
 	
 	public static UserTable getByEmail(String email){
 		try{
-			DBStatement db=new DBStatement();
 			String query="SELECT * FROM `users` WHERE `email`=?";
-			PreparedStatement ps=(PreparedStatement) db.getConnection().prepareStatement(query);
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setString(1, email);
 			ResultSet result = ps.executeQuery();
 			if(result.next()){

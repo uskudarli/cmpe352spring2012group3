@@ -15,9 +15,8 @@ public class ForumsDriver {
 	public static ForumsTable getById(int id){
 		ForumsTable table = null;
 		try{
-			DBStatement db=new DBStatement();
 			String query="SELECT * FROM `forums` WHERE ISNULL(`parent_id`) ORDER BY `id`";
-			PreparedStatement ps=(PreparedStatement) db.getConnection().prepareStatement(query);
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ResultSet result = ps.executeQuery();
 			if(result.next())
 				table = new ForumsTable(result.getInt("id"), result.getInt("parent_id"), result.getString("name"), result.getString("description"), result.getInt("topics_count"), result.getInt("posts_count"), result.getInt("last_post_id"));
@@ -29,9 +28,8 @@ public class ForumsDriver {
 	
 	public static ForumsTable[] getCategories(){
 		try{
-			DBStatement db=new DBStatement();
 			String query="SELECT * FROM `forums` WHERE ISNULL(`parent_id`) ORDER BY `id`";
-			PreparedStatement ps=(PreparedStatement) db.getConnection().prepareStatement(query);
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ResultSet result = ps.executeQuery();
 			return convertToArray(result);
 		} catch(SQLException e) {
@@ -45,9 +43,8 @@ public class ForumsDriver {
 	
 	public static ForumsTable[] getByParentId(int id){
 		try{
-			DBStatement db=new DBStatement();
 			String query="SELECT * FROM `forums` WHERE `parent_id`=? ORDER BY `id`";
-			PreparedStatement ps=(PreparedStatement) db.getConnection().prepareStatement(query);
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, id);
 			ResultSet result = ps.executeQuery();
 			return convertToArray(result);

@@ -1,36 +1,31 @@
 package drivers;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-
+import DBPack.DBStatement;
 import Tables.TagsTable;
 import Tables.UserTable;
 
-import DBPack.DBStatement;
-
 public class TagsDriver {
 	public static boolean createTags(TagsTable[] tagsTable, Tables.UserTable userTable) throws Exception{
-		DBStatement db=new DBStatement();
 		userTable = drivers.UserDriver.getByEmail(userTable.getEmail());
 		try {
 			for (TagsTable table : tagsTable) {
 				String str = table.getTag();
 				// check if the tag already exists in the table
-				Integer tag_id = tagId(str, db.getConnection());
+				Integer tag_id = tagId(str);
 				// if new tag, insert to tags table
 				if (tag_id == -1) {
-					if (!insertTags(str, db.getConnection())) {
+					if (!insertTags(str)) {
 						return false;
 					}
-					tag_id = tagId(str, db.getConnection());
+					tag_id = tagId(str);
 				}
 				// get tag id
 				table.setId(tag_id);
-				insertTagsInUsers(userTable, table, db.getConnection());
+				insertTagsInUsers(userTable, table);
 				// insert tag-user row to tags_in_users_table
 			}
 
@@ -39,16 +34,15 @@ public class TagsDriver {
 			System.err.println(e.getMessage());
 			return false;
 		} finally {
-			db.getConnection().close();
 		}
 		return false;
 		
 		
 	}
-	public static int tagId(String tag_name,Connection conn) {
+	public static int tagId(String tag_name) {
 		try{
 			String query="SELECT * FROM tags where tag = ?" ;	
-			PreparedStatement ps=(PreparedStatement) conn.prepareStatement(query);
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setString(1, tag_name);
 			ResultSet set = ps.executeQuery();
 			if(!set.first()){
@@ -64,10 +58,10 @@ public class TagsDriver {
 			
 		}
 	}
-	public static boolean insertTags(String tag_name,Connection conn) {
+	public static boolean insertTags(String tag_name) {
 		try{
 			String query="INSERT INTO tags (tag) VALUES (?)";
-			PreparedStatement ps=(PreparedStatement) conn.prepareStatement(query);
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setString(1, tag_name);
 			ps.executeUpdate();
 		  return true; // means false
@@ -80,10 +74,10 @@ public class TagsDriver {
 		}
 		
 	}
-	public static boolean insertTagsInUsers(UserTable user,TagsTable tag,Connection conn) {
+	public static boolean insertTagsInUsers(UserTable user,TagsTable tag) {
 		try{
 			String query="INSERT INTO tags_in_users (user_id,is_permanent,tagging_time,tag_id) VALUES (?,?,NOW(),?)" ;	
-			PreparedStatement ps=(PreparedStatement) conn.prepareStatement(query);
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, user.getId());
 			ps.setBoolean(2, tag.getIsPermanent());
 			ps.setInt(3, tag.getId());
