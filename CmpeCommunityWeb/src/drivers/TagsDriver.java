@@ -9,6 +9,33 @@ import Tables.TagsTable;
 import Tables.UserTable;
 
 public class TagsDriver {
+	public static TagsTable getById(int id){
+		try{
+			String query="SELECT * FROM tags where `id`= ?" ;
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet set = ps.executeQuery();
+			if(set.next())
+				return new TagsTable(set.getString("tag"), set.getInt("id"));
+		}  catch(SQLException e) {
+		} catch (Exception e) {
+		}
+		return null;
+	}
+	
+	public static TagsTable[] getByUserId(int userId){
+		try{
+			String query="SELECT `tags`.* FROM `tags_in_users` INNER JOIN `tags` ON `tags_in_users`.`tag_id`=`tags`.`id` WHERE `tags_in_users`.`user_id`= ?" ;
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, userId);
+			ResultSet set = ps.executeQuery();
+			return convertToArray(set);
+		}  catch(SQLException e) {
+		} catch (Exception e) {
+		}
+		return new TagsTable[0];
+	}
+	
 	public static boolean createTags(TagsTable[] tagsTable, Tables.UserTable userTable) throws Exception{
 		userTable = drivers.UserDriver.getByEmail(userTable.getEmail());
 		try {
@@ -90,5 +117,17 @@ public class TagsDriver {
 		} finally {
 			
 		}
+	}
+	
+	private static TagsTable[] convertToArray(ResultSet result) throws SQLException{
+		int N = 0;
+		while(result.next()) N++;
+		result.beforeFirst();
+		TagsTable[] tags = new TagsTable[N];
+		int i=0;
+		while(result.next())
+			tags[i++] = new TagsTable(result.getString("tag"), result.getInt("id"));
+		return tags;
+		
 	}
 }	
