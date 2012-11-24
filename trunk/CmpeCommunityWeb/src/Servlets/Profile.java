@@ -24,23 +24,11 @@ public class Profile extends ServletBase {
 			return;
 		}
 		details(user.getId());
-		/*
-		response.setContentType("text/html");
-		UserTable user = getCurrentUser();
-		if(user == null){
-			request.getRequestDispatcher("/User/login").forward(request, response);
-			return;
-		}
-		request.setAttribute("user",user);
-		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
-		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);*/
 	}
 
-	public void posts(int userId) throws ServletException, IOException{
-		if(getCurrentUser() == null){
-			request.getRequestDispatcher("/User/login").forward(request, response);
+	public void posts(Integer userId) throws ServletException, IOException{
+		if(getCurrentUser() == null)
 			return;
-		}
 		PostsTable[] posts = {
 			new PostsTable(1, 1, "Post id 1", "2012-11-24"),
 			new PostsTable(2, 1, "Post id 2", "2012-11-24"),
@@ -53,7 +41,7 @@ public class Profile extends ServletBase {
 		request.getRequestDispatcher("/PostListView.jsp").include(request, response);
 	}
 	
-	public void details(int userId) throws IOException, ServletException{
+	public void details(Integer userId) throws IOException, ServletException{
 		if(getCurrentUser() == null){
 			request.getRequestDispatcher("/User/login").forward(request, response);
 			return;
@@ -66,6 +54,7 @@ public class Profile extends ServletBase {
 		}
 		request.setAttribute("user", user);
 		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
+		request.getRequestDispatcher("/ProfilePage.jsp").include(request, response);
 		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
 	}
 }
