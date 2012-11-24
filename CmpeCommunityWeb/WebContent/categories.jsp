@@ -1,3 +1,5 @@
+<%@page import="java.util.Map"%>
+<%@page import="Tables.ForumsTable"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -23,7 +25,7 @@ body {
 			<div class="container">
 				<a class="brand" href="/">Cmpe Community</a>
 				<ul class="nav pull-right">
-					<li><a href="/logout"> <i class="icon-off icon-white"></i>
+					<li><a href="/User/logout"> <i class="icon-off icon-white"></i>
 							Logout
 					</a></li>
 				</ul>
@@ -34,9 +36,8 @@ body {
 	<div class="container">
 		<%
 			// dummy data
-			int categories = 3;
-			int[] forums = { 3, 4, 2 };
-			int[][] subforums = { { 2, 1, 5 }, { 0, 2, 3, 1 }, { 1, 0 } };
+			ForumsTable[] categories = (ForumsTable[])request.getAttribute("categories");
+			Map<Integer, ForumsTable[]> subForums = (Map<Integer, ForumsTable[]>)request.getAttribute("subForums");
 		%>
 
 		<ul class="breadcrumb">
@@ -45,11 +46,11 @@ body {
 		</ul>
 
 		<%
-			for (int i = 0; i < categories; i++) {
+			for(ForumsTable category: categories) {
 		%>
 		<div style="margin-left: 8px">
 			<h4>
-				<a href="">Category <%= i + 1 %></a>
+				<a href=""><%= category.getName() %></a>
 			</h4>
 		</div>
 
@@ -63,19 +64,20 @@ body {
 				</tr>
 			</thead>
 			<tbody>
-			<% for(int j = 0; j < forums[i]; j++){ %>
+			<% for(ForumsTable forum: subForums.get(category.getId())) { /*for(int j = 0; j < forums[i]; j++){*/ %>
 			<tr>
 				<td>
-					<div><a href=""><strong>Forum <%= j + 1 %></strong></a></div>
-					<div>Description of forum <%= j + 1 %></div>
-					<% if(subforums[i][j] != 0){ %>
-					<div>
-						<b>Subforums:</b>
-						<% for(int k = 0; k < subforums[i][j]; k++){ %> 
-						<a href="">Subforum <%= k + 1 %></a> 
-						<% if(k + 1 != subforums[i][j]){out.print(",");} %>
-						<% } %>
-					</div>
+					<div><a href=""><strong><%= forum.getName() %></strong></a></div>
+					<div><%= forum.getDescription() %></div>
+					<% if(subForums.get(forum.getId())!=null && subForums.get(forum.getId()).length > 0){
+						ForumsTable[] subForumsObjects = subForums.get(forum.getId());
+					%>
+						<div>
+							<b>Subforums:</b>
+							<% for(ForumsTable subForum: subForumsObjects){ %> 
+								<a href=""><%= subForum.getName() %>,</a>
+							<% } %>
+						</div>
 					<% } %>
 				</td>
 				<td class="center-text">0</td>
