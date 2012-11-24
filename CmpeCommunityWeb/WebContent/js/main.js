@@ -8,3 +8,14 @@ var Posts = {
 		console.log("loading wall");
 	}
 };
+
+var Tags = {
+		loadUsers: function(tagId){
+			$("#contentBody").load("/CmpeCommunityWeb/Tags/user/"+tagId);
+			console.log("loading news feed");
+		},
+		loadWall: function(tagId){
+			$("#contentBody").load("/CmpeCommunityWeb/Tags/wall/"+tagId);
+			console.log("loading wall");
+		}
+};

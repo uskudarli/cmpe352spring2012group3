@@ -81,6 +81,8 @@ public class Profile extends ServletBase {
 		}
 		request.setAttribute("user", user);
 		
+		
+		
 		TagsTable[] tags = TagsDriver.getByUserId(userId);
 		request.setAttribute("tags", tags);
 		

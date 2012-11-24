@@ -42,9 +42,7 @@
 			for(TagsTable tag: tags) {%>
 			<tr>
 				<td>
-					 <!-- Class body bla bla-->
-					<%= tag.getTag()%>
-					
+					<a href="/CmpeCommunityWeb/Tags/details/<%=tag.getId()%>"><%= tag.getTag()%></a>
 				</td>
 			</tr>	 
 			<%}%>
