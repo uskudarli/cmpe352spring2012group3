@@ -11,7 +11,7 @@ public class PostDriver {
     
 	public static PostsTable[] getWallPosts(int user_id) {
 		try {
-			String query="(select * from posts where user_id=1) union (select * from posts where id in (select post_id from users_in_posts where user_id=1))";
+			String query="(select * from posts where owner_id=?) union (select * from posts where id in (select post_id from users_in_posts where user_id=?))";
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, user_id);
 			ps.setInt(2, user_id);
