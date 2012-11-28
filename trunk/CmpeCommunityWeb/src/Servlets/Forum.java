@@ -33,11 +33,19 @@ public class Forum extends ServletBase {
 	}
 	
 	public void index(Integer forumId) throws ServletException, IOException{
-		ForumsTable forum = ForumsDriver.getById(forumId);
-		if(forum == null){
-			index();
-			return;
+		response.setContentType("text/html");
+		ForumsTable category = ForumsDriver.getById(forumId);
+		Map<Integer, ForumsTable[]> subForums = new TreeMap<Integer, ForumsTable[]>();
+		
+		if(category != null){
+			ForumsTable[] forums = ForumsDriver.getByParentId(category.getId());
+			subForums.put(category.getId(), forums);
+			for(ForumsTable f: forums)
+				subForums.put(f.getId(), ForumsDriver.getByParentId(f.getId()));
+			
+			request.setAttribute("category", category);
+			request.setAttribute("subForums", subForums);
+			request.getRequestDispatcher("/forums.jsp").include(request, response);
 		}
-		//TODO will be implemented
 	}
 }
