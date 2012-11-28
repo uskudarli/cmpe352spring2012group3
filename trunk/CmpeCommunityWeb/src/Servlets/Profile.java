@@ -31,9 +31,11 @@ public class Profile extends ServletBase {
 	public void wall(Integer userId) throws ServletException, IOException{
 		if(getCurrentUser() == null)
 			return;
-		PostsTable[] posts = PostDriver.getPostsByUserId(userId);
+		//PostsTable[] posts = PostDriver.getWallPosts(userId);
+		PostsTable[] posts = {
+				new PostsTable(7, 1, "Post id 1", "2012-11-24")};
 		request.setAttribute("posts", posts);
-		request.getRequestDispatcher("/PostListView.jsp").include(request, response);
+		request.getRequestDispatcher("/ProfileWall.jsp").include(request, response);
 	}
 
 	public void news(Integer userId) throws ServletException, IOException{
@@ -91,4 +93,5 @@ public class Profile extends ServletBase {
 		request.getRequestDispatcher("/TagList.jsp").include(request, response);
 		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
 	}
+	
 }
