@@ -20,19 +20,24 @@ public class UserDriverTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
+	/*@Test
 	public void testCreateUser() {
 		fail("Not yet implemented");
-	}
+	}*/
 
 	@Test
 	public void testIsCredentialsValid() {
-		fail("Not yet implemented");
+		String email="test@test.com";
+		String password_hash="gwRqWu588Ocd6otgdTBhQw==";
+		UserTable user= UserDriver.getByEmail(email);
+		Assert.assertEquals("Credentials Valid"	, password_hash, user.getPassword_hash());	
 	}
 
 	@Test
 	public void testGetById() {
-		fail("Not yet implemented");
+		int id = 15;
+		UserTable  user = UserDriver.getById(id);
+		Assert.assertEquals("Got user by id"	, id, user.getId());
 	}
 
 	@Test
@@ -41,5 +46,14 @@ public class UserDriverTest {
 		UserTable  user = UserDriver.getByEmail(email);
 		Assert.assertEquals("Email"	, email, user.getEmail());
 	}
+	
+	/*@Test
+	public void testGetUsersByTag(){
+		int tagId=5;
+		UserTable[] user=UserDriver.getUsersByTag(tagId);
+		
+		
+		
+	}*/
 
 }
