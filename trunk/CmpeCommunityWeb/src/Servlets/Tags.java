@@ -53,10 +53,12 @@ public class Tags extends ServletBase {
 		request.setAttribute("users", users);
 		request.getRequestDispatcher("/UserListView.jsp").include(request, response);
 	}
-	public void addTags(int user_id) throws Exception{
+	public void addTags(Integer user_id) throws Exception{
 		TagsTable[] tagsTable=null;
 		String tags =  request.getParameter("hidden-tags");
+		if (tags==null)
+			return;
 		tagsTable=TagsDriver.createTagsArray(tags);
 		TagsDriver.createTags(tagsTable,UserDriver.getById(user_id));
-	}
+	} 
 }
