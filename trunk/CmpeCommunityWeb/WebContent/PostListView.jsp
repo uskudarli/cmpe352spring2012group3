@@ -17,15 +17,7 @@
 				
 					<div class="pull-right muted"> <%= post.getPosting_time() %> </div>
 		</div>			 
-		<div class = "well well-small" style="margin-left:30px;">
-					<strong>Cigdem</strong>
-				
-					<%=post.getBody()%>
-				
-					
-					<div class="pull-right muted"><%= post.getPosting_time() %></div>
-					 
-				</div>
+		
 					<hr/>
 
 	 
