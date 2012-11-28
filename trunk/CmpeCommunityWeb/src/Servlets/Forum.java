@@ -32,12 +32,12 @@ public class Forum extends ServletBase {
 		request.getRequestDispatcher("/categories.jsp").include(request, response);
 	}
 	
-	public void index(int forumId) throws ServletException, IOException{
+	public void index(Integer forumId) throws ServletException, IOException{
 		ForumsTable forum = ForumsDriver.getById(forumId);
 		if(forum == null){
 			index();
 			return;
 		}
-		
+		//TODO will be implemented
 	}
 }
