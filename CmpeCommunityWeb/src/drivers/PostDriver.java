@@ -83,4 +83,19 @@ public class PostDriver {
 			
 		}
 	}
+	public static int getMaxId(int user_id) {
+		try {
+			String query="(select max(id) from posts where owner_id=?";
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, user_id);
+			ResultSet result = ps.executeQuery();
+			return result.getInt(1);
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+			return 0;
+		}  catch (Exception e) {
+			System.out.println(e.getMessage());
+			return 0;
+		}
+	}
 }

@@ -142,4 +142,43 @@ public class TagsDriver {
 		return tags;
 		
 	}
+	public static UserTable[] getUsers(Integer tag_id) {
+		try{
+			String query="SELECT * FROM `tags_in_users` where tag_id=?" ;
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, tag_id);
+			ResultSet set = ps.executeQuery();
+			return convertToUserArray(set);
+		}  catch(SQLException e) {
+		} catch (Exception e) {
+		}
+		return new UserTable[0];
+	}
+	private static UserTable[] convertToUserArray(ResultSet result) throws SQLException{
+		int N = 0;
+		while(result.next()) N++;
+		result.beforeFirst();
+		UserTable[] users = new UserTable[N];
+		int i=0;
+		while(result.next())
+			users[i++] = UserDriver.getById(result.getInt("user_id"));
+		return users;
+		
+	}
+	public static boolean insertTagsInPosts(int post_id,int tag_id) throws SQLException {
+		try{
+			String query="INSERT INTO tags_in_posts (post_id,tag_id) VALUES (?,?)" ;	
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, post_id);
+			ps.setInt(2, tag_id);
+			ps.executeUpdate();
+		  return true; // means false
+		}  catch(SQLException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		} finally {
+			
+		}
+	}
 }	
