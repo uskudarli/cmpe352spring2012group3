@@ -11,7 +11,7 @@ var Posts = {
 
 var Tags = {
 		loadUsers: function(tagId){
-			$("#contentBody").load("/CmpeCommunityWeb/Tags/user/"+tagId);
+			$("#contentBody").load("/CmpeCommunityWeb/Tags/users/"+tagId);
 			console.log("loading news feed");
 		},
 		loadWall: function(tagId){

@@ -6,12 +6,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import drivers.PostDriver;
-import drivers.TagsDriver;
-
 import Tables.PostsTable;
 import Tables.TagsTable;
 import Tables.UserTable;
+import drivers.PostDriver;
+import drivers.TagsDriver;
+import drivers.UserDriver;
 
 public class Tags extends ServletBase {
 
@@ -41,12 +41,16 @@ public class Tags extends ServletBase {
 	public void wall(Integer tagId) throws ServletException, IOException{
 		if(getCurrentUser() == null)
 			return;
-		PostsTable[] posts = PostDriver.getPostsByUserId(tagId);
+		PostsTable[] posts = PostDriver.getPostsByTag(tagId);
 		request.setAttribute("posts", posts);
 		request.getRequestDispatcher("/PostListView.jsp").include(request, response);
 	}
 	
-	public void users(Integer tagId){
-		
+	public void users(Integer tagId) throws ServletException, IOException{
+		if(getCurrentUser() == null)
+			return;
+		UserTable[] users = UserDriver.getUsersByTag(tagId);
+		request.setAttribute("users", users);
+		request.getRequestDispatcher("/UserListView.jsp").include(request, response);
 	}
 }

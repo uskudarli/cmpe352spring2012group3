@@ -79,4 +79,33 @@ public abstract class UserDriver {
 			return null;
 		}
 	}
+	
+	public static UserTable[] getUsersByTag(int tagId){
+		try {
+			String query="SELECT * FROM `users` INNER JOIN `tags_in_users` ON `users`.`id`=`tags_in_users`.`user_id` WHERE `tags_in_users`.`tag_id`=?";
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, tagId);
+			ResultSet result = ps.executeQuery();
+			return convertToArray(result);
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+			return new UserTable[0];
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new UserTable[0];
+		}
+	}
+	
+	private static UserTable[] convertToArray(ResultSet result) throws SQLException{
+		int N = 0;
+		while(result.next()) N++;
+		result.beforeFirst();
+		UserTable[] users = new UserTable[N];
+		int i=0;
+		while(result.next())
+			users[i++] = new UserTable(result.getInt("id"), result.getString("email"), result.getString("name"),
+					result.getString("password_hash"), result.getString("birth_date"), result.getString("register_date"));
+		return users;
+		
+	}
 }

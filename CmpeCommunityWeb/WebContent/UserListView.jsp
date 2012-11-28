@@ -9,7 +9,7 @@
 			for(UserTable user: users) {%>
 			<tr>
 				<td>
-					<a href="/CmpeCommunityWeb/Tags/users/<%=user.getId()%>"><%= user.getName()%></a>
+					<a href="/CmpeCommunityWeb/Profile/details/<%=user.getId()%>"><%= user.getName()%></a>
 				</td>
 			</tr>	 
 			<%}%>
