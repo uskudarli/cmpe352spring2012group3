@@ -1,11 +1,11 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="Tables.PostsTable" %>
-
+<%@ page import="Tables.*" %>
+<%UserTable user = (UserTable)request.getAttribute("user"); %>
 <div class="row">
 			<div class="span3">
-				<form name="form1" method="post" action="/CmpeCommunityWeb/Posts/addPosts/">
+				<form name="form1" method="post" action="/CmpeCommunityWeb/Posts/addPosts/<%=user.getId()%>">
 					<input class="FormText" type="hidden" name="clickedButton" id="clickedButton" value="" >
 					<fieldset>
 						<div class="controls">

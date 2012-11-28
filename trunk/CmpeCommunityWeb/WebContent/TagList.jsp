@@ -17,13 +17,13 @@ function addTags() {
 		<%UserTable user = (UserTable)request.getAttribute("user"); %>
 		<div class="row">
 			<div >
-				<form name="form1" method="post" class="form-horizontal" action="">
+				<form name="form1" method="post" class="form-horizontal" action="/CmpeCommunityWeb/Tags/addTags/<%=user.getId()%>">
 					<input class="FormText" type="hidden" name="clickedButton" id="clickedButton" value="" >
 					<fieldset>
 					<div class="control-group">
 						<div class="controls">						
 							<input type="text" name="tags" placeholder="Enter a new tag.." class="tagManager"/>
-							<input type="button" class="btn btn-info" value="Add" onclick="addTags()"/>
+							<input type="submit" class="btn btn-info" value="Add"/>
 						</div>
 					</div>
 					</fieldset>
