@@ -24,6 +24,23 @@ public class PostDriver {
 			return new PostsTable[0];
 		}
 	}
+	
+	public static PostsTable[] getPostsByTag(int tagId){
+		try {
+			String query="SELECT * FROM `posts` INNER JOIN `tags_in_posts` ON `posts`.`id`=`tags_in_posts`.`post_id` WHERE `tags_in_posts`.`tag_id`=?";
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, tagId);
+			ResultSet result = ps.executeQuery();
+			return convertToArray(result);
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+			return new PostsTable[0];
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new PostsTable[0];
+		}
+	}
+	
 	private static PostsTable[] convertToArray(ResultSet result) throws SQLException{
 		int N = 0;
 		while(result.next()) N++;
