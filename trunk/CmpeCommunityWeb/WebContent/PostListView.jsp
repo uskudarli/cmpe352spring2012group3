@@ -9,43 +9,25 @@
 			for(PostsTable post: posts) {
 	
 	%>
-	<div class = "well well-small">
-		<table class = "table table-condensed">
-			<tr>
-				<td>
-					<p><strong>Cigdem</strong></p>
-				</td>
-				<td>
+	<div style="margin-left:10px; margin-bottom:10px;">
+		
+					<strong>Cigdem</strong>
+				
 					<%= post.getBody()%>
-					
-				</td>
-				<td>
-					<p class = "muted">  
-					<%= post.getPosting_time() %>
-					 
-					</p>
-				</td>
-			</tr>
-		</table>
-		<div class = "well well-small"> <table class = "table">
-			
-			<tr>
-				<td>
-					<p><strong>Cigdem</strong></p>
-				</td>
-				<td>
+				
+					<div class="pull-right muted"> <%= post.getPosting_time() %> </div>
+		</div>			 
+		<div class = "well well-small" style="margin-left:30px;">
+					<strong>Cigdem</strong>
+				
 					<%=post.getBody()%>
+				
 					
-				</td>
-				<td>
-					<p class = "muted">
-					<%= post.getPosting_time() %>
+					<div class="pull-right muted"><%= post.getPosting_time() %></div>
 					 
-					</p>
-				</td>
-			</tr>
-		</table></div>
-	</div>
+				</div>
+					<hr/>
+
 	 
 	<%} %>
 	
