@@ -49,7 +49,7 @@ body {
 		%>
 		<div style="margin-left: 8px">
 			<h4>
-				<a href="<%= "index/" + category.getId()%>"><%= category.getName() %></a>
+				<a href="<%= "Forum/index/" + category.getId()%>"><%= category.getName() %></a>
 			</h4>
 		</div>
 
@@ -66,7 +66,7 @@ body {
 			<% for(ForumsTable forum: subForums.get(category.getId())) { /*for(int j = 0; j < forums[i]; j++){*/ %>
 			<tr>
 				<td>
-					<div><a href="<%= "index/" + forum.getId()%>"><strong><%= forum.getName() %></strong></a></div>
+					<div><a href="<%= "Forum/index/" + forum.getId()%>"><strong><%= forum.getName() %></strong></a></div>
 					<div><%= forum.getDescription() %></div>
 					<% if(subForums.get(forum.getId())!=null && subForums.get(forum.getId()).length > 0){
 						ForumsTable[] subForumsObjects = subForums.get(forum.getId());
@@ -74,7 +74,7 @@ body {
 						<div>
 							<b>Subforums:</b>
 							<% for(int i = 0; i < subForumsObjects.length; i++) {%> 
-								<a href="<%= "index/" + subForumsObjects[i].getId()%>"><%= subForumsObjects[i].getName() %><%= (i == subForumsObjects.length - 1) ? "" : "," %></a>
+								<a href="<%= "Forum/index/" + subForumsObjects[i].getId()%>"><%= subForumsObjects[i].getName() %></a><%= (i == subForumsObjects.length - 1) ? "" : "," %>
 							<% } %>
 						</div>
 					<% } %>
