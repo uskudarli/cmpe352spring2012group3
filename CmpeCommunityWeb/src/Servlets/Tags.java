@@ -43,8 +43,17 @@ public class Tags extends ServletBase {
 		if(getCurrentUser() == null)
 			return;
 		PostsTable[] posts = PostDriver.getPostsByUserId(tagId);
+		
+		UserTable user = getCurrentUser();
+		if(user == null){
+			request.getRequestDispatcher("/User/login").forward(request, response);
+			return;
+		}
+		
+		request.setAttribute("user", user);
 		request.setAttribute("posts", posts);
-		request.getRequestDispatcher("/PostListView.jsp").include(request, response);
+		request.setAttribute("tag_id", tagId);
+		request.getRequestDispatcher("/TagWall.jsp").include(request, response);
 	}
 	public void users(Integer tagId) throws ServletException, IOException{
 		if(getCurrentUser() == null)
@@ -60,5 +69,14 @@ public class Tags extends ServletBase {
 			return;
 		tagsTable=TagsDriver.createTagsArray(tags);
 		TagsDriver.createTags(tagsTable,UserDriver.getById(user_id));
-	} 
+	}
+	public void addPosts(Integer tag_id,Integer user_id) throws Exception {
+		String post=request.getParameter("tag_post");
+		PostDriver.addPosts(user_id, post);
+		int post_id=PostDriver.getMaxId(user_id);
+		if (post_id==0)
+			return;
+		TagsDriver.insertTagsInPosts(post_id,tag_id);
+		
+	}
 }
