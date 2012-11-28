@@ -31,10 +31,13 @@ public class Profile extends ServletBase {
 	public void wall(Integer userId) throws ServletException, IOException{
 		if(getCurrentUser() == null)
 			return;
-		//PostsTable[] posts = PostDriver.getWallPosts(userId);
-		PostsTable[] posts = {
-				new PostsTable(7, 1, "Post id 1", "2012-11-24")};
+		PostsTable[] posts = PostDriver.getWallPosts(userId);
+		if (posts == null)
+			return;
+		//PostsTable[] posts = {new PostsTable(7, 1, "Post id 1", "2012-11-24")};
 		request.setAttribute("posts", posts);
+		UserTable user = UserDriver.getById(userId);
+		request.setAttribute("user", user);
 		request.getRequestDispatcher("/ProfileWall.jsp").include(request, response);
 	}
 
