@@ -45,11 +45,6 @@ public class Tags extends ServletBase {
 		PostsTable[] posts = PostDriver.getPostsByUserId(tagId);
 		
 		UserTable user = getCurrentUser();
-		if(user == null){
-			request.getRequestDispatcher("/User/login").forward(request, response);
-			return;
-		}
-		
 		request.setAttribute("user", user);
 		request.setAttribute("posts", posts);
 		request.setAttribute("tag_id", tagId);
