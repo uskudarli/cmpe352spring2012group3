@@ -6,12 +6,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Tables.PostsTable;
-import Tables.TagsTable;
-import Tables.UserTable;
 import drivers.PostDriver;
 import drivers.TagsDriver;
 import drivers.UserDriver;
+
+import Tables.PostsTable;
+import Tables.TagsTable;
+import Tables.UserTable;
 
 public class Tags extends ServletBase {
 
@@ -41,16 +42,21 @@ public class Tags extends ServletBase {
 	public void wall(Integer tagId) throws ServletException, IOException{
 		if(getCurrentUser() == null)
 			return;
-		PostsTable[] posts = PostDriver.getPostsByTag(tagId);
+		PostsTable[] posts = PostDriver.getPostsByUserId(tagId);
 		request.setAttribute("posts", posts);
 		request.getRequestDispatcher("/PostListView.jsp").include(request, response);
 	}
-	
 	public void users(Integer tagId) throws ServletException, IOException{
 		if(getCurrentUser() == null)
 			return;
 		UserTable[] users = UserDriver.getUsersByTag(tagId);
 		request.setAttribute("users", users);
 		request.getRequestDispatcher("/UserListView.jsp").include(request, response);
+	}
+	public void addtags() throws Exception{
+		TagsTable[] tagsTable=null;
+		String tags =  request.getParameter("hidden-tags");
+		tagsTable=TagsDriver.createTagsArray(tags);
+		TagsDriver.createTags(tagsTable,(UserTable)request.getAttribute("user"));
 	}
 }
