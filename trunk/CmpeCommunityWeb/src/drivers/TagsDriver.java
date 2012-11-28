@@ -9,6 +9,16 @@ import Tables.TagsTable;
 import Tables.UserTable;
 
 public class TagsDriver {
+	
+	public static TagsTable[] createTagsArray(String tags) {
+		TagsTable[] tagsTable = null;
+		String[] tags_arr = tags.split(",");
+		tagsTable = new Tables.TagsTable[tags_arr.length];
+		for (int i = 0;i<tags_arr.length;i++){
+			tagsTable[i] = new Tables.TagsTable(tags_arr[i]);
+		}
+		return tagsTable;
+	}
 	public static TagsTable getById(int id){
 		try{
 			String query="SELECT * FROM tags where `id`= ?" ;
@@ -37,6 +47,8 @@ public class TagsDriver {
 	}
 	
 	public static boolean createTags(TagsTable[] tagsTable, Tables.UserTable userTable) throws Exception{
+		if (tagsTable==null)
+			return true;
 		userTable = drivers.UserDriver.getByEmail(userTable.getEmail());
 		try {
 			for (TagsTable table : tagsTable) {
