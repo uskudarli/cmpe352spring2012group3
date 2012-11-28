@@ -15,8 +15,9 @@ public class ForumsDriver {
 	public static ForumsTable getById(int id){
 		ForumsTable table = null;
 		try{
-			String query="SELECT * FROM `forums` WHERE ISNULL(`parent_id`) ORDER BY `id`";
+			String query="SELECT * FROM `forums` WHERE `id` = ?";
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, id);
 			ResultSet result = ps.executeQuery();
 			if(result.next())
 				table = new ForumsTable(result.getInt("id"), result.getInt("parent_id"), result.getString("name"), result.getString("description"), result.getInt("topics_count"), result.getInt("posts_count"), result.getInt("last_post_id"));
