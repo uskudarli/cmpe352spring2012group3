@@ -35,7 +35,6 @@ body {
 
 	<div class="container">
 		<%
-			// dummy data
 			ForumsTable[] categories = (ForumsTable[])request.getAttribute("categories");
 			Map<Integer, ForumsTable[]> subForums = (Map<Integer, ForumsTable[]>)request.getAttribute("subForums");
 		%>
@@ -74,8 +73,8 @@ body {
 					%>
 						<div>
 							<b>Subforums:</b>
-							<% for(ForumsTable subForum: subForumsObjects){ %> 
-								<a href=""><%= subForum.getName() %>,</a>
+							<% for(int i = 0; i < subForumsObjects.length; i++) {%> 
+								<a href=""><%= subForumsObjects[i].getName() %><%= (i == subForumsObjects.length - 1) ? "" : "," %></a>
 							<% } %>
 						</div>
 					<% } %>
