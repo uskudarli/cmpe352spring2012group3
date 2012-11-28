@@ -18,9 +18,8 @@ public class Posts extends ServletBase {
 	public Posts(HttpServletRequest request, HttpServletResponse response) {
 		super(request, response);
 	}
-	public void addPosts() throws ServletException, IOException{
-		UserTable user = (UserTable)request.getAttribute("user");
+	public void addPosts(Integer user_id) throws ServletException, IOException{
 		String post =  request.getParameter("posts");
-		PostDriver.addPosts(user.getId(),post);
+		PostDriver.addPosts(user_id,post);
 	}
 }
