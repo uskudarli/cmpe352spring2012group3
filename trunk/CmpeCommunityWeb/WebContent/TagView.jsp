@@ -1,7 +1,8 @@
 <%@page import="Tables.UserTable"%>
+<%@page import="Tables.TagsTable"%>
 <%
 	UserTable user = (UserTable)request.getAttribute("user");
-	TagTable tag = (TagTable)request.getAttribute("tag");
+	TagsTable tag = (TagsTable)request.getAttribute("tag");
 %>
 <div style="margin-left: 30px">
 			<ul class="nav span6 nav-tabs">
