@@ -50,4 +50,15 @@ public class Forum extends ServletBase {
 			request.getRequestDispatcher("/forums.jsp").include(request, response);
 		}
 	}
+	
+	public void newtopic(Integer forumId)throws ServletException, IOException{
+		response.setContentType("text/html");
+		ForumsTable forum = ForumsDriver.getById(forumId);
+		if(forum != null){
+			ForumsTable[] parents = ForumsDriver.getParentsById(forumId);
+			request.setAttribute("forum", forum);
+			request.setAttribute("parents", parents);
+			request.getRequestDispatcher("/newtopic.jsp").include(request, response);
+		}
+	}
 }
