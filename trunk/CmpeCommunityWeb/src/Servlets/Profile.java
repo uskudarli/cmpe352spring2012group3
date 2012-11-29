@@ -40,7 +40,6 @@ public class Profile extends ServletBase {
 		for (PostsTable post : posts)
 			if(users.get(post.getOwner_id()) == null)
 				users.put(post.getOwner_id(), UserDriver.getById(post.getOwner_id()));
-		//PostsTable[] posts = {new PostsTable(7, 1, "Post id 1", "2012-11-24")};
 		request.setAttribute("posts", posts);
 		request.setAttribute("users", users);
 		UserTable user = UserDriver.getById(userId);

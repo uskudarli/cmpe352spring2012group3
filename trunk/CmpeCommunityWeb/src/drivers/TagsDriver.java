@@ -166,7 +166,7 @@ public class TagsDriver {
 	}
 	public static boolean insertTagsInPosts(int post_id,int tag_id) throws SQLException {
 		try{
-			String query="INSERT INTO tags_in_posts (post_id,tag_id) VALUES (?,?)" ;	
+			String query="INSERT INTO tags_in_posts (post_id,tag_id) VALUES (?,?)" ;
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, post_id);
 			ps.setInt(2, tag_id);

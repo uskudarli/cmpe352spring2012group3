@@ -19,6 +19,18 @@ var Posts = {
 			else
 				alert("An unknown error occured, sorry for the inconvenient we may have caused.");
 		});
+	},
+	
+	createWithTaggedId: function(tagId){
+		var body = $("[name='tag_post']").val();
+		$.post("/CmpeCommunityWeb/Tags/addPost/"+tagId, {body: body}, function(data){
+			if(data["success"])
+				window.location.reload();
+			else if(data["error"] == "need_login")
+				window.location.href = "/CmpeCommunityWeb/";
+			else
+				alert("An unknown error occured, sorry for the inconvenient we may have caused.");
+		});
 	}
 };
 
