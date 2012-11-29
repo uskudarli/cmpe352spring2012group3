@@ -95,7 +95,7 @@ body {
 		<%} %>
 		
 	<% if(category.getParentId() != 0){ %>
-	<p><a class="btn btn-success" href=""><i class="icon-plus-sign icon-white"></i> New Topic</a></p>
+	<p><a class="btn btn-success" href=<%= "/CmpeCommunityWeb/Forum/newtopic/" + category.getId()%>><i class="icon-plus-sign icon-white"></i> New Topic</a></p>
 	<table class="table table-hover table-bordered">
 		<thead>
 			<tr class="well">
