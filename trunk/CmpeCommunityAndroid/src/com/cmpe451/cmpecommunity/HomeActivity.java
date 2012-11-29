@@ -1,29 +1,34 @@
 package com.cmpe451.cmpecommunity;
 
-import android.app.Activity;
+import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 
-public class HomeActivity extends Activity {
-
+@SuppressWarnings("deprecation")
+public class HomeActivity extends TabActivity {
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
+		TabHost tabHost = getTabHost();
+	
+		TabSpec profileTab = tabHost.newTabSpec("Profile");
+		profileTab.setContent(new Intent(this, ProfileActivity.class));
+		profileTab.setIndicator("Profile", getResources().getDrawable(R.drawable.profile));
+
+		TabSpec tagsTab = tabHost.newTabSpec("Tags");
+		tagsTab.setIndicator("Tags", getResources().getDrawable(R.drawable.tags));
+		tagsTab.setContent(R.id.tags);
+
+		TabSpec eventsTab = tabHost.newTabSpec("Events");
+		eventsTab.setIndicator("Events", getResources().getDrawable(R.drawable.events));
+		eventsTab.setContent(R.id.events);
 		
-		Button logoutButton = (Button) findViewById(R.id.logout);
-		// Listening to register new account link
-		logoutButton.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View v) {
-				finish();
-				
-				Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-				startActivity(i);
-			}
-		});
-
-	}
+		tabHost.addTab(profileTab);
+		tabHost.addTab(tagsTab);
+		tabHost.addTab(eventsTab); 
+		}
 }

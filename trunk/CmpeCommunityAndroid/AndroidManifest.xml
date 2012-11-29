@@ -13,11 +13,10 @@
     <application
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar" >
+        android:theme="@android:style/Theme" >
         <activity
             android:name=".LoginActivity"
-            android:launchMode="singleInstance"
-            android:theme="@android:style/Theme" >
+            android:launchMode="singleInstance" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,13 +28,18 @@
         <activity
             android:name=".RegisterActivity"
             android:label="Register New Account"
-            android:launchMode="singleInstance"
-            android:theme="@android:style/Theme" >
+            android:launchMode="singleInstance" >
         </activity>
         <activity
-            android:name="com.cmpe451.cmpecommunity.HomeActivity"
+            android:name=".ProfileActivity"
+            android:label="Profile" >
+        </activity>
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:name=".HomeActivity"
             android:label="Home" >
         </activity>
+        <activity android:name=".FeedActivity" android:label="Feeds"></activity>
     </application>
 
 </manifest>

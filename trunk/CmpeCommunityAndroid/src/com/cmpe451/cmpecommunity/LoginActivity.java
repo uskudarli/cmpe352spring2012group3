@@ -57,7 +57,9 @@ public class LoginActivity extends Activity {
 		loginButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				new HttpTask().execute();
+				Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+				startActivity(i);
+				//new HttpTask().execute();
 			}
 		});
 	}
@@ -71,7 +73,7 @@ public class LoginActivity extends Activity {
 			HttpClient httpClient = new DefaultHttpClient();
 
 			// Creating HTTP Post
-			HttpPost httpPost = new HttpPost("http://192.168.1.105:8082/CmpeCommunityWeb/AndroidApi/login");
+			HttpPost httpPost = new HttpPost("http://193.140.194.148:8080/CmpeCommunityWeb/AndroidApi/login");
 
 			// Building post parameters, key and value pair
 			List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
