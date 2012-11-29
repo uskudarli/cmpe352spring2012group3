@@ -1,8 +1,10 @@
 
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="Tables.*" %>
 <%UserTable user = (UserTable)request.getAttribute("user"); %>
+<% Map<Integer, UserTable> users = (Map<Integer, UserTable>)request.getAttribute("users"); %>
 <div class="row">
 			<div >
 				<form name="form1" method="post" action="/CmpeCommunityWeb/Posts/addPosts/<%=user.getId()%>">
@@ -24,7 +26,7 @@
 	%>
 	<div style="margin-left:10px; margin-bottom:10px;">
 		
-					<strong>Cigdem</strong>
+					<strong><%= ((UserTable)users.get(post.getOwner_id())).getName() %>:</strong>
 				
 					<%= post.getBody()%>
 				

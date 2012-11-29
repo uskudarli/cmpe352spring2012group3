@@ -1,6 +1,8 @@
 package Servlets;
 
 import java.io.IOException;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,8 +36,13 @@ public class Profile extends ServletBase {
 		PostsTable[] posts = PostDriver.getWallPosts(userId);
 		if (posts == null)
 			return;
+		Map<Integer, UserTable> users = new TreeMap<Integer, UserTable>();
+		for (PostsTable post : posts)
+			if(users.get(post.getOwner_id()) == null)
+				users.put(post.getOwner_id(), UserDriver.getById(post.getOwner_id()));
 		//PostsTable[] posts = {new PostsTable(7, 1, "Post id 1", "2012-11-24")};
 		request.setAttribute("posts", posts);
+		request.setAttribute("users", users);
 		UserTable user = UserDriver.getById(userId);
 		request.setAttribute("user", user);
 		request.getRequestDispatcher("/ProfileWall.jsp").include(request, response);
