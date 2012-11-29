@@ -67,14 +67,13 @@ public class TagsDriver {
 				insertTagsInUsers(userTable, table);
 				// insert tag-user row to tags_in_users_table
 			}
+			return true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 			return false;
-		} finally {
 		}
-		return false;
 
 
 	}

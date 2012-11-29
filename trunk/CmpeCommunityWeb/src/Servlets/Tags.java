@@ -57,14 +57,31 @@ public class Tags extends ServletBase {
 		request.setAttribute("users", users);
 		request.getRequestDispatcher("/UserListView.jsp").include(request, response);
 	}
+	
 	public void addTags(Integer user_id) throws Exception{
-		TagsTable[] tagsTable=null;
-		String tags =  request.getParameter("hidden-tags");
-		if (tags==null)
+		//login check
+		response.setContentType("application/json");
+		UserTable user = getCurrentUser();
+		if(user == null){
+			response.getOutputStream().println("{\"success\": false, \"error\": \"need_login\"}");
 			return;
-		tagsTable=TagsDriver.createTagsArray(tags);
-		TagsDriver.createTags(tagsTable,UserDriver.getById(user_id));
+		}
+		
+		//get parameters from HTTP POST and convert to TagsTable[]
+		String tags =  request.getParameter("tags");
+		if (tags==null){
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
+			return;
+		}
+		TagsTable[] tagsTable = TagsDriver.createTagsArray(tags);
+		
+		//try to create tags and return the result
+		if(TagsDriver.createTags(tagsTable, UserDriver.getById(user_id)))
+			response.getOutputStream().println("{\"success\": true}");
+		else
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
 	}
+	
 	public void addPosts(Integer tag_id,Integer user_id) throws Exception {
 		String post=request.getParameter("tag_post");
 		PostDriver.addPosts(user_id, post);
