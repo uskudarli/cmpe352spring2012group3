@@ -30,5 +30,17 @@ var Tags = {
 		loadWall: function(tagId){
 			$("#contentBody").load("/CmpeCommunityWeb/Tags/wall/"+tagId);
 			console.log("loading wall");
+		},
+		
+		add: function(userId){
+			var tags = $("[name='hidden-tags']").val();
+			$.post("/CmpeCommunityWeb/Tags/addTags/"+userId, {tags: tags}, function(data){
+				if(data["success"])
+					window.location.reload();
+				else if(data["error"] == "need_login")
+					window.location.href = "/CmpeCommunityWeb/";
+				else
+					alert("An unknown error occured, sorry for the inconvenient we may have caused.");
+			});
 		}
 };
