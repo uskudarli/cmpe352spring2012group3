@@ -3,6 +3,7 @@ package drivers;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import DBPack.DBStatement;
 import Tables.ForumsTable;
@@ -56,6 +57,17 @@ public class ForumsDriver {
 			System.out.println(e.getMessage());
 			return new ForumsTable[0];
 		}
+	}
+	
+	public static ForumsTable[] getParentsById(int id){
+		ArrayList<ForumsTable> parents = new ArrayList<ForumsTable>();
+		while(id > 0){
+			ForumsTable parent = getById(id);
+			parents.add(parent);
+			id = parent.getParentId();
+		}
+		ForumsTable[] ret = new ForumsTable[parents.size()]; 
+		return parents.toArray(ret);
 	}
 	
 	private static ForumsTable[] convertToArray(ResultSet result) throws SQLException{
