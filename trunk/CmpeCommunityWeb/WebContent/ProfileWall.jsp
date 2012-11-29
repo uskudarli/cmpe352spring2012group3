@@ -7,15 +7,12 @@
 <% Map<Integer, UserTable> users = (Map<Integer, UserTable>)request.getAttribute("users"); %>
 <div class="row">
 			<div >
-				<form name="form1" method="post" action="/CmpeCommunityWeb/Posts/addPosts/<%=user.getId()%>">
-					<input class="FormText" type="hidden" name="clickedButton" id="clickedButton" value="" >
-					<fieldset>
-						<div class="controls">
-							<input type="text" name="posts" placeholder="Enter a new posts" style="width:350px; margin-left:90px;"/>
-							<input type="submit" class="btn btn-info btn-block" value="Post" style="width:100px;float:right"/>
-						</div>
-					</fieldset>
-    			</form>
+				<fieldset>
+					<div class="controls">
+						<input type="text" name="posts" placeholder="Enter a new posts" style="width:350px; margin-left:90px;"/>
+						<input type="submit" onclick="Posts.createWithTaggedUserId(<%=user.getId()%>);" class="btn btn-info btn-block" value="Post" style="width:100px;float:right"/>
+					</div>
+				</fieldset>
 			</div>
 		</div>
 <div style="margin-left: 30px" id="postList">
