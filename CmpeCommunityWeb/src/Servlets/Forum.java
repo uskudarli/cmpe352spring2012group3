@@ -36,6 +36,7 @@ public class Forum extends ServletBase {
 		response.setContentType("text/html");
 		ForumsTable category = ForumsDriver.getById(forumId);
 		Map<Integer, ForumsTable[]> subForums = new TreeMap<Integer, ForumsTable[]>();
+		ForumsTable[] parents = ForumsDriver.getParentsById(forumId);
 		
 		if(category != null){
 			ForumsTable[] forums = ForumsDriver.getByParentId(category.getId());
@@ -45,6 +46,7 @@ public class Forum extends ServletBase {
 			
 			request.setAttribute("category", category);
 			request.setAttribute("subForums", subForums);
+			request.setAttribute("parents", parents);
 			request.getRequestDispatcher("/forums.jsp").include(request, response);
 		}
 	}
