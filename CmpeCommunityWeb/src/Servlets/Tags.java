@@ -1,6 +1,8 @@
 package Servlets;
 
 import java.io.IOException;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -42,14 +44,20 @@ public class Tags extends ServletBase {
 	public void wall(Integer tagId) throws ServletException, IOException{
 		if(getCurrentUser() == null)
 			return;
-		PostsTable[] posts = PostDriver.getPostsByUserId(tagId);
+		PostsTable[] posts = PostDriver.getPostsByTag(tagId);
 		
+		Map<Integer, UserTable> users = new TreeMap<Integer, UserTable>();
+		for (PostsTable post : posts)
+			if(users.get(post.getOwner_id()) == null)
+				users.put(post.getOwner_id(), UserDriver.getById(post.getOwner_id()));
+		request.setAttribute("posts", posts);
+		request.setAttribute("users", users);
 		UserTable user = getCurrentUser();
 		request.setAttribute("user", user);
-		request.setAttribute("posts", posts);
 		request.setAttribute("tag_id", tagId);
 		request.getRequestDispatcher("/TagWall.jsp").include(request, response);
 	}
+	
 	public void users(Integer tagId) throws ServletException, IOException{
 		if(getCurrentUser() == null)
 			return;
@@ -82,6 +90,32 @@ public class Tags extends ServletBase {
 			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
 	}
 	
+	public void addPost(Integer tagId) throws IOException{
+		//login check
+		response.setContentType("application/json");
+		UserTable user = getCurrentUser();
+		if(user == null){
+			response.getOutputStream().println("{\"success\": false, \"error\": \"need_login\"}");
+			return;
+		}
+		
+		//get parameters from HTTP POST
+		String body =  request.getParameter("body");
+		
+		//if post body is not null then add the post and tag users or give an error message, which is not expected to occur.
+		if(body!=null && PostDriver.addPostWithTag(user.getId(), body, tagId)){
+			response.getOutputStream().println("{\"success\": true}");
+		}
+		else
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
+	}
+	
+	/**
+	 * @deprecated
+	 * Use addPost() instead. There is no need for user_id parameter
+	 * since the poster is the logged-in user.
+	 */
+	@Deprecated
 	public void addPosts(Integer tag_id,Integer user_id) throws Exception {
 		String post=request.getParameter("tag_post");
 		PostDriver.addPosts(user_id, post);

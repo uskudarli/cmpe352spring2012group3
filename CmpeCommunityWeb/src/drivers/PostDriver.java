@@ -45,7 +45,7 @@ public class PostDriver {
 
 	public static PostsTable[] getPostsByTag(int tagId){
 		try {
-			String query="SELECT * FROM `posts` INNER JOIN `tags_in_posts` ON `posts`.`id`=`tags_in_posts`.`post_id` WHERE `tags_in_posts`.`tag_id`=?";
+			String query="SELECT * FROM `posts` INNER JOIN `tags_in_posts` ON `posts`.`id`=`tags_in_posts`.`post_id` WHERE `tags_in_posts`.`tag_id`=? ORDER BY `posts`.`posting_time` DESC";
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, tagId);
 			ResultSet result = ps.executeQuery();
@@ -84,6 +84,30 @@ public class PostDriver {
 		} finally {
 
 		}
+	}
+	
+	public static boolean addPostWithTag(int ownerId, String body, int tagId){
+		try{
+			String query="INSERT INTO posts (owner_id,body,posting_time) VALUES (?,?,NOW())" ;	
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			ps.setInt(1, ownerId);
+			ps.setString(2, body);
+			ps.executeUpdate();
+			ResultSet result = ps.getGeneratedKeys();
+			if(!result.next())
+				return false;
+			int postId = result.getInt(1);
+			if(!TagsDriver.insertTagsInPosts(postId, tagId)){
+				//TODO delete previously created post
+				return false;
+			}
+			return true;
+		}  catch(SQLException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
+		
 	}
 
 	public static boolean addPostAndTagUsers(int ownerId, String body, int[] users){
