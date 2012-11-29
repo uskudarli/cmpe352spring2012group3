@@ -12,7 +12,7 @@
 <script type="text/javascript">
 <!--
 	$(document).ready(function(){
-		Posts.loadNewsFeed(<%=user.getId()%>);
+		Posts.loadWall(<%=user.getId()%>);
 	});
 //-->
 </script>
