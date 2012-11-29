@@ -9,7 +9,7 @@ import Tables.TagsTable;
 import Tables.UserTable;
 
 public class TagsDriver {
-	
+
 	public static TagsTable[] createTagsArray(String tags) {
 		TagsTable[] tagsTable = null;
 		String[] tags_arr = tags.split(",");
@@ -32,7 +32,7 @@ public class TagsDriver {
 		}
 		return null;
 	}
-	
+
 	public static TagsTable[] getByUserId(int userId){
 		try{
 			String query="SELECT `tags`.* FROM `tags_in_users` INNER JOIN `tags` ON `tags_in_users`.`tag_id`=`tags`.`id` WHERE `tags_in_users`.`user_id`= ?" ;
@@ -45,7 +45,7 @@ public class TagsDriver {
 		}
 		return new TagsTable[0];
 	}
-	
+
 	public static boolean createTags(TagsTable[] tagsTable, Tables.UserTable userTable) throws Exception{
 		if (tagsTable==null)
 			return true;
@@ -75,8 +75,8 @@ public class TagsDriver {
 		} finally {
 		}
 		return false;
-		
-		
+
+
 	}
 	public static int tagId(String tag_name) {
 		try{
@@ -94,7 +94,7 @@ public class TagsDriver {
 		} catch (Exception e) {
 			return -1;
 		} finally {
-			
+
 		}
 	}
 	public static boolean insertTags(String tag_name) {
@@ -103,15 +103,15 @@ public class TagsDriver {
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setString(1, tag_name);
 			ps.executeUpdate();
-		  return true; // means false
+			return true; // means false
 		}  catch(SQLException e) {
 			return false;
 		} catch (Exception e) {
 			return false;
 		} finally {
-			
+
 		}
-		
+
 	}
 	public static boolean insertTagsInUsers(UserTable user,TagsTable tag) {
 		try{
@@ -121,16 +121,16 @@ public class TagsDriver {
 			ps.setBoolean(2, tag.getIsPermanent());
 			ps.setInt(3, tag.getId());
 			ps.executeUpdate();
-		  return true; // means false
+			return true; // means false
 		}  catch(SQLException e) {
 			return false;
 		} catch (Exception e) {
 			return false;
 		} finally {
-			
+
 		}
 	}
-	
+
 	private static TagsTable[] convertToArray(ResultSet result) throws SQLException{
 		int N = 0;
 		while(result.next()) N++;
@@ -140,7 +140,7 @@ public class TagsDriver {
 		while(result.next())
 			tags[i++] = new TagsTable(result.getString("tag"), result.getInt("id"));
 		return tags;
-		
+
 	}
 	public static UserTable[] getUsers(Integer tag_id) {
 		try{
@@ -163,7 +163,7 @@ public class TagsDriver {
 		while(result.next())
 			users[i++] = UserDriver.getById(result.getInt("user_id"));
 		return users;
-		
+
 	}
 	public static boolean insertTagsInPosts(int post_id,int tag_id) throws SQLException {
 		try{
@@ -172,13 +172,30 @@ public class TagsDriver {
 			ps.setInt(1, post_id);
 			ps.setInt(2, tag_id);
 			ps.executeUpdate();
-		  return true; // means false
+			return true; // means false
 		}  catch(SQLException e) {
 			return false;
 		} catch (Exception e) {
 			return false;
 		} finally {
-			
+
+		}
+	}
+
+	public static boolean insertUserInPost(int userId, int postId){
+		try{
+			String query="INSERT INTO users_in_posts (user_id, post_id) VALUES (?,?)" ;	
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, userId);
+			ps.setInt(2, postId);
+			ps.executeUpdate();
+			return true; // means false
+		}  catch(SQLException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		} finally {
+
 		}
 	}
 }	
