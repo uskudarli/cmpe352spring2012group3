@@ -92,7 +92,11 @@ public class PostDriver {
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, ownerId);
 			ps.setString(2, body);
-			int postId = ps.executeUpdate();
+			ps.executeUpdate();
+			ResultSet result = ps.getGeneratedKeys();
+			if(!result.next())
+				return false;
+			int postId = result.getInt(1);
 			for (int i : users)
 				TagsDriver.insertUserInPost(i, postId);
 			return true;

@@ -23,7 +23,7 @@
 	%>
 	<div style="margin-left:10px; margin-bottom:10px;">
 		
-					<strong><%= ((UserTable)users.get(post.getOwner_id())).getName() %>:</strong>
+					<strong><a href="/CmpeCommunityWeb/Profile/details/<%= ((UserTable)users.get(post.getOwner_id())).getId() %>"><%= ((UserTable)users.get(post.getOwner_id())).getName() %>:</a></strong>
 				
 					<%= post.getBody()%>
 				
