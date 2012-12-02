@@ -43,6 +43,11 @@ var Tags = {
 			$("#contentBody").load("/CmpeCommunityWeb/Tags/wall/"+tagId);
 			console.log("loading wall");
 		},
+		addTag: function(userId){
+			$("#contentBody").load("CmpeCommunityWeb/Tags/addTags/"+userId);
+			$("#contentBody").load("/CmpeCommunityWeb/Tags/wall/16");
+			console.log("loading wall");
+		},
 		
 		add: function(userId){
 			var tags = $("[name='hidden-tags']").val();
