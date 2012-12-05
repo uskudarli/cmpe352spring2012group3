@@ -40,6 +40,7 @@
             android:label="Home" >
         </activity>
         <activity android:name=".FeedActivity" android:label="Feeds"></activity>
+        <activity android:label="Tag" android:name=".TagActivity"></activity>
     </application>
 
 </manifest>

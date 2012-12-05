@@ -16,15 +16,30 @@ public class ProfileActivity extends TabActivity {
 		
 		TabHost tabHost = getTabHost();//=(TabHost)findViewById(R.id.tabHost);
 
-		TabSpec newsFeedTab = tabHost.newTabSpec("News Feed");
-		//newsFeedTab.setContent(R.id.newsfeed);
-		newsFeedTab.setContent(new Intent(this, FeedActivity.class));
+		Intent i;
+		Bundle b = new Bundle();
+		
+		
+		// News Feed Tab
+		i = new Intent(this, FeedActivity.class);
+		b.putString("FeedType", "newsFeed");
+		i.putExtras(b); 
+			
+		TabSpec newsFeedTab = tabHost.newTabSpec("News Feed");	
+		newsFeedTab.setContent(i);
 		newsFeedTab.setIndicator("News Feed");
+		
+		// Wall tab
+		i = new Intent(this, FeedActivity.class);
+		b.putString("FeedType", "wall");
+		i.putExtras(b); 
 		
 		TabSpec wallTab = tabHost.newTabSpec("Wall");
 		wallTab.setIndicator("Wall");
-		wallTab.setContent(R.id.wall);
+		wallTab.setContent(i);
 
+		
+		// add tabs
 		tabHost.addTab(newsFeedTab);
 		tabHost.addTab(wallTab);
 		}
