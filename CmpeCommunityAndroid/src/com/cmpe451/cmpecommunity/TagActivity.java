@@ -18,30 +18,30 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class FeedActivity extends ListActivity{
-	private FeedAdapter adapter;
+public class TagActivity extends ListActivity{
+	private TagAdapter adapter;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.feed_view);
+		setContentView(R.layout.tag_view);
 
-		adapter = new FeedAdapter(this, R.layout.feed_item);
+		adapter = new TagAdapter(this, R.layout.tag_item);
 
-		new HttpTask().execute(getIntent().getExtras().getString("FeedType"));
+		new HttpTask().execute();
 	}
 
 
-	final class HttpTask extends AsyncTask<String, Boolean, String> {
+	final class HttpTask extends AsyncTask<Void, Boolean, String> {
 		@Override
-		protected String doInBackground(String... param) {
+		protected String doInBackground(Void... param) {
 			publishProgress(true);
 
 			// Creating HTTP client
 			HttpClient httpClient = new DefaultHttpClient();
 
 			// Creating HTTP Post
-			HttpPost httpPost = new HttpPost("http://192.168.0.11:8082/CmpeCommunityWeb/AndroidApi/" + param[0]);
+			HttpPost httpPost = new HttpPost("http://192.168.0.11:8082/CmpeCommunityWeb/AndroidApi/tags");
 
 
 			// Url Encoding the POST parameters
@@ -67,7 +67,7 @@ public class FeedActivity extends ListActivity{
 
 		@Override
 		protected void onProgressUpdate(Boolean... progress) {
-			FeedActivity.this.setProgressBarIndeterminateVisibility(progress[0]);
+			TagActivity.this.setProgressBarIndeterminateVisibility(progress[0]);
 		}
 
 		@Override
@@ -76,7 +76,7 @@ public class FeedActivity extends ListActivity{
 
 			if(result == null)
 			{
-				Toast.makeText(FeedActivity.this, "Server connection error!", Toast.LENGTH_SHORT).show();
+				Toast.makeText(TagActivity.this, "Server connection error!", Toast.LENGTH_SHORT).show();
 				return;
 			}
 
@@ -84,15 +84,15 @@ public class FeedActivity extends ListActivity{
 			{
 				JSONObject json = new JSONObject(result);
 
-				JSONArray feeds = json.getJSONArray("posts");
+				JSONArray tags = json.getJSONArray("tags");
 				
-				for(int i=0; i<feeds.length(); ++i) 
+				for(int i=0; i<tags.length(); ++i) 
 				{
-					JSONObject feed = feeds.getJSONObject(i);
-					adapter.add(new Feed(feed.getInt("id"), feed.getString("owner_name"), feed.getInt("owner_id"), feed.getString("content"), feed.getString("posting_time")));
+					JSONObject tag = tags.getJSONObject(i);
+					adapter.add(new Tag(tag.getInt("id"), tag.getString("tag")));
 				}
 
-				FeedActivity.this.setListAdapter(adapter);
+				TagActivity.this.setListAdapter(adapter);
 			} catch (JSONException e) {
 				// writing exception to log
 				e.printStackTrace();

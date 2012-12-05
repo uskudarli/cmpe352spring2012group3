@@ -22,14 +22,6 @@
             android:layout_height="fill_parent" >
 
             <LinearLayout
-                android:id="@+id/tags"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:paddingTop="60px" >
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/events"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"

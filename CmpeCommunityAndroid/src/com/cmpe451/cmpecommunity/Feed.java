@@ -1,28 +1,49 @@
 package com.cmpe451.cmpecommunity;
 
 public class Feed {
-	private String name;
-	
+	private int id;
+	private String ownerName;
+	private int ownerId;
 	private String content;
-
-	public Feed(String name, String content) {
-		this.name = name;
+	private String postingTime;
+	
+	public Feed(int id, String ownerName, int ownerId, String content, String posting_time) {
+		this.id = id;
+		this.ownerName = ownerName;
+		this.ownerId = ownerId;
+		this.postingTime = posting_time;
 		this.content = content;
 	}
 	
-	public String getName() {
-		return name;
+	public int getId() {
+		return id;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setId(int id) {
+		this.id = id;
 	}
-
+	public String getOwnerName() {
+		return ownerName;
+	}
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+	public int getOwnerId() {
+		return ownerId;
+	}
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
+	}
+	public String getPostingTime() {
+		return postingTime;
+	}
+	public void setPostingTime(String postingTime) {
+		this.postingTime = postingTime;
+	}
 	public String getContent() {
 		return content;
 	}
-
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 }

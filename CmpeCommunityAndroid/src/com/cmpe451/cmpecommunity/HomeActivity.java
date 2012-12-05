@@ -14,14 +14,15 @@ public class HomeActivity extends TabActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
 		TabHost tabHost = getTabHost();
-	
-		TabSpec profileTab = tabHost.newTabSpec("Profile");
-		profileTab.setContent(new Intent(this, ProfileActivity.class));
-		profileTab.setIndicator("Profile", getResources().getDrawable(R.drawable.profile));
 
-		TabSpec tagsTab = tabHost.newTabSpec("Tags");
+		
+		TabSpec profileTab = tabHost.newTabSpec("Profile");
+		profileTab.setIndicator("Profile", getResources().getDrawable(R.drawable.profile));
+		profileTab.setContent(new Intent(this, ProfileActivity.class));
+
+		TabSpec tagsTab = tabHost.newTabSpec("Tags");		
 		tagsTab.setIndicator("Tags", getResources().getDrawable(R.drawable.tags));
-		tagsTab.setContent(R.id.tags);
+		tagsTab.setContent(new Intent(this, TagActivity.class));
 
 		TabSpec eventsTab = tabHost.newTabSpec("Events");
 		eventsTab.setIndicator("Events", getResources().getDrawable(R.drawable.events));

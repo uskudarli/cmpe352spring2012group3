@@ -10,11 +10,11 @@ import android.widget.TextView;
 /**
  * Adapts NewsEntry objects onto views for lists
  */
-public final class FeedAdapter extends ArrayAdapter<Feed> {
+public final class TagAdapter extends ArrayAdapter<Tag> {
 
 	private final int layoutResource;
 
-	public FeedAdapter(final Context context, final int layoutResource) {
+	public TagAdapter(final Context context, final int layoutResource) {
 		super(context, 0);
 		this.layoutResource = layoutResource;
 	}
@@ -26,11 +26,9 @@ public final class FeedAdapter extends ArrayAdapter<Feed> {
 		// retrieve its corresponding ViewHolder, which optimizes lookup efficiency
 		final View view = getWorkingView(convertView);
 		final ViewHolder viewHolder = getViewHolder(view);
-		final Feed feed = getItem(position);
-
-		viewHolder.ownerNameText.setText(feed.getOwnerName());		
-		viewHolder.contentText.setText(feed.getContent());
-		viewHolder.postingTimeText.setText(feed.getPostingTime());
+		final Tag tag = getItem(position);
+	
+		viewHolder.tagText.setText(tag.getTag());
 		
 		return view;
 	}
@@ -63,9 +61,7 @@ public final class FeedAdapter extends ArrayAdapter<Feed> {
 		if(null == tag || !(tag instanceof ViewHolder)) {
 			viewHolder = new ViewHolder();
 
-			viewHolder.ownerNameText = (TextView) workingView.findViewById(R.id.name);
-			viewHolder.contentText = (TextView) workingView.findViewById(R.id.content);
-			viewHolder.postingTimeText = (TextView) workingView.findViewById(R.id.posting_time);
+			viewHolder.tagText = (TextView) workingView.findViewById(R.id.tag);
 
 			workingView.setTag(viewHolder);
 
@@ -81,9 +77,7 @@ public final class FeedAdapter extends ArrayAdapter<Feed> {
 	 * Since views are recycled, these references will never change
 	 */
 	private static class ViewHolder {
-		public TextView ownerNameText;
-		public TextView contentText;
-		public TextView postingTimeText;
+		public TextView tagText;
 	}
 
 

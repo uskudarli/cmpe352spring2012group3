@@ -1,17 +1,13 @@
 package com.cmpe451.cmpecommunity;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,9 +53,7 @@ public class LoginActivity extends Activity {
 		loginButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-				startActivity(i);
-				//new HttpTask().execute();
+				new HttpTask().execute();
 			}
 		});
 	}
@@ -73,16 +67,15 @@ public class LoginActivity extends Activity {
 			HttpClient httpClient = new DefaultHttpClient();
 
 			// Creating HTTP Post
-			HttpPost httpPost = new HttpPost("http://193.140.194.148:8080/CmpeCommunityWeb/AndroidApi/login");
+			HttpPost httpPost = new HttpPost("http://192.168.0.11:8082/CmpeCommunityWeb/AndroidApi/login");
 
 			// Building post parameters, key and value pair
-			List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
-			nameValuePair.add(new BasicNameValuePair("email", emailText.getText().toString()));
-			nameValuePair.add(new BasicNameValuePair("password", passwordText.getText().toString()));
+			User.email = emailText.getText().toString();
+			User.password = passwordText.getText().toString();
 
 			// Url Encoding the POST parameters
 			try {
-				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
+				httpPost.setEntity(new UrlEncodedFormEntity(User.GetNameValuePair()));
 
 				// Making HTTP Request
 				HttpResponse response = httpClient.execute(httpPost);
