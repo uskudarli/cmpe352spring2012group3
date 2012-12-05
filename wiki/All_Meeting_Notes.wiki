@@ -5,6 +5,9 @@
 
 All previous meeting notes can be viewed from below.
 
+===<b>December 2012</b>===
+<a href="http://code.google.com/p/cmpe352spring2012group3/wiki/Group_Meeting_18">Meeting18 - 05.12.2012</a>
+
 ===<b>November 2012</b>===
 <a href="http://code.google.com/p/cmpe352spring2012group3/wiki/Group_Meeting_17">Meeting17 - 28.11.2012</a>
 
