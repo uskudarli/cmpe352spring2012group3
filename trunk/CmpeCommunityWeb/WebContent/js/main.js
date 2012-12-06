@@ -34,6 +34,21 @@ var Posts = {
 	}
 };
 
+var Reply = {
+	create: function(postId){
+		var body = $("[name='reply"+postId+"']").val();
+		$.post("/CmpeCommunityWeb/Posts/reply/"+postId, {body: body}, function(data){
+			if(data["success"])
+				window.location.reload();
+			else if(data["error"] == "need_login")
+				window.location.href = "/CmpeCommunityWeb/";
+			else
+				alert("An unknown error occured, sorry for the inconvenient we may have caused.");
+		});
+		return false;
+	}
+};
+
 var Tags = {
 		loadUsers: function(tagId){
 			$("#contentBody").load("/CmpeCommunityWeb/Tags/users/"+tagId);
