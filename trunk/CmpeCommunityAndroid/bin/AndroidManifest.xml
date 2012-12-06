@@ -35,12 +35,17 @@
             android:label="Profile" >
         </activity>
         <activity
-            android:theme="@android:style/Theme.NoTitleBar"
             android:name=".HomeActivity"
             android:label="Home" >
         </activity>
-        <activity android:name=".FeedActivity" android:label="Feeds"></activity>
-        <activity android:label="Tag" android:name=".TagActivity"></activity>
+        <activity
+            android:name=".FeedActivity"
+            android:label="Feeds" >
+        </activity>
+        <activity
+            android:name=".TagActivity"
+            android:label="Tag" >
+        </activity>
     </application>
 
 </manifest>
