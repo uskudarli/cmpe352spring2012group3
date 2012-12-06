@@ -50,7 +50,7 @@ public class Profile extends ServletBase {
 	public void news(Integer userId) throws ServletException, IOException{
 		if(getCurrentUser() == null)
 			return;
-		PostsTable[] posts = PostDriver.getWallPosts(userId);
+		PostsTable[] posts = PostDriver.getNewsFeedByUserId(userId);
 		if (posts == null)
 			return;
 		Map<Integer, UserTable> users = new TreeMap<Integer, UserTable>();
