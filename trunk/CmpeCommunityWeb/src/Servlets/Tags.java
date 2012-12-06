@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import drivers.PostDriver;
+import drivers.ReplyDriver;
 import drivers.TagsDriver;
 import drivers.UserDriver;
 
@@ -52,6 +53,7 @@ public class Tags extends ServletBase {
 				users.put(post.getOwner_id(), UserDriver.getById(post.getOwner_id()));
 		request.setAttribute("posts", posts);
 		request.setAttribute("users", users);
+		request.setAttribute("replies", ReplyDriver.getReplies(posts));
 		UserTable user = getCurrentUser();
 		request.setAttribute("user", user);
 		request.setAttribute("tag_id", tagId);
