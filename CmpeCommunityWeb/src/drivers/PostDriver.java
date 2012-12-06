@@ -3,6 +3,10 @@ package drivers;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import com.mysql.jdbc.Statement;
 
@@ -147,5 +151,35 @@ public class PostDriver {
 			System.out.println(e.getMessage());
 			return 0;
 		}
+	}
+	
+	public static String niceTime(String time){
+		Calendar cal = Calendar.getInstance();
+
+		time = time.substring(0, time.length()-2);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date1 = null;
+		try {
+			date1 = format.parse(time);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Date date2 = cal.getTime();
+		long difference = date2.getTime() - date1.getTime();
+		
+		long year = (((long)1000)*60*60*24*365);
+		long month = (((long)1000)*60*60*24*30);
+		
+		if(difference > year)
+			return (difference/year)+" years ago";
+		if(difference > month)
+			return (difference/month)+" months ago";
+		if(difference > (1000*60*60*24))
+			return (difference/(1000*60*60*24))+" days ago";
+		if(difference > (1000*60*60))
+			return (difference/(1000*60*60))+" hours ago";
+		if(difference > 1000*60)
+			return (difference/(1000*60))+" minutes ago";
+		return (difference)+" seconds ago";
 	}
 }

@@ -1,6 +1,7 @@
 
 <%@ page import="Tables.PostsTable" %>
 <%@ page import="Tables.UserTable" %>
+<%@ page import="drivers.PostDriver" %>
 <%@page import="java.util.Map"%>
 <% Map<Integer, UserTable> users = (Map<Integer, UserTable>)request.getAttribute("users"); %>
 <div style="margin-left: 30px" id="postList">
@@ -15,7 +16,7 @@
 				
 					<%= post.getBody()%>
 				
-					<div class="pull-right muted"> <%= post.getPosting_time() %> </div>
+					<div class="pull-right muted"> <%= PostDriver.niceTime(post.getPosting_time()) %> </div>
 		</div>			 
 		
 					<hr/>
