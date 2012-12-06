@@ -76,8 +76,8 @@ body {
 					%>
 						<div>
 							<b>Subforums:</b>
-							<% for(ForumsTable subForum: subForumsObjects){ %> 
-								<a href="<%= "/CmpeCommunityWeb/Forum/index/" + subForum.getId()%>"><%= subForum.getName() %>,</a>
+							<% for(int i = 0; i < subForumsObjects.length; i++) { %> 
+								<a href="<%= "/CmpeCommunityWeb/Forum/index/" + subForumsObjects[i].getId()%>"><%= subForumsObjects[i].getName() %></a><%= (i == subForumsObjects.length - 1) ? "" : "," %></a>
 							<% } %>
 						</div>
 					<% } %>
