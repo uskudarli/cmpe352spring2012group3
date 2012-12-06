@@ -6,15 +6,15 @@ public class Feed {
 	private int ownerId;
 	private String content;
 	private String postingTime;
-	
-	public Feed(int id, String ownerName, int ownerId, String content, String posting_time) {
+
+	public Feed(int id, String ownerName, int ownerId, String content, String postingTime) {
 		this.id = id;
 		this.ownerName = ownerName;
 		this.ownerId = ownerId;
-		this.postingTime = posting_time;
+		this.postingTime = postingTime;
 		this.content = content;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
