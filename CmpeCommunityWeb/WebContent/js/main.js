@@ -36,7 +36,7 @@ var Posts = {
 
 var Reply = {
 	create: function(postId){
-		var body = $("[name='reply"+postId+"']").val();
+		var body = $("[name='reply_"+postId+"']").val();
 		$.post("/CmpeCommunityWeb/Posts/reply/"+postId, {body: body}, function(data){
 			if(data["success"])
 				window.location.reload();

@@ -12,6 +12,7 @@ import Tables.PostsTable;
 import Tables.TagsTable;
 import Tables.UserTable;
 import drivers.PostDriver;
+import drivers.ReplyDriver;
 import drivers.TagsDriver;
 import drivers.UserDriver;
 
@@ -42,6 +43,7 @@ public class Profile extends ServletBase {
 				users.put(post.getOwner_id(), UserDriver.getById(post.getOwner_id()));
 		request.setAttribute("posts", posts);
 		request.setAttribute("users", users);
+		request.setAttribute("replies", ReplyDriver.getReplies(posts));
 		UserTable user = UserDriver.getById(userId);
 		request.setAttribute("user", user);
 		request.getRequestDispatcher("/ProfileWall.jsp").include(request, response);
@@ -58,6 +60,7 @@ public class Profile extends ServletBase {
 			if(users.get(post.getOwner_id()) == null)
 				users.put(post.getOwner_id(), UserDriver.getById(post.getOwner_id()));
 		request.setAttribute("posts", posts);
+		request.setAttribute("replies", ReplyDriver.getReplies(posts));
 		request.setAttribute("users", users);
 		UserTable user = UserDriver.getById(userId);
 		request.setAttribute("user", user);

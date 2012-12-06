@@ -3,14 +3,17 @@ package drivers;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
+import java.util.TreeMap;
 
 import DBPack.DBStatement;
+import Tables.PostsTable;
 import Tables.ReplyTable;
 
 public class ReplyDriver {
 	public static boolean insert(int postId, int ownerId, String body){
 		try{
-			String query="INSERT INTO `replies` (`post_id`, `owner_id`, `body`, `posting_time`) VALUES (?, ?, ?, NOW())" ;	
+			String query="INSERT INTO `replies` (`post_id`, `owner_id`, `body`, `posting_time`) VALUES (?, ?, ?, NOW())" ;
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, postId);
 			ps.setInt(2, ownerId);
@@ -40,6 +43,13 @@ public class ReplyDriver {
 			System.out.println(e.getMessage());
 			return new ReplyTable[0];
 		}
+	}
+	
+	public static Map<Integer, ReplyTable[]> getReplies(PostsTable[] posts){
+		Map<Integer, ReplyTable[]> rets = new TreeMap<Integer, ReplyTable[]>();
+		for (PostsTable post : posts)
+			rets.put(post.getId(), getByPostId(post.getId()));
+		return rets;
 	}
 	
 	private static ReplyTable[] convertToArray(ResultSet result) throws SQLException{
