@@ -18,8 +18,7 @@
 				
 					<div class="pull-right muted"> <%= PostDriver.niceTime(post.getPosting_time()) %> </div>
 		</div>			 
-		<form name="form2" method="post" action="/CmpeCommunityWeb/User/registerAction">
-					<input class="FormText" type="hidden" name="clickedButton" id="clickedButton" value="" >
+		<form name="reply_form" method="post" action="#">
 					<fieldset>
 						<div class="controls">
 							<input type="text" style="height:10px; margin-left:30px;" name="reply" placeholder="Reply...">
