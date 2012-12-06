@@ -18,10 +18,10 @@
 				
 					<div class="pull-right muted"> <%= PostDriver.niceTime(post.getPosting_time()) %> </div>
 		</div>			 
-		<form name="reply_form" method="post" action="#">
+		<form name="reply_form" method="post" onsubmit="reply.create(<%=post.getId()%>); return false;">
 					<fieldset>
 						<div class="controls">
-							<input type="text" style="height:10px; margin-left:30px;" name="reply" placeholder="Reply...">
+							<input type="text" style="height:10px; margin-left:30px;" name="reply_<%=post.getId()%>" placeholder="Reply...">
 						</div>
 					</fieldset>
     			</form>
