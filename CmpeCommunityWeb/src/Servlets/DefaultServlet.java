@@ -133,10 +133,6 @@ public class DefaultServlet extends HttpServlet {
 			System.err.println(e.getTargetException().toString());
 			return;
 		}
-		try {
-			DBStatement.getMainConnection().close();
-		} catch (SQLException e) {
-		}
     }
 
 	/**
