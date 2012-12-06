@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Tables.UserTable;
 import drivers.PostDriver;
+import drivers.ReplyDriver;
 
 public class Posts extends ServletBase {
 
@@ -47,6 +48,24 @@ public class Posts extends ServletBase {
 		if(body!=null && PostDriver.addPostAndTagUsers(user.getId(), body, users)){
 			response.getOutputStream().println("{\"success\": true}");
 		}
+		else
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
+	}
+	
+	public void reply(Integer postId) throws IOException{
+		//login check
+		response.setContentType("application/json");
+		UserTable user = getCurrentUser();
+		if(user == null){
+			response.getOutputStream().println("{\"success\": false, \"error\": \"need_login\"}");
+			return;
+		}
+		
+		String body =  request.getParameter("body");
+		if(body == null)
+			response.getOutputStream().println("{\"success\": false, \"error\": \"no_input\"}");
+		else if(ReplyDriver.insert(postId, user.getId(), body))
+			response.getOutputStream().println("{\"success\": true}");
 		else
 			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
 	}
