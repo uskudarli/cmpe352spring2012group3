@@ -50,15 +50,17 @@ public class Profile extends ServletBase {
 	public void news(Integer userId) throws ServletException, IOException{
 		if(getCurrentUser() == null)
 			return;
-		PostsTable[] posts = {
-			new PostsTable(1, 1, "Post id 1", "2012-11-24"),
-			new PostsTable(2, 1, "Post id 2", "2012-11-24"),
-			new PostsTable(3, 2, "Post id 3", "2012-11-24"),
-			new PostsTable(4, 2, "Post id 4", "2012-11-24"),
-			new PostsTable(5, 2, "Post id 5", "2012-11-24"),
-			new PostsTable(6, 3, "Post id 6", "2012-11-24")
-		};
+		PostsTable[] posts = PostDriver.getWallPosts(userId);
+		if (posts == null)
+			return;
+		Map<Integer, UserTable> users = new TreeMap<Integer, UserTable>();
+		for (PostsTable post : posts)
+			if(users.get(post.getOwner_id()) == null)
+				users.put(post.getOwner_id(), UserDriver.getById(post.getOwner_id()));
 		request.setAttribute("posts", posts);
+		request.setAttribute("users", users);
+		UserTable user = UserDriver.getById(userId);
+		request.setAttribute("user", user);
 		request.getRequestDispatcher("/PostListView.jsp").include(request, response);
 	}
 	
