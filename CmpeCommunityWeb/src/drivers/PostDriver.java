@@ -39,8 +39,7 @@ public class PostDriver {
 			//
 			String postedToUser="SELECT `posts`.* FROM `users_in_posts` INNER JOIN `posts` ON `users_in_posts`.`post_id`=`posts`.`id` WHERE `users_in_posts`.`user_id`=?";
 			String postedToUsersTags = "SELECT `posts`.* FROM `tags_in_posts` INNER JOIN `posts` INNER JOIN `tags_in_users` ON `tags_in_posts`.`post_id`=`posts`.`id` AND `tags_in_users`.`tag_id`=`tags_in_posts`.`tag_id` WHERE `tags_in_users`.`user_id`=? ";
-			String query = "SELECT * FROM (("+postedToUser+") UNION ("+postedToUsersTags+")) AS `p`";
-			System.out.println(query);
+			String query = "SELECT * FROM (("+postedToUser+") UNION ("+postedToUsersTags+")) AS `p` ORDER BY `p`.`posting_time` DESC";
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, id);
 			ps.setInt(2, id);
