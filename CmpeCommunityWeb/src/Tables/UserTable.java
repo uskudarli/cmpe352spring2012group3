@@ -3,27 +3,27 @@ package Tables;
 public class UserTable {
 	private String email;
 	private int id;
-	private String password_hash;
+	private String passwordHash;
 	private String name;
-	private String birth_date;
-	private String register_Date;
-	public UserTable(String email, String name, String password_hash,String birth_date,
-			String register_Date) {
+	private String birthDate;
+	private String registerDate;
+	public UserTable(String email, String name, String passwordHash,String birthDate,
+			String registerDate) {
 		super();
 		this.email = email;
 		this.name = name;
-		this.password_hash=password_hash;
-		this.birth_date = birth_date;
-		this.register_Date = register_Date;
+		this.passwordHash=passwordHash;
+		this.birthDate = birthDate;
+		this.registerDate = registerDate;
 	}
 	public UserTable(int id, String email, String name, String passwordHash, String birthDate, String registerDate){
 		super();
 		this.id = id;
 		this.email = email;
 		this.name = name;
-		this.password_hash=passwordHash;
-		this.birth_date = birthDate;
-		this.register_Date = registerDate;
+		this.passwordHash=passwordHash;
+		this.birthDate = birthDate;
+		this.registerDate = registerDate;
 	}
 	public String getEmail() {
 		return email;
@@ -31,11 +31,11 @@ public class UserTable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPassword_hash() {
-		return password_hash;
+	public String getPasswordHash() {
+		return passwordHash;
 	}
-	public void setPassword_hash(String password_hash) {
-		this.password_hash = password_hash;
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
 	}
 	public String getName() {
 		return name;
@@ -49,16 +49,16 @@ public class UserTable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getBirth_date() {
-		return birth_date;
+	public String getBirthDate() {
+		return birthDate;
 	}
-	public void setBirth_date(String birth_date) {
-		this.birth_date = birth_date;
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
 	}
-	public String getRegister_Date() {
-		return register_Date;
+	public String getRegisterDate() {
+		return registerDate;
 	}
-	public void setRegister_Date(String register_Date) {
-		this.register_Date = register_Date;
+	public void setRegisterDate(String registerDate) {
+		this.registerDate = registerDate;
 	}
 }

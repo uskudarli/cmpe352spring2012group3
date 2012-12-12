@@ -23,7 +23,7 @@ public class UserDriverTest {
 		String email="test@test.com";
 		String password_hash="gwRqWu588Ocd6otgdTBhQw==";
 		UserTable user= UserDriver.getByEmail(email);
-		Assert.assertEquals("Credentials Valid"	, password_hash, user.getPassword_hash());	
+		Assert.assertEquals("Credentials Valid"	, password_hash, user.getPasswordHash());	
 	}
 
 	@Test

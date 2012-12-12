@@ -12,11 +12,11 @@
 	%>
 	<div style="margin-left:10px; margin-bottom:10px;">
 		
-					<strong><a href="/CmpeCommunityWeb/Profile/details/<%= ((UserTable)users.get(post.getOwner_id())).getId() %>"><%= ((UserTable)users.get(post.getOwner_id())).getName() %>:</a></strong>
+					<strong><a href="/CmpeCommunityWeb/Profile/details/<%=((UserTable)users.get(post.getOwnerId())).getId()%>"><%=((UserTable)users.get(post.getOwnerId())).getName()%>:</a></strong>
 				
 					<%= post.getBody()%>
 				
-					<div class="pull-right muted"> <%= PostDriver.niceTime(post.getPosting_time()) %> </div>
+					<div class="pull-right muted"> <%=PostDriver.niceTime(post.getPostingTime())%> </div>
 		</div>			 
 		<form name="reply_form" method="post" onsubmit="Reply.create(<%=post.getId()%>); return false;">
 					<fieldset>

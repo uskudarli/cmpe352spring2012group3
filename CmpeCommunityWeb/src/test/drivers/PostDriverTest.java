@@ -33,7 +33,7 @@ public class PostDriverTest {
 	public void testGetPostsByUserId() {
 		int user_id=16;
 		PostsTable[] posts= PostDriver.getPostsByUserId(user_id);
-		Assert.assertEquals("There is a wall post",user_id, posts[0].getOwner_id());
+		Assert.assertEquals("There is a wall post",user_id, posts[0].getOwnerId());
 	}
 
 	@Test
