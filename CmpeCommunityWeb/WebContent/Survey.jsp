@@ -20,7 +20,24 @@
   <body>
     <div class="content">
 
+      <div class="span4">
+        <form action="">
+          <h5>What is your favorite TV show?</h5>
+          <label class="radio">
+            <input type="radio" name="id_of_survey"> Friends
+          </label>
+          <label class="radio">
+            <input type="radio" name="id_of_survey"> The Big Bang Theory
+          </label>
+          <label class="radio">
+            <input type="radio" name="id_of_survey"> House M.D.
+          </label>
 
+          <div class="controls">
+            <button class="btn btn-success" type="button">Submit</button>
+          </div>
+        </form>
+      </div>
 		
 	<br>
       <form id="newsurvey" class='row span4' action="">
