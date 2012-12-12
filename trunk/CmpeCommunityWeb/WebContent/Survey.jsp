@@ -38,7 +38,36 @@
           </div>
         </form>
       </div>
-		
+
+      <div class="span6">
+        <h5>What is your favorite programming language?</h5>
+        <div class="row">
+          <div class="progress progress-warning span1">
+            <div class="bar" style="width: 50%;"><p> &nbsp;50%</p></div>
+          </div>
+          <div class="span5">
+            <p>Python</p>
+          </div>          
+        </div>
+
+        <div class="row">
+          <div class="progress progress-warning span1">
+            <div class="bar" style="width: 10%;"> <p>&nbsp;10%</p></div>
+          </div>
+          <div class="span5">
+            <p>Java</p>
+          </div>          
+        </div>
+
+        <div class="row">
+          <div class="progress progress-warning span1">
+            <div class="bar" style="width: 40%;"> <p>&nbsp;40%</p></div>
+          </div>
+          <div class="span5">
+            <p>C++</p>
+          </div>          
+        </div>
+      </div>		
 	<br>
       <form id="newsurvey" class='row span4' action="">
         <fieldset>
