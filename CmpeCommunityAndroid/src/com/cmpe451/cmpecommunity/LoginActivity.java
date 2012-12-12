@@ -53,7 +53,9 @@ public class LoginActivity extends Activity {
 		loginButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				new HttpTask().execute();
+//				new HttpTask().execute();
+				Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+				startActivity(i);
 			}
 		});
 	}
