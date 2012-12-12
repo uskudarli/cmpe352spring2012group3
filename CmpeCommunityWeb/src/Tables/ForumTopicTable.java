@@ -1,17 +1,19 @@
 package Tables;
 
+import java.util.Calendar;
+
 public class ForumTopicTable {
 	private int id;
 	private int topicId;
 	private String title;
 	private int repliesCount;
 	private int viewsCount;
-	private int creationTime;
+	private Calendar creationTime;
 	private int userId;
 	private int lastPostId;
 	
 	public ForumTopicTable(int id, int topicId, String title, int repliesCount,
-			int viewsCount, int creationTime, int userId, int lastPostId) {
+			int viewsCount, Calendar creationTime, int userId, int lastPostId) {
 		this.id = id;
 		this.topicId = topicId;
 		this.title = title;
@@ -62,11 +64,11 @@ public class ForumTopicTable {
 		this.viewsCount = viewsCount;
 	}
 
-	public int getCreationTime() {
+	public Calendar getCreationTime() {
 		return creationTime;
 	}
 
-	public void setCreationTime(int creationTime) {
+	public void setCreationTime(Calendar creationTime) {
 		this.creationTime = creationTime;
 	}
 
