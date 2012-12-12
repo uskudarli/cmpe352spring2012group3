@@ -14,7 +14,7 @@ public abstract class UserDriver {
 			String query="INSERT INTO users(email, password_hash, name, birth_date, register_date) VALUES (?, ?, ?, NOW(), NOW())";
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setString(1, user.getEmail());
-			ps.setString(2, user.getPassword_hash());
+			ps.setString(2, user.getPasswordHash());
 			ps.setString(3, user.getName());
 			ps.executeUpdate();
 		} catch(SQLException e) {

@@ -49,8 +49,8 @@ public class Tags extends ServletBase {
 		
 		Map<Integer, UserTable> users = new TreeMap<Integer, UserTable>();
 		for (PostsTable post : posts)
-			if(users.get(post.getOwner_id()) == null)
-				users.put(post.getOwner_id(), UserDriver.getById(post.getOwner_id()));
+			if(users.get(post.getOwnerId()) == null)
+				users.put(post.getOwnerId(), UserDriver.getById(post.getOwnerId()));
 		request.setAttribute("posts", posts);
 		request.setAttribute("users", users);
 		request.setAttribute("replies", ReplyDriver.getReplies(posts));

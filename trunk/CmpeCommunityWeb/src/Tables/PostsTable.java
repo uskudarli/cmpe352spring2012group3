@@ -2,15 +2,15 @@ package Tables;
 
 public class PostsTable {
 	private int id;
-	private int owner_id;
+	private int ownerId;
 	private String body;
-	private String posting_time;
-	public PostsTable(int id, int owner_id, String body, String posting_time) {
+	private String postingTime;
+	public PostsTable(int id, int ownerId, String body, String postingTime) {
 		super();
 		this.id = id;
-		this.owner_id = owner_id;
+		this.ownerId = ownerId;
 		this.body = body;
-		this.posting_time = posting_time;
+		this.postingTime = postingTime;
 	}
 	public PostsTable() {
 		super();
@@ -22,11 +22,11 @@ public class PostsTable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getOwner_id() {
-		return owner_id;
+	public int getOwnerId() {
+		return ownerId;
 	}
-	public void setOwner_id(int owner_id) {
-		this.owner_id = owner_id;
+	public void setOwnerId(int owner_id) {
+		this.ownerId = owner_id;
 	}
 	public String getBody() {
 		return body;
@@ -34,10 +34,10 @@ public class PostsTable {
 	public void setBody(String body) {
 		this.body = body;
 	}
-	public String getPosting_time() {
-		return posting_time;
+	public String getPostingTime() {
+		return postingTime;
 	}
-	public void setPosting_time(String posting_time) {
-		this.posting_time = posting_time;
+	public void setPostingTime(String posting_time) {
+		this.postingTime = posting_time;
 	}
 }

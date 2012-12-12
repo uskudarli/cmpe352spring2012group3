@@ -77,11 +77,11 @@ public class AndroidApi extends ServletBase {
 		response.setContentType("application/json");
 		String output = "{posts: [";
 		for (PostsTable post : posts) {
-			UserTable owner = UserDriver.getById(post.getOwner_id());
+			UserTable owner = UserDriver.getById(post.getOwnerId());
 			output = output+"{";
 				output = output+"'id': "+post.getId()+",";
 				output = output+"'content': '"+post.getBody().replaceAll("'", "")+"',";
-				output = output+"'posting_time': '"+PostDriver.niceTime(post.getPosting_time())+"',";
+				output = output+"'posting_time': '"+PostDriver.niceTime(post.getPostingTime())+"',";
 				output = output+"'owner_id': "+owner.getId()+",";
 				output = output+"'owner_name': '"+owner.getName().replaceAll("'", "")+"'";
 			output = output+"},";
@@ -111,11 +111,11 @@ public class AndroidApi extends ServletBase {
 		response.setContentType("application/json");
 		String output = "{posts: [";
 		for (PostsTable post : posts) {
-			UserTable owner = UserDriver.getById(post.getOwner_id());
+			UserTable owner = UserDriver.getById(post.getOwnerId());
 			output = output+"{";
 				output = output+"'id': "+post.getId()+",";
 				output = output+"'content': '"+post.getBody().replaceAll("'", "")+"',";
-				output = output+"'posting_time': '"+PostDriver.niceTime(post.getPosting_time())+"',";
+				output = output+"'posting_time': '"+PostDriver.niceTime(post.getPostingTime())+"',";
 				output = output+"'owner_id': "+owner.getId()+",";
 				output = output+"'owner_name': '"+owner.getName().replaceAll("'", "")+"'";
 			output = output+"},";
