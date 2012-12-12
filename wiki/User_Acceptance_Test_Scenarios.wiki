@@ -1,4 +1,4 @@
-<br/><b>
+<div style="margin-top:5px;"><b>
 <font size="3">USER ACCEPTANCE TEST SCENARIOS:</font>
 
 <font color="#595d5e">1) <a href="http://www.google.com">Registering to the system </a></font>
@@ -11,3 +11,4 @@
 
 <font color="#595d5e">5) <a href="http://www.google.com">Posting to tag page </a></font>
 </b>
+</div>
