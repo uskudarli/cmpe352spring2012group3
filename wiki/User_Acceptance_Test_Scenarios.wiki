@@ -1,7 +1,7 @@
-<div><b>
+<div></br><b>
 <font size="3">USER ACCEPTANCE TEST SCENARIOS:</font>
 
-<font color="#595d5e">1) <a href="http://www.google.com">Registration </a></font>
+<font color="#595d5e">1) <a href="http://www.google.com">Registering to the system </a></font>
 
 <font color="#595d5e">2) <a href="http://www.google.com">Viewing profile page (Wall+News feed) </a></font>
 
