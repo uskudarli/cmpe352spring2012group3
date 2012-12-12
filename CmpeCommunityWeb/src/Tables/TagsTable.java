@@ -3,43 +3,43 @@ package Tables;
 public class TagsTable {
 
 	
-	private String  _tag;
-	private Integer _id;
-	private Boolean _isPermanent = true;
+	private String  tag;
+	private Integer id;
+	private Boolean isPermanent = true;
 	
 	public TagsTable(String tags){
-		_tag = tags;
+		tag = tags;
 	}
-	public TagsTable(String tags,Integer id){
-		_tag = tags;
-		_id = id;
+	public TagsTable(String tags,Integer idTags){
+		tag = tags;
+		id = idTags;
 	}
-	public TagsTable(String tags,Boolean isPermanent){
-		_tag = tags;
-		_isPermanent = isPermanent;
+	public TagsTable(String tags,Boolean isPermanentTags){
+		tag = tags;
+		isPermanent = isPermanentTags;
 	}
-	public TagsTable(String tags,Integer id,Boolean isPermanent){
-		_tag = tags;
-		_id = id;
-		_isPermanent = isPermanent;
+	public TagsTable(String tags,Integer idTags,Boolean isPermanentTags){
+		tag = tags;
+		id = idTags;
+		isPermanent = isPermanentTags;
 	}
 	public String getTag() {
-		return _tag;
+		return tag;
 	}
 	public void setTag(String tag) {
-		this._tag = tag;
+		this.tag = tag;
 	}
 	public Integer getId() {
-		return _id;
+		return id;
 	}
 	public void setId(Integer id) {
-		this._id = id;
+		this.id = id;
 	}
 	public Boolean getIsPermanent() {
-		return _isPermanent;
+		return isPermanent;
 	}
-	public void setIsPermanent(Boolean isPermanent) {
-		this._isPermanent = isPermanent;
+	public void setIsPermanent(Boolean isPermanentTags) {
+		this.isPermanent = isPermanentTags;
 	}
 	
 	
