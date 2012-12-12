@@ -1,5 +1,5 @@
 <div><b>
-USER ACCEPTANCE TEST SCENARIOS:
+<font size="3">USER ACCEPTANCE TEST SCENARIOS:</font>
 
 <font color="#595d5e">1) <a href="http://www.google.com">Registration </a></font>
 
