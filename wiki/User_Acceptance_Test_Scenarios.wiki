@@ -1,5 +1,5 @@
-<div>
-User Acceptance Test Scenarios Are As Follows:
+<div><b>
+USER ACCEPTANCE TEST SCENARIOS:
 
 <font color="#595d5e">1) <a href="http://www.google.com">Registration </a></font>
 
@@ -10,5 +10,5 @@ User Acceptance Test Scenarios Are As Follows:
 <font color="#595d5e">4) <a href="http://www.google.com">Adding tags to own </a></font>
 
 <font color="#595d5e">5) <a href="http://www.google.com">Posting to tag page </a></font>
-
+</b>
 </div>
