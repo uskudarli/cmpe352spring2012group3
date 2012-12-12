@@ -1,0 +1,9 @@
+<div>
+User Acceptance Test Scenarios Are As Follows:
+
+1) <a href="#">Registration</a>
+2) Viewing profile page (Wall+News feed)
+3) Posting to own wall
+4) Adding tags to own
+5) Posting to tag page
+</div>
