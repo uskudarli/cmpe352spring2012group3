@@ -15,7 +15,7 @@ public class SurveyDriver {
 	
 	public static boolean createSurvey(int userId,String question,String[] choices) {
 		try{
-			String query="INSERT INTO surveys (question,user_id) VALUES (?,?)" ;	
+			String query="INSERT INTO surveys (question,user_id,creation_time) VALUES (?,?,NOW())" ;	
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, question);
 			ps.setInt(2, userId);
