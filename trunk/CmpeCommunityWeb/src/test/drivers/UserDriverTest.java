@@ -1,7 +1,14 @@
 package test.drivers;
 
-import Tables.UserTable;
+import static org.junit.Assert.*;
+import junit.framework.Assert;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import drivers.UserDriver;
+
 
 public class UserDriverTest {
 
@@ -13,40 +20,37 @@ public class UserDriverTest {
 	public void tearDown() throws Exception {
 	}
 
-	/*@Test
-	public void testCreateUser() {
-		fail("Not yet implemented");
-	}*/
-
 	@Test
 	public void testIsCredentialsValid() {
 		String email="test@test.com";
 		String password_hash="gwRqWu588Ocd6otgdTBhQw==";
-		UserTable user= UserDriver.getByEmail(email);
+		Tables.UserTable user= UserDriver.getByEmail(email);
 		Assert.assertEquals("Credentials Valid"	, password_hash, user.getPasswordHash());	
 	}
 
 	@Test
 	public void testGetById() {
 		int id = 15;
-		UserTable  user = UserDriver.getById(id);
+		Tables.UserTable  user = UserDriver.getById(id);
 		Assert.assertEquals("Got user by id"	, id, user.getId());
 	}
 
 	@Test
 	public void testGetByEmail() {
 		String email = "test@test.com";
-		UserTable  user = UserDriver.getByEmail(email);
+		Tables.UserTable  user = UserDriver.getByEmail(email);
 		Assert.assertEquals("Email"	, email, user.getEmail());
 	}
-	
 	/*@Test
-	public void testGetUsersByTag(){
-		int tagId=5;
-		UserTable[] user=UserDriver.getUsersByTag(tagId);
-		
-		
-		
+	public void testCreateUser() {
+		fail("Not yet implemented");
 	}*/
+
+	@Test
+	public void testGetUsersByTag() {
+		int tagId=1;
+		Tables.UserTable [] users=UserDriver.getUsersByTag(tagId);
+		Assert.assertEquals(12, users[0].getId());
+	}
 
 }
