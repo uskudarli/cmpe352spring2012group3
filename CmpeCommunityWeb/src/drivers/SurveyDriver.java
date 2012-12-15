@@ -30,7 +30,7 @@ public class SurveyDriver {
 	}
 	public static SurveyTable[] getUserJoinedSurvey(int userId) {
 		try{
-			String query="SELECT `surveys`.* FROM `surveys` INNER JOIN `users_in_survey` ON `users_in_survey`.`user_id`=`surveys`.`user_id` WHERE `tags_in_users`.`user_id`= ? order by creation_time" ;
+			String query="SELECT `surveys`.* FROM `surveys` INNER JOIN `users_in_survey` ON `users_in_survey`.`user_id`=`surveys`.`user_id` WHERE `surveys`.`user_id`= ? order by creation_time" ;
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, userId);
 			ResultSet set = ps.executeQuery();
@@ -54,10 +54,10 @@ public class SurveyDriver {
 			if(!result.next())
 				return false;
 			int surveyId = result.getInt(1);
-			if(!SurveyDriver.insertUsersInSurvey(userId,surveyId)){
+			/*if(!SurveyDriver.insertUsersInSurvey(userId,surveyId)){
 				//TODO delete previously created post
 				return false;
-			}
+			}*/
 			if(!SurveyDriver.insertChoices(surveyId,choices)){
 				//TODO delete previously created post
 				return false;
