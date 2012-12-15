@@ -86,7 +86,6 @@ public class Profile extends ServletBase {
 		for(PostsTable p : posts){
 			TagsTable t = TagsDriver.getByPostId(p.getId());
 			UserTable u = TagsDriver.getUserTagByPostId(p.getId());
-			System.out.println(p.getId()+" / "+(t!=null)+" / "+(u!=null));
 			if(t != null)
 				tags.put(p.getId(), t);
 			if(u != null)
