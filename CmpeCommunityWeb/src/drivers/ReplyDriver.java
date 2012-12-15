@@ -59,7 +59,7 @@ public class ReplyDriver {
 		ReplyTable[] replies = new ReplyTable[N];
 		int i=0;
 		while(result.next())
-			replies[i++] = new ReplyTable(result.getInt("id"), result.getInt("post_id"), result.getInt("owner_id"), result.getString("body"), result.getString("postingTime"));
+			replies[i++] = new ReplyTable(result.getInt("id"), result.getInt("post_id"), result.getInt("owner_id"), result.getString("body"), result.getString("posting_time"));
 		return replies;
 	}
 	/*
