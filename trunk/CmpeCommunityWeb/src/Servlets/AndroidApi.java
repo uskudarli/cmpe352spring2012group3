@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Tables.PostsTable;
+import Tables.ReplyTable;
 import Tables.TagsTable;
 import Tables.UserTable;
 import UtilityPack.HashString;
 import drivers.PostDriver;
+import drivers.ReplyDriver;
 import drivers.TagsDriver;
 import drivers.UserDriver;
 
@@ -29,7 +31,8 @@ public class AndroidApi extends ServletBase {
 			response.getOutputStream().println("{'success': false, 'error': 'All fields should be filled'}");
 		}
 		else if(UserDriver.isCredentialsValid(email, password)){
-			response.getOutputStream().println("{'success': true }");
+			UserTable user = UserDriver.getByEmail(email);
+			response.getOutputStream().println("{'success': true, 'name': '"+user.getName()+"', 'id': "+user.getId()+" }");
 		}
 		else{
 			request.setAttribute("loginFailed", 1);
@@ -84,12 +87,25 @@ public class AndroidApi extends ServletBase {
 				output = output+"'posting_time': '"+PostDriver.niceTime(post.getPostingTime())+"',";
 				output = output+"'owner_id': "+owner.getId()+",";
 				output = output+"'owner_name': '"+owner.getName().replaceAll("'", "")+"'";
+				output = output+"'replies': [";
+				ReplyTable[] replies = ReplyDriver.getByPostId(post.getId());
+				for (ReplyTable replyTable : replies) {
+					UserTable user = UserDriver.getById(replyTable.getOwnerId());
+					output = "{";
+					output = "'owner_id': '"+user.getId()+"',";
+					output = "'name': '"+user.getName()+"',";
+					output = "'content': '"+replyTable.getBody()+"',";
+					output = "'posting_time': '"+replyTable.getPostingTime()+"'";
+					output = "},";
+				}
+				if(output.charAt(output.length()-1) == ',')
+					output = output.substring(0, output.length()-1);
+				output = output+"]";
 			output = output+"},";
 		}
 		if(output.charAt(output.length()-1) == ',')
 			output = output.substring(0, output.length()-1);
 		output = output+"]}";
-		System.out.println(output);
 		response.getOutputStream().println(output);
 	}
 	
@@ -117,13 +133,26 @@ public class AndroidApi extends ServletBase {
 				output = output+"'content': '"+post.getBody().replaceAll("'", "")+"',";
 				output = output+"'posting_time': '"+PostDriver.niceTime(post.getPostingTime())+"',";
 				output = output+"'owner_id': "+owner.getId()+",";
-				output = output+"'owner_name': '"+owner.getName().replaceAll("'", "")+"'";
+				output = output+"'owner_name': '"+owner.getName().replaceAll("'", "")+"',";
+				output = output+"'replies': [";
+				ReplyTable[] replies = ReplyDriver.getByPostId(post.getId());
+				for (ReplyTable replyTable : replies) {
+					UserTable user = UserDriver.getById(replyTable.getOwnerId());
+					output = "{";
+					output = "'owner_id': '"+user.getId()+"',";
+					output = "'name': '"+user.getName()+"',";
+					output = "'content': '"+replyTable.getBody()+"',";
+					output = "'posting_time': '"+replyTable.getPostingTime()+"'";
+					output = "},";
+				}
+				if(output.charAt(output.length()-1) == ',')
+					output = output.substring(0, output.length()-1);
+				output = output+"]";
 			output = output+"},";
 		}
 		if(output.charAt(output.length()-1) == ',')
 			output = output.substring(0, output.length()-1);
 		output = output+"]}";
-		System.out.println(output);
 		response.getOutputStream().println(output);
 	}
 	
@@ -153,7 +182,6 @@ public class AndroidApi extends ServletBase {
 		if(output.charAt(output.length()-1) == ',')
 			output = output.substring(0, output.length()-1);
 		output = output+"]}";
-		System.out.println(output);
 		response.getOutputStream().println(output);
 	}
 }
