@@ -1,4 +1,5 @@
 
+<%@page import="Tables.TagsTable"%>
 <%@page import="java.util.Collection"%>
 <%@page import="java.util.Set"%>
 <%@page import="Tables.ReplyTable"%>
@@ -8,6 +9,8 @@
 <%@page import="java.util.Map"%>
 <% Map<Integer, UserTable> users = (Map<Integer, UserTable>)request.getAttribute("users"); %>
 <% Map<Integer, ReplyTable[]> replies = (Map<Integer, ReplyTable[]>)request.getAttribute("replies"); %>
+<% Map<Integer, Object> tags = (Map<Integer, Object>)request.getAttribute("tagsInPosts"); %>
+
 <div style="margin-left: 30px" id="postList">
 	<%
 			PostsTable[] posts = (PostsTable[])request.getAttribute("posts");
@@ -15,8 +18,18 @@
 	
 	%>
 	<div style="margin-left: 10px; margin-bottom: 10px;">
-		<strong><a href="/CmpeCommunityWeb/Profile/details/<%=((UserTable)users.get(post.getOwnerId())).getId()%>"><%=((UserTable)users.get(post.getOwnerId())).getName()%>:</a></strong>
-		<%= post.getBody()%>
+		<strong><a href="/CmpeCommunityWeb/Profile/details/<%=((UserTable)users.get(post.getOwnerId())).getId()%>"><%=((UserTable)users.get(post.getOwnerId())).getName()%></a></strong>
+		<%
+			Object o = tags.get(post.getId());
+			if(o!=null && o instanceof TagsTable){
+		%>
+			<span class="muted"> > </span><a href='/CmpeCommunityWeb/Tags/details/<%=((TagsTable)o).getId() %>'><%=((TagsTable)o).getTag() %></a>
+		<% }
+			else if (o!=null && o instanceof UserTable){
+		%>
+			<span class="muted"> > </span><a href='/CmpeCommunityWeb/Profile/details/<%=((UserTable)o).getId() %>'><%=((UserTable)o).getName() %></a>
+		<% } %>
+		 <%= post.getBody()%>
 		<div class="pull-right muted">
 			<%=PostDriver.niceTime(post.getPostingTime())%>
 		</div>
@@ -27,7 +40,7 @@
 		if(postReplies!=null && postReplies.length>0){
 			for(ReplyTable r : postReplies){
 	%>
-	<p><small><a href="/CmpeCommunityWeb/Profile/details/<%=((UserTable)users.get(post.getOwnerId())).getId()%>"><%=((UserTable)users.get(post.getOwnerId())).getName()%>: </a><%=r.getBody() %></small></p>
+	<p><small><a href="/CmpeCommunityWeb/Profile/details/<%=((UserTable)users.get(r.getOwnerId())).getId()%>"><%=((UserTable)users.get(r.getOwnerId())).getName()%>: </a><%=r.getBody() %></small></p>
 	<%
 			}
 		}

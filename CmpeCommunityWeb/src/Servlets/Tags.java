@@ -55,8 +55,19 @@ public class Tags extends ServletBase {
 		request.setAttribute("users", users);
 		request.setAttribute("replies", ReplyDriver.getReplies(posts));
 		UserTable user = getCurrentUser();
+		Map<Integer, Object> tags = new TreeMap<Integer, Object>();
+		for(PostsTable p : posts){
+			TagsTable t = TagsDriver.getByPostId(p.getId());
+			UserTable u = TagsDriver.getUserTagByPostId(p.getId());
+			if(t != null)
+				tags.put(p.getId(), t);
+			if(u != null)
+				tags.put(p.getId(), u);
+		}
+		request.setAttribute("tagsInPosts", tags);
 		request.setAttribute("user", user);
 		request.setAttribute("tag_id", tagId);
+		request.setAttribute("tag", TagsDriver.getById(tagId));
 		request.getRequestDispatcher("/TagWall.jsp").include(request, response);
 	}
 	

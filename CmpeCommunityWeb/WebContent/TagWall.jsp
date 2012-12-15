@@ -5,15 +5,12 @@
 
 <% TagsTable tag = (TagsTable)request.getAttribute("tag"); %>
 <% Integer tagId = (Integer)request.getAttribute("tag_id"); %>
+
 <div class="row">
-	<div >
-		<input class="FormText" type="hidden" name="clickedButton" id="clickedButton" value="" >
-		<fieldset>
-			<div class="controls">
-				<input type="text" name="tag_post" placeholder="Enter a new posts for tag" style="width:350px; margin-left:90px;"/>
-				<input type="submit" onclick="Posts.createWithTaggedId(<%= tagId %>)" class="btn btn-info btn-block" value="Post" style="width:100px;float:right"/>
-			</div>
-		</fieldset>
+	<div class="input-prepend input-append" style='margin-left: 100px'>
+		<span class="add-on">@<%=tag.getTag() %></span>
+		<input class='input-xlarge' type="text" name="tag_post" placeholder="Enter your post"/>
+		<button class="btn" type="button" onclick="Posts.createWithTaggedId(<%=tag.getId()%>);">Post</button>
 	</div>
 </div>
 <hr/>

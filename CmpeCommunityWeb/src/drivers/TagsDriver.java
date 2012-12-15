@@ -197,4 +197,39 @@ public class TagsDriver {
 
 		}
 	}
+	
+	public static TagsTable getByPostId(int postId){
+		try{
+			String query="SELECT * FROM `tags_in_posts` INNER JOIN `tags` ON `tags`.`id`=`tags_in_posts`.`tag_id` WHERE `tags_in_posts`.`post_id`=?";	
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, postId);
+			ResultSet set = ps.executeQuery();
+			if(set.next())
+				return new TagsTable(set.getString("tag"), set.getInt("id"));
+		}  catch(SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+		}
+		return null;
+	}
+	
+	public static UserTable getUserTagByPostId(int id){
+		try{
+			String query="SELECT * FROM `users_in_posts` INNER JOIN `users` ON `users`.`id`=`users_in_posts`.`user_id` WHERE `users_in_posts`.`post_id`=?";	
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet result = ps.executeQuery();
+			if(result.next())
+				return new UserTable(result.getInt("id"), result.getString("email"), result.getString("name"),
+							result.getString("password_hash"), result.getString("birth_date"), result.getString("register_date"));
+		}  catch(SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }	
