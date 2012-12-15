@@ -9,11 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Tables.PostsTable;
+
+import Tables.SurveyTable;
+
 import Tables.ReplyTable;
+
 import Tables.TagsTable;
 import Tables.UserTable;
 import drivers.PostDriver;
 import drivers.ReplyDriver;
+import drivers.SurveyDriver;
 import drivers.TagsDriver;
 import drivers.UserDriver;
 
@@ -111,6 +116,32 @@ public class Profile extends ServletBase {
 		response.setContentType("text/html");
 		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
 		request.getRequestDispatcher("/TagList.jsp").include(request, response);
+		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
+	}
+	public void survey(Integer userId) throws ServletException, IOException{
+		if(getCurrentUser() == null){
+			request.getRequestDispatcher("/User/login").forward(request, response);
+			return;
+		}
+		
+		UserTable user = UserDriver.getById(userId);
+		if(user == null){
+			//TODO show 404
+			return;
+		}
+		request.setAttribute("user", user);
+		
+		
+		
+		SurveyTable[] userSurvey = SurveyDriver.getUserSurvey(userId);
+		request.setAttribute("userSurvey", userSurvey);
+		
+		SurveyTable[] userJoinedSurvey = SurveyDriver.getUserJoinedSurvey(userId);
+		request.setAttribute("userJoinedSurvey", userJoinedSurvey);
+		
+		response.setContentType("text/html");
+		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
+		request.getRequestDispatcher("/SurveyList.jsp").include(request, response);
 		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
 	}
 	
