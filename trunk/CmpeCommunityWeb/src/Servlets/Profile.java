@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Tables.PostsTable;
+import Tables.ReplyTable;
 import Tables.TagsTable;
 import Tables.UserTable;
 import drivers.PostDriver;
@@ -41,9 +42,14 @@ public class Profile extends ServletBase {
 		for (PostsTable post : posts)
 			if(users.get(post.getOwnerId()) == null)
 				users.put(post.getOwnerId(), UserDriver.getById(post.getOwnerId()));
+		Map<Integer, ReplyTable[]> replies = ReplyDriver.getReplies(posts);
+		for (ReplyTable[] replyTables : replies.values())
+			for(ReplyTable r : replyTables)
+				if(users.get(r.getOwnerId()) == null)
+					users.put(r.getOwnerId(), UserDriver.getById(r.getOwnerId()));
 		request.setAttribute("posts", posts);
 		request.setAttribute("users", users);
-		request.setAttribute("replies", ReplyDriver.getReplies(posts));
+		request.setAttribute("replies", replies);
 		UserTable user = UserDriver.getById(userId);
 		request.setAttribute("user", user);
 		request.getRequestDispatcher("/ProfileWall.jsp").include(request, response);
