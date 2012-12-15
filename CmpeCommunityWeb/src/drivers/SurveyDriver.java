@@ -15,7 +15,7 @@ import Tables.TagsTable;
 public class SurveyDriver {
 	public static SurveyTable[] getUserSurvey(int userId) {
 		try {
-			String query="SELECT * FROM `surveys` WHERE `user_id`=?";
+			String query="SELECT * FROM `surveys` WHERE `user_id`=? order by creation_time";
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, userId);
 			ResultSet result = ps.executeQuery();
@@ -30,7 +30,7 @@ public class SurveyDriver {
 	}
 	public static SurveyTable[] getUserJoinedSurvey(int userId) {
 		try{
-			String query="SELECT `surveys`.* FROM `surveys` INNER JOIN `users_in_survey` ON `users_in_survey`.`user_id`=`surveys`.`user_id` WHERE `tags_in_users`.`user_id`= ?" ;
+			String query="SELECT `surveys`.* FROM `surveys` INNER JOIN `users_in_survey` ON `users_in_survey`.`user_id`=`surveys`.`user_id` WHERE `tags_in_users`.`user_id`= ? order by creation_time" ;
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, userId);
 			ResultSet set = ps.executeQuery();
