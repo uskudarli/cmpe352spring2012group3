@@ -55,6 +55,16 @@ public class Profile extends ServletBase {
 		request.setAttribute("posts", posts);
 		request.setAttribute("users", users);
 		request.setAttribute("replies", replies);
+		Map<Integer, Object> tags = new TreeMap<Integer, Object>();
+		for(PostsTable p : posts){
+			TagsTable t = TagsDriver.getByPostId(p.getId());
+			UserTable u = TagsDriver.getUserTagByPostId(p.getId());
+			if(t != null)
+				tags.put(p.getId(), t);
+			if(u != null)
+				tags.put(p.getId(), u);
+		}
+		request.setAttribute("tagsInPosts", tags);
 		UserTable user = UserDriver.getById(userId);
 		request.setAttribute("user", user);
 		request.getRequestDispatcher("/ProfileWall.jsp").include(request, response);
@@ -72,6 +82,17 @@ public class Profile extends ServletBase {
 				users.put(post.getOwnerId(), UserDriver.getById(post.getOwnerId()));
 		request.setAttribute("posts", posts);
 		request.setAttribute("replies", ReplyDriver.getReplies(posts));
+		Map<Integer, Object> tags = new TreeMap<Integer, Object>();
+		for(PostsTable p : posts){
+			TagsTable t = TagsDriver.getByPostId(p.getId());
+			UserTable u = TagsDriver.getUserTagByPostId(p.getId());
+			System.out.println(p.getId()+" / "+(t!=null)+" / "+(u!=null));
+			if(t != null)
+				tags.put(p.getId(), t);
+			if(u != null)
+				tags.put(p.getId(), u);
+		}
+		request.setAttribute("tagsInPosts", tags);
 		request.setAttribute("users", users);
 		UserTable user = UserDriver.getById(userId);
 		request.setAttribute("user", user);

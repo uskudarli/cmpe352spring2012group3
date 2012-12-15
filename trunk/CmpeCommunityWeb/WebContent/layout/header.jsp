@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 	<title>Cmpe Community</title>
 	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap-tagmanager.css">
 	<style type="text/css">
 	body { padding-top: 60px; }
 	

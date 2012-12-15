@@ -56,6 +56,7 @@ public class Posts extends ServletBase {
 		//login check
 		response.setContentType("application/json");
 		UserTable user = getCurrentUser();
+		System.out.println(user.getName()+" / "+user.getId());
 		if(user == null){
 			response.getOutputStream().println("{\"success\": false, \"error\": \"need_login\"}");
 			return;
