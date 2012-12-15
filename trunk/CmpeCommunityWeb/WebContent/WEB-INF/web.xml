@@ -13,6 +13,7 @@
     <url-pattern>/Forum/*</url-pattern>
     <url-pattern>/Tags/*</url-pattern>
     <url-pattern>/Posts/*</url-pattern>
+    <url-pattern>/Surveys/*</url-pattern>
   </servlet-mapping>
  
   <welcome-file-list>
