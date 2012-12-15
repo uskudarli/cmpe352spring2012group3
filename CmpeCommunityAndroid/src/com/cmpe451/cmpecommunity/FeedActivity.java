@@ -16,6 +16,9 @@ import org.json.JSONObject;
 import android.app.ListActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class FeedActivity extends ListActivity{
@@ -25,10 +28,16 @@ public class FeedActivity extends ListActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.feed_view);
-
+		
 		adapter = new FeedAdapter(this, R.layout.feed_item);
 
 		new HttpTask().execute(getIntent().getExtras().getString("FeedType"));
+	}
+	
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+	        super.onListItemClick(l, v, position, id);
+	        Toast.makeText(this, "position: " + position, Toast.LENGTH_SHORT).show();
 	}
 
 

@@ -71,8 +71,8 @@ public class LoginActivity extends Activity {
 			HttpPost httpPost = new HttpPost("http://192.168.150.225:8082/CmpeCommunityWeb/AndroidApi/login");
 
 			// Building post parameters, key and value pair
-			User.email = emailText.getText().toString();
-			User.password = passwordText.getText().toString();
+			User.email = "emresunecli@gmail.com"; //emailText.getText().toString();
+			User.password = "123456"; //passwordText.getText().toString();
 
 			// Url Encoding the POST parameters
 			try {
