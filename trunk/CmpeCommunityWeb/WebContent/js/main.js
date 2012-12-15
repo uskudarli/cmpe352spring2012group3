@@ -63,7 +63,7 @@ var Tags = {
 			console.log("loading wall");
 		},
 		addTag: function(userId){
-			$("#contentBody").load("CmpeCommunityWeb/Tags/addTags/"+userId);
+			$("#contentBody").load("/CmpeCommunityWeb/Tags/addTags/"+userId);
 			$("#contentBody").load("/CmpeCommunityWeb/Tags/wall/16");
 			console.log("loading wall");
 		},
@@ -79,4 +79,20 @@ var Tags = {
 					alert("An unknown error occured, sorry for the inconvenient we may have caused.");
 			});
 		}
+};
+var Surveys = {
+	loadMySurveys: function(userId){
+		$("#contentBody").load("/CmpeCommunityWeb/Surveys/loadMySurveys/"+userId);
+		console.log("adding survey");
+	},
+	loadCompletedSurveys: function(userId){
+		$("#contentBody").load("/CmpeCommunityWeb/Surveys/loadCompletedSurveys/"+userId);
+		console.log("adding survey");
+	},
+	add: function(userId){
+		var choices =$("[name^=choice]").map(function(){return $(this).val();}).get();
+		var question=$("[name=newquestion]").val();
+		$.post("/CmpeCommunityWeb/Surveys/addSurvey/"+userId,{question:question,choices:choices});
+		console.log("adding survey");
+	}
 };
