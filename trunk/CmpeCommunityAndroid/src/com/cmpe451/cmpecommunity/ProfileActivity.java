@@ -23,6 +23,7 @@ public class ProfileActivity extends TabActivity {
 		// News Feed Tab
 		i = new Intent(this, FeedActivity.class);
 		b.putString("FeedType", "newsFeed");
+		b.putBoolean("TagPage", false);
 		i.putExtras(b); 
 			
 		TabSpec newsFeedTab = tabHost.newTabSpec("News Feed");	

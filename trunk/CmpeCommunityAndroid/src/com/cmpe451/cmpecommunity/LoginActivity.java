@@ -71,12 +71,12 @@ public class LoginActivity extends Activity {
 			HttpPost httpPost = new HttpPost("http://192.168.150.225:8082/CmpeCommunityWeb/AndroidApi/login");
 
 			// Building post parameters, key and value pair
-			User.email = "emresunecli@gmail.com"; //emailText.getText().toString();
-			User.password = "123456"; //passwordText.getText().toString();
+			StaticUser.email = "emresunecli@gmail.com"; //emailText.getText().toString();
+			StaticUser.password = "123456"; //passwordText.getText().toString();
 
 			// Url Encoding the POST parameters
 			try {
-				httpPost.setEntity(new UrlEncodedFormEntity(User.GetNameValuePair()));
+				httpPost.setEntity(new UrlEncodedFormEntity(StaticUser.GetNameValuePair()));
 
 				// Making HTTP Request
 				HttpResponse response = httpClient.execute(httpPost);
@@ -116,8 +116,8 @@ public class LoginActivity extends Activity {
 
 				if(json.getBoolean("success"))
 				{
-					User.id = json.getInt("id");
-					User.name = json.getString("name");
+					StaticUser.id = json.getInt("id");
+					StaticUser.name = json.getString("name");
 							
 					Intent i = new Intent(getApplicationContext(), HomeActivity.class);
 					startActivity(i);

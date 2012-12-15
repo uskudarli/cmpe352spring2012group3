@@ -43,13 +43,15 @@
             android:label="Feeds" >
         </activity>
         <activity
-            android:name=".TagActivity"
-            android:label="Tag" >
+            android:name=".TagListActivity"
+            android:label="Tags" >
         </activity>
         <activity
             android:name=".SingleFeedActivity"
             android:label="Feed" >
         </activity>
+        <activity android:name=".TagActivity" android:label="Tag"></activity>
+        <activity android:name=".UserListActivity" android:label="Users"></activity>
     </application>
 
 </manifest>
