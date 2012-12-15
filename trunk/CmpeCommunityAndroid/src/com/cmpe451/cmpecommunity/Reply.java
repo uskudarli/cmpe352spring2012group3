@@ -1,16 +1,13 @@
 package com.cmpe451.cmpecommunity;
 
-import java.util.ArrayList;
-
-public class Feed {
+public class Reply {
 	private int id;
 	private String ownerName;
 	private int ownerId;
 	private String content;
 	private String postingTime;
-	private ArrayList<Reply> replies;
 	
-	public Feed(int id, String ownerName, int ownerId, String content, String postingTime) {
+	public Reply(int id, String ownerName, int ownerId, String content, String postingTime) {
 		this.id = id;
 		this.ownerName = ownerName;
 		this.ownerId = ownerId;
@@ -48,5 +45,4 @@ public class Feed {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
 }
