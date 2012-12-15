@@ -106,7 +106,28 @@ body {
 			</tr>
 		</thead>
 		<tbody>
-		
+			<tr>
+				<td>
+					<div><a href='/CmpeCommunityWeb/Forum/index/1'><strong>Topic get name</strong></a></div>
+					
+				</td>
+				<td class="center-text">0</td>
+				<td class="center-text">0</td>
+				<td class="span3">
+					No posts
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div><a href='/CmpeCommunityWeb/Forum/index/1'><strong>Topic get name</strong></a></div>
+					
+				</td>
+				<td class="center-text">0</td>
+				<td class="center-text">0</td>
+				<td class="span3">
+					No posts
+				</td>
+			</tr>
 		</tbody>
 	</table>
 	<% } %>

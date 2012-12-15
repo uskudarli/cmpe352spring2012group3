@@ -8,7 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Tables.ForumTopicTable;
 import Tables.ForumsTable;
+import Tables.UserTable;
 import drivers.ForumsDriver;
 
 public class Forum extends ServletBase {
@@ -39,6 +41,9 @@ public class Forum extends ServletBase {
 		ForumsTable[] parents = ForumsDriver.getParentsById(forumId);
 		
 		if(category != null){
+			if(category.getParentId() != 0){
+				//ForumTopicTable[] topics = ForumsDriver.
+			}
 			ForumsTable[] forums = ForumsDriver.getByParentId(category.getId());
 			subForums.put(category.getId(), forums);
 			for(ForumsTable f: forums)
@@ -60,5 +65,21 @@ public class Forum extends ServletBase {
 			request.setAttribute("parents", parents);
 			request.getRequestDispatcher("/newtopic.jsp").include(request, response);
 		}
+	}
+	
+	public void utopic(Integer forumId) throws IOException{
+		response.setContentType("application/json");
+		UserTable user = getCurrentUser();
+		if(user == null){
+			response.getOutputStream().println("{\"success\": false, \"error\": \"need_login\"}");
+			return;
+		}
+		String title =  request.getParameter("title");
+		String content = request.getParameter("content");
+
+		if(title!=null && content!=null && ForumsDriver.createTopic(forumId, title, user.getId(), content)!=0)
+			response.getOutputStream().println("{\"success\": true}");
+		else
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
 	}
 }

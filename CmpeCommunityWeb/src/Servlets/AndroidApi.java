@@ -25,7 +25,6 @@ public class AndroidApi extends ServletBase {
 	public void login() throws ServletException, IOException{
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(email+" "+password);
 		response.setContentType("application/json");
 		if(email==null || password==null ){
 			response.getOutputStream().println("{'success': false, 'error': 'All fields should be filled'}");
@@ -44,7 +43,6 @@ public class AndroidApi extends ServletBase {
 		String email = request.getParameter("email");
 		String name = request.getParameter("name")+" "+request.getParameter("last_name");
 		String password = request.getParameter("password");
-		System.out.println(email+" "+name+" "+password);
 		String birthDate = "1970-01-01";
 		String registerDate = "1970-01-01";
 		response.setContentType("application/json");
@@ -76,7 +74,7 @@ public class AndroidApi extends ServletBase {
 	}
 	
 	public void newsFeed(Integer id) throws IOException{
-		PostsTable[] posts = PostDriver.getWallPosts(id);
+		PostsTable[] posts = PostDriver.getNewsFeedByUserId(id);
 		response.setContentType("application/json");
 		String output = "{posts: [";
 		for (PostsTable post : posts) {
@@ -167,6 +165,57 @@ public class AndroidApi extends ServletBase {
 			return;
 		}
 		tags(user.getId());
+	}
+	
+	public void tagWall(Integer id) throws IOException{
+		PostsTable[] posts = PostDriver.getPostsByTag(id);
+		response.setContentType("application/json");
+		String output = "{posts: [";
+		for (PostsTable post : posts) {
+			UserTable owner = UserDriver.getById(post.getOwnerId());
+			output = output+"{";
+				output = output+"'id': "+post.getId()+",";
+				output = output+"'content': '"+post.getBody().replaceAll("'", "")+"',";
+				output = output+"'posting_time': '"+PostDriver.niceTime(post.getPostingTime())+"',";
+				output = output+"'owner_id': "+owner.getId()+",";
+				output = output+"'owner_name': '"+owner.getName().replaceAll("'", "")+"',";
+				output = output+"'replies': [";
+				ReplyTable[] replies = ReplyDriver.getByPostId(post.getId());
+				for (ReplyTable replyTable : replies) {
+					UserTable user = UserDriver.getById(replyTable.getOwnerId());
+					output = output+"{";
+					output = output+"'owner_id': '"+user.getId()+"',";
+					output = output+"'name': '"+user.getName()+"',";
+					output = output+"'content': '"+replyTable.getBody()+"',";
+					output = output+"'posting_time': '"+replyTable.getPostingTime()+"'";
+					output = output+"},";
+				}
+				if(output.charAt(output.length()-1) == ',')
+					output = output.substring(0, output.length()-1);
+				output = output+"]";
+			output = output+"},";
+		}
+		if(output.charAt(output.length()-1) == ',')
+			output = output.substring(0, output.length()-1);
+		output = output+"]}";
+		response.getOutputStream().println(output);
+	}
+	
+	public void tagUsers(Integer id) throws IOException{
+		UserTable[] users = UserDriver.getUsersByTag(id);
+		response.setContentType("application/json");
+		String output = "{users: [";
+		for (UserTable user : users) {
+			output = output+"{";
+				output = output+"'id': "+user.getId()+",";
+				output = output+"'name': '"+user.getName().replaceAll("'", "")+"',";
+				output = output+"'profile_image': 'http://192.168.150.225/CmpeCommunityWeb/img/minions.jpg'";
+			output = output+"},";
+		}
+		if(output.charAt(output.length()-1) == ',')
+			output = output.substring(0, output.length()-1);
+		output = output+"]}";
+		response.getOutputStream().println(output);
 	}
 	
 	public void tags(Integer id) throws IOException{

@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Cmpe Community Forums</title>
+<script type="text/javascript" src="/CmpeCommunityWeb/js/jquery.min.js"></script>
+<script type="text/javascript" src="/CmpeCommunityWeb/js/forum.js"></script>
 <link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap.min.css">
 <style>
 body {
@@ -50,22 +52,22 @@ body {
 		</ul>
 	
 		<div class="row">
-		<form action="" method="post" class="well span11">
-			<fieldset>
-				<legend>New Topic</legend>
-	
-				<div class="controls">
-					<input type="text" name="title" class="span9" placeholder="Title"/>
-				</div>	
-	
-				<div class="controls">
-					<textarea name="content" rows="10" class="span11"></textarea>
-				</div>	
-				<div class="controls">
-					<button class="btn btn-info pull-right">Send Post <i class="icon-chevron-right icon-white"></i></button>
-				</div>	
-			</fieldset>
-		</form>
+			<div class="well span11">
+				<fieldset>
+					<legend>New Topic</legend>
+		
+					<div class="controls">
+						<input type="text" name="title" class="span9" placeholder="Title"/>
+					</div>	
+		
+					<div class="controls">
+						<textarea name="content" rows="10" class="span11"></textarea>
+					</div>	
+					<div class="controls">
+						<button onclick='Forum.newTopic(<%=forum.getId() %>)' class="btn btn-info pull-right">Send Post <i class="icon-chevron-right icon-white"></i></button>
+					</div>	
+				</fieldset>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript" src="/CmpeCommunityWeb/js/bootstrap.js"></script>
