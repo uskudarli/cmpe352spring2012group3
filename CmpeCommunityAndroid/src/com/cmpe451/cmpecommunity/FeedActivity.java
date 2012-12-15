@@ -1,6 +1,7 @@
 package com.cmpe451.cmpecommunity;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -14,30 +15,35 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
 public class FeedActivity extends ListActivity{
 	private FeedAdapter adapter;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.feed_view);
-		
+		setContentView(R.layout.feeds_list_view);
+
 		adapter = new FeedAdapter(this, R.layout.feed_item);
 
 		new HttpTask().execute(getIntent().getExtras().getString("FeedType"));
 	}
-	
+
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-	        super.onListItemClick(l, v, position, id);
-	        Toast.makeText(this, "position: " + position, Toast.LENGTH_SHORT).show();
+		super.onListItemClick(l, v, position, id);
+		
+		User.chosenFeed = adapter.getItem(position);
+		Intent i = new Intent(this, SingleFeedActivity.class);
+		startActivity(i);
+		
+		//Toast.makeText(this, "position: " + position, Toast.LENGTH_SHORT).show();
 	}
 
 
@@ -56,7 +62,7 @@ public class FeedActivity extends ListActivity{
 			// Url Encoding the POST parameters
 			try {
 				httpPost.setEntity(new UrlEncodedFormEntity(User.GetNameValuePair()));
-				
+
 				// Making HTTP Request
 				HttpResponse response = httpClient.execute(httpPost);
 
@@ -93,12 +99,22 @@ public class FeedActivity extends ListActivity{
 			{
 				JSONObject json = new JSONObject(result);
 
-				JSONArray feeds = json.getJSONArray("posts");
-				
-				for(int i=0; i<feeds.length(); ++i) 
+				JSONArray jsonFeeds = json.getJSONArray("posts");
+
+				for(int i=0; i<jsonFeeds.length(); ++i) 
 				{
-					JSONObject feed = feeds.getJSONObject(i);
-					adapter.add(new Feed(feed.getInt("id"), feed.getString("owner_name"), feed.getInt("owner_id"), feed.getString("content"), feed.getString("posting_time")));
+					JSONObject jsonFeed = jsonFeeds.getJSONObject(i);
+					Feed feed = new Feed(jsonFeed.getInt("id"), jsonFeed.getString("owner_name"), jsonFeed.getInt("owner_id"), jsonFeed.getString("content"), jsonFeed.getString("posting_time"));
+					
+					ArrayList<Reply> replies = new ArrayList<Reply>();
+					JSONArray jsonReplies = jsonFeed.getJSONArray("replies");
+					for(int j=0; j<jsonReplies.length(); ++j)
+					{
+						JSONObject jsonReply = jsonReplies.getJSONObject(j);
+						replies.add(new Reply(jsonReply.getString("name"), jsonReply.getInt("owner_id"), jsonReply.getString("content"), jsonReply.getString("posting_time")));
+					}
+					feed.setReplies(replies);
+					adapter.add(feed);
 				}
 
 				FeedActivity.this.setListAdapter(adapter);

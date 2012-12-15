@@ -12,6 +12,8 @@ public class User {
 	public static String name;
 	public static int id;
 
+	public static Feed chosenFeed;
+	
 	public static List<NameValuePair> GetNameValuePair()
 	{
 		List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
