@@ -10,9 +10,39 @@ import DBPack.DBStatement;
 import Tables.ChoiceTable;
 import Tables.PostsTable;
 import Tables.SurveyTable;
+import Tables.TagsTable;
 
 public class SurveyDriver {
-	
+	public static SurveyTable[] getUserSurvey(int userId) {
+		try {
+			String query="SELECT * FROM `survey` WHERE `user_id`=?";
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, userId);
+			ResultSet result = ps.executeQuery();
+			return convertSurveyToArray(result);
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+			return new SurveyTable[0];
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new SurveyTable[0];
+		}
+	}
+	public static SurveyTable[] getUserJoinedSurvey(int userId) {
+		try{
+			String query="SELECT `surveys`.* FROM `surveys` INNER JOIN `users_in_survey` ON `users_in_survey`.`user_id`=`surveys`.`user_id` WHERE `tags_in_users`.`user_id`= ?" ;
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, userId);
+			ResultSet set = ps.executeQuery();
+			return convertSurveyToArray(set);
+		}  catch(SQLException e) {
+			System.out.println(e.getMessage());
+			return new SurveyTable[0];
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new SurveyTable[0];
+		}
+	}
 	public static boolean createSurvey(int userId,String question,String[] choices) {
 		try{
 			String query="INSERT INTO surveys (question,user_id,creation_time) VALUES (?,?,NOW())" ;	
@@ -93,6 +123,16 @@ private static ChoiceTable[] convertToArray(ResultSet result) throws SQLExceptio
 	while(result.next())
 		choices[i++] = new ChoiceTable(result.getInt("id"), result.getInt("survey_id"), result.getString("body"), result.getInt("votes"));
 	return choices;
+}
+private static SurveyTable[] convertSurveyToArray(ResultSet result) throws SQLException{
+	int N = 0;
+	while(result.next()) N++;
+	result.beforeFirst();
+	SurveyTable[] surveys = new SurveyTable[N];
+	int i=0;
+	while(result.next())
+		surveys[i++] = new SurveyTable(result.getInt("id"),result.getInt("user_id"),result.getString("question"),getChoices(result.getInt("id")));
+	return surveys;
 }
 public static boolean insertUsersInSurvey(int userId,int surveyId) {
 	try{
