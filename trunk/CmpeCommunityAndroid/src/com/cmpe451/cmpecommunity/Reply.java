@@ -1,26 +1,18 @@
 package com.cmpe451.cmpecommunity;
 
 public class Reply {
-	private int id;
 	private String ownerName;
 	private int ownerId;
 	private String content;
 	private String postingTime;
 	
-	public Reply(int id, String ownerName, int ownerId, String content, String postingTime) {
-		this.id = id;
+	public Reply(String ownerName, int ownerId, String content, String postingTime) {
 		this.ownerName = ownerName;
 		this.ownerId = ownerId;
 		this.postingTime = postingTime;
 		this.content = content;
 	}
 
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getOwnerName() {
 		return ownerName;
 	}

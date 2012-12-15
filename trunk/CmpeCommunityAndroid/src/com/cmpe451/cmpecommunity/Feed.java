@@ -3,6 +3,7 @@ package com.cmpe451.cmpecommunity;
 import java.util.ArrayList;
 
 public class Feed {
+	
 	private int id;
 	private String ownerName;
 	private int ownerId;
@@ -21,32 +22,48 @@ public class Feed {
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getOwnerName() {
 		return ownerName;
 	}
+	
 	public void setOwnerName(String ownerName) {
 		this.ownerName = ownerName;
 	}
+	
 	public int getOwnerId() {
 		return ownerId;
 	}
+	
 	public void setOwnerId(int ownerId) {
 		this.ownerId = ownerId;
 	}
+	
 	public String getPostingTime() {
 		return postingTime;
 	}
+	
 	public void setPostingTime(String postingTime) {
 		this.postingTime = postingTime;
 	}
+	
 	public String getContent() {
 		return content;
 	}
+	
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	public ArrayList<Reply> getReplies() {
+		return replies;
+	}
 
+	public void setReplies(ArrayList<Reply> replies) {
+		this.replies = replies;
+	}
 }

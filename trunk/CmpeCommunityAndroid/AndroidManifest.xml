@@ -46,6 +46,10 @@
             android:name=".TagActivity"
             android:label="Tag" >
         </activity>
+        <activity
+            android:name=".SingleFeedActivity"
+            android:label="Feed" >
+        </activity>
     </application>
 
 </manifest>
