@@ -79,7 +79,7 @@ public class RegisterActivity extends Activity {
 			HttpClient httpClient = new DefaultHttpClient();
 
 			// Creating HTTP Post
-			HttpPost httpPost = new HttpPost("http://192.168.0.11:8082/CmpeCommunityWeb/AndroidApi/register");
+			HttpPost httpPost = new HttpPost("http://192.168.150.225:8082/CmpeCommunityWeb/AndroidApi/register");
 
 			// Building post parameters, key and value pair
 			List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);

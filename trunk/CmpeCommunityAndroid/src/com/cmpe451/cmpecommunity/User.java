@@ -9,7 +9,9 @@ import org.apache.http.message.BasicNameValuePair;
 public class User {
 	public static String email;
 	public static String password;
-	
+	public static String name;
+	public static int id;
+
 	public static List<NameValuePair> GetNameValuePair()
 	{
 		List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);

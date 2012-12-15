@@ -41,7 +41,7 @@ public class FeedActivity extends ListActivity{
 			HttpClient httpClient = new DefaultHttpClient();
 
 			// Creating HTTP Post
-			HttpPost httpPost = new HttpPost("http://192.168.0.11:8082/CmpeCommunityWeb/AndroidApi/" + param[0]);
+			HttpPost httpPost = new HttpPost("http://192.168.150.225:8082/CmpeCommunityWeb/AndroidApi/" + param[0]);
 
 
 			// Url Encoding the POST parameters
