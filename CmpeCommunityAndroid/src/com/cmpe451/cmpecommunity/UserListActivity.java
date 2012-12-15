@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -36,10 +37,11 @@ public class UserListActivity extends ListActivity{
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-//		
-//		StaticUser.chosenTag = adapter.getItem(position);
-//		Intent i = new Intent(this, TagActivity.class);
-//		startActivity(i);
+		
+		StaticUser.chosenUser = adapter.getItem(position);
+		
+		Intent i = new Intent(this, HomeActivity.class);
+		startActivity(i);
 	}
 
 	final class HttpTask extends AsyncTask<Void, Boolean, String> {
@@ -51,7 +53,7 @@ public class UserListActivity extends ListActivity{
 			HttpClient httpClient = new DefaultHttpClient();
 
 			// Creating HTTP Post
-			HttpPost httpPost = new HttpPost("http://192.168.150.225:8082/CmpeCommunityWeb/AndroidApi/tagUsers/" + StaticUser.chosenTag.getId());
+			HttpPost httpPost = new HttpPost(StaticUser.URL + "/CmpeCommunityWeb/AndroidApi/tagUsers/" + StaticUser.chosenTag.getId());
 
 
 			// Url Encoding the POST parameters

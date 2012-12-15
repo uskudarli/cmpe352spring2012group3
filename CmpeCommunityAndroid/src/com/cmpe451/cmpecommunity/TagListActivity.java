@@ -52,7 +52,7 @@ public class TagListActivity extends ListActivity{
 			HttpClient httpClient = new DefaultHttpClient();
 
 			// Creating HTTP Post
-			HttpPost httpPost = new HttpPost("http://192.168.150.225:8082/CmpeCommunityWeb/AndroidApi/tags");
+			HttpPost httpPost = new HttpPost(StaticUser.URL + "/CmpeCommunityWeb/AndroidApi/tags");
 
 
 			// Url Encoding the POST parameters

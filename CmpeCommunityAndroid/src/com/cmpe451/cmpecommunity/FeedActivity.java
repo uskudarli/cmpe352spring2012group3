@@ -33,7 +33,10 @@ public class FeedActivity extends ListActivity{
 		adapter = new FeedAdapter(this, R.layout.feed_item);
 
 		String path = getIntent().getExtras().getString("FeedType");
-		if(getIntent().getExtras().getBoolean("TagPage")) path += "/" + StaticUser.chosenTag.getId();
+		if(getIntent().getExtras().getBoolean("TagPage")) 
+			path += "/" + StaticUser.chosenTag.getId();
+		//else 
+			//path += "/" + StaticUser.chosenUser.getId(); 
 		
 		new HttpTask().execute(path);
 	}
@@ -59,7 +62,7 @@ public class FeedActivity extends ListActivity{
 			HttpClient httpClient = new DefaultHttpClient();
 
 			// Creating HTTP Post
-			HttpPost httpPost = new HttpPost("http://192.168.150.225:8082/CmpeCommunityWeb/AndroidApi/" + param[0]);
+			HttpPost httpPost = new HttpPost(StaticUser.URL + "/CmpeCommunityWeb/AndroidApi/" + param[0]);
 
 
 			// Url Encoding the POST parameters
