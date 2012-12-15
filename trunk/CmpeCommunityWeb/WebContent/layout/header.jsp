@@ -60,7 +60,7 @@
 					<td>Events</td>
 				</tr>
 				<tr class="text-info">
-					<td><a href="/CmpeCommunityWeb/Survey.jsp">Surveys</a></td>
+					<td><a href="/CmpeCommunityWeb/Profile/survey/<%=user.getId()%>">Surveys</a></td>
 				</tr>
 				<tr class="text-info">
 					<td>Advance Search</td>
