@@ -14,6 +14,8 @@ public class StaticUser {
 
 	public static Feed chosenFeed;
 	public static Tag chosenTag;
+	public static User chosenUser;
+	public static String URL = "http://192.168.149.168:8080";
 	
 	public static List<NameValuePair> GetNameValuePair()
 	{

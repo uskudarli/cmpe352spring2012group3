@@ -6,7 +6,6 @@ public class User {
 	private String imageURL;
 	
 	public User(int id, String name, String imageURL) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.imageURL = imageURL;

@@ -68,7 +68,7 @@ public class LoginActivity extends Activity {
 			HttpClient httpClient = new DefaultHttpClient();
 
 			// Creating HTTP Post
-			HttpPost httpPost = new HttpPost("http://192.168.150.225:8082/CmpeCommunityWeb/AndroidApi/login");
+			HttpPost httpPost = new HttpPost(StaticUser.URL + "/CmpeCommunityWeb/AndroidApi/login");
 
 			// Building post parameters, key and value pair
 			StaticUser.email = "emresunecli@gmail.com"; //emailText.getText().toString();
@@ -118,6 +118,8 @@ public class LoginActivity extends Activity {
 				{
 					StaticUser.id = json.getInt("id");
 					StaticUser.name = json.getString("name");
+					
+					StaticUser.chosenUser = new User(StaticUser.id, StaticUser.name, "URL");
 							
 					Intent i = new Intent(getApplicationContext(), HomeActivity.class);
 					startActivity(i);

@@ -15,7 +15,7 @@ public class HomeActivity extends TabActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setTitle(StaticUser.name);
+		setTitle(StaticUser.chosenUser.getName());
 		setContentView(R.layout.home);
 		TabHost tabHost = getTabHost();
 
