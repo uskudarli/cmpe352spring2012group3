@@ -31,7 +31,7 @@ public class ReplyDriver {
 	
 	public static ReplyTable[] getByPostId(int postId){
 		try {
-			String query="SELECT * FROM `replies` WHERE `post_id`=?";
+			String query="SELECT * FROM `replies` WHERE `post_id`=? ORDER BY `posting_time` ASC";
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, postId);
 			ResultSet result = ps.executeQuery();
