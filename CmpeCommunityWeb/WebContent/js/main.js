@@ -1,11 +1,15 @@
 var Posts = {
-	loadNewsFeed: function(userId){
+	loadNewsFeed: function(userId, element){
+		element = $(element);
 		$("#contentBody").load("/CmpeCommunityWeb/Profile/news/"+userId);
-		console.log("loading news feed");
+		element.parents().parents().find("li").removeClass('active');
+		element.parents().addClass('active');
 	},
-	loadWall: function(userId){
+	loadWall: function(userId, element){
+		element = $(element);
 		$("#contentBody").load("/CmpeCommunityWeb/Profile/wall/"+userId);
-		console.log("loading wall");
+		element.parents().parents().find("li").removeClass('active');
+		element.parents().addClass('active');
 	},
 	
 	createWithTaggedUserId: function(targetId){
