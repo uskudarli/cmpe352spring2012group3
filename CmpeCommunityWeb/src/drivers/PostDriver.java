@@ -203,6 +203,6 @@ public class PostDriver {
 			return (difference/(1000*60*60))+" hours ago";
 		if(difference > 1000*60)
 			return (difference/(1000*60))+" minutes ago";
-		return (difference)+" seconds ago";
+		return (difference/1000)+" seconds ago";
 	}
 }
