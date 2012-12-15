@@ -15,7 +15,7 @@ import Tables.TagsTable;
 public class SurveyDriver {
 	public static SurveyTable[] getUserSurvey(int userId) {
 		try {
-			String query="SELECT * FROM `survey` WHERE `user_id`=?";
+			String query="SELECT * FROM `surveys` WHERE `user_id`=?";
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, userId);
 			ResultSet result = ps.executeQuery();
@@ -164,7 +164,7 @@ private static boolean insertChoices(int surveyId, String[] choices) {
 }
 private static boolean addChoice(int surveyId, String choice) {
 	try{
-		String query="INSERT INTO choices (survey_id,choice) VALUES (?,?,?)" ;	
+		String query="INSERT INTO choices (survey_id,choice) VALUES (?,?)" ;	
 		PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 		ps.setInt(1, surveyId);
 		ps.setString(2, choice);
