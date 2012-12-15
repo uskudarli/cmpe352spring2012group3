@@ -3,9 +3,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="Tables.TagsTable"%>
 <%@ page import="Tables.UserTable"%>
-
-<%String type = (String)request.getAttribute("type"); %>
-
+<%@page import="Tables.UserTable"%>
 
 <link rel="stylesheet"
 	href="/CmpeCommunityWeb/css/bootstrap-tagmanager.css">
@@ -27,30 +25,17 @@
 </script>
 <script src="/CmpeCommunityWeb/js/bootstrap.js"></script>
 
-
-<div style="margin-left: 30px">
-			<ul class="nav span6 nav-tabs">
-				<li><a onclick="" data-toggle="tab">My surveys</a></li>
-				<li><a onclick="" data-toggle="tab">Completed surveys</a></li>
-			</ul>
-	<div id="contentBody" class="span6"></div>
-</div>
-<script type="text/javascript">
-<!--
-// 	$(document).ready(function(){
-<%-- 		Posts.loadNewsFeed(<%=user.getId()%>, $('.nav-tabs li:first a')); --%>
-// 	});
-//-->
-</script>
-
 <div class="nav span6 nav-tabs">
-<%-- <%if (type.equals("mysurveys")){ %> --%>
+<%
+	UserTable user = (UserTable)request.getAttribute("user");
+	String type = (String)request.getAttribute("type"); 
+%>
+<%if (type.equals("mySurvey")){ %> 
 	<div class="row">
 		<div>
-			<form id="newsurvey" class='row span4' action="">
 				<fieldset>
 					<input id="newquestion" type="text" placeholder="Question"
-						class="span6">
+						class="span6" name="newquestion">
 					<ul id="newchoices">
 						<li>
 							<div class="input-append">
@@ -63,15 +48,12 @@
 						</li>
 					</ul>
 					<div class="controls offset3">
-						<button id="createsurvey" class="btn btn-info" type="button">
-							Create Survey <i class="icon-chevron-right icon-white"></i>
-						</button>
+						<input type="submit" onclick="Surveys.add(<%=user.getId()%>);" value="Create Survey" class="btn btn-info">
 					</div>
 				</fieldset>
-			</form>
 		</div>
 	</div>
-<%-- 	<%} %> --%>
+<%} %> 
 	
 	<script src="/CmpeCommunityWeb/js/bootstrap.js"></script>
 
