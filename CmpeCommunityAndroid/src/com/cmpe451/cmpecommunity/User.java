@@ -1,25 +1,39 @@
 package com.cmpe451.cmpecommunity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
 public class User {
-	public static String email;
-	public static String password;
-	public static String name;
-	public static int id;
-
-	public static Feed chosenFeed;
+	private int id;
+	private String name;
+	private String imageURL;
 	
-	public static List<NameValuePair> GetNameValuePair()
-	{
-		List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
-		nameValuePair.add(new BasicNameValuePair("email", User.email));
-		nameValuePair.add(new BasicNameValuePair("password", User.password));
-		
-		return nameValuePair;
+	public User(int id, String name, String imageURL) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.imageURL = imageURL;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
+	}
+	
 }

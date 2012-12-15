@@ -15,7 +15,7 @@ public class HomeActivity extends TabActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setTitle(User.name);
+		setTitle(StaticUser.name);
 		setContentView(R.layout.home);
 		TabHost tabHost = getTabHost();
 
@@ -26,7 +26,7 @@ public class HomeActivity extends TabActivity {
 
 		TabSpec tagsTab = tabHost.newTabSpec("Tags");		
 		tagsTab.setIndicator("Tags", getResources().getDrawable(R.drawable.tags));
-		tagsTab.setContent(new Intent(this, TagActivity.class));
+		tagsTab.setContent(new Intent(this, TagListActivity.class));
 
 		TabSpec eventsTab = tabHost.newTabSpec("Events");
 		eventsTab.setIndicator("Events", getResources().getDrawable(R.drawable.events));

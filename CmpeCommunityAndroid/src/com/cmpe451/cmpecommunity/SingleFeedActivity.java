@@ -1,7 +1,5 @@
 package com.cmpe451.cmpecommunity;
 
-import java.text.ChoiceFormat;
-
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,14 +14,14 @@ public class SingleFeedActivity extends ListActivity{
 		setContentView(R.layout.feed_view);
 		
 		TextView nameText = (TextView) findViewById(R.id.name);
-		nameText.setText(User.chosenFeed.getOwnerName());
+		nameText.setText(StaticUser.chosenFeed.getOwnerName());
 		TextView contentText = (TextView) findViewById(R.id.content);
-		contentText.setText(User.chosenFeed.getContent());
+		contentText.setText(StaticUser.chosenFeed.getContent());
 		TextView postingTimeText = (TextView) findViewById(R.id.posting_time);
-		postingTimeText.setText(User.chosenFeed.getPostingTime());
+		postingTimeText.setText(StaticUser.chosenFeed.getPostingTime());
 	
 		ReplyAdapter adapter = new ReplyAdapter(this, R.layout.reply_item);
-		adapter.addAll(User.chosenFeed.getReplies());
+		adapter.addAll(StaticUser.chosenFeed.getReplies());
 		
 		//adapter.add(new Feed(feed.getInt("id"), feed.getString("owner_name"), feed.getInt("owner_id"), feed.getString("content"), feed.getString("posting_time")));
 		
