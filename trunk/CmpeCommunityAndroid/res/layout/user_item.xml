@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="User"
-        android:textColor="#6655F0"
+        android:textColor="#332250"
         android:textSize="20sp" />
 
 </LinearLayout>
