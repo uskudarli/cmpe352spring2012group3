@@ -5,6 +5,38 @@
 <html lang="en-US">
 <head>
 <meta charset="UTF-8">
+	<title>Cmpe Community</title>
+	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap-tagmanager.css">
+	<style type="text/css">
+	body { padding-top: 60px; }
+	.nav-tabs > li > a {
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    line-height: 20px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+	}
+	.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #FFFFFF;
+    border-color: #DDDDDD #DDDDDD transparent;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+    color: #555555;
+    cursor: pointer;
+}
+	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap-responsive.min.css">
+	<script type="text/javascript" src="/CmpeCommunityWeb/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/CmpeCommunityWeb/js/main.js"></script>
+
     <title>Cmpe Community</title>
     <link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap.min.css">
     <link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap-tagmanager.css">
