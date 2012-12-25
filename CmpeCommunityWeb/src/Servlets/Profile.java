@@ -165,4 +165,20 @@ public class Profile extends ServletBase {
 		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
 	}
 	
+	public void event(Integer userId) throws ServletException, IOException{
+		if(getCurrentUser() == null){
+		request.getRequestDispatcher("/User/login").forward(request, response);
+		return;
+		}
+		UserTable user = UserDriver.getById(userId);
+		if(user == null){
+		//TODO show 404
+		return;
+		}
+		request.setAttribute("user", user);
+		response.setContentType("text/html");
+		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
+		request.getRequestDispatcher("/EventList.jsp").include(request, response);
+		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
+	}
 }
