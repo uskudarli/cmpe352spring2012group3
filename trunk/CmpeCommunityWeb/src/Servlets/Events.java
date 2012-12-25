@@ -44,6 +44,8 @@ public class Events extends ServletBase{
 		if(getCurrentUser() == null)
 			return;
 		
+		request.setAttribute("type", "");
+		
 		request.getRequestDispatcher("/EventList.jsp").include(request, response);
 		
 	}
