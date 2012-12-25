@@ -10,6 +10,8 @@
 
 <link rel="stylesheet"
     href="/CmpeCommunityWeb/css/bootstrap-tagmanager.css">
+<link rel="stylesheet"
+    href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
 
 <style>
 .progress .bar p {
@@ -18,6 +20,17 @@
     text-align: left;
     margin-left: -20px text-shadow:   0px -1px 0px rgba(0, 0, 0, 0.25);
 }
+
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; }
+.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
 </style>
 <script type="text/javascript"
     src="/CmpeCommunityWeb/js/bootstrap-tagmanager.js"></script>
@@ -27,6 +40,8 @@
     }
 </script>
 <script src="/CmpeCommunityWeb/js/bootstrap.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script src="/CmpeCommunityWeb/js/jquery-ui-timepicker-addon.js"></script>
 
 
 <div style="margin-left: 30px">
@@ -54,9 +69,11 @@
                     <fieldset>
                         <legend>Create Event</legend>
                         <div class="controls">
-                            <input type="text" id="email_login" name="email_login" class="input-xlarge" placeholder="Place">
-                            <input type="password" id="password_login" name="password_login" class="input-xlarge" placeholder="Date-Time">
-                          <textarea type="password" id="password_login" name="password_login" class="input-xlarge" placeholder="Description"></textarea>
+                           	<input type="text" id="place" name="place" class="input-xlarge" placeholder="Place">
+
+                            <input type="text" id="datetime" name="datetime" class="input-xlarge" placeholder="Date-Time">
+
+                          <textarea type="text" id="description" name="description" class="input-xlarge" placeholder="Description"></textarea>
                         
                             <input type="button" class="btn btn-info pull-right" value="Create" onclick="login()"/>
                         </div>
@@ -141,17 +158,5 @@
     </div>
 
     <script>
-    $('#addchoice').click(function() {
-        var ul = $(this).closest('ul');
-        var li = $(this).closest('li');
-        var clone = li.clone(true);
-        var name = 'choice' + $('#newchoices>li').length;
-        clone.find('input').val('').attr('id', name).attr('name', name);
-        clone.appendTo(ul);
-        $(this).remove();
-    });
-
-    $('createsurvey').click(function() {
-        $(document.body).append();
-    });
+    $('#datetime').datetimepicker();
     </script>
