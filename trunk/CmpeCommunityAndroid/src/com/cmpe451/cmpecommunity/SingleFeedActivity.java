@@ -25,18 +25,20 @@ public class SingleFeedActivity extends ListActivity{
 		nameText.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
+				StaticUser.chosenUser = new User(StaticUser.chosenFeed.getOwnerId(), StaticUser.chosenFeed.getOwnerName(), "URL");
 				startActivity(new Intent(SingleFeedActivity.this, HomeActivity.class));
 			}
 		});
 		
 		ReplyAdapter adapter = new ReplyAdapter(this, R.layout.reply_item);
-		adapter.addAll(StaticUser.chosenFeed.getReplies());
+		for(Reply reply : StaticUser.chosenFeed.getReplies())
+			adapter.add(reply);
 	
 		setListAdapter(adapter);
 		
 	}
 	
-	@Override
+	@Override 
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 	        super.onListItemClick(l, v, position, id);
 	        

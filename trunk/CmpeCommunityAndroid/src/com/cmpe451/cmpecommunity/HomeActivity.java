@@ -48,6 +48,10 @@ public class HomeActivity extends TabActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
 	    switch (item.getItemId()) {
+	    	case R.id.home:
+	    		finish();
+	    		startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+	    		return true;
 	        case R.id.logout:
 	            finish();
 	            return true;
