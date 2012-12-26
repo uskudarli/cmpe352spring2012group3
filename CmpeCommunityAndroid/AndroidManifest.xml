@@ -16,7 +16,7 @@
         android:theme="@android:style/Theme" >
         <activity
             android:name=".LoginActivity"
-            android:launchMode="singleInstance" >
+            android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

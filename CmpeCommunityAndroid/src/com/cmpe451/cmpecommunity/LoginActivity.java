@@ -116,10 +116,8 @@ public class LoginActivity extends Activity {
 
 				if(json.getBoolean("success"))
 				{
-					StaticUser.id = json.getInt("id");
-					StaticUser.name = json.getString("name");
-					
-					StaticUser.chosenUser = new User(StaticUser.id, StaticUser.name, "URL");
+					StaticUser.currentUser = new User(json.getInt("id"), json.getString("name"), "URL");
+					StaticUser.chosenUser = StaticUser.currentUser;
 							
 					Intent i = new Intent(getApplicationContext(), HomeActivity.class);
 					startActivity(i);
