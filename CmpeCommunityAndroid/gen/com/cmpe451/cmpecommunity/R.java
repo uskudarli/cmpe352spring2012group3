@@ -28,6 +28,7 @@ public final class R {
         public static final int events=0x7f060004;
         public static final int footer=0x7f060006;
         public static final int header=0x7f060005;
+        public static final int home=0x7f060014;
         public static final int link_to_login=0x7f060011;
         public static final int link_to_register=0x7f06000a;
         public static final int logout=0x7f060013;

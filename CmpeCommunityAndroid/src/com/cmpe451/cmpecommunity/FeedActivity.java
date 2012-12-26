@@ -35,9 +35,10 @@ public class FeedActivity extends ListActivity{
 		String path = getIntent().getExtras().getString("FeedType");
 		if(getIntent().getExtras().getBoolean("TagPage")) 
 			path += "/" + StaticUser.chosenTag.getId();
-		//else 
-			//path += "/" + StaticUser.chosenUser.getId(); 
+		else 
+			path += "/" + StaticUser.chosenUser.getId(); 
 		
+		System.out.println(path);
 		new HttpTask().execute(path);
 	}
 
