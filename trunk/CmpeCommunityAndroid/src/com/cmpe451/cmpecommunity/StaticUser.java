@@ -9,8 +9,7 @@ import org.apache.http.message.BasicNameValuePair;
 public class StaticUser {
 	public static String email;
 	public static String password;
-	public static String name;
-	public static int id;
+	public static User currentUser;
 
 	public static Feed chosenFeed;
 	public static Tag chosenTag;
