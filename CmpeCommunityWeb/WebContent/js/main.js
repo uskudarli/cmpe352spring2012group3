@@ -92,7 +92,21 @@ var Surveys = {
 	add: function(userId){
 		var choices =$("[name^=choice]").map(function(){return $(this).val();}).get();
 		var question=$("[name=newquestion]").val();
-		$.post("/CmpeCommunityWeb/Surveys/addSurvey/"+userId,{question:question,choices:choices});
+		//$.post("/CmpeCommunityWeb/Surveys/addSurvey/"+userId,{'question':question,'choices':choices},function(data){
+		$.ajax({
+			  type: "POST",
+			  url: "/CmpeCommunityWeb/Surveys/addSurvey/"+userId,
+			  data: 'question='+question+'&choices='+choices,
+			  datatype: "json",
+			  success: function(result){	
+				  if(data["success"])
+					  window.location.reload();
+				  else if(data["error"] == "need_login")
+					  window.location.href = "/CmpeCommunityWeb/";
+				  else
+				alert("An unknown error occured, sorry for the inconvenient we may have caused.");
+			  }  
+		});
 		console.log("adding survey");
 	}
 };
