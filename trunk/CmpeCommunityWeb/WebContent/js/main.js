@@ -1,3 +1,9 @@
+$(document).ready(function(){
+	$.post('/CmpeCommunityWeb/User/recommended', function(data){
+		$("#recommendationTable tbody").html(data);
+	});
+});
+
 var Posts = {
 	loadNewsFeed: function(userId, element){
 		element = $(element);

@@ -168,7 +168,7 @@ return $("<li></li>").data("item.autocomplete", item).append(MyHtml).appendTo(ul
             </tbody>
         </table>
         
-        <table class="table table-hover">
+        <table class="table table-hover" id='recommendationTable'>
             <thead>
                 <tr class="success">
                     <th>Recommended Users</th>

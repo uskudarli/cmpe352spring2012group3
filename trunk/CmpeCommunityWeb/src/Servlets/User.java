@@ -17,6 +17,15 @@ public class User extends ServletBase {
 	public User(HttpServletRequest request, HttpServletResponse response) {
 		super(request, response);
 	}
+	
+	public void recommended() throws ServletException, IOException{
+		UserTable user = getCurrentUser();
+		if(user == null)
+			return;
+		UserTable[] users = UserDriver.getRecommendedByUserId(user.getId());
+		request.setAttribute("users", users);
+		request.getRequestDispatcher("/recommended.jsp").forward(request, response);
+	}
 
 	public void login() throws ServletException, IOException{
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
