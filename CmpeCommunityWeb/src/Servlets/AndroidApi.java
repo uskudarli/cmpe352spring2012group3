@@ -209,7 +209,7 @@ public class AndroidApi extends ServletBase {
 			output = output+"{";
 				output = output+"'id': "+user.getId()+",";
 				output = output+"'name': '"+user.getName().replaceAll("'", "")+"',";
-				output = output+"'profile_image': 'http://192.168.150.225/CmpeCommunityWeb/img/minions.jpg'";
+				output = output+"'profile_image': 'http://titan.cmpe.boun.edu.tr:8082/CmpeCommunityWeb/img/minions.jpg'";
 			output = output+"},";
 		}
 		if(output.charAt(output.length()-1) == ',')

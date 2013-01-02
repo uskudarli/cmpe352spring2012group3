@@ -80,6 +80,26 @@ public abstract class UserDriver {
 		}
 	}
 	
+	public static UserTable[] getRecommendedByUserId(int userId){
+		String tagRelatedQuery = "SELECT COUNT(`tiu`.`tag_id`) AS `relation`,`tiu`.`user_id` FROM (SELECT * FROM `tags_in_users` WHERE `tag_id` IN (SELECT `tag_id` FROM `tags_in_users` WHERE `user_id`=?)) AS `tiu` GROUP BY `tiu`.`user_id` ORDER BY `relation` DESC";
+		String postRelatedQuery = "SELECT COUNT(`users_in_posts`.`post_id`) AS `relation`,`users_in_posts`.`user_id` FROM `users_in_posts` WHERE `users_in_posts`.`post_id` IN (SELECT `posts`.`id` FROM `posts` WHERE `owner_id`=?) GROUP BY `user_id` ORDER BY `relation` DESC";
+		String finalQuery = "SELECT `users`.* FROM `users` INNER JOIN (("+tagRelatedQuery+") UNION ALL ("+postRelatedQuery+")) AS `tmp` ON `users`.`id`=`tmp`.`user_id` WHERE `users`.`id`<>? GROUP BY `tmp`.`user_id` ORDER BY SUM(`tmp`.`relation`)*RAND() DESC LIMIT 0,5";
+		try{
+			PreparedStatement ps = (PreparedStatement) DBStatement.getMainConnection().prepareStatement(finalQuery);
+			ps.setInt(1, userId);
+			ps.setInt(2, userId);
+			ps.setInt(3, userId);
+			ResultSet result = ps.executeQuery();
+			return convertToArray(result);
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+			return new UserTable[0];
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new UserTable[0];
+		}
+	}
+	
 	public static UserTable[] getUsersByTag(int tagId){
 		try {
 			String query="SELECT * FROM `users` INNER JOIN `tags_in_users` ON `users`.`id`=`tags_in_users`.`user_id` WHERE `tags_in_users`.`tag_id`=?";
