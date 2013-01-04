@@ -27,6 +27,8 @@ public class ForumsDriver {
 				int postId = createPost(topicId, content, userId);
 				updateTopicLastPost(topicId, postId);
 				updateForumLastPosts(forumId, postId);
+				incrementForumTopicsCount(forumId);
+				incrementForumPostsCount(forumId);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -43,6 +45,7 @@ public class ForumsDriver {
 			ps.setString(2, content);
 			ps.setInt(3, userId);
 			ps.executeUpdate();
+			
 			ResultSet key = ps.getGeneratedKeys();
 			if(key.next()){
 				return key.getInt(1);
@@ -93,6 +96,58 @@ public class ForumsDriver {
 		}
 	}
 	
+	public static void incrementForumTopicsCount(int forumId){
+		try{
+			String updateQuery = "UPDATE forums SET topics_count = topics_count + 1 WHERE id = ?"; 
+			String parentQuery = "SELECT parent_id FROM forums WHERE id = ?";
+			PreparedStatement psUpdate = (PreparedStatement)DBStatement.getMainConnection()
+					.prepareStatement(updateQuery);
+			PreparedStatement psParent = (PreparedStatement)DBStatement.getMainConnection()
+					.prepareStatement(parentQuery);
+			
+			while(true){
+				psUpdate.setInt(1, forumId);
+				psUpdate.executeUpdate();
+				
+				psParent.setInt(1, forumId);
+				ResultSet parent = psParent.executeQuery();
+				if(parent.next() && parent.getInt(1) > 0){
+					forumId = parent.getInt(1);
+				}else{
+					break;
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static void incrementForumPostsCount(int forumId){
+		try{
+			String updateQuery = "UPDATE forums SET posts_count = posts_count + 1 WHERE id = ?"; 
+			String parentQuery = "SELECT parent_id FROM forums WHERE id = ?";
+			PreparedStatement psUpdate = (PreparedStatement)DBStatement.getMainConnection()
+					.prepareStatement(updateQuery);
+			PreparedStatement psParent = (PreparedStatement)DBStatement.getMainConnection()
+					.prepareStatement(parentQuery);
+			
+			while(true){
+				psUpdate.setInt(1, forumId);
+				psUpdate.executeUpdate();
+				
+				psParent.setInt(1, forumId);
+				ResultSet parent = psParent.executeQuery();
+				if(parent.next() && parent.getInt(1) > 0){
+					forumId = parent.getInt(1);
+				}else{
+					break;
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	public static void incrementTopicViewCount(int topicId){
 		try{
 			String query = "UPDATE topics SET views_count = views_count + 1 WHERE id = ?";
@@ -118,7 +173,18 @@ public class ForumsDriver {
 	}
 	
 	public static ForumTopicTable[] getTopicsByForumId(int forumId){
-		return null;
+		ForumTopicTable[] topics = new ForumTopicTable[0];
+		try{
+			String query = "SELECT * FROM forum_topics WHERE forum_id = ? ORDER BY creation_time DESC";
+			PreparedStatement ps = (PreparedStatement)DBStatement.getMainConnection()
+					.prepareStatement(query);
+			ps.setInt(1, forumId);
+			ResultSet result = ps.executeQuery();
+			topics = convertToTopicsArray(result);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return topics;
 	}
 	
 	public static ForumsTable getById(int id){
@@ -196,9 +262,11 @@ public class ForumsDriver {
 		result.beforeFirst();
 		ForumTopicTable[] forums = new ForumTopicTable[N];
 		int i=0;
-		while(result.next())
-			forums[i++] = null;//new ForumTopicTable(result.getInt("id"), result.getInt("forum_id"), result.getString("title"), , viewsCount, creationTime, userId, lastPostId)
+		while(result.next()){
+			forums[i++] = new ForumTopicTable(result.getInt("id"), result.getInt("forum_id"),
+					result.getString("title"), result.getInt("replies_count"), result.getInt("views_count"),
+					result.getTimestamp("creation_time"), result.getInt("user_id"), result.getInt("last_post_id"));
+		}
 		return forums;
-		
 	}
 }

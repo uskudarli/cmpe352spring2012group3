@@ -41,14 +41,13 @@ public class Forum extends ServletBase {
 		ForumsTable[] parents = ForumsDriver.getParentsById(forumId);
 		
 		if(category != null){
-			if(category.getParentId() != 0){
-				//ForumTopicTable[] topics = ForumsDriver.
-			}
 			ForumsTable[] forums = ForumsDriver.getByParentId(category.getId());
 			subForums.put(category.getId(), forums);
 			for(ForumsTable f: forums)
 				subForums.put(f.getId(), ForumsDriver.getByParentId(f.getId()));
+			ForumTopicTable[] topics = ForumsDriver.getTopicsByForumId(forumId);
 			
+			request.setAttribute("topics", topics);
 			request.setAttribute("category", category);
 			request.setAttribute("subForums", subForums);
 			request.setAttribute("parents", parents);

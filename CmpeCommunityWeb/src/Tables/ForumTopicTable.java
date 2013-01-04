@@ -1,21 +1,21 @@
 package Tables;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 public class ForumTopicTable {
 	private int id;
-	private int topicId;
+	private int forumId;
 	private String title;
 	private int repliesCount;
 	private int viewsCount;
-	private Calendar creationTime;
+	private Timestamp creationTime;
 	private int userId;
 	private int lastPostId;
 	
 	public ForumTopicTable(int id, int topicId, String title, int repliesCount,
-			int viewsCount, Calendar creationTime, int userId, int lastPostId) {
+			int viewsCount, Timestamp creationTime, int userId, int lastPostId) {
 		this.id = id;
-		this.topicId = topicId;
+		this.forumId = topicId;
 		this.title = title;
 		this.repliesCount = repliesCount;
 		this.viewsCount = viewsCount;
@@ -33,11 +33,11 @@ public class ForumTopicTable {
 	}
 
 	public int getTopicId() {
-		return topicId;
+		return forumId;
 	}
 
 	public void setTopicId(int topicId) {
-		this.topicId = topicId;
+		this.forumId = topicId;
 	}
 
 	public String getTitle() {
@@ -64,11 +64,11 @@ public class ForumTopicTable {
 		this.viewsCount = viewsCount;
 	}
 
-	public Calendar getCreationTime() {
+	public Timestamp getCreationTime() {
 		return creationTime;
 	}
 
-	public void setCreationTime(Calendar creationTime) {
+	public void setCreationTime(Timestamp creationTime) {
 		this.creationTime = creationTime;
 	}
 
@@ -87,6 +87,4 @@ public class ForumTopicTable {
 	public void setLastPostId(int lastPostId) {
 		this.lastPostId = lastPostId;
 	}
-	
-	
 }
