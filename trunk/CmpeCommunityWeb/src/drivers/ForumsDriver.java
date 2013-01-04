@@ -11,70 +11,114 @@ import Tables.ForumTopicTable;
 import Tables.ForumsTable;
 
 public class ForumsDriver {
-	public static int createTopic(int forumId, String title, int userId, String content){
+	public static void createTopic(int forumId, String title, String content, int userId){
 		try{
-			String query="INSERT INTO forum_topics (forum_id, title, replies_count, views_count, creation_time, user_id, last_post_id) VALUES (?, ?, 0, 0, NOW(), ?, 0)" ;	
-			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			String query = "INSERT INTO forum_topics (forum_id, title, user_id, creation_time) " +
+					"VALUES (?, ?, ?, NOW())";
+			PreparedStatement ps = (PreparedStatement)DBStatement.getMainConnection()
+					.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, forumId);
 			ps.setString(2, title);
 			ps.setInt(3, userId);
 			ps.executeUpdate();
-			ResultSet result = ps.getGeneratedKeys();
-			if(!result.next())
-				return 0;
-			int id = result.getInt(1);
-			if(createPost(content, userId, id))
-				return id;
-			removeTopic(id);
-			return 0;
-		}  catch(SQLException e) {
+			ResultSet key = ps.getGeneratedKeys();
+			if(key.next()){
+				int topicId = key.getInt(1);
+				int postId = createPost(topicId, content, userId);
+				updateTopicLastPost(topicId, postId);
+				updateForumLastPosts(forumId, postId);
+			}
+		}catch(Exception e){
 			e.printStackTrace();
-			return 0;
-		} catch (Exception e) {
-			return 0;
-		} finally {
-
+		}
+	}
+	
+	public static int createPost(int topicId, String content, int userId){
+		try{
+			String query = "INSERT INTO forum_posts (topic_id, content, user_id, post_time) " +
+					"VALUES(?, ?, ?, NOW())";
+			PreparedStatement ps = (PreparedStatement)DBStatement.getMainConnection()
+					.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			ps.setInt(1, topicId);
+			ps.setString(2, content);
+			ps.setInt(3, userId);
+			ps.executeUpdate();
+			ResultSet key = ps.getGeneratedKeys();
+			if(key.next()){
+				return key.getInt(1);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	private static void updateTopicLastPost(int topicId, int postId){
+		try{
+			String query = "UPDATE forum_topics SET last_post_id = ? WHERE id = ?";
+			PreparedStatement ps = (PreparedStatement)DBStatement.getMainConnection()
+					.prepareStatement(query);
+			ps.setInt(1, postId);
+			ps.setInt(2, topicId);
+			ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	private static void updateForumLastPosts(int forumId, int postId){
+		try{
+			String updateQuery = "UPDATE forums SET last_post_id = ? WHERE id = ?"; 
+			String parentQuery = "SELECT parent_id FROM forums WHERE id = ?";
+			PreparedStatement psUpdate = (PreparedStatement)DBStatement.getMainConnection()
+					.prepareStatement(updateQuery);
+			PreparedStatement psParent = (PreparedStatement)DBStatement.getMainConnection()
+					.prepareStatement(parentQuery);
+			
+			while(true){
+				psUpdate.setInt(1, postId);
+				psUpdate.setInt(2, forumId);
+				psUpdate.executeUpdate();
+				
+				psParent.setInt(1, forumId);
+				ResultSet parent = psParent.executeQuery();
+				if(parent.next() && parent.getInt(1) > 0){
+					forumId = parent.getInt(1);
+				}else{
+					break;
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static void incrementTopicViewCount(int topicId){
+		try{
+			String query = "UPDATE topics SET views_count = views_count + 1 WHERE id = ?";
+			PreparedStatement ps = (PreparedStatement)DBStatement.getMainConnection()
+					.prepareStatement(query);
+			ps.setInt(1, topicId);
+			ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}	
+	}
+	
+	private static void incrementTopicRepliesCount(int topicId){
+		try{
+			String query = "UPDATE topics SET replies_count = replies_count + 1 WHERE id = ?";
+			PreparedStatement ps = (PreparedStatement)DBStatement.getMainConnection()
+					.prepareStatement(query);
+			ps.setInt(1, topicId);
+			ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 	
 	public static ForumTopicTable[] getTopicsByForumId(int forumId){
 		return null;
-	}
-	
-	public static boolean createPost(String content, int userId, int topicId){
-		try{
-			String query="INSERT INTO forum_posts (content, post_time, user_id, topic_id) VALUES (?, NOW(), ?, ?)" ;
-			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
-			ps.setString(1, content);
-			ps.setInt(2, userId);
-			ps.setInt(3, topicId);
-			ps.executeUpdate();
-			return true;
-		}  catch(SQLException e) {
-			return false;
-		} catch (Exception e) {
-			return false;
-		} finally {
-
-		}
-	}
-	
-	public static void removeTopic(int topicId){/*
-		try{
-			String query="INSERT INTO forum_posts (content, post_time, user_id, topic_id) VALUES (?, NOW(), ?, ?)" ;
-			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
-			ps.setString(1, content);
-			ps.setInt(2, userId);
-			ps.setInt(3, topicId);
-			ps.executeUpdate();
-			return true;
-		}  catch(SQLException e) {
-			return false;
-		} catch (Exception e) {
-			return false;
-		} finally {
-
-		}*/
 	}
 	
 	public static ForumsTable getById(int id){
