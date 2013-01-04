@@ -67,19 +67,15 @@ public class Forum extends ServletBase {
 		}
 	}
 	
-	public void utopic(Integer forumId) throws IOException{
-		response.setContentType("application/json");
+	public void createtopic(Integer forumId) throws IOException, ServletException{
 		UserTable user = getCurrentUser();
 		if(user == null){
-			response.getOutputStream().println("{\"success\": false, \"error\": \"need_login\"}");
-			return;
+			request.getRequestDispatcher("/User/login").forward(request, response);
+		}else{
+			String title =  request.getParameter("title");
+			String content = request.getParameter("content");
+			ForumsDriver.createTopic(forumId, title, content, user.getId());
+			request.getRequestDispatcher("/Forum/index/" + forumId).forward(request, response);
 		}
-		String title =  request.getParameter("title");
-		String content = request.getParameter("content");
-
-		if(title!=null && content!=null && ForumsDriver.createTopic(forumId, title, user.getId(), content)!=0)
-			response.getOutputStream().println("{\"success\": true}");
-		else
-			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
 	}
 }
