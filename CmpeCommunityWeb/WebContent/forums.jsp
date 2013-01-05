@@ -96,7 +96,8 @@ body {
 				<% ForumPostTable p = posts.get(forum.getLastPostId());
  					if(p != null){
 						UserTable u = users.get(p.getUserId());%>
-					<div><small><a><%=u.getName() %></a></small> <a><i class="icon-play-circle" title="View the latest post"></i></a></div>
+					<div><small><a href="/CmpeCommunityWeb/Profile/details/<%=u.getId()%>"><%=u.getName() %></a></small> 
+					<a href="/CmpeCommunityWeb/Forum/topic/<%= p.getTopicId()%>"><i class="icon-play-circle" title="View the latest post"></i></a></div>
 					<div><small><%=ForumsDriver.niceTime(p.getPostTime()) %></small></div>
 					<%}else{%>
 						No posts
@@ -133,13 +134,18 @@ body {
 				<% ForumPostTable p = posts.get(topic.getLastPostId());
  					if(p != null){
 						UserTable u = users.get(p.getUserId());%>
-					<div><small><a><%=u.getName() %></a></small> <a><i class="icon-play-circle" title="View the latest post"></i></a></div>
+					<div><small><a href="/CmpeCommunityWeb/Profile/details/<%=u.getId()%>"><%=u.getName() %></a></small> 
+					<a href="/CmpeCommunityWeb/Forum/topic/<%= p.getTopicId()%>"><i class="icon-play-circle" title="View the latest post"></i></a></div>
 					<div><small><%=ForumsDriver.niceTime(p.getPostTime()) %></small></div>
 					<%}else{%>
 						No posts
 					<% } %>				
 				</td>
 			</tr>
+		<%} %>
+		
+		<%if(topics.length == 0){%>
+			<tr><td colspan="4">No topics yet</td></tr>
 		<%} %>
 		</tbody>
 	</table>

@@ -58,5 +58,4 @@ public class ForumPostTable {
 	public void setTopicId(int topicId) {
 		this.topicId = topicId;
 	}
-	
 }
