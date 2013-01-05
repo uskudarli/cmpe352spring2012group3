@@ -4,9 +4,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import DBPack.DBStatement;
+import Tables.ForumPostTable;
 import Tables.ForumTopicTable;
 import Tables.ForumsTable;
 
@@ -150,7 +156,7 @@ public class ForumsDriver {
 	
 	public static void incrementTopicViewCount(int topicId){
 		try{
-			String query = "UPDATE topics SET views_count = views_count + 1 WHERE id = ?";
+			String query = "UPDATE forum_topics SET views_count = views_count + 1 WHERE id = ?";
 			PreparedStatement ps = (PreparedStatement)DBStatement.getMainConnection()
 					.prepareStatement(query);
 			ps.setInt(1, topicId);
@@ -244,6 +250,58 @@ public class ForumsDriver {
 		return parents.toArray(ret);
 	}
 	
+//	public static ForumsTable[] getTopicParentsById(int topicId){
+//		ForumTopicTable topic = getTopicById(topicId);
+//		ForumsTable[] ret = new ForumsTable[0]; 
+//
+//		if(topic != null){
+//			int id = topic.getForumId();
+//			ArrayList<ForumsTable> parents = new ArrayList<ForumsTable>();
+//			while(id > 0){
+//				ForumsTable parent = getById(id);
+//				parents.add(parent);
+//				id = parent.getParentId();
+//			}
+//			ret = new ForumsTable[parents.size()]; 
+//			return parents.toArray(ret);
+//		}
+//		
+//		return ret;
+//	}
+	
+	public static ForumTopicTable getTopicById(int id){
+		try{
+			String query = "SELECT * FROM forum_topics WHERE id = ?";
+			PreparedStatement ps = DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet r = ps.executeQuery();
+			if(r.next()){
+				return new ForumTopicTable(r.getInt("id"), r.getInt("forum_id"), r.getString("title"), 
+						r.getInt("replies_count"), r.getInt("views_count"), r.getTimestamp("creation_time"), 
+						r.getInt("user_id"), r.getInt("last_post_id"));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static ForumPostTable getPostById(int id){
+		try{
+			String query = "SELECT * FROM forum_posts WHERE id = ?";
+			PreparedStatement ps = DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet r = ps.executeQuery();
+			if(r.next()){
+				return new ForumPostTable(r.getInt("id"), r.getString("content"),
+						r.getTimestamp("post_time"), r.getInt("user_id"), r.getInt("topic_id"));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	private static ForumsTable[] convertToArray(ResultSet result) throws SQLException{
 		int N = 0;
 		while(result.next()) N++;
@@ -253,7 +311,6 @@ public class ForumsDriver {
 		while(result.next())
 			forums[i++] = new ForumsTable(result.getInt("id"), result.getInt("parent_id"), result.getString("name"), result.getString("description"), result.getInt("topics_count"), result.getInt("posts_count"), result.getInt("last_post_id"));
 		return forums;
-		
 	}
 	
 	private static ForumTopicTable[] convertToTopicsArray(ResultSet result) throws SQLException{
@@ -268,5 +325,27 @@ public class ForumsDriver {
 					result.getTimestamp("creation_time"), result.getInt("user_id"), result.getInt("last_post_id"));
 		}
 		return forums;
+	}
+	
+	public static String niceTime(Timestamp time){
+		Calendar cal = Calendar.getInstance();
+
+		Date now = cal.getTime();
+		long difference = now.getTime() - time.getTime();
+		
+		long year = (((long)1000)*60*60*24*365);
+		long month = (((long)1000)*60*60*24*30);
+		
+		if(difference > year)
+			return (difference/year)+" years ago";
+		if(difference > month)
+			return (difference/month)+" months ago";
+		if(difference > (1000*60*60*24))
+			return (difference/(1000*60*60*24))+" days ago";
+		if(difference > (1000*60*60))
+			return (difference/(1000*60*60))+" hours ago";
+		if(difference > 1000*60)
+			return (difference/(1000*60))+" minutes ago";
+		return (difference/1000)+" seconds ago";
 	}
 }
