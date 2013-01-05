@@ -1,15 +1,16 @@
 package Tables;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
+
 
 public class ForumPostTable {
 	private int id;
 	private String content;
-	private Calendar postTime;
+	private Timestamp postTime;
 	private int userId;
 	private int topicId;
 	
-	public ForumPostTable(int id, String content, Calendar postTime,
+	public ForumPostTable(int id, String content, Timestamp postTime,
 			int userId, int topicId) {
 		this.id = id;
 		this.content = content;
@@ -34,11 +35,11 @@ public class ForumPostTable {
 		this.content = content;
 	}
 
-	public Calendar getPostTime() {
+	public Timestamp getPostTime() {
 		return postTime;
 	}
 
-	public void setPostTime(Calendar postTime) {
+	public void setPostTime(Timestamp postTime) {
 		this.postTime = postTime;
 	}
 

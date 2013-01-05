@@ -8,10 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Tables.ForumPostTable;
 import Tables.ForumTopicTable;
 import Tables.ForumsTable;
 import Tables.UserTable;
 import drivers.ForumsDriver;
+import drivers.UserDriver;
 
 public class Forum extends ServletBase {
 
@@ -23,14 +25,26 @@ public class Forum extends ServletBase {
 		response.setContentType("text/html");
 		ForumsTable[] categories = ForumsDriver.getCategories();
 		Map<Integer, ForumsTable[]> subForums = new TreeMap<Integer, ForumsTable[]>();
+		Map<Integer, ForumPostTable> posts = new TreeMap<Integer, ForumPostTable>();
+		Map<Integer, UserTable> users = new TreeMap<Integer, UserTable>();
+
 		for(ForumsTable category: categories){
 			ForumsTable[] forums = ForumsDriver.getByParentId(category.getId());
 			subForums.put(category.getId(), forums);
-			for(ForumsTable f: forums)
+			for(ForumsTable f: forums){
 				subForums.put(f.getId(), ForumsDriver.getByParentId(f.getId()));
+				ForumPostTable post = ForumsDriver.getPostById(f.getLastPostId());
+				if(post != null){
+					posts.put(post.getId(), post);
+					users.put(post.getUserId(), UserDriver.getById(post.getUserId()));
+				}
+			}
 		}
+		
 		request.setAttribute("categories", categories);
 		request.setAttribute("subForums", subForums);
+		request.setAttribute("posts", posts);
+		request.setAttribute("users", users);
 		request.getRequestDispatcher("/categories.jsp").include(request, response);
 	}
 	
@@ -39,18 +53,32 @@ public class Forum extends ServletBase {
 		ForumsTable category = ForumsDriver.getById(forumId);
 		Map<Integer, ForumsTable[]> subForums = new TreeMap<Integer, ForumsTable[]>();
 		ForumsTable[] parents = ForumsDriver.getParentsById(forumId);
+		Map<Integer, ForumPostTable> posts = new TreeMap<Integer, ForumPostTable>();
+		Map<Integer, UserTable> users = new TreeMap<Integer, UserTable>();
 		
 		if(category != null){
 			ForumsTable[] forums = ForumsDriver.getByParentId(category.getId());
 			subForums.put(category.getId(), forums);
-			for(ForumsTable f: forums)
+			for(ForumsTable f: forums){
 				subForums.put(f.getId(), ForumsDriver.getByParentId(f.getId()));
+				ForumPostTable post = ForumsDriver.getPostById(f.getLastPostId());
+				if(post != null){
+					posts.put(post.getId(), post);
+					users.put(post.getUserId(), UserDriver.getById(post.getUserId()));
+				}
+			}
 			ForumTopicTable[] topics = ForumsDriver.getTopicsByForumId(forumId);
+			for(ForumTopicTable t: topics){
+				users.put(t.getUserId(), UserDriver.getById(t.getUserId()));
+				posts.put(t.getLastPostId(), ForumsDriver.getPostById(t.getLastPostId()));
+			}
 			
 			request.setAttribute("topics", topics);
 			request.setAttribute("category", category);
 			request.setAttribute("subForums", subForums);
 			request.setAttribute("parents", parents);
+			request.setAttribute("posts", posts);
+			request.setAttribute("users", users);
 			request.getRequestDispatcher("/forums.jsp").include(request, response);
 		}
 	}
@@ -75,6 +103,25 @@ public class Forum extends ServletBase {
 			String content = request.getParameter("content");
 			ForumsDriver.createTopic(forumId, title, content, user.getId());
 			request.getRequestDispatcher("/Forum/index/" + forumId).forward(request, response);
+		}
+	}
+	
+	public void topic(Integer topicId)throws IOException, ServletException{
+		UserTable user = getCurrentUser();
+		if(user == null){
+			request.getRequestDispatcher("/User/login").forward(request, response);
+		}else{
+			ForumTopicTable topic = ForumsDriver.getTopicById(topicId);
+			if(topic != null){
+				ForumsDriver.incrementTopicViewCount(topic.getId());
+				ForumsTable forum = ForumsDriver.getById(topic.getForumId());
+				ForumsTable[] parents = ForumsDriver.getParentsById(topic.getForumId());
+				
+				request.setAttribute("topic", topic);
+				request.setAttribute("forum", forum);
+				request.setAttribute("parents", parents);
+				request.getRequestDispatcher("/topic.jsp").include(request, response);
+			}
 		}
 	}
 }

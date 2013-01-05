@@ -12,10 +12,10 @@ public class ForumTopicTable {
 	private int userId;
 	private int lastPostId;
 	
-	public ForumTopicTable(int id, int topicId, String title, int repliesCount,
+	public ForumTopicTable(int id, int forumId, String title, int repliesCount,
 			int viewsCount, Timestamp creationTime, int userId, int lastPostId) {
 		this.id = id;
-		this.forumId = topicId;
+		this.forumId = forumId;
 		this.title = title;
 		this.repliesCount = repliesCount;
 		this.viewsCount = viewsCount;
@@ -32,12 +32,12 @@ public class ForumTopicTable {
 		this.id = id;
 	}
 
-	public int getTopicId() {
+	public int getForumId() {
 		return forumId;
 	}
 
-	public void setTopicId(int topicId) {
-		this.forumId = topicId;
+	public void setForumId(int forumId) {
+		this.forumId = forumId;
 	}
 
 	public String getTitle() {

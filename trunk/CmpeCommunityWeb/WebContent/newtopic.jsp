@@ -16,7 +16,7 @@ body {
 	/* 60px to make the container go all the way to the bottom of the topbar */
 }
 
-.center-text{
+.center-text {
 	text-align: center !important;
 }
 </style>
@@ -37,36 +37,46 @@ body {
 
 	<div class="container">
 		<%
-			ForumsTable forum = (ForumsTable)request.getAttribute("forum");
-			ForumsTable[] parents = (ForumsTable[])request.getAttribute("parents");
+			ForumsTable forum = (ForumsTable) request.getAttribute("forum");
+			ForumsTable[] parents = (ForumsTable[]) request
+					.getAttribute("parents");
 		%>
 
 		<ul class="breadcrumb">
-			<li><i class="icon-home"></i><a
-				href="/CmpeCommunityWeb/Forum"> Board Index</a></li>
-				<%for(int i = parents.length - 1; i > 0; i--){ %>
-				<li><span class="divider">/</span><a href=<%= "/CmpeCommunityWeb/Forum/index/" + parents[i].getId()%>> 
-					<%= parents[i].getName() %></a></li>
-				<%} %>
-				<li class="active"><span class="divider">/</span><%= forum.getName() %></li>
+			<li><i class="icon-home"></i><a href="/CmpeCommunityWeb/Forum">
+					Board Index</a></li>
+			<%
+				for (int i = parents.length - 1; i > 0; i--) {
+			%>
+			<li><span class="divider">/</span><a
+				href=<%="/CmpeCommunityWeb/Forum/index/" + parents[i].getId()%>>
+					<%=parents[i].getName()%></a></li>
+			<%
+				}
+			%>
+			<li class="active"><span class="divider">/</span><%=forum.getName()%></li>
 		</ul>
-	
+
 		<div class="row">
 			<div class="well span11">
-				<fieldset>
-					<legend>New Topic</legend>
-		
-					<div class="controls">
-						<input type="text" name="title" class="span9" placeholder="Title"/>
-					</div>	
-		
-					<div class="controls">
-						<textarea name="content" rows="10" class="span11"></textarea>
-					</div>	
-					<div class="controls">
-						<button onclick='Forum.newTopic(<%=forum.getId() %>)' class="btn btn-info pull-right">Send Post <i class="icon-chevron-right icon-white"></i></button>
-					</div>	
-				</fieldset>
+				<form method="post" action="/CmpeCommunityWeb/Forum/createtopic/<%=forum.getId()%>">
+					<fieldset>
+						<legend>New Topic</legend>
+
+						<div class="controls">
+							<input type="text" name="title" class="span9" placeholder="Title" />
+						</div>
+
+						<div class="controls">
+							<textarea name="content" rows="10" class="span11"></textarea>
+						</div>
+						<div class="controls">
+							<button class="btn btn-info pull-right">
+								Create Topic <i class="icon-chevron-right icon-white"></i>
+							</button>
+						</div>
+					</fieldset>
+				</form>
 			</div>
 		</div>
 	</div>

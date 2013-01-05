@@ -30,22 +30,25 @@ public class Events extends ServletBase{
 	}
 	
 	public void myEvents(Integer userId)throws IOException, ServletException{
-		
-		if(getCurrentUser() == null)
+		if(getCurrentUser() == null){
+			request.getRequestDispatcher("/User/login").forward(request, response);
 			return;
+		}
 
 		request.setAttribute("type", "myEvents");
-		
+		request.setAttribute("user",getCurrentUser());
 		request.getRequestDispatcher("/EventList.jsp").include(request, response);
-		
 	}
 	
 	public void attendedEvents(Integer userId)throws IOException, ServletException{
-		if(getCurrentUser() == null)
+		if(getCurrentUser() == null){
+			request.getRequestDispatcher("/User/login").forward(request, response);
 			return;
+		}
 		
 		request.setAttribute("type", "");
-		
+		request.setAttribute("user",getCurrentUser());
+
 		request.getRequestDispatcher("/EventList.jsp").include(request, response);
 		
 	}

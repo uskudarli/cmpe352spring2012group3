@@ -1,3 +1,8 @@
+<%@page import="drivers.ForumsDriver"%>
+<%@page import="Tables.UserTable"%>
+<%@page import="Tables.ForumPostTable"%>
+<%@page import="com.sun.org.apache.xpath.internal.FoundIndex"%>
+<%@page import="Tables.ForumTopicTable"%>
 <%@page import="java.util.Map"%>
 <%@page import="Tables.ForumsTable"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -38,6 +43,9 @@ body {
 			ForumsTable category = (ForumsTable)request.getAttribute("category");
 			Map<Integer, ForumsTable[]> subForums = (Map<Integer, ForumsTable[]>)request.getAttribute("subForums");
 			ForumsTable[] parents = (ForumsTable[])request.getAttribute("parents");
+			ForumTopicTable[] topics = (ForumTopicTable[])request.getAttribute("topics");
+			Map<Integer, ForumPostTable> posts = (Map<Integer, ForumPostTable>)request.getAttribute("posts");
+			Map<Integer, UserTable> users = (Map<Integer, UserTable>)request.getAttribute("users");
 		%>
 
 		<ul class="breadcrumb">
@@ -82,10 +90,17 @@ body {
 						</div>
 					<% } %>
 				</td>
-				<td class="center-text">0</td>
-				<td class="center-text">0</td>
+				<td class="center-text"><%= forum.getTopicsCount() %></td>
+				<td class="center-text"><%= forum.getPostsCount() %></td>
 				<td class="span3">
-					No posts
+				<% ForumPostTable p = posts.get(forum.getLastPostId());
+ 					if(p != null){
+						UserTable u = users.get(p.getUserId());%>
+					<div><small><a><%=u.getName() %></a></small> <a><i class="icon-play-circle" title="View the latest post"></i></a></div>
+					<div><small><%=ForumsDriver.niceTime(p.getPostTime()) %></small></div>
+					<%}else{%>
+						No posts
+					<% } %>
 				</td>
 			</tr>
 			<% } %>
@@ -106,33 +121,30 @@ body {
 			</tr>
 		</thead>
 		<tbody>
+		<%for(ForumTopicTable topic: topics){ %>
 			<tr>
 				<td>
-					<div><a href='/CmpeCommunityWeb/Forum/index/1'><strong>Topic get name</strong></a></div>
-					
+					<div><a href="/CmpeCommunityWeb/Forum/topic/<%=topic.getId()%>"><%= topic.getTitle() %></a></div>
+					<div><small>by <a><%=users.get(topic.getUserId()).getName() %></a> » <%= ForumsDriver.niceTime(topic.getCreationTime()) %></small></div>
 				</td>
-				<td class="center-text">0</td>
-				<td class="center-text">0</td>
+				<td class="center-text"><%= topic.getRepliesCount() %></td>
+				<td class="center-text"><%= topic.getViewsCount() %></td>
 				<td class="span3">
-					No posts
+				<% ForumPostTable p = posts.get(topic.getLastPostId());
+ 					if(p != null){
+						UserTable u = users.get(p.getUserId());%>
+					<div><small><a><%=u.getName() %></a></small> <a><i class="icon-play-circle" title="View the latest post"></i></a></div>
+					<div><small><%=ForumsDriver.niceTime(p.getPostTime()) %></small></div>
+					<%}else{%>
+						No posts
+					<% } %>				
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<div><a href='/CmpeCommunityWeb/Forum/index/1'><strong>Topic get name</strong></a></div>
-					
-				</td>
-				<td class="center-text">0</td>
-				<td class="center-text">0</td>
-				<td class="span3">
-					No posts
-				</td>
-			</tr>
+		<%} %>
 		</tbody>
 	</table>
 	<% } %>
 	</div>
-
 
 	<script type="text/javascript" src="/CmpeCommunityWeb/js/bootstrap.js"></script>
 </body>

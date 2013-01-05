@@ -1,3 +1,8 @@
+<%@page import="drivers.ForumsDriver"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="Tables.ForumPostTable"%>
+<%@page import="Tables.UserTable"%>
+<%@page import="Tables.ForumTopicTable"%>
 <%@page import="java.util.Map"%>
 <%@page import="Tables.ForumsTable"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -37,6 +42,8 @@ body {
 		<%
 			ForumsTable[] categories = (ForumsTable[])request.getAttribute("categories");
 			Map<Integer, ForumsTable[]> subForums = (Map<Integer, ForumsTable[]>)request.getAttribute("subForums");
+			Map<Integer, ForumPostTable> posts = (Map<Integer, ForumPostTable>)request.getAttribute("posts");
+			Map<Integer, UserTable> users = (Map<Integer, UserTable>)request.getAttribute("users");
 		%>
 
 		<ul class="breadcrumb">
@@ -79,10 +86,17 @@ body {
 						</div>
 					<% } %>
 				</td>
-				<td class="center-text">0</td>
-				<td class="center-text">0</td>
+				<td class="center-text"><%= forum.getTopicsCount() %></td>
+				<td class="center-text"><%= forum.getPostsCount() %></td>
 				<td class="span3">
-					No posts
+				<% ForumPostTable p = posts.get(forum.getLastPostId());
+ 					if(p != null){
+						UserTable u = users.get(p.getUserId());%>
+					<div><small><a><%=u.getName() %></a></small> <a><i class="icon-play-circle" title="View the latest post"></i></a></div>
+					<div><small><%=ForumsDriver.niceTime(p.getPostTime()) %></small></div>
+					<%}else{%>
+						No posts
+					<% } %>
 				</td>
 			</tr>
 			<% } %>
