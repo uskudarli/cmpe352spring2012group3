@@ -101,8 +101,8 @@ public class Forum extends ServletBase {
 		}else{
 			String title =  request.getParameter("title");
 			String content = request.getParameter("content");
-			ForumsDriver.createTopic(forumId, title, content, user.getId());
-			request.getRequestDispatcher("/Forum/index/" + forumId).forward(request, response);
+			int topicId = ForumsDriver.createTopic(forumId, title, content, user.getId());
+			request.getRequestDispatcher("/Forum/topic/" + topicId).forward(request, response);
 		}
 	}
 	
@@ -116,12 +116,32 @@ public class Forum extends ServletBase {
 				ForumsDriver.incrementTopicViewCount(topic.getId());
 				ForumsTable forum = ForumsDriver.getById(topic.getForumId());
 				ForumsTable[] parents = ForumsDriver.getParentsById(topic.getForumId());
+				ForumPostTable[] posts = ForumsDriver.getPostsByTopicId(topicId);
+				Map<Integer, UserTable> users = new TreeMap<Integer, UserTable>();
+				for(ForumPostTable p: posts){
+					users.put(p.getUserId(), UserDriver.getById(p.getUserId()));
+				}
 				
 				request.setAttribute("topic", topic);
 				request.setAttribute("forum", forum);
 				request.setAttribute("parents", parents);
+				request.setAttribute("posts", posts);
+				request.setAttribute("users", users);
 				request.getRequestDispatcher("/topic.jsp").include(request, response);
 			}
+		}
+	}
+	
+	public void reply(Integer topicId) throws IOException, ServletException{
+		UserTable user = getCurrentUser();
+		if(user == null){
+			request.getRequestDispatcher("/User/login").forward(request, response);
+		}else{
+			String content = request.getParameter("content");
+			int postId = ForumsDriver.createPost(topicId, content, user.getId());
+			ForumsDriver.updateTopicLastPost(topicId, postId);
+			ForumsDriver.incrementTopicRepliesCount(topicId);
+			request.getRequestDispatcher("/Forum/topic/" + topicId).forward(request, response);
 		}
 	}
 }
