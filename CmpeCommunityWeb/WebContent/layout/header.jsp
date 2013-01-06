@@ -155,7 +155,7 @@ return $("<li></li>").data("item.autocomplete", item).append(MyHtml).appendTo(ul
                 </tr>
                 <tr>
                     <td>
-                        <a href="/CmpeCommunityWeb/Profile/event">Events</a>
+                        <a href="/CmpeCommunityWeb/Profile/event/<%=user.getId()%>">Events</a>
                     </td>
                 </tr>
                 <tr class="text-info">
