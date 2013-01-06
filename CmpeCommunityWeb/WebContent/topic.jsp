@@ -23,6 +23,15 @@ body {
 	text-align: center !important;
 }
 </style>
+<script type="text/javascript">
+function stoppedTyping(text)
+  {
+    if (text.length > 0)
+      document.getElementById("replybutton").disabled = false;
+    else
+      document.getElementById("replybutton").disabled = true;
+  }
+</script>
 </head>
 <body>
 	<div class="navbar navbar-fixed-top navbar-inverse">
@@ -46,6 +55,7 @@ body {
 			ForumTopicTable topic = (ForumTopicTable)request.getAttribute("topic");
 			ForumPostTable[] posts = (ForumPostTable[])request.getAttribute("posts");
 			Map<Integer, UserTable> users = (Map<Integer, UserTable>)request.getAttribute("users");
+			UserTable user = (UserTable)request.getAttribute("user");
 		%>
 
 		<ul class="breadcrumb">
@@ -116,11 +126,11 @@ body {
 					</div>
 
 					<div class="controls span10">
-						<a style="margin-left: 10px"><strong>Erdem Orman</strong></a>
-						<textarea name="content" rows="5" class="span10"></textarea>
+						<a style="margin-left: 10px" href="/CmpeCommunityWeb/Profile/details/<%=user.getId()%>"><strong><%= user.getName() %></strong></a>
+						<textarea onkeyup="stoppedTyping(this.value)" name="content" rows="5" class="span10"></textarea>
 					</div>
 					<div class="controls">
-						<button class="btn btn-info pull-right">
+						<button id="replybutton" disabled="true" class="btn btn-info pull-right">
 							Send Reply <i class="icon-chevron-right icon-white"></i>
 						</button>
 					</div>

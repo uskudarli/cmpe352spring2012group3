@@ -20,6 +20,17 @@ body {
 	text-align: center !important;
 }
 </style>
+<script type="text/javascript">
+function stoppedTyping()
+  {
+	var title = document.getElementById("title");
+	var content = document.getElementById("content");
+    if (title.value.length > 0 && content.value.length > 0)
+      document.getElementById("createbutton").disabled = false;
+    else
+      document.getElementById("createbutton").disabled = true;
+  }
+</script>
 </head>
 <body>
 	<div class="navbar navbar-fixed-top navbar-inverse">
@@ -64,14 +75,14 @@ body {
 						<legend>New Topic</legend>
 
 						<div class="controls">
-							<input type="text" name="title" class="span9" placeholder="Title" />
+							<input onkeyup="stoppedTyping()" type="text" id="title" name="title" class="span9" placeholder="Title" />
 						</div>
 
 						<div class="controls">
-							<textarea name="content" rows="10" class="span11"></textarea>
+							<textarea onkeyup="stoppedTyping()" id="content" name="content" rows="10" class="span11"></textarea>
 						</div>
 						<div class="controls">
-							<button class="btn btn-info pull-right">
+							<button id="createbutton" class="btn btn-info pull-right" disabled="true">
 								Create Topic <i class="icon-chevron-right icon-white"></i>
 							</button>
 						</div>
