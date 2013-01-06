@@ -101,8 +101,12 @@ public class Forum extends ServletBase {
 		}else{
 			String title =  request.getParameter("title");
 			String content = request.getParameter("content");
-			int topicId = ForumsDriver.createTopic(forumId, title, content, user.getId());
-			request.getRequestDispatcher("/Forum/topic/" + topicId).forward(request, response);
+			if(content == null || title == null || "".equals(content) || "".equals(title)){
+				request.getRequestDispatcher("/Forum/index/" + forumId).forward(request, response);
+			}else{
+				int topicId = ForumsDriver.createTopic(forumId, title, content, user.getId());
+				request.getRequestDispatcher("/Forum/topic/" + topicId).forward(request, response);
+			}
 		}
 	}
 	
@@ -127,6 +131,7 @@ public class Forum extends ServletBase {
 				request.setAttribute("parents", parents);
 				request.setAttribute("posts", posts);
 				request.setAttribute("users", users);
+				request.setAttribute("user", user);
 				request.getRequestDispatcher("/topic.jsp").include(request, response);
 			}
 		}
@@ -138,9 +143,11 @@ public class Forum extends ServletBase {
 			request.getRequestDispatcher("/User/login").forward(request, response);
 		}else{
 			String content = request.getParameter("content");
-			int postId = ForumsDriver.createPost(topicId, content, user.getId());
-			ForumsDriver.updateTopicLastPost(topicId, postId);
-			ForumsDriver.incrementTopicRepliesCount(topicId);
+			if(content != null && !"".equals(content)){
+				int postId = ForumsDriver.createPost(topicId, content, user.getId());
+				ForumsDriver.updateTopicLastPost(topicId, postId);
+				ForumsDriver.incrementTopicRepliesCount(topicId);
+			}
 			request.getRequestDispatcher("/Forum/topic/" + topicId).forward(request, response);
 		}
 	}
