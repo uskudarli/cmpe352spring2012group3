@@ -161,7 +161,7 @@ public class Profile extends ServletBase {
 		
 		response.setContentType("text/html");
 		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
-		request.getRequestDispatcher("/SurveyList.jsp").include(request, response);
+		request.getRequestDispatcher("/Survey.jsp").include(request, response);
 		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
 	}
 	
@@ -184,9 +184,10 @@ public class Profile extends ServletBase {
 			return;
 		}
 		request.setAttribute("user", user);
+		request.setAttribute("type", "myEvents");
 		response.setContentType("text/html");
 		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
-		request.getRequestDispatcher("/EventList.jsp").include(request, response);
+		request.getRequestDispatcher("/Event.jsp").include(request, response);
 		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
 	}
 }
