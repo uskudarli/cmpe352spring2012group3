@@ -3,11 +3,6 @@
 <%@ page import="Tables.TagsTable"%>
 
 <%@ page import="Tables.UserTable"%>
-
-<%String type = (String)request.getAttribute("type"); %>
-
-
-
 <link rel="stylesheet"
     href="/CmpeCommunityWeb/css/bootstrap-tagmanager.css">
 <link rel="stylesheet"
@@ -44,13 +39,6 @@
 <script src="/CmpeCommunityWeb/js/jquery-ui-timepicker-addon.js"></script>
 
 
-<div style="margin-left: 30px">
-            <ul class="nav span6 nav-tabs">
-                <li><a onclick="" data-toggle="tab">My events</a></li>
-                <li><a onclick="" data-toggle="tab">Attended events</a></li>
-            </ul>
-    <div id="contentBody" class="span6"></div>
-</div>
 <script type="text/javascript">
 <!--
 //     $(document).ready(function(){
@@ -60,7 +48,8 @@
 </script>
 
 <div class="nav span6 nav-tabs">
-<%-- <%if (type.equals("mysurveys")){ %> --%>
+<%String type = (String)request.getAttribute("type"); %>
+ <%if (type.equals("myEvents")){ %>
     <div class="row">
         <div>
             <form id="newsurvey" class='row span4' action="">
@@ -83,7 +72,7 @@
             </form>
         </div>
     </div>
-<%--     <%} %> --%>
+    <%} %> 
     
     <script src="/CmpeCommunityWeb/js/bootstrap.js"></script>
 
