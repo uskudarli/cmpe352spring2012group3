@@ -122,16 +122,12 @@ var Surveys = {
 var Events = {
 		loadMyEvents: function(userId){
 			$("#contentBody").load("/CmpeCommunityWeb/Events/myEvents/"+userId);
-			element.parents().parents().find("li").removeClass('active');
-			element.parents().addClass('active');
 			console.log("loading my events");
 		},
 		
 		loadAttendedEvents: function(userId){
 			$("#contentBody").load("/CmpeCommunityWeb/Events/attendedEvents/"+userId);
-			element.parents().parents().find("li").removeClass('active');
-			element.parents().addClass('active');
 			console.log("loading attended events");
-		},
+		}
 		
 };
