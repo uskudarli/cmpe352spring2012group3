@@ -128,6 +128,27 @@ var Events = {
 		loadAttendedEvents: function(userId){
 			$("#contentBody").load("/CmpeCommunityWeb/Events/attendedEvents/"+userId);
 			console.log("loading attended events");
+		},
+		add: function(userId){
+			var place =$("[name=place]").val();
+			var dateTime=$("[name=datetime]").val();
+			var description=$("[name=description]").val();
+			//$.post("/CmpeCommunityWeb/Surveys/addSurvey/"+userId,{'question':question,'choices':choices},function(data){
+			$.ajax({
+				  type: "POST",
+				  url: "/CmpeCommunityWeb/Events/addEvents/"+userId,
+				  data: 'place='+place+'&datetime='+dateTime+'&description='+description,
+				  datatype: "json",
+				  success: function(result){	
+					  if(data["success"])
+						  window.location.reload();
+					  else if(data["error"] == "need_login")
+						  window.location.href = "/CmpeCommunityWeb/";
+					  else
+					alert("An unknown error occured, sorry for the inconvenient we may have caused.");
+				  }  
+			});
+			console.log("adding survey");
 		}
 		
 };
