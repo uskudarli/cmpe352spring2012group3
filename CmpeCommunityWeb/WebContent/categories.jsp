@@ -1,3 +1,4 @@
+<%@page import="drivers.SearchDriver"%>
 <%@page import="drivers.ForumsDriver"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="Tables.ForumPostTable"%>
@@ -23,29 +24,122 @@ body {
 	text-align: center !important;
 }
 </style>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <style>
+    	.nav-tabs > li > a {
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    line-height: 20px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+	}
+	.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #FFFFFF;
+    border-color: #DDDDDD #DDDDDD transparent;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+    color: #555555;
+    cursor: pointer;
+}
+.item-category {
+  font-weight:italic;
+  color:#0088CC;
+  float:right;
+} 
+    .ui-autocomplete-category {
+        font-weight: bold;
+        padding: .2em .4em;
+        margin: .8em 0 .2em;
+        line-height: 1.5;
+    }
+    input.span3, textarea.span3, .uneditable-input.span3 {
+    width: 290px;
+    }
+    </style>
+    <script>
+    $.widget( "custom.catcomplete", $.ui.autocomplete, {
+    	  _renderMenu: function( ul, items ) {
+    	   var self = this,
+    	    currentCategory = "";
+    	   $.each( items, function( index, item ) {
+    		   if (item.category != currentCategory) {
+    	     //ul.append( "<i>" + item.category + "</i>" );
+    	     currentCategory = item.category;
+    		   }
+    	    self._renderItem( ul, item );
+    	   });
+    	  }
+    	 });
+    $(function() {
+        var data = [
+            <%=SearchDriver.getSearchAutoComplete()%>
+            { value: "",label: " ", category: " " }
+        ];
+ 
+        $( "#search" ).catcomplete({
+            delay: 0,
+            source: data,
+            select: function(event,ui) {
+            	window.location.href=ui.item.value;
+            	$("#search").val(ui.item.label);
+            	return false;
+            }
+        }).data("catcomplete")._renderItem = function (ul, item) {
+        	var MyHtml = "<a>" + "<div class='ac' >" +
+            "<div>" +
+            "<span>" + item.label + "</span>" +
+            "<span class='item-category'><i>" + item.category + "</i></span>" +
+            "</div>" +
+            "</div>" + "</a>";
+return $("<li></li>").data("item.autocomplete", item).append(MyHtml).appendTo(ul);
+};
+    });
+    </script>
 </head>
 <body>
-	<div class="navbar navbar-fixed-top navbar-inverse">
-		<div class="navbar-inner">
-			<div class="container">
-				<a class="brand" href="/CmpeCommunityWeb/">Cmpe Community</a>
-				<ul class="nav pull-right">
-					<li><a href="/User/logout"> <i class="icon-off icon-white"></i>
-							Logout
-					</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	<%
+		ForumsTable[] categories = (ForumsTable[])request.getAttribute("categories");
+		Map<Integer, ForumsTable[]> subForums = (Map<Integer, ForumsTable[]>)request.getAttribute("subForums");
+		Map<Integer, ForumPostTable> posts = (Map<Integer, ForumPostTable>)request.getAttribute("posts");
+		Map<Integer, UserTable> users = (Map<Integer, UserTable>)request.getAttribute("users");
+	%>
+		
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a href="/CmpeCommunityWeb/" class="brand">Cmpe Community</a>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li><a href="/CmpeCommunityWeb/Profile">Home</a></li>
+                        <li class="active"><a href="/CmpeCommunityWeb/Forum">Forum</a></li>
+                    </ul>
+
+                    <form action="#" class="navbar-search">
+                        <input id="search" type="text" placeholder="Search" class="search-query span3"
+                            name="q" value="" /> <input type="hidden" name="scope"
+                            id="autocomplete" value="posts">
+                    </form>
+                    <ul class="nav pull-right">
+                        <li><a href="/CmpeCommunityWeb/Profile/edit">Account</a></li>
+                        <li><a href="/CmpeCommunityWeb/User/logout">Logout</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
 
 	<div class="container">
-		<%
-			ForumsTable[] categories = (ForumsTable[])request.getAttribute("categories");
-			Map<Integer, ForumsTable[]> subForums = (Map<Integer, ForumsTable[]>)request.getAttribute("subForums");
-			Map<Integer, ForumPostTable> posts = (Map<Integer, ForumPostTable>)request.getAttribute("posts");
-			Map<Integer, UserTable> users = (Map<Integer, UserTable>)request.getAttribute("users");
-		%>
-
 		<ul class="breadcrumb">
 			<li><i class="icon-home"></i><a
 				href="/CmpeCommunityWeb/Forum"> Board Index</a></li>
