@@ -3,8 +3,10 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="Tables.TagsTable"%>
 <%@ page import="Tables.UserTable"%>
-<%@page import="Tables.UserTable"%>
-
+<%@ page import="Tables.SurveyTable"%>
+<%@ page import="Tables.ChoiceTable"%>
+<%@ page import="drivers.SurveyDriver"%>
+<%@ page import="java.util.ArrayList;"%>
 <link rel="stylesheet"
 	href="/CmpeCommunityWeb/css/bootstrap-tagmanager.css">
 
@@ -56,51 +58,40 @@
 <%} %> 
 	
 	<script src="/CmpeCommunityWeb/js/bootstrap.js"></script>
+	
+<% SurveyTable[] surveyList = (SurveyTable[])request.getAttribute("surveyList"); %>
+
+
+<% 
+ChoiceTable[] choices=null;
+for (int i=0;i<surveyList.length;i++) { %>
 
 	<div class="accordion" id="accordion2">
 		<div class="accordion-group">
 			<div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse"
-					data-parent="#accordion2" href="#collapseOne"> What is your
-					favorite programming language? </a>
+					data-parent="#accordion2" href="#collapseOne"> <%=surveyList[i].getQuestion() %> </a>
 			</div>
 			<div id="collapseOne" class="accordion-body collapse">
-				<div class="accordion-inner">
-					<div class="row-fluid">
+			<div class="accordion-inner">
+			<% choices = surveyList[i].getChoiceTable();%>
+			<% for (int j=0;j<choices.length;j++) { %>
+			            <div class="row-fluid">
 						<div class="progress progress-warning span2">
-							<div class="bar" style="width: 50%;">
-								<p>&nbsp;50%</p>
+							<div class="bar" style="width:<%=choices[j].getPercentageVotes()+"%" %>;">
+								<p>&nbsp;<%=choices[j].getVotes() %></p>
 							</div>
 						</div>
 						<div class="span5">
-							<p>Python</p>
+							<p><%=choices[j].getChoice() %></p>
 						</div>
 					</div>
-
-					<div class="row-fluid">
-						<div class="progress progress-warning span2">
-							<div class="bar" style="width: 10%;">
-								<p>&nbsp;10%</p>
-							</div>
-						</div>
-						<div class="span5">
-							<p>Java</p>
-						</div>
-					</div>
-
-					<div class="row-fluid">
-						<div class="progress progress-warning span2">
-							<div class="bar" style="width: 40%;">
-								<p>&nbsp;40%</p>
-							</div>
-						</div>
-						<div class="span5">
-							<p>C++</p>
-						</div>
-					</div>
+            <% } %>
+					
 				</div>
 			</div>
 		</div>
+		<% } %>
 		<div class="accordion-group">
 			<div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse"
