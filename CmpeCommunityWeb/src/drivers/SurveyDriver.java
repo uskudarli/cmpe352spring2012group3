@@ -3,6 +3,7 @@ package drivers;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.mysql.jdbc.Statement;
 
@@ -116,12 +117,16 @@ public static ChoiceTable[] getChoices(int surveyId) {
 }
 private static ChoiceTable[] convertToArray(ResultSet result) throws SQLException{
 	int N = 0;
-	while(result.next()) N++;
+	int totalVotes=0;
+	while(result.next()) { 
+		N++;
+	    totalVotes+=result.getInt("votes");
+	}
 	result.beforeFirst();
 	ChoiceTable[] choices = new ChoiceTable[N];
 	int i=0;
 	while(result.next())
-		choices[i++] = new ChoiceTable(result.getInt("id"), result.getInt("survey_id"), result.getString("body"), result.getInt("votes"));
+		choices[i++] = new ChoiceTable(result.getInt("id"), result.getInt("survey_id"), result.getString("choice"), result.getInt("votes"),(totalVotes==0?0:result.getInt("votes")/totalVotes)*100);
 	return choices;
 }
 private static SurveyTable[] convertSurveyToArray(ResultSet result) throws SQLException{
@@ -176,4 +181,28 @@ private static boolean addChoice(int surveyId, String choice) {
 		return false;
 	}
 }
+public static ArrayList<Double> getVotes(int surveyId) {
+	ArrayList<Double> list=new ArrayList<Double>();
+	double totalVotes=0;
+	try {
+		String query="SELECT * FROM `surveys` WHERE `id`=?";
+		PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+		ps.setInt(1, surveyId);
+		ResultSet result = ps.executeQuery();
+		while (result.next()) {
+			list.add(result.getInt("votes")/1.0);
+			totalVotes+=result.getInt("votes");			
+		}
+		for (int i=0;i<list.size();i++) {
+			list.set(i,list.get(i)*100/totalVotes);
+		}
+		return list;
+	} catch (Exception e) {
+		System.out.println(e.getMessage());
+		return null;
+	}
+	
+	
+}
+
 }
