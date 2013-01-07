@@ -5,12 +5,14 @@ public class ChoiceTable {
 	private int surveyId;
 	private String choice;
 	private int votes;
-	public ChoiceTable(int id, int surveyId, String choice, int votes) {
+	private double percentageVotes;
+	public ChoiceTable(int id, int surveyId, String choice, int votes,double percentageVotes) {
 		super();
 		this.id = id;
 		this.surveyId = surveyId;
 		this.choice = choice;
 		this.votes = votes;
+		this.percentageVotes=percentageVotes;
 	}
 	public ChoiceTable() {
 		super();
@@ -39,5 +41,11 @@ public class ChoiceTable {
 	}
 	public void setVotes(int votes) {
 		this.votes = votes;
+	}
+	public double getPercentageVotes() {
+		return percentageVotes;
+	}
+	public void setPercentageVotes(double percentageVotes) {
+		this.percentageVotes=percentageVotes;
 	}
 }

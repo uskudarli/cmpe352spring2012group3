@@ -4,7 +4,7 @@ public class SurveyTable {
 	private int id;
 	private int userId;
 	private String question;
-	private ChoiceTable choiceTable[];
+	private ChoiceTable[] choiceTable;
 	public SurveyTable(int id, int userId, String question,
 			ChoiceTable[] choiceTable) {
 		super();
