@@ -30,7 +30,6 @@
             android:layout_centerVertical="true"
             android:text="Date"
             android:textSize="14sp" />
-
     </RelativeLayout>
 
     <TextView
@@ -45,11 +44,29 @@
         android:textColor="#000000"
         android:textSize="15sp" />
 
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:padding="5dp" >
-    </ListView>
-    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp" >
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/replyText"
+            android:padding="5dp" >
+        </ListView>
+
+        <EditText
+            android:id="@+id/replyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:ems="10"
+            android:hint="Write a reply . . ."
+            android:imeActionLabel="Reply"
+            android:imeOptions="actionSend"
+            android:inputType="text" />
+    </RelativeLayout>
+
 </LinearLayout>

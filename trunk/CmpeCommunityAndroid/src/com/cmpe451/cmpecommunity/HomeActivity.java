@@ -44,7 +44,7 @@ public class HomeActivity extends TabActivity {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.options_menu, menu);
 		return true;
-	}
+	}	
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

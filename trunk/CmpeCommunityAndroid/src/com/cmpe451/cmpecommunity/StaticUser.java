@@ -15,7 +15,7 @@ public class StaticUser {
 	public static Tag chosenTag;
 	public static User chosenUser;
 	//public static int chosenUserID;
-	public static String URL = "http://192.168.0.11:8082";
+	public static String URL = "http://192.168.1.105:8082";
 	
 	public static List<NameValuePair> GetNameValuePair()
 	{
