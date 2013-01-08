@@ -39,6 +39,21 @@ public class AndroidApi extends ServletBase {
 		}
 	}
 	
+	public void reply(Integer postId) throws IOException{
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		if(!UserDriver.isCredentialsValid(email, password))
+			return;
+		UserTable user = UserDriver.getByEmail(email);
+		String body =  request.getParameter("body");
+		if(body == null)
+			response.getOutputStream().println("{\"success\": false, \"error\": \"no_input\"}");
+		else if(ReplyDriver.insert(postId, user.getId(), body))
+			response.getOutputStream().println("{\"success\": true}");
+		else
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
+	}
+	
 	public void register() throws ServletException, IOException{
 		String email = request.getParameter("email");
 		String name = request.getParameter("name")+" "+request.getParameter("last_name");
