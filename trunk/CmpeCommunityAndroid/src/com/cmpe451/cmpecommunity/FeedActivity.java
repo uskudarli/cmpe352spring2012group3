@@ -45,11 +45,16 @@ public class FeedActivity extends ListActivity{
 		adapter = new FeedAdapter(this, R.layout.feed_item);
 
 		path = getIntent().getExtras().getString("FeedType");
-		if(path.equalsIgnoreCase("wall"))
+		if(path.equalsIgnoreCase("wall") || path.equalsIgnoreCase("tagWall"))
 		{
 			EditText postText = (EditText) findViewById(R.id.postText);
 			postText.setVisibility(View.VISIBLE);
-			if(StaticUser.chosenUser.getId() != StaticUser.currentUser.getId())
+			
+			if(getIntent().getExtras().getBoolean("TagPage"))
+			{
+				postText.setHint("@" + StaticUser.chosenTag.getTag());
+			}
+			else if(StaticUser.chosenUser.getId() != StaticUser.currentUser.getId())
 				postText.setHint("@" + StaticUser.chosenUser.getName());
 		}
 			
@@ -177,7 +182,8 @@ public class FeedActivity extends ListActivity{
 			HttpClient httpClient = new DefaultHttpClient();
 
 			// Creating HTTP Post
-			HttpPost httpPost = new HttpPost(StaticUser.URL + "/CmpeCommunityWeb/AndroidApi/postToUser/" + StaticUser.chosenUser.getId());
+			String function = getIntent().getExtras().getBoolean("TagPage") ? "ToTag/" + StaticUser.chosenTag.getId() : "ToUser/" + StaticUser.chosenUser.getId();
+			HttpPost httpPost = new HttpPost(StaticUser.URL + "/CmpeCommunityWeb/AndroidApi/post" + function);
 
 			// Url Encoding the POST parameters
 			try {
