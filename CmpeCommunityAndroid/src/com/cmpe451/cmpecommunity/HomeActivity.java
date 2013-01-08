@@ -1,14 +1,15 @@
 package com.cmpe451.cmpecommunity;
 
-import java.util.Currency;
-
 import android.app.TabActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TabHost;
+import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 
 @SuppressWarnings("deprecation")
@@ -36,7 +37,15 @@ public class HomeActivity extends TabActivity {
 
 		tabHost.addTab(profileTab);
 		tabHost.addTab(tagsTab);
-		tabHost.addTab(eventsTab); 
+		tabHost.addTab(eventsTab);
+
+		tabHost.setOnTabChangedListener(new OnTabChangeListener() {
+
+			public void onTabChanged(String tabId) {
+				if(getCurrentFocus() != null)
+					((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+			}
+		});
 	}
 
 	@Override
