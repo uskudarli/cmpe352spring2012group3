@@ -1,79 +1,53 @@
+<%@page import="java.util.Map"%>
+<%@page import="Tables.EventTable"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="Tables.TagsTable"%>
 
 <%@ page import="Tables.UserTable"%>
-<link rel="stylesheet"
-    href="/CmpeCommunityWeb/css/bootstrap-tagmanager.css">
-<link rel="stylesheet"
-    href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
 
-<style>
-.progress .bar p {
-    color: #000;
-    font-size: 12px;
-    text-align: left;
-    margin-left: -20px text-shadow:   0px -1px 0px rgba(0, 0, 0, 0.25);
-}
-
-.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
-.ui-timepicker-div dl { text-align: left; }
-.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
-.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
-.ui-timepicker-div td { font-size: 90%; }
-.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
-
-.ui-timepicker-rtl{ direction: rtl; }
-.ui-timepicker-rtl dl { text-align: right; }
-.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
-</style>
-<script type="text/javascript"
-    src="/CmpeCommunityWeb/js/bootstrap-tagmanager.js"></script>
-<script type="text/javascript">
-    function addTags() {
-        document.forms['form1'].submit();
-    }
-</script>
-<script src="/CmpeCommunityWeb/js/bootstrap.js"></script>
-<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<script src="/CmpeCommunityWeb/js/jquery-ui-timepicker-addon.js"></script>
-
-
-<script type="text/javascript">
-<!--
-//     $(document).ready(function(){
-<%--         Posts.loadNewsFeed(<%=user.getId()%>, $('.nav-tabs li:first a')); --%>
-//     });
-//-->
-</script>
-
-<div class="nav span6 nav-tabs">
+<div class="span6">
 <%String type = (String)request.getAttribute("type"); %>
- <%if (type.equals("myEvents")){ %>
-    <div class="row">
-        <div>
-            <form id="newsurvey" class='row span4' action="">
-                <fieldset>
-                    <div>
-                    <fieldset>
-                        <legend>Create Event</legend>
-                        <div class="controls">
-                           	<input type="text" id="place" name="place" class="input-xlarge" placeholder="Place">
+<%if (type.equals("myEvents")){ %>
+	<div class="row span4" style='margin-bottom: 25px;'>
+		<fieldset>
+			<legend>Create Event</legend>
+			<div class="controls">
+				<input type="text" id="place" name="place" class="input-xlarge" placeholder="Place" />
+				<input type="text" name="datetime" class="input-xlarge" placeholder="Date-Time" />
+				<textarea id="description" name="description" class="input-xlarge" placeholder="Description"></textarea>
+				<input type="button" class="btn btn-info pull-right" value="Create" onclick="Events.add()"/>
+			</div>
+		</fieldset>
+	</div>
+	<script>
+		$(document).ready(function(){
+			$('[name="datetime"]').datetimepicker({dateFormat: 'yy-mm-dd', timeFormat: 'hh:mm:ss'});
+		});
+	</script>
+<%} %>
+</div>
 
-                            <input type="text" id="datetime" name="datetime" class="input-xlarge" placeholder="Date-Time">
+<% EventTable[] events = (EventTable[])request.getAttribute("events"); %>
+<% Map<Integer, UserTable> users = (Map<Integer, UserTable>)request.getAttribute("users"); %>
+<% UserTable user = (UserTable)request.getAttribute("user"); %>
 
-                          <textarea type="text" id="description" name="description" class="input-xlarge" placeholder="Description"></textarea>
-                        
-                            <input type="button" class="btn btn-info pull-right" value="Create" onclick="login()"/>
-                        </div>
-                    </fieldset>
-            </div>
-                </fieldset>
-            </form>
-        </div>
-    </div>
-    <%} %> 
-    
+<table class='table'>
+<% for(EventTable event: events){ %>
+	<tr>
+		<td>
+			<button class='btn btn-info pull-right'>Details</button>
+			<strong>
+				<a href='/CmpeCommunityWeb/Profile/details/<%=event.getUserId()%>'><%=users.get(event.getUserId()).getName() %></a>
+			</strong><br/>
+			<strong>Place: </strong><%=event.getPlace() %><br/>
+			<strong>Time: </strong><%=event.getEventTime() %>
+		</td>
+	</tr>
+<% } %>
+</table>
+
+<!-- 
     <script src="/CmpeCommunityWeb/js/bootstrap.js"></script>
 
     <div class="accordion" id="accordion2">
@@ -146,6 +120,4 @@
         </div>
     </div>
 
-    <script>
-    $('#datetime').datetimepicker();
-    </script>
+     -->
