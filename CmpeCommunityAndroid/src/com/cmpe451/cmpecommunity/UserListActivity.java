@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 public class UserListActivity extends ListActivity{
 	private UserAdapter adapter;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,13 +33,13 @@ public class UserListActivity extends ListActivity{
 
 		new HttpTask().execute(getIntent().getExtras().getString("Path"));
 	}
-	
+
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		
+
 		StaticUser.chosenUser = adapter.getItem(position);
-		
+
 		Intent i = new Intent(this, HomeActivity.class);
 		startActivity(i);
 	}
@@ -59,7 +59,7 @@ public class UserListActivity extends ListActivity{
 			// Url Encoding the POST parameters
 			try {
 				httpPost.setEntity(new UrlEncodedFormEntity(StaticUser.GetNameValuePair()));
-				
+
 				// Making HTTP Request
 				HttpResponse response = httpClient.execute(httpPost);
 
@@ -97,7 +97,7 @@ public class UserListActivity extends ListActivity{
 				JSONObject json = new JSONObject(result);
 
 				JSONArray users = json.getJSONArray("users");
-				
+
 				for(int i=0; i<users.length(); ++i) 
 				{
 					JSONObject user = users.getJSONObject(i);

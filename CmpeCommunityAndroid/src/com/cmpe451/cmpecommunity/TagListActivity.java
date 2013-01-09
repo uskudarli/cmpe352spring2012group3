@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 public class TagListActivity extends ListActivity{
 	private TagAdapter adapter;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,11 +33,11 @@ public class TagListActivity extends ListActivity{
 
 		new HttpTask().execute();
 	}
-	
+
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		
+
 		StaticUser.chosenTag = adapter.getItem(position);
 		Intent i = new Intent(this, TagActivity.class);
 		startActivity(i);
@@ -58,7 +58,7 @@ public class TagListActivity extends ListActivity{
 			// Url Encoding the POST parameters
 			try {
 				httpPost.setEntity(new UrlEncodedFormEntity(StaticUser.GetNameValuePair()));
-				
+
 				// Making HTTP Request
 				HttpResponse response = httpClient.execute(httpPost);
 
@@ -96,7 +96,7 @@ public class TagListActivity extends ListActivity{
 				JSONObject json = new JSONObject(result);
 
 				JSONArray tags = json.getJSONArray("tags");
-				
+
 				for(int i=0; i<tags.length(); ++i) 
 				{
 					JSONObject tag = tags.getJSONObject(i);
