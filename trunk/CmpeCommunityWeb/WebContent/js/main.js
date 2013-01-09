@@ -104,7 +104,7 @@ var Surveys = {
 			  url: "/CmpeCommunityWeb/Surveys/addSurvey/"+userId,
 			  data: 'question='+question+'&choices='+choices,
 			  datatype: "json",
-			  success: function(result){	
+			  success: function(data){	
 				  if(data["success"])
 					  window.location.reload();
 				  else if(data["error"] == "need_login")
@@ -121,34 +121,26 @@ var Surveys = {
 
 var Events = {
 		loadMyEvents: function(userId){
+			if(!userId)
+				userId = 0;
 			$("#contentBody").load("/CmpeCommunityWeb/Events/myEvents/"+userId);
-			console.log("loading my events");
 		},
 		
 		loadAttendedEvents: function(userId){
 			$("#contentBody").load("/CmpeCommunityWeb/Events/attendedEvents/"+userId);
-			console.log("loading attended events");
 		},
-		add: function(userId){
-			var place =$("[name=place]").val();
-			var dateTime=$("[name=datetime]").val();
-			var description=$("[name=description]").val();
-			//$.post("/CmpeCommunityWeb/Surveys/addSurvey/"+userId,{'question':question,'choices':choices},function(data){
-			$.ajax({
-				  type: "POST",
-				  url: "/CmpeCommunityWeb/Events/addEvents/"+userId,
-				  data: 'place='+place+'&datetime='+dateTime+'&description='+description,
-				  datatype: "json",
-				  success: function(result){	
-					  if(data["success"])
-						  window.location.reload();
-					  else if(data["error"] == "need_login")
-						  window.location.href = "/CmpeCommunityWeb/";
-					  else
-					alert("An unknown error occured, sorry for the inconvenient we may have caused.");
-				  }  
+		add: function(){
+			var place =$("[name='place']").val();
+			var dateTime=$("[name='datetime']").val();
+			var description=$("[name='description']").val();
+			$.post('/CmpeCommunityWeb/Events/addEvents', {place: place, datetime: dateTime, description: description}, function(data){
+				  if(data["success"])
+					  Events.loadMyEvents();
+				  else if(data["error"] == "need_login")
+					  window.location.href = "/CmpeCommunityWeb/";
+				  else
+					  alert("An unknown error occured, sorry for the inconvenient we may have caused.");
 			});
-			console.log("adding survey");
 		}
 		
 };
