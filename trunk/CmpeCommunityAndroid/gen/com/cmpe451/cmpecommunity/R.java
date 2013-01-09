@@ -59,13 +59,11 @@ public final class R {
         public static final int list_view=0x7f030008;
         public static final int login=0x7f030009;
         public static final int main=0x7f03000a;
-        public static final int profile=0x7f03000b;
-        public static final int register=0x7f03000c;
-        public static final int reply_item=0x7f03000d;
-        public static final int tabview=0x7f03000e;
-        public static final int tag_item=0x7f03000f;
-        public static final int tag_page=0x7f030010;
-        public static final int user_item=0x7f030011;
+        public static final int register=0x7f03000b;
+        public static final int reply_item=0x7f03000c;
+        public static final int tabview=0x7f03000d;
+        public static final int tag_item=0x7f03000e;
+        public static final int user_item=0x7f03000f;
     }
     public static final class menu {
         public static final int options_menu=0x7f050000;
