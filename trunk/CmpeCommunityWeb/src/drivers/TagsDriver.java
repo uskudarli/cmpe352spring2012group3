@@ -232,4 +232,20 @@ public class TagsDriver {
 		}
 		return null;
 	}
+	public static boolean removeTagFromUser(int userId,int tagId) {
+		try{
+			String query="DELETE FROM tags_in_users WHERE user_id=? and tag_id=?" ;	
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, userId);
+			ps.setInt(2, tagId);
+			ps.executeUpdate();
+			return true; // means false
+		}  catch(SQLException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		} finally {
+
+		}
+	}
 }	
