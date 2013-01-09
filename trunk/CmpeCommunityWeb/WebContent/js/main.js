@@ -89,11 +89,11 @@ var Tags = {
 var Surveys = {
 	loadMySurveys: function(userId){
 		$("#contentBody").load("/CmpeCommunityWeb/Surveys/loadMySurveys/"+userId);
-		console.log("adding survey");
+		console.log("load my survey");
 	},
 	loadCompletedSurveys: function(userId){
 		$("#contentBody").load("/CmpeCommunityWeb/Surveys/loadCompletedSurveys/"+userId);
-		console.log("adding survey");
+		console.log("load completed survey");
 	},
 	add: function(userId){
 		var choices =$("[name^=choice]").map(function(){return $(this).val();}).get();
@@ -140,6 +140,22 @@ var Events = {
 					  window.location.href = "/CmpeCommunityWeb/";
 				  else
 					  alert("An unknown error occured, sorry for the inconvenient we may have caused.");
+			});
+		}
+		
+};
+var Profile = {
+		update: function(userId){
+			var name =$("[name='name']").val();
+			var password1=$("[name='password_signup']").val();
+			var password2=$("[name='re-password']").val();
+			var email=$("[name='email_signup']").val();
+			if (password1!=password2) {
+				alert("Passwords are inconsistent");
+				return;
+			}
+			$.post('/CmpeCommunityWeb/Profile/update/'+userId, {name: name, password: password1, email: email}, function(data){
+				 window.location.reload();
 			});
 		}
 		
