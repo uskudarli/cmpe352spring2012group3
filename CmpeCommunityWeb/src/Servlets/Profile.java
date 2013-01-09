@@ -190,4 +190,18 @@ public class Profile extends ServletBase {
 		request.getRequestDispatcher("/Event.jsp").include(request, response);
 		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
 	}
+	
+	public void edit(Integer id) throws ServletException, IOException{
+		UserTable user = getCurrentUser();
+		if(user == null){
+			request.getRequestDispatcher("/User/login").forward(request, response);
+			return;
+		}
+		
+		request.setAttribute("user", user);
+		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
+		request.getRequestDispatcher("/ProfileEdit.jsp").include(request, response);
+		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
+
+	}
 }
