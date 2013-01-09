@@ -5,7 +5,7 @@ public class Reply {
 	private int ownerId;
 	private String content;
 	private String postingTime;
-	
+
 	public Reply(String ownerName, int ownerId, String content, String postingTime) {
 		this.ownerName = ownerName;
 		this.ownerId = ownerId;

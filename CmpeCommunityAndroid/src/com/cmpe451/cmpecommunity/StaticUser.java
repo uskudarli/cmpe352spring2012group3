@@ -17,13 +17,13 @@ public class StaticUser {
 	public static User chosenUser;
 	//public static int chosenUserID;
 	public static String URL = "http://192.168.1.105:8082";
-	
+
 	public static List<NameValuePair> GetNameValuePair()
 	{
 		List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
 		nameValuePair.add(new BasicNameValuePair("email", StaticUser.email));
 		nameValuePair.add(new BasicNameValuePair("password", StaticUser.password));
-		
+
 		return nameValuePair;
 	}
 }

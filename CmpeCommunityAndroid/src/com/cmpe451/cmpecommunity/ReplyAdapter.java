@@ -31,7 +31,7 @@ public final class ReplyAdapter extends ArrayAdapter<Reply> {
 		viewHolder.ownerNameText.setText(reply.getOwnerName());		
 		viewHolder.contentText.setText(reply.getContent());
 		viewHolder.postingTimeText.setText(reply.getPostingTime());
-		
+
 		return view;
 	}
 

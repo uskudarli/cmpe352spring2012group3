@@ -31,7 +31,7 @@ public final class FeedAdapter extends ArrayAdapter<Feed> {
 		viewHolder.ownerNameText.setText(feed.getOwnerName());		
 		viewHolder.contentText.setText(feed.getContent());
 		viewHolder.postingTimeText.setText(feed.getPostingTime()); 
-		
+
 		int replyCount = feed.getReplies().size();
 		if(replyCount > 0)
 		{
@@ -40,7 +40,7 @@ public final class FeedAdapter extends ArrayAdapter<Feed> {
 		}
 		else
 			viewHolder.replyCountText.setVisibility(View.GONE);
-		
+
 		return view;
 	}
 
