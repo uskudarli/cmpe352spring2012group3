@@ -40,7 +40,7 @@ public class FeedActivity extends ListActivity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.feeds_list_view);
+		setContentView(R.layout.list_view);
 
 		adapter = new FeedAdapter(this, R.layout.feed_item);
 

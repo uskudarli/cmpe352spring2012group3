@@ -21,28 +21,31 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class UserListActivity extends ListActivity{
-	private UserAdapter adapter;
-	
+public class EventListActivity extends ListActivity{
+	private EventAdapter adapter;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list_view);
 
-		adapter = new UserAdapter(this, R.layout.user_item);
+		adapter = new EventAdapter(this, R.layout.event_item);
 
-		new HttpTask().execute(getIntent().getExtras().getString("Path"));
+		//String path = getIntent().getExtras().getString("EventType") +  "/" + StaticUser.chosenUser.getId(); 	
+
+		new HttpTask().execute(getIntent().getExtras().getString("EventType") +  "/" + StaticUser.chosenUser.getId());
+
 	}
-	
+
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		
-		StaticUser.chosenUser = adapter.getItem(position);
-		
-		Intent i = new Intent(this, HomeActivity.class);
+
+		StaticUser.chosenEvent = adapter.getItem(position);
+		Intent i = new Intent(this, SingleEventActivity.class);
 		startActivity(i);
 	}
+
 
 	final class HttpTask extends AsyncTask<String, Boolean, String> {
 		@Override
@@ -59,7 +62,7 @@ public class UserListActivity extends ListActivity{
 			// Url Encoding the POST parameters
 			try {
 				httpPost.setEntity(new UrlEncodedFormEntity(StaticUser.GetNameValuePair()));
-				
+
 				// Making HTTP Request
 				HttpResponse response = httpClient.execute(httpPost);
 
@@ -79,7 +82,7 @@ public class UserListActivity extends ListActivity{
 
 		@Override
 		protected void onProgressUpdate(Boolean... progress) {
-			UserListActivity.this.setProgressBarIndeterminateVisibility(progress[0]);
+			EventListActivity.this.setProgressBarIndeterminateVisibility(progress[0]);
 		}
 
 		@Override
@@ -88,7 +91,7 @@ public class UserListActivity extends ListActivity{
 
 			if(result == null)
 			{
-				Toast.makeText(UserListActivity.this, "Server connection error!", Toast.LENGTH_SHORT).show();
+				Toast.makeText(EventListActivity.this, "Server connection error!", Toast.LENGTH_SHORT).show();
 				return;
 			}
 
@@ -96,15 +99,15 @@ public class UserListActivity extends ListActivity{
 			{
 				JSONObject json = new JSONObject(result);
 
-				JSONArray users = json.getJSONArray("users");
-				
-				for(int i=0; i<users.length(); ++i) 
+				JSONArray jsonEvents = json.getJSONArray("events");
+
+				for(int i=0; i<jsonEvents.length(); ++i) 
 				{
-					JSONObject user = users.getJSONObject(i);
-					adapter.add(new User(user.getInt("id"), user.getString("name"), user.getString("profile_image")));
+					JSONObject jsonEvent = jsonEvents.getJSONObject(i);
+					adapter.add(new Event(jsonEvent.getInt("id"), jsonEvent.getString("place"), jsonEvent.getString("description"), jsonEvent.getString("time"), jsonEvent.getString("owner_name"), jsonEvent.getInt("owner_id")));
 				}
 
-				UserListActivity.this.setListAdapter(adapter);
+				EventListActivity.this.setListAdapter(adapter);
 			} catch (JSONException e) {
 				// writing exception to log
 				e.printStackTrace();

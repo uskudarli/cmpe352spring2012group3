@@ -33,7 +33,7 @@ public class HomeActivity extends TabActivity {
 
 		TabSpec eventsTab = tabHost.newTabSpec("Events");
 		eventsTab.setIndicator("Events", getResources().getDrawable(R.drawable.events));
-		eventsTab.setContent(R.id.events);
+		eventsTab.setContent(new Intent(this, EventsActivity.class));
 
 		tabHost.addTab(profileTab);
 		tabHost.addTab(tagsTab);

@@ -11,6 +11,7 @@ public class StaticUser {
 	public static String password;
 	public static User currentUser;
 
+	public static Event chosenEvent;
 	public static Feed chosenFeed;
 	public static Tag chosenTag;
 	public static User chosenUser;
