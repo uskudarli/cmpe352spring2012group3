@@ -103,6 +103,12 @@ public class SurveyDriver {
 
 	}
 
+	/**
+	 * @deprecated Use vote method instead, this method does not use users_in_survey table thus
+	 * it is harmful to database referential consistency. NEVER USE THIS METHOD
+	 * @param choiceId
+	 * @return
+	 */
 	public static boolean voteChoice(int choiceId) {
 		try{
 			String query="UPDATE choices set votes=votes+1 where id=?" ;	
