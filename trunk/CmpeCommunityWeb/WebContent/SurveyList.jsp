@@ -1,4 +1,5 @@
 
+<%@page import="java.util.Set"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="Tables.TagsTable"%>
@@ -7,25 +8,6 @@
 <%@ page import="Tables.ChoiceTable"%>
 <%@ page import="drivers.SurveyDriver"%>
 <%@ page import="java.util.ArrayList;"%>
-<link rel="stylesheet"
-	href="/CmpeCommunityWeb/css/bootstrap-tagmanager.css">
-
-<style>
-.progress .bar p {
-	color: #000;
-	font-size: 12px;
-	text-align: left;
-	margin-left: -20px text-shadow:   0px -1px 0px rgba(0, 0, 0, 0.25);
-}
-</style>
-<script type="text/javascript"
-	src="/CmpeCommunityWeb/js/bootstrap-tagmanager.js"></script>
-<script type="text/javascript">
-	function addTags() {
-		document.forms['form1'].submit();
-	}
-</script>
-<script src="/CmpeCommunityWeb/js/bootstrap.js"></script>
 
 <div class="nav span6 nav-tabs">
 <%
@@ -56,11 +38,11 @@
 				</fieldset>
 		</div>
 	</div>
-<%} %> 
-	
+<%} %>
 	<script src="/CmpeCommunityWeb/js/bootstrap.js"></script>
 	
 <% SurveyTable[] surveyList = (SurveyTable[])request.getAttribute("surveyList"); %>
+<% Set<Integer> joinedSurveys = (Set<Integer>)request.getAttribute("joinedSurveys"); %>
 
 	<div class="accordion" id="accordionAll">
 
@@ -74,49 +56,36 @@ for (int i=0;i<surveyList.length;i++) { %>
 					data-parent="#accordionAll" href="#collapse<%=i%>"> <%=surveyList[i].getQuestion() %> </a>
 			</div>
 			<div id="collapse<%=i%>" class="accordion-body collapse">
-			<div class="accordion-inner">
-			<% choices = surveyList[i].getChoiceTable();%>
-			<% for (int j=0;j<choices.length;j++) { %>
+				<div class="accordion-inner" id="surveyContainer<%= surveyList[i].getId() %>">
+				<% choices = surveyList[i].getChoiceTable();%>
+				<% if(joinedSurveys.contains(surveyList[i].getId())){ %>
+					<% for (int j=0;j<choices.length;j++) { %>
 			            <div class="row-fluid">
-						<div class="progress progress-warning span2">
-							<div class="bar" style="width:<%=choices[j].getPercentageVotes()+"%" %>;">
-								<p>&nbsp;<%=choices[j].getVotes() %></p>
+							<div class="progress progress-warning span2">
+								<div class="bar" style="width:<%=choices[j].getPercentageVotes()+"%" %>;">
+									<p>&nbsp;<%=choices[j].getVotes() %></p>
+								</div>
+							</div>
+							<div class="span5">
+								<p><%=choices[j].getChoice() %></p>
 							</div>
 						</div>
-						<div class="span5">
-							<p><%=choices[j].getChoice() %></p>
+		            <% } %>
+	            <% } else { %>
+					<% for (int j=0;j<choices.length;j++) { %>
+						<label class="radio">
+							<input type="radio" value="<%=choices[j].getId() %>" name="survey<%=surveyList[i].getId() %>" />
+							<%=choices[j].getChoice() %>
+						</label>
+		            <% } %>
+						<div class="controls">
+							<button onclick='Surveys.submit(<%=surveyList[i].getId() %>)' class="btn btn-success" type="button">Submit</button>
 						</div>
-					</div>
-            <% } %>
-					
+	            <% } %>
 				</div>
 			</div>
 		</div>
 		<% } %>
-		<div class="accordion-group">
-			<div class="accordion-heading">
-				<a class="accordion-toggle" data-toggle="collapse"
-					data-parent="#accordion2" href="#collapseTwo"> What is your
-					favorite TV show? </a>
-			</div>
-			<div id="collapseTwo" class="accordion-body collapse">
-				<div class="accordion-inner">
-					<form>
-						<label class="radio"> <input type="radio"
-							name="id_of_survey"> Friends
-						</label> <label class="radio"> <input type="radio"
-							name="id_of_survey"> The Big Bang Theory
-						</label> <label class="radio"> <input type="radio"
-							name="id_of_survey"> House M.D.
-						</label>
-
-						<div class="controls">
-							<button class="btn btn-success" type="button">Submit</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
 	</div>
 
 	<script>
@@ -136,3 +105,4 @@ for (int i=0;i<surveyList.length;i++) { %>
 		$(document.body).append();
 	});
 	</script>
+</div>
