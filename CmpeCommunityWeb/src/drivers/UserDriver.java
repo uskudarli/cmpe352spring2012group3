@@ -144,4 +144,32 @@ public abstract class UserDriver {
 		return users;
 		
 	}
+	public static boolean updateUserSettings(int userId,String name,String password,String email) {
+		try{
+			if (password==null || password.equals("")) {
+				String query="UPDATE users SET email=?,name=? where id=?";
+				PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+				ps.setString(1,email);
+				ps.setString(2,name);
+				ps.setInt(3,userId);
+				ps.executeUpdate();
+			} else {
+				String query="UPDATE users SET email=?,name=?,password_hash=? where id=?";
+				PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+				ps.setString(1,email);
+				ps.setString(2,name);
+				ps.setString(3,HashString.encrypt(password));
+				ps.setInt(4,userId);
+				ps.executeUpdate();
+			}
+			return true;
+		} catch(SQLException e) {
+			System.err.println("SQLException: "+e.getMessage());
+			return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+			return false;
+		}
+	}
 }
