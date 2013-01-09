@@ -114,6 +114,29 @@ var Surveys = {
 			  }  
 		});
 		console.log("adding survey");
+	},
+	submit: function(surveyId){
+		var choiceId = $("[name='survey"+surveyId+"']:checked").val();
+		$.post('/CmpeCommunityWeb/Surveys/vote/'+surveyId+"/"+choiceId, function(data){
+			if(data["success"]){
+				var html = "";
+				for(var i in data.choices){
+					html = html + '<div class="row-fluid"><div class="progress progress-warning span2">';
+					html = html + '<div class="bar" style="width: '+data.choices[i].percentage+'%;">';
+					html = html + '<p>&nbsp;'+data.choices[i].vote+'</p>';
+					html = html + '</div></div><div class="span5">';
+					html = html + '<p>'+data.choices[i].choice+'</p>';
+					html = html + '</div>';
+					html = html + '</div>';
+				}
+				console.log(html);
+				$("#surveyContainer"+surveyId).html(html);
+			}
+			else if(data["error"] == "need_login")
+				window.location.reload();
+			else
+				alert("An unknown error occured, sorry for the inconvenient we may have caused.");
+		});
 	}
 };
 
