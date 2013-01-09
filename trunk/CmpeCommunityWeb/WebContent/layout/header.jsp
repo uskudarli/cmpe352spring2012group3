@@ -130,7 +130,7 @@ return $("<li></li>").data("item.autocomplete", item).append(MyHtml).appendTo(ul
                             id="autocomplete" value="posts">
                     </form>
                     <ul class="nav pull-right">
-                        <li><a href="/CmpeCommunityWeb/User/logout">Account</a></li>
+                        <li><a href="/CmpeCommunityWeb/Profile/edit">Account</a></li>
                         <li><a href="/CmpeCommunityWeb/User/logout">Logout</a></li>
                     </ul>
                 </div>
