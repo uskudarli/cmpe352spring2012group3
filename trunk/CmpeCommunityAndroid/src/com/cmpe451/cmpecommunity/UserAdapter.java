@@ -29,7 +29,7 @@ public final class UserAdapter extends ArrayAdapter<User> {
 		final User user = getItem(position);
 
 		viewHolder.nameText.setText(user.getName()); 
-		
+
 		return view;
 	}
 

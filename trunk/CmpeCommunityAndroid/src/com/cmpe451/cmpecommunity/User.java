@@ -4,7 +4,7 @@ public class User {
 	private int id;
 	private String name;
 	private String imageURL;
-	
+
 	public User(int id, String name, String imageURL) {
 		this.id = id;
 		this.name = name;
@@ -34,5 +34,5 @@ public class User {
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
 	}
-	
+
 }
