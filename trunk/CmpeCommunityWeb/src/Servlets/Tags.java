@@ -138,4 +138,17 @@ public class Tags extends ServletBase {
 		TagsDriver.insertTagsInPosts(post_id,tag_id);
 		
 	}
+	public void removeTag(Integer tagId) throws Exception {
+		response.setContentType("application/json");
+		UserTable user = getCurrentUser();
+		if(user == null){
+			response.getOutputStream().println("{\"success\": false, \"error\": \"need_login\"}");
+			return;
+		}
+		if (TagsDriver.removeTagFromUser(user.getId(), tagId)) {
+			response.getOutputStream().println("{\"success\": true}");
+		} else
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
+		
+	}
 }
