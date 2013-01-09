@@ -116,6 +116,22 @@ public abstract class UserDriver {
 		}
 	}
 	
+	public static UserTable[] getUsersByEvent(int eventId){
+		try {
+			String query="SELECT `users`.* FROM `users` INNER JOIN `users_in_event` ON `users`.`id`=`users_in_event`.`user_id` WHERE `users_in_event`.`event_id`=?";
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, eventId);
+			ResultSet result = ps.executeQuery();
+			return convertToArray(result);
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+			return new UserTable[0];
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new UserTable[0];
+		}
+	}
+	
 	private static UserTable[] convertToArray(ResultSet result) throws SQLException{
 		int N = 0;
 		while(result.next()) N++;
