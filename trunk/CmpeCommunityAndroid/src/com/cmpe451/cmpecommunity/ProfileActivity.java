@@ -17,7 +17,7 @@ public class ProfileActivity extends TabActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tabview);
 
-		TabHost tabHost = getTabHost();//=(TabHost)findViewById(R.id.tabHost);
+		TabHost tabHost = getTabHost();
 		Intent i;
 		Bundle b = new Bundle();
 

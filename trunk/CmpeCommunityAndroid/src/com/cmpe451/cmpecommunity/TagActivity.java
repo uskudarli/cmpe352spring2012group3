@@ -38,7 +38,7 @@ public class TagActivity extends TabActivity {
 		wallTab.setIndicator("Wall");
 		wallTab.setContent(i);
 
-		// News Feed Tab	
+		// Users Tab	
 		i = new Intent(this, UserListActivity.class);
 		b = new Bundle();
 		b.putString("Path", "tagUsers/" + StaticUser.chosenTag.getId());
