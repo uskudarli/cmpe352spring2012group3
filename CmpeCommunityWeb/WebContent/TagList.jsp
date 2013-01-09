@@ -39,12 +39,12 @@ function addTags() {
 			</div>
 		</div>
 	</div>
-	<div id="successMessage" class="alert alert-success">
+	<div id="successMessage" class="alert alert-success" style="display:none">
 		<button type="button" class="close" data-dismiss="alert" onclick="$(this).closest('div').hide();">&times;</button>
 		<strong id>Success!</strong> Tag removed successfully.
 	</div>
 
-	<div id="errorMessage" class="alert alert-error">
+	<div id="errorMessage" class="alert alert-error" style="display:none">
 		<button type="button" class="close" data-dismiss="alert" onclick="$(this).closest('div').hide();">&times;</button>
 		<strong id>Warning!</strong> Error occured during removing.
 	</div>
@@ -57,7 +57,7 @@ function addTags() {
 	<span class="myTag" id="tags_<%=tag.getId()%>"> <span><a
 			href="/CmpeCommunityWeb/Tags/details/<%=tag.getId()%>"><%=tag.getTag()%></a>&nbsp;&nbsp;</span>
 		<a href="#" class="myTagRemover" title="Remove"
-		onclick="removeThisTag(this, <%=tag.getId()%>);">x</a>
+		onclick="Tags.removeTag(this, <%=tag.getId()%>);return false;">x</a>
 	</span>
 	<%
 		}
@@ -67,17 +67,4 @@ function addTags() {
 
 <script>
 	  jQuery(".tagManager").tagsManager();
-	  $('#successMessage').hide();
-	  $('#errorMessage').hide();	
-
-	  function removeThisTag(tag, tagId){
-		  $.post('/CmpeCommunityWeb/Tags/removeTag/' + tagId, {}, function(data){
-				if(data["success"]){
-					$(tag).closest('span').remove();
-					$('#successMessage').show();
-				}else{
-					$('#errorMessage').show();	
-				}	
-			});
-	  };
 	</script>
