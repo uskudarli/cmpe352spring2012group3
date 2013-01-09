@@ -31,7 +31,7 @@ public final class EventAdapter extends ArrayAdapter<Event> {
 		viewHolder.placeText.setText(event.getPlace());		
 		viewHolder.nameText.setText(event.getOwnerName());
 		viewHolder.dateText.setText(event.getTime()); 
-			
+
 		return view;
 	}
 
@@ -66,7 +66,7 @@ public final class EventAdapter extends ArrayAdapter<Event> {
 			viewHolder.placeText = (TextView) workingView.findViewById(R.id.place);
 			viewHolder.nameText = (TextView) workingView.findViewById(R.id.name);
 			viewHolder.dateText = (TextView) workingView.findViewById(R.id.date);
-			
+
 			workingView.setTag(viewHolder);
 
 		} else {
