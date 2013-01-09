@@ -26,7 +26,7 @@ public class TagActivity extends TabActivity {
 
 		Intent i;
 		Bundle b;
-		
+
 		// Wall tab
 		i = new Intent(this, FeedActivity.class);
 		b = new Bundle();
@@ -43,7 +43,7 @@ public class TagActivity extends TabActivity {
 		b = new Bundle();
 		b.putString("Path", "tagUsers/" + StaticUser.chosenTag.getId());
 		i.putExtras(b); 
-		
+
 		TabSpec usersTab = tabHost.newTabSpec("Users");	
 		usersTab.setContent(i);
 		usersTab.setIndicator("Users");
