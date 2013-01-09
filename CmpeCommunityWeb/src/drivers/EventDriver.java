@@ -65,6 +65,8 @@ public class EventDriver {
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, EventId);
 			ResultSet result = ps.executeQuery();
+			if(!result.next())
+				return null;
 			return new EventTable(result.getInt("id"),result.getInt("user_id"),result.getString("description"),result.getString("place"),result.getString("event_time"));
 		} catch(SQLException e) {
 			System.out.println(e.getMessage());
