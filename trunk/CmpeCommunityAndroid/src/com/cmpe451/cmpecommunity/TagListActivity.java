@@ -27,7 +27,7 @@ public class TagListActivity extends ListActivity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.tag_view);
+		setContentView(R.layout.list_view);
 
 		adapter = new TagAdapter(this, R.layout.tag_item);
 

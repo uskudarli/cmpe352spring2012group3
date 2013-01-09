@@ -10,35 +10,34 @@ import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 
 @SuppressWarnings("deprecation")
-public class ProfileActivity extends TabActivity {
+public class EventsActivity extends TabActivity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.tabview);
+		setContentView(R.layout.events);
 
-		TabHost tabHost = getTabHost();//=(TabHost)findViewById(R.id.tabHost);
+		TabHost tabHost = getTabHost();
 		Intent i;
 		Bundle b = new Bundle();
 
 
-		// News Feed Tab
-		i = new Intent(this, FeedActivity.class);
-		b.putString("FeedType", "newsFeed");
-		b.putBoolean("TagPage", false);
+		// Attended Events Tab
+		i = new Intent(this, EventListActivity.class);
+		b.putString("EventType", "attendedEvents");
 		i.putExtras(b); 
 
-		TabSpec newsFeedTab = tabHost.newTabSpec("News Feed");	
+		TabSpec newsFeedTab = tabHost.newTabSpec("Attending Events");	
 		newsFeedTab.setContent(i);
-		newsFeedTab.setIndicator("News Feed");
+		newsFeedTab.setIndicator("Attending Events");
 
-		// Wall tab
-		i = new Intent(this, FeedActivity.class);
-		b.putString("FeedType", "wall");
+		// My Events tab
+		i = new Intent(this, EventListActivity.class);
+		b.putString("EventType", "myEvents");
 		i.putExtras(b); 
 
-		TabSpec wallTab = tabHost.newTabSpec("Wall");
-		wallTab.setIndicator("Wall");
+		TabSpec wallTab = tabHost.newTabSpec("My Events");
+		wallTab.setIndicator("My Events");
 		wallTab.setContent(i);
 
 

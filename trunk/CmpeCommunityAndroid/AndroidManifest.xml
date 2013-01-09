@@ -52,6 +52,10 @@
         </activity>
         <activity android:name=".TagActivity" android:label="Tag"></activity>
         <activity android:name=".UserListActivity" android:label="Users"></activity>
+        <activity android:label="Events" android:name=".EventsActivity"></activity>
+        <activity android:label="EventList" android:name=".EventListActivity"></activity>
+        <activity android:label="Event" android:name=".SingleEventActivity"></activity>
+        <activity android:label="EventInfo" android:name=".EventInfoActivity"></activity>
     </application>
 
 </manifest>

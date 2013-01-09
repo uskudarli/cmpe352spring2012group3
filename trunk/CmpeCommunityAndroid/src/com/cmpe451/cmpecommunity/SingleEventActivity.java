@@ -1,64 +1,44 @@
 package com.cmpe451.cmpecommunity;
 
 import android.app.TabActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.TabHost;
-import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 
 @SuppressWarnings("deprecation")
-public class TagActivity extends TabActivity {
+public class SingleEventActivity extends TabActivity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tabview);
 
-		setTitle(StaticUser.chosenTag.getTag());
+		setTitle(StaticUser.chosenEvent.getPlace());
 
 		TabHost tabHost = getTabHost();
 
-		Intent i;
-		Bundle b;
-		
-		// Wall tab
-		i = new Intent(this, FeedActivity.class);
-		b = new Bundle();
-		b.putString("FeedType", "tagWall");
-		b.putBoolean("TagPage", true);
+		// Event Info tab
+		TabSpec wallTab = tabHost.newTabSpec("Info");
+		wallTab.setIndicator("Info");
+		wallTab.setContent(new Intent(this, EventInfoActivity.class));
+
+		// Attending Users Tab	
+		Intent i = new Intent(this, UserListActivity.class);
+		Bundle b = new Bundle();
+		b.putString("Path", "eventUsers/" + StaticUser.chosenEvent.getId());
 		i.putExtras(b); 
 
-		TabSpec wallTab = tabHost.newTabSpec("Wall");
-		wallTab.setIndicator("Wall");
-		wallTab.setContent(i);
-
-		// News Feed Tab	
-		i = new Intent(this, UserListActivity.class);
-		b = new Bundle();
-		b.putString("Path", "tagUsers/" + StaticUser.chosenTag.getId());
-		i.putExtras(b); 
-		
-		TabSpec usersTab = tabHost.newTabSpec("Users");	
+		TabSpec usersTab = tabHost.newTabSpec("Users");
 		usersTab.setContent(i);
 		usersTab.setIndicator("Users");
 
 		// add tabs
 		tabHost.addTab(wallTab);
 		tabHost.addTab(usersTab);
-
-		tabHost.setOnTabChangedListener(new OnTabChangeListener() {
-
-			public void onTabChanged(String tabId) {
-				if(getCurrentFocus() != null)
-					((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-			}
-		});
 	}
 
 	@Override
