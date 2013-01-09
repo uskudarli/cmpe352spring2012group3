@@ -203,5 +203,26 @@ public class Profile extends ServletBase {
 		request.getRequestDispatcher("/ProfileEdit.jsp").include(request, response);
 		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
 	}
+	public void update(Integer userId) throws ServletException, IOException{
+		UserTable user = getCurrentUser();
+		if(user == null){
+			request.getRequestDispatcher("/User/login").forward(request, response);
+			return;
+		}
+		
+		request.setAttribute("user", user);
+		String name=request.getParameter("name");
+		String email=request.getParameter("email");
+		String password=request.getParameter("password");
+		if (UserDriver.updateUserSettings(userId, name, password, email)) {
+			request.setAttribute("message", "Profile settings are updated");
+			UserTable updatedUser=UserDriver.getById(userId);
+			setCurrentUser(updatedUser);
+			user=getCurrentUser();
+		}
+		request.getRequestDispatcher("/layout/header.jsp").include(request, response);
+		request.getRequestDispatcher("/ProfileEdit.jsp").include(request, response);
+		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
+	}
 	
 }

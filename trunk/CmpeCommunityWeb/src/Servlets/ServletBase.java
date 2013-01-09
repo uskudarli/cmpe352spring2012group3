@@ -17,4 +17,8 @@ public abstract class ServletBase {
 	public UserTable getCurrentUser(){
 		return (UserTable)request.getSession().getAttribute("user_info");
 	}
+	public void setCurrentUser(UserTable user) {
+		request.getSession().removeAttribute("user_info");
+		request.getSession().setAttribute("user_info",user);
+	}
 }
