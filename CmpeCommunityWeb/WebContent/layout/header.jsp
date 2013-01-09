@@ -57,6 +57,8 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	<script src="/CmpeCommunityWeb/js/jquery-ui-timepicker-addon.js"></script>
+	<script src="/CmpeCommunityWeb/js/bootstrap.js"></script>
     <style>
     .ui-autocomplete-category {
         font-weight: bold;
