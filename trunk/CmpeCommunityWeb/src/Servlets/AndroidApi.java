@@ -6,11 +6,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Tables.EventTable;
 import Tables.PostsTable;
 import Tables.ReplyTable;
 import Tables.TagsTable;
 import Tables.UserTable;
 import UtilityPack.HashString;
+import drivers.EventDriver;
 import drivers.PostDriver;
 import drivers.ReplyDriver;
 import drivers.TagsDriver;
@@ -37,6 +39,101 @@ public class AndroidApi extends ServletBase {
 			request.setAttribute("loginFailed", 1);
 			response.getOutputStream().println("{'success': false, 'error': 'Email and password does not match'}");
 		}
+	}
+	
+	public void eventUsers(Integer id) throws IOException{
+		response.setContentType("application/json");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		if(!UserDriver.isCredentialsValid(email, password))
+			return;
+		
+		UserTable[] users = UserDriver.getUsersByEvent(id);
+		String output = "{users: [";
+		for (UserTable user : users) {
+			output = output+"{";
+				output = output+"'id': "+user.getId()+",";
+				output = output+"'name': '"+user.getName().replaceAll("'", "")+"',";
+				output = output+"'profile_image': 'http://titan.cmpe.boun.edu.tr:8082/CmpeCommunityWeb/img/minions.jpg'";
+			output = output+"},";
+		}
+		if(output.charAt(output.length()-1) == ',')
+			output = output.substring(0, output.length()-1);
+		output = output+"]}";
+		response.getOutputStream().println(output);
+	}
+	
+	public void myEvents(Integer userId) throws IOException {
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		if(!UserDriver.isCredentialsValid(email, password))
+			return;
+		printEventList(EventDriver.getUserEvent(userId));
+
+	}
+	
+	public void attendedEvents(Integer userId) throws IOException{
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		if(!UserDriver.isCredentialsValid(email, password))
+			return;
+		printEventList(EventDriver.getUserJoinedEvent(userId));
+	}
+	
+	private void printEventList(EventTable[] events) throws IOException{
+		String output = "{events: [";
+		for (EventTable event : events) {
+			UserTable owner = UserDriver.getById(event.getUserId());
+			output = output+"{";
+				output = output+"'id': "+event.getId()+",";
+				output = output+"'place': '"+event.getPlace().replaceAll("'", "")+"',";
+				output = output+"'description': '"+event.getDescription().replaceAll("'", "")+"',";
+				output = output+"'time': '"+PostDriver.niceTime(event.getEventTime())+"',";
+				output = output+"'owner_id': "+owner.getId()+",";
+				output = output+"'owner_name': '"+owner.getName().replaceAll("'", "")+"'";
+			output = output+"},";
+		}
+		if(output.charAt(output.length()-1) == ',')
+			output = output.substring(0, output.length()-1);
+		output = output+"]}";
+		response.getOutputStream().println(output);
+	}
+
+	public void postToUser(Integer id) throws IOException{
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		if(!UserDriver.isCredentialsValid(email, password))
+			return;
+		UserTable user = UserDriver.getByEmail(email);
+		
+		//get parameters from HTTP POST and convert string userId's into integer
+		String body =  request.getParameter("body");
+		
+		int[] users = new int[0];
+		if(id != user.getId()){
+			users = new int[1];
+			users[0] = id;
+		}
+		
+		//if post body is not null then add the post and tag users or give an error message, which is not expected to occur.
+		if(body!=null && PostDriver.addPostAndTagUsers(user.getId(), body, users)){
+			response.getOutputStream().println("{\"success\": true}");
+		}
+		else
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
+	}
+
+	public void postToTag(Integer id) throws IOException{
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		if(!UserDriver.isCredentialsValid(email, password))
+			return;
+		UserTable user = UserDriver.getByEmail(email);
+		String body =  request.getParameter("body");
+		if(body!=null && PostDriver.addPostWithTag(user.getId(), body, id))
+			response.getOutputStream().println("{\"success\": true}");
+		else
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
 	}
 	
 	public void reply(Integer postId) throws IOException{
@@ -108,7 +205,7 @@ public class AndroidApi extends ServletBase {
 					output = output+"'owner_id': '"+user.getId()+"',";
 					output = output+"'name': '"+user.getName()+"',";
 					output = output+"'content': '"+replyTable.getBody()+"',";
-					output = output+"'posting_time': '"+replyTable.getPostingTime()+"'";
+					output = output+"'posting_time': '"+PostDriver.niceTime(replyTable.getPostingTime())+"'";
 					output = output+"},";
 				}
 				if(output.charAt(output.length()-1) == ',')
@@ -155,7 +252,7 @@ public class AndroidApi extends ServletBase {
 					output = output+"'owner_id': '"+user.getId()+"',";
 					output = output+"'name': '"+user.getName()+"',";
 					output = output+"'content': '"+replyTable.getBody()+"',";
-					output = output+"'posting_time': '"+replyTable.getPostingTime()+"'";
+					output = output+"'posting_time': '"+PostDriver.niceTime(replyTable.getPostingTime())+"'";
 					output = output+"},";
 				}
 				if(output.charAt(output.length()-1) == ',')
@@ -202,7 +299,7 @@ public class AndroidApi extends ServletBase {
 					output = output+"'owner_id': '"+user.getId()+"',";
 					output = output+"'name': '"+user.getName()+"',";
 					output = output+"'content': '"+replyTable.getBody()+"',";
-					output = output+"'posting_time': '"+replyTable.getPostingTime()+"'";
+					output = output+"'posting_time': '"+PostDriver.niceTime(replyTable.getPostingTime())+"'";
 					output = output+"},";
 				}
 				if(output.charAt(output.length()-1) == ',')
