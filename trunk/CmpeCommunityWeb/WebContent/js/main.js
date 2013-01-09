@@ -84,7 +84,17 @@ var Tags = {
 				else
 					alert("An unknown error occured, sorry for the inconvenient we may have caused.");
 			});
-		}
+		},
+		removeTag: function(tag, tagId){
+			  $.post('/CmpeCommunityWeb/Tags/removeTag/'+ tagId,{}, function(data){
+					if(data["success"]){
+						$(tag).closest('span').remove();
+						$('#successMessage').show();
+					}else{
+						$('#errorMessage').show();	
+					}	
+				});
+		  }
 };
 var Surveys = {
 	loadMySurveys: function(userId){
