@@ -23,4 +23,15 @@ public class DBStatement {
 		}
 		return connection;
 	}
+	
+	public static void closeConnection(){
+		if(connection != null){
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }

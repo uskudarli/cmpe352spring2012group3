@@ -193,16 +193,34 @@ public class PostDriver {
 		long year = (((long)1000)*60*60*24*365);
 		long month = (((long)1000)*60*60*24*30);
 		
-		if(difference > year)
-			return (difference/year)+" years ago";
-		if(difference > month)
-			return (difference/month)+" months ago";
-		if(difference > (1000*60*60*24))
-			return (difference/(1000*60*60*24))+" days ago";
-		if(difference > (1000*60*60))
-			return (difference/(1000*60*60))+" hours ago";
-		if(difference > 1000*60)
-			return (difference/(1000*60))+" minutes ago";
-		return (difference/1000)+" seconds ago";
+		if(difference > 0){
+			if(difference > year)
+				return (difference/year)+" years ago";
+			if(difference > month)
+				return (difference/month)+" months ago";
+			if(difference > (1000*60*60*24))
+				return (difference/(1000*60*60*24))+" days ago";
+			if(difference > (1000*60*60))
+				return (difference/(1000*60*60))+" hours ago";
+			if(difference > 1000*60)
+				return (difference/(1000*60))+" minutes ago";
+			return (difference/1000)+" seconds ago";
+		}
+		else{
+			SimpleDateFormat f = new SimpleDateFormat("HH:mm");
+			difference = -difference;
+			if(difference > year)
+				return "in "+(difference/year)+" years at "+f.format(date1);
+			if(difference > month)
+				return "in "+(difference/month)+" months at "+f.format(date1);
+			if(difference > (1000*60*60*24))
+				return "in "+(difference/(1000*60*60*24))+" days at "+f.format(date1);
+			if(difference > (1000*60*60))
+				return "in "+(difference/(1000*60*60))+" hours";
+			if(difference > 1000*60)
+				return "in "+(difference/(1000*60))+" minutes";
+			return "in "+(difference/1000)+" seconds";
+			
+		}
 	}
 }

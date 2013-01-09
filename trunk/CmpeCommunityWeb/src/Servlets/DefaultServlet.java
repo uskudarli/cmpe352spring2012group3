@@ -140,6 +140,7 @@ public class DefaultServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		redirect(request, response);
+		//DBStatement.closeConnection();
 	}
 
 	/**
@@ -147,6 +148,7 @@ public class DefaultServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		redirect(request, response);
+		//DBStatement.closeConnection();
 	}
         
 }

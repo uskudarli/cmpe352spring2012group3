@@ -1,15 +1,12 @@
 package Tables;
 
-import com.sun.jmx.snmp.Timestamp;
-
 public class EventTable {
 	private int id;
 	private int userId;
 	private String description;
 	private String place;
-	private java.sql.Timestamp eventTime;
-	public EventTable(int id, int userId, String description, String place,
-			java.sql.Timestamp eventTime) {
+	private String eventTime;
+	public EventTable(int id, int userId, String description, String place, String eventTime) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -45,10 +42,10 @@ public class EventTable {
 	public void setPlace(String place) {
 		this.place = place;
 	}
-	public java.sql.Timestamp getEventTime() {
+	public String getEventTime() {
 		return eventTime;
 	}
-	public void setEventTime(java.sql.Timestamp eventTime) {
+	public void setEventTime(String eventTime) {
 		this.eventTime = eventTime;
 	}
 	

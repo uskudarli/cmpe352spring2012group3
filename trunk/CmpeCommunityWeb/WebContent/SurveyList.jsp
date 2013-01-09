@@ -33,14 +33,15 @@
 	String type = (String)request.getAttribute("type"); 
 %>
 <%if (type.equals("mySurvey")){ %> 
-	<div class="row">
+	<div class="row" style='margin-bottom: 20px;'>
 		<div>
 				<fieldset>
 					<input id="newquestion" type="text" placeholder="Question"
 						class="span6" name="newquestion">
-					<ul id="newchoices">
+					<ul id="newchoices" style='list-style: none;'>
 						<li>
-							<div class="input-append">
+							<div class="input-append input-prepend">
+								<span class='add-on muted'>1</span>
 								<input id="choice0" name="choice0" type="text"
 									placeholder="Choice" class="span5">
 								<button id="addchoice" class="btn btn-success" type="button">
@@ -61,18 +62,18 @@
 	
 <% SurveyTable[] surveyList = (SurveyTable[])request.getAttribute("surveyList"); %>
 
+	<div class="accordion" id="accordionAll">
 
 <% 
 ChoiceTable[] choices=null;
 for (int i=0;i<surveyList.length;i++) { %>
 
-	<div class="accordion" id="accordion2">
 		<div class="accordion-group">
 			<div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse"
-					data-parent="#accordion2" href="#collapseOne"> <%=surveyList[i].getQuestion() %> </a>
+					data-parent="#accordionAll" href="#collapse<%=i%>"> <%=surveyList[i].getQuestion() %> </a>
 			</div>
-			<div id="collapseOne" class="accordion-body collapse">
+			<div id="collapse<%=i%>" class="accordion-body collapse">
 			<div class="accordion-inner">
 			<% choices = surveyList[i].getChoiceTable();%>
 			<% for (int j=0;j<choices.length;j++) { %>
@@ -123,9 +124,11 @@ for (int i=0;i<surveyList.length;i++) { %>
 		var ul = $(this).closest('ul');
 		var li = $(this).closest('li');
 		var clone = li.clone(true);
-		var name = 'choice' + $('#newchoices>li').length;
+		var choiceNo = $('#newchoices>li').length;
+		var name = 'choice' + choiceNo;
 		clone.find('input').val('').attr('id', name).attr('name', name);
 		clone.appendTo(ul);
+		clone.find("span").html((choiceNo+1));
 		$(this).remove();
 	});
 
