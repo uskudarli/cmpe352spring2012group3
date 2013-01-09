@@ -21,7 +21,6 @@ public class EventsActivity extends TabActivity {
 		Intent i;
 		Bundle b = new Bundle();
 
-
 		// Attended Events Tab
 		i = new Intent(this, EventListActivity.class);
 		b.putString("EventType", "attendedEvents");
