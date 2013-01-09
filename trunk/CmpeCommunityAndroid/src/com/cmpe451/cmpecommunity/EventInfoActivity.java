@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class EventInfoActivity extends Activity{
 
 	ReplyAdapter adapter;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,7 +36,7 @@ public class EventInfoActivity extends Activity{
 			}
 		});
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();

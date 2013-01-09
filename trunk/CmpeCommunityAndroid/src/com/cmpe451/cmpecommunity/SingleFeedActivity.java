@@ -35,7 +35,7 @@ import android.widget.Toast;
 public class SingleFeedActivity extends ListActivity{
 
 	ReplyAdapter adapter;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,16 +61,16 @@ public class SingleFeedActivity extends ListActivity{
 			adapter.add(reply);
 
 		setListAdapter(adapter);
-		
+
 		final EditText replyText = (EditText) findViewById(R.id.replyText);
 		replyText.setOnEditorActionListener(new OnEditorActionListener() {
-		    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-		        if (actionId == EditorInfo.IME_ACTION_SEND) {
-		        	new HttpTask().execute(replyText.getText().toString());
-		            return false;
-		        }
-		        return false;
-		    }
+			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+				if (actionId == EditorInfo.IME_ACTION_SEND) {
+					new HttpTask().execute(replyText.getText().toString());
+					return false;
+				}
+				return false;
+			}
 		});
 	}
 
@@ -110,16 +110,16 @@ public class SingleFeedActivity extends ListActivity{
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
+
 	final class HttpTask extends AsyncTask<String, Boolean, String> {
 		private String reply;
-		
+
 		@Override
 		protected String doInBackground(String... param) {
-		    publishProgress(true);
+			publishProgress(true);
 
-		    reply = param[0];
-		    
+			reply = param[0];
+
 			// Creating HTTP client
 			HttpClient httpClient = new DefaultHttpClient();
 
