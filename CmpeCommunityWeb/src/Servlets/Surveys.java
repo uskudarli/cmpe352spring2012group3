@@ -1,23 +1,60 @@
 package Servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import drivers.PostDriver;
-import drivers.SurveyDriver;
-
+import Tables.ChoiceTable;
 import Tables.SurveyTable;
 import Tables.UserTable;
+import drivers.SurveyDriver;
 
 public class Surveys extends ServletBase {
 
 	public Surveys(HttpServletRequest request, HttpServletResponse response) {
 		super(request, response);
 	}
+
+	public void vote(Integer surveyId, Integer choiceId) throws IOException{
+		response.setContentType("application/json");
+		UserTable user = getCurrentUser();
+		if(user == null){
+			response.getOutputStream().println("{\"success\": false, \"error\": \"need_login\"}");
+			return;
+		}
+		if(SurveyDriver.vote(user.getId(), surveyId, choiceId)){
+			SurveyTable survey = SurveyDriver.getById(surveyId);
+			String output = "{ \"success\": true, ";
+			output = output + "\"question\": \""+survey.getQuestion().replace('"', ' ')+"\", ";
+			output = output + "\"choices\": [";
+			ChoiceTable[] choices = survey.getChoiceTable();
+			int N = choices.length-1;
+			for(int i=0; i<N; i++){
+				output = output + "{";
+					output = output + "\"choice\": \""+choices[i].getChoice().replace('"', ' ')+"\", ";
+					output = output + "\"vote\": "+choices[i].getVotes()+", ";
+					output = output + "\"percentage\": "+choices[i].getPercentageVotes()+" ";
+				output = output + "}, ";
+			}
+			if(N>=0){
+				output = output + "{";
+					output = output + "\"choice\": \""+choices[N].getChoice().replace('"', ' ')+"\", ";
+					output = output + "\"vote\": "+choices[N].getVotes()+", ";
+					output = output + "\"percentage\": "+choices[N].getPercentageVotes()+" ";
+				output = output + "}";
+			}
+			output = output + "]";
+			output = output + "}";
+			response.getOutputStream().println(output);
+		}
+		else
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
+	}
+
 	public void addSurvey(Integer userId) throws IOException, ServletException {
 		response.setContentType("application/json");
 		UserTable user = getCurrentUser();
@@ -44,10 +81,11 @@ public class Surveys extends ServletBase {
 		//request.getRequestDispatcher("/SurveyList.jsp").include(request, response);	
 		response.getOutputStream().println("{\"success\": true}");
 	}
+	
 	public void loadMySurveys(Integer userId) throws IOException, ServletException { 
 		UserTable user = getCurrentUser();
 		if(user == null){
-			response.getOutputStream().println("{\"success\": false, \"error\": \"need_login\"}");
+			response.getOutputStream().println("<script>window.location.reload()</script>");
 			return;
 		}
 		request.setAttribute("user",user);
@@ -55,13 +93,18 @@ public class Surveys extends ServletBase {
 		
 		SurveyTable[] surveyList = SurveyDriver.getUserSurvey(userId);
 		request.setAttribute("surveyList", surveyList);
+		Set<Integer> joinedSurveys = new TreeSet<Integer>();
+		for(int i : SurveyDriver.getUserJoinedSurveyIds(user.getId()))
+			joinedSurveys.add(i);
+		request.setAttribute("joinedSurveys", joinedSurveys);
 		
 		request.getRequestDispatcher("/SurveyList.jsp").include(request, response);
 	}
+	
 	public void loadCompletedSurveys(Integer userId) throws IOException, ServletException {
 		UserTable user = getCurrentUser();
 		if(user == null){
-			response.getOutputStream().println("{\"success\": false, \"error\": \"need_login\"}");
+			response.getOutputStream().println("<script>window.location.reload()</script>");
 			return;
 		}
 		request.setAttribute("user",user);
@@ -69,6 +112,10 @@ public class Surveys extends ServletBase {
 		
 		SurveyTable[] surveyList = SurveyDriver.getUserJoinedSurvey(userId);
 		request.setAttribute("surveyList", surveyList);
+		Set<Integer> joinedSurveys = new TreeSet<Integer>();
+		for(int i : SurveyDriver.getUserJoinedSurveyIds(user.getId()))
+			joinedSurveys.add(i);
+		request.setAttribute("joinedSurveys", joinedSurveys);
 		
 		request.getRequestDispatcher("/SurveyList.jsp").include(request, response);
 	}
