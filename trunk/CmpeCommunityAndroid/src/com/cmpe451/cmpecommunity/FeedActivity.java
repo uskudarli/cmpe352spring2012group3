@@ -34,9 +34,9 @@ import android.widget.Toast;
 
 public class FeedActivity extends ListActivity{
 	private FeedAdapter adapter;
-	
+
 	String path;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,7 +49,7 @@ public class FeedActivity extends ListActivity{
 		{
 			EditText postText = (EditText) findViewById(R.id.postText);
 			postText.setVisibility(View.VISIBLE);
-			
+
 			if(getIntent().getExtras().getBoolean("TagPage"))
 			{
 				postText.setHint("@" + StaticUser.chosenTag.getTag());
@@ -57,37 +57,35 @@ public class FeedActivity extends ListActivity{
 			else if(StaticUser.chosenUser.getId() != StaticUser.currentUser.getId())
 				postText.setHint("@" + StaticUser.chosenUser.getName());
 		}
-			
+
 		if(getIntent().getExtras().getBoolean("TagPage")) 
 			path += "/" + StaticUser.chosenTag.getId();
 		else
 			path += "/" + StaticUser.chosenUser.getId(); 
-		
+
 		final EditText postText = (EditText) findViewById(R.id.postText);
 		postText.setOnEditorActionListener(new OnEditorActionListener() {
-		    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-		        if (actionId == EditorInfo.IME_ACTION_SEND) {
-		        	new PostTask().execute(postText.getText().toString());
-		        	((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-		            return false;
-		        }
-		        return false;
-		    }
+			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+				if (actionId == EditorInfo.IME_ACTION_SEND) {
+					new PostTask().execute(postText.getText().toString());
+					((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+					return false;
+				}
+				return false;
+			}
 		});
-		
+
 		new HttpTask().execute(path);
-		
+
 	}
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		
+
 		StaticUser.chosenFeed = adapter.getItem(position);
 		Intent i = new Intent(this, SingleFeedActivity.class);
 		startActivity(i);
-		
-		//Toast.makeText(this, "position: " + position, Toast.LENGTH_SHORT).show();
 	}
 
 
@@ -149,7 +147,7 @@ public class FeedActivity extends ListActivity{
 				{
 					JSONObject jsonFeed = jsonFeeds.getJSONObject(i);
 					Feed feed = new Feed(jsonFeed.getInt("id"), jsonFeed.getString("owner_name"), jsonFeed.getInt("owner_id"), jsonFeed.getString("content"), jsonFeed.getString("posting_time"));
-					
+
 					ArrayList<Reply> replies = new ArrayList<Reply>();
 					JSONArray jsonReplies = jsonFeed.getJSONArray("replies");
 					for(int j=0; j<jsonReplies.length(); ++j)
@@ -171,13 +169,13 @@ public class FeedActivity extends ListActivity{
 
 	final class PostTask extends AsyncTask<String, Boolean, String> {
 		private String post;
-		
+
 		@Override
 		protected String doInBackground(String... param) {
-		    publishProgress(true);
+			publishProgress(true);
 
-		    post = param[0];
-		    
+			post = param[0];
+
 			// Creating HTTP client
 			HttpClient httpClient = new DefaultHttpClient();
 
@@ -232,7 +230,7 @@ public class FeedActivity extends ListActivity{
 					Feed feed = new Feed(0, StaticUser.currentUser.getName(), StaticUser.currentUser.getId(), post, "now");
 					feed.setReplies(new ArrayList<Reply>());
 					adapter.insert(feed, 0);
-					
+
 					EditText postText = (EditText) findViewById(R.id.postText);
 					postText.setText("");
 				}
@@ -246,5 +244,5 @@ public class FeedActivity extends ListActivity{
 			}
 		}
 	}
-	
+
 }

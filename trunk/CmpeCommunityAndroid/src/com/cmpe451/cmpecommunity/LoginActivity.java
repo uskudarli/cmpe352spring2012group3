@@ -62,7 +62,7 @@ public class LoginActivity extends Activity {
 	final class HttpTask extends AsyncTask<Void, Boolean, String> {
 		@Override
 		protected String doInBackground(Void... param) {
-		    publishProgress(true);
+			publishProgress(true);
 
 			// Creating HTTP client
 			HttpClient httpClient = new DefaultHttpClient();
@@ -118,7 +118,7 @@ public class LoginActivity extends Activity {
 				{
 					StaticUser.currentUser = new User(json.getInt("id"), json.getString("name"), "URL");
 					StaticUser.chosenUser = StaticUser.currentUser;
-							
+
 					Intent i = new Intent(getApplicationContext(), HomeActivity.class);
 					startActivity(i);
 				}
