@@ -27,9 +27,9 @@ public final class TagAdapter extends ArrayAdapter<Tag> {
 		final View view = getWorkingView(convertView);
 		final ViewHolder viewHolder = getViewHolder(view);
 		final Tag tag = getItem(position);
-	
+
 		viewHolder.tagText.setText(tag.getTag());
-		
+
 		return view;
 	}
 
