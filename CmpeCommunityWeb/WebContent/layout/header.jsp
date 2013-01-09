@@ -9,6 +9,7 @@
 	<title>Cmpe Community</title>
 	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap-tagmanager.css">
+	<link rel="stylesheet" href="/CmpeCommunityWeb/css/main.css">
 	<style type="text/css">
 	body { padding-top: 60px; }
 	.nav-tabs > li > a {
