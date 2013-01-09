@@ -27,7 +27,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
@@ -49,7 +48,6 @@ public class SingleFeedActivity extends ListActivity{
 		postingTimeText.setText(StaticUser.chosenFeed.getPostingTime());
 
 		nameText.setOnClickListener(new OnClickListener() {
-
 			public void onClick(View v) {
 				StaticUser.chosenUser = new User(StaticUser.chosenFeed.getOwnerId(), StaticUser.chosenFeed.getOwnerName(), "URL");
 				startActivity(new Intent(SingleFeedActivity.this, HomeActivity.class));
@@ -72,12 +70,6 @@ public class SingleFeedActivity extends ListActivity{
 				return false;
 			}
 		});
-	}
-
-	@Override 
-	protected void onListItemClick(ListView l, View v, int position, long id) {
-		super.onListItemClick(l, v, position, id);
-
 	}
 
 	@Override

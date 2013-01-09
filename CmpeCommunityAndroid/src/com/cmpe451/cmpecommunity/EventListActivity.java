@@ -31,10 +31,7 @@ public class EventListActivity extends ListActivity{
 
 		adapter = new EventAdapter(this, R.layout.event_item);
 
-		//String path = getIntent().getExtras().getString("EventType") +  "/" + StaticUser.chosenUser.getId(); 	
-
 		new HttpTask().execute(getIntent().getExtras().getString("EventType") +  "/" + StaticUser.chosenUser.getId());
-
 	}
 
 	@Override

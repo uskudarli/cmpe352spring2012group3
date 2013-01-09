@@ -22,7 +22,7 @@ public class EventInfoActivity extends Activity{
 		TextView placeText = (TextView) findViewById(R.id.place);
 		placeText.setText(StaticUser.chosenEvent.getPlace());
 		TextView nameText = (TextView) findViewById(R.id.name);
-		nameText.setText(StaticUser.chosenEvent.getOwnerName());
+		nameText.setText("by " + StaticUser.chosenEvent.getOwnerName());
 		TextView descriptionText = (TextView) findViewById(R.id.description);
 		descriptionText.setText(StaticUser.chosenEvent.getDescription());
 		TextView dateText = (TextView) findViewById(R.id.date);
