@@ -5,15 +5,31 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.mysql.jdbc.Statement;
-
 import DBPack.DBStatement;
 import Tables.ChoiceTable;
-import Tables.PostsTable;
 import Tables.SurveyTable;
-import Tables.TagsTable;
+
+import com.mysql.jdbc.Statement;
 
 public class SurveyDriver {
+	public static SurveyTable getById(int id){
+		try {
+			String query="SELECT * FROM `surveys` WHERE `id`=?";
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet result = ps.executeQuery();
+			if(!result.next())
+				return null;
+			return new SurveyTable(result.getInt("id"), result.getInt("user_id"), result.getString("question"), getChoices(result.getInt("id")));
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+			return null;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
+	
 	public static SurveyTable[] getUserSurvey(int userId) {
 		try {
 			String query="SELECT * FROM `surveys` WHERE `user_id`=? order by creation_time";
@@ -31,7 +47,7 @@ public class SurveyDriver {
 	}
 	public static SurveyTable[] getUserJoinedSurvey(int userId) {
 		try{
-			String query="SELECT `surveys`.* FROM `surveys` INNER JOIN `users_in_survey` ON `users_in_survey`.`user_id`=`surveys`.`user_id` WHERE `surveys`.`user_id`= ? order by creation_time" ;
+			String query="SELECT `surveys`.* FROM `surveys` INNER JOIN `users_in_survey` ON `users_in_survey`.`survey_id`=`surveys`.`id` WHERE `users_in_survey`.`user_id`= ? ORDER BY creation_time" ;
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, userId);
 			ResultSet set = ps.executeQuery();
@@ -46,7 +62,7 @@ public class SurveyDriver {
 	}
 	public static int[] getUserJoinedSurveyIds(int userId){
 		try{
-			String query="SELECT `surveys`.* FROM `surveys` INNER JOIN `users_in_survey` ON `users_in_survey`.`user_id`=`surveys`.`user_id` WHERE `surveys`.`user_id`= ? order by creation_time" ;
+			String query="SELECT `surveys`.`id` FROM `surveys` INNER JOIN `users_in_survey` ON `users_in_survey`.`survey_id`=`surveys`.`id` WHERE `users_in_survey`.`user_id`= ? ORDER BY creation_time" ;
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, userId);
 			ResultSet set = ps.executeQuery();
@@ -100,6 +116,27 @@ public class SurveyDriver {
 			return false;
 		}
 	}
+	
+	public static boolean vote(int userId, int surveyId, int choiceId){
+		try{
+			String q1 = "INSERT INTO `users_in_survey` (`survey_id`, `user_id`) VALUES (?, ?)";
+			PreparedStatement ps1 = (PreparedStatement) DBStatement.getMainConnection().prepareStatement(q1, Statement.RETURN_GENERATED_KEYS);
+			ps1.setInt(1, surveyId);
+			ps1.setInt(2, userId);
+			ps1.executeUpdate();
+			
+			String q2 = "UPDATE choices SET votes=votes+1 WHERE id=?" ;
+			PreparedStatement ps2=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(q2, Statement.RETURN_GENERATED_KEYS);
+			ps2.setInt(1, choiceId);
+			ps2.executeUpdate();
+			return true;
+		}  catch(SQLException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
 	public static SurveyTable getSurvey(int surveyId) {
 		try {
 			String query="SELECT * FROM `surveys` WHERE `id`=?";
@@ -132,7 +169,7 @@ public class SurveyDriver {
 	}
 	private static ChoiceTable[] convertToArray(ResultSet result) throws SQLException{
 		int N = 0;
-		int totalVotes=0;
+		double totalVotes=0;
 		while(result.next()) { 
 			N++;
 			totalVotes+=result.getInt("votes");
