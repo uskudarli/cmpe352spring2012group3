@@ -32,9 +32,9 @@ public class SingleEventActivity extends TabActivity {
 		b.putString("Path", "eventUsers/" + StaticUser.chosenEvent.getId());
 		i.putExtras(b); 
 
-		TabSpec usersTab = tabHost.newTabSpec("Users");
+		TabSpec usersTab = tabHost.newTabSpec("Attending Users");
 		usersTab.setContent(i);
-		usersTab.setIndicator("Users");
+		usersTab.setIndicator("Attending Users");
 
 		// add tabs
 		tabHost.addTab(wallTab);
