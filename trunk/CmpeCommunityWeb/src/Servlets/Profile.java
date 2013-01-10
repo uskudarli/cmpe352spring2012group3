@@ -8,6 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+
 import Tables.PostsTable;
 
 import Tables.SurveyTable;
@@ -225,4 +229,12 @@ public class Profile extends ServletBase {
 		request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
 	}
 	
+	public void cloud()throws ServletException, IOException{
+		UserTable user = getCurrentUser();
+		if(user == null){
+			request.getRequestDispatcher("/User/login").forward(request, response);
+			return;
+		}
+		request.getRequestDispatcher("/Cloud.jsp").include(request, response);
+	}
 }

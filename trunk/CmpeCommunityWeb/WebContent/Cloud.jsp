@@ -1,4 +1,11 @@
+<%@page import="Tables.TagsTable"%>
+<%@page import="drivers.TagsDriver"%>
 <%@page import="drivers.SearchDriver"%>
+<%@page import="drivers.ForumsDriver"%>
+<%@page import="Tables.UserTable"%>
+<%@page import="Tables.ForumPostTable"%>
+<%@page import="com.sun.org.apache.xpath.internal.FoundIndex"%>
+<%@page import="Tables.ForumTopicTable"%>
 <%@page import="java.util.Map"%>
 <%@page import="Tables.ForumsTable"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -8,32 +15,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Cmpe Community Forums</title>
-<script type="text/javascript" src="/CmpeCommunityWeb/js/jquery.min.js"></script>
-<script type="text/javascript" src="/CmpeCommunityWeb/js/forum.js"></script>
 <link rel="stylesheet" href="/CmpeCommunityWeb/css/bootstrap.min.css">
 <style>
-body {
-	padding-top: 60px;
-	/* 60px to make the container go all the way to the bottom of the topbar */
-}
 
-.center-text {
+.center-text{
 	text-align: center !important;
 }
+	a.red { color: #f00 }
+	a.green { color: #0c0 }
+	a.purple { color: #f09 }
+	a.blue {color: #33B5E5}
+	a.huge { font-family: Impact,sans-serif; font-size: 40px }
+	a.large { font-family: 'Arial Black',sans-serif; font-size: 32px }
+	a.medium { font-family: Verdana,sans-serif; font-size: 28px }
+	a.small { font-family: Georgia,sans-serif; font-size: 22px }
 </style>
-<script type="text/javascript">
-function stoppedTyping()
-  {
-	var title = document.getElementById("title");
-	var content = document.getElementById("content");
-    if (title.value.length > 0 && content.value.length > 0)
-      document.getElementById("createbutton").disabled = false;
-    else
-      document.getElementById("createbutton").disabled = true;
-  }
-</script>
-
- <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <style>
@@ -112,9 +109,12 @@ return $("<li></li>").data("item.autocomplete", item).append(MyHtml).appendTo(ul
 };
     });
     </script>
+    <script src="/CmpeCommunityWeb/js/tagcanvas.min.js" type="text/javascript"></script>
+    
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
                 <a href="/CmpeCommunityWeb/Profile/cloud" class="brand">Cmpe Community</a>
@@ -140,50 +140,58 @@ return $("<li></li>").data("item.autocomplete", item).append(MyHtml).appendTo(ul
     </div>
 
 	<div class="container">
-		<%
-			ForumsTable forum = (ForumsTable) request.getAttribute("forum");
-			ForumsTable[] parents = (ForumsTable[]) request
-					.getAttribute("parents");
-		%>
+		<div class="span10">
 
-		<ul class="breadcrumb">
-			<li><i class="icon-home"></i><a href="/CmpeCommunityWeb/Forum">
-					Board Index</a></li>
-			<%
-				for (int i = parents.length - 1; i > 0; i--) {
-			%>
-			<li><span class="divider">/</span><a
-				href=<%="/CmpeCommunityWeb/Forum/index/" + parents[i].getId()%>>
-					<%=parents[i].getName()%></a></li>
-			<%
-				}
-			%>
-			<li class="active"><span class="divider">/</span><%=forum.getName()%></li>
-		</ul>
+				<div id="myCanvasContainer">
+					<canvas width="900" height="700" id="tagcanvas">
+				        <p>Anything in here will be replaced on browsers that support the canvas element</p>
+				    </canvas>
+				</div>
 
-		<div class="row">
-			<div class="well span11">
-				<form method="post" action="/CmpeCommunityWeb/Forum/createtopic/<%=forum.getId()%>">
-					<fieldset>
-						<legend>New Topic</legend>
-
-						<div class="controls">
-							<input onkeyup="stoppedTyping()" type="text" id="title" name="title" class="span9" placeholder="Title" />
-						</div>
-
-						<div class="controls">
-							<textarea onkeyup="stoppedTyping()" id="content" name="content" rows="10" class="span11"></textarea>
-						</div>
-						<div class="controls">
-							<button id="createbutton" class="btn btn-info pull-right" disabled="true">
-								Create Topic <i class="icon-chevron-right icon-white"></i>
-							</button>
-						</div>
-					</fieldset>
-				</form>
+				<div id="taglist" style="display: none">
+					<ul>
+					<%
+					TagsTable[] tags=TagsDriver.getRecentTags(40);
+					String[] colors = {"red", "green", "purple", "blue"};
+					String[] sizes = {"small", "medium", "large", "huge"};
+					for(int i = 0; i < tags.length; i++){ %>
+						<li><a class="<%= colors[i %colors.length]%> <%= sizes[i %sizes.length]%>" 
+						href="/CmpeCommunityWeb/Tags/details/<%=tags[i].getId() %>"><%= tags[i].getTag() %></a></li>
+						
+					<%} %>
+					</ul>
+				</div>
 			</div>
-		</div>
+	
 	</div>
+
 	<script type="text/javascript" src="/CmpeCommunityWeb/js/bootstrap.js"></script>
+		<script>
+		window.onload = function() {
+			TagCanvas.textFont = 'Impact,"Arial Black",sans-serif';
+			TagCanvas.textColour = '#00f';
+			TagCanvas.textHeight = 25;
+			TagCanvas.outlineColour = '#f60';
+			TagCanvas.outlineThickness = 5;
+			TagCanvas.outlineOffset = 1;
+			TagCanvas.outlineMethod = 'block';
+			TagCanvas.maxSpeed = 0.06;
+			TagCanvas.minBrightness = 0.5;
+			TagCanvas.depth = 0.75;
+			TagCanvas.pulsateTo = 0.2;
+			TagCanvas.pulsateTime = 0.75;
+			TagCanvas.decel = 0.9;
+			TagCanvas.reverse = true;
+			TagCanvas.hideTags = false;
+			TagCanvas.shadow = '#ccf';
+			TagCanvas.shadowBlur = 3;
+			TagCanvas.wheelZoom = false;
+			try {
+				TagCanvas.Start('tagcanvas','taglist', {textFont:null, textColour:null, weight: true});
+			} catch(e) {
+		        document.getElementById('tagcanvas').style.display = 'none';
+			}
+		};
+	</script>
 </body>
 </html>

@@ -118,7 +118,7 @@ return $("<li></li>").data("item.autocomplete", item).append(MyHtml).appendTo(ul
 <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <a href="/CmpeCommunityWeb/" class="brand">Cmpe Community</a>
+                <a href="/CmpeCommunityWeb/Profile/cloud" class="brand">Cmpe Community</a>
                 <div class="nav-collapse">
                     <ul class="nav">
                         <li><a href="/CmpeCommunityWeb/Profile">Home</a></li>
