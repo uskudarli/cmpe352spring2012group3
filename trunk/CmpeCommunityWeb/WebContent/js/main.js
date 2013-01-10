@@ -174,8 +174,24 @@ var Events = {
 				  else
 					  alert("An unknown error occured, sorry for the inconvenient we may have caused.");
 			});
+		},
+		attend: function(id){
+			$.post('/CmpeCommunityWeb/Events/attend/'+id, function(data){
+				console.log(data);
+				if(data['success'] || data['error'] == 'need_login')
+					window.location.reload();
+				else
+					alert("An unknown error occured, sorry for the inconvenient we may have caused.");
+			});
+		},
+		unAttend: function(id){
+			$.post('/CmpeCommunityWeb/Events/unAttend/'+id, function(data){
+				if(data['success'])
+					window.location.reload();
+				else
+					alert("An unknown error occured, sorry for the inconvenient we may have caused.");
+			});
 		}
-		
 };
 var Profile = {
 		update: function(userId){
