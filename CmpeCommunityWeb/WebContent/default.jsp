@@ -161,10 +161,10 @@ body {
 				</div>
 			</div>
 
-			<div class="span6 offset1">
+			<div class="span6">
 
 				<div id="myCanvasContainer">
-					<canvas width="500" height="500" id="tagcanvas">
+					<canvas width="600" height="500" id="tagcanvas">
         <p>Anything in here will be replaced on browsers that support the canvas element</p>
       </canvas>
 				</div>
@@ -174,10 +174,10 @@ body {
 					<%
 					TagsTable[] tags=TagsDriver.getRecentTags(20);
 					String[] colors = {"red", "green", "purple", "blue"};
-					String[] sizes = {"smal", "medium", "large", "huge"};
+					String[] sizes = {"small", "medium", "large", "huge"};
 					for(int i = 0; i < tags.length; i++){ %>
 						<li><a class="<%= colors[i %colors.length]%> <%= sizes[i %sizes.length]%>" 
-						href="http://www.google.com" target="_blank"><%= tags[i].getTag() %></a></li>
+						href="#"><%= tags[i].getTag() %></a></li>
 						
 					<%} %>
 					</ul>
