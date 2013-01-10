@@ -121,7 +121,7 @@ return $("<li></li>").data("item.autocomplete", item).append(MyHtml).appendTo(ul
                 <div class="nav-collapse">
                     <ul class="nav">
                         <li><a href="/CmpeCommunityWeb/Profile">Home</a></li>
-                        <li class="active"><a href="/CmpeCommunityWeb/Forum">Forum</a></li>
+                        <li><a href="/CmpeCommunityWeb/Forum">Forum</a></li>
                     </ul>
 
                     <form action="#" class="navbar-search">
