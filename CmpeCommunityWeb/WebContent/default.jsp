@@ -172,7 +172,7 @@ body {
 				<div id="taglist" style="display: none">
 					<ul>
 					<%
-					TagsTable[] tags=TagsDriver.getRandomTags();
+					TagsTable[] tags=TagsDriver.getRecentTags(20);
 					String[] colors = {"red", "green", "purple", "blue"};
 					String[] sizes = {"smal", "medium", "large", "huge"};
 					for(int i = 0; i < tags.length; i++){ %>
