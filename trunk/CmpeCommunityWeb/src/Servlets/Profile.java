@@ -8,16 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-
 import Tables.PostsTable;
-
-import Tables.SurveyTable;
-
 import Tables.ReplyTable;
-
+import Tables.SurveyTable;
 import Tables.TagsTable;
 import Tables.UserTable;
 import drivers.PostDriver;
