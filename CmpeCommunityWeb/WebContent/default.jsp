@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+<%@ page import="drivers.TagsDriver" %>
+<%@ page import="Tables.TagsTable" %>
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
@@ -171,13 +172,12 @@ body {
 				<div id="taglist" style="display: none">
 					<ul>
 					<%
-					String[] tags = {"Erdem", "Alper", "Cigdem", "Osman", "Emre",
-					                           "Cmpe", "451", "BOUN"};
+					TagsTable[] tags=TagsDriver.getRandomTags();
 					String[] colors = {"red", "green", "purple", "blue"};
 					String[] sizes = {"smal", "medium", "large", "huge"};
 					for(int i = 0; i < tags.length; i++){ %>
 						<li><a class="<%= colors[i %colors.length]%> <%= sizes[i %sizes.length]%>" 
-						href="http://www.google.com" target="_blank"><%= tags[i] %></a></li>
+						href="http://www.google.com" target="_blank"><%= tags[i].getTag() %></a></li>
 						
 					<%} %>
 					</ul>
