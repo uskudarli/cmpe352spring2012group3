@@ -27,7 +27,7 @@ public class EventDriver {
 	}
 	public static EventTable[] getUserJoinedEvent(int userId) {
 		try{
-			String query="SELECT `events`.* FROM `events` INNER JOIN `users_in_event` ON `users_in_event`.`user_id`=`events`.`user_id` WHERE `events`.`user_id`= ? order by creation_time" ;
+			String query="SELECT `events`.* FROM `events` INNER JOIN `users_in_event` ON `users_in_event`.`event_id`=`events`.`id` WHERE `users_in_event`.`user_id`= ? order by creation_time" ;
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ps.setInt(1, userId);
 			ResultSet set = ps.executeQuery();
@@ -86,9 +86,10 @@ public class EventDriver {
 			events[i++] = new EventTable(result.getInt("id"),result.getInt("user_id"),result.getString("description"),result.getString("place"),result.getString("event_time"));
 		return events;
 	}
+	
 	public static boolean insertUsersInEvent(int userId,int EventId) {
 		try{
-			String query="INSERT INTO users_in_Event (Event_id,user_id) VALUES (?,?)" ;	
+			String query="INSERT INTO `users_in_event` (`event_id`, `user_id`, `attending_time`) VALUES (?,?, NOW())" ;
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, EventId);
 			ps.setInt(2, userId);
@@ -99,6 +100,37 @@ public class EventDriver {
 		} catch (Exception e) {
 			return false;
 		}
-
+	}
+	
+	public static boolean deleteUsersInEvent(int userId,int eventId) {
+		try{
+			String query = "DELETE FROM `users_in_event` WHERE `user_id`=? AND `event_id`=?";	
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			ps.setInt(1, userId);
+			ps.setInt(2, eventId);
+			ps.executeUpdate();
+			return true;
+		}  catch(SQLException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public static boolean isAttending(int userId, int eventId){
+		try{
+			String query="SELECT * FROM `users_in_event` WHERE `user_id`=? AND `event_id`=?" ;	
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			ps.setInt(1, userId);
+			ps.setInt(2, eventId);
+			ResultSet set = ps.executeQuery();
+			if(set.next())
+				return true;
+			return false;
+		}  catch(SQLException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }
