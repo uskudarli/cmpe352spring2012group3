@@ -20,6 +20,58 @@ public class Events extends ServletBase{
 		super(request, response);
 	}
 	
+	public void details(Integer eventId) throws ServletException, IOException{
+		UserTable user = getCurrentUser();
+		if(user == null){
+			request.getRequestDispatcher("/User/login").forward(request, response);
+			return;
+		}
+		request.setAttribute("user", user);
+		
+		EventTable event = EventDriver.getEvent(eventId);
+		if(event == null)
+			return;
+		request.setAttribute("event", event);
+		
+		request.setAttribute("attending", EventDriver.isAttending(user.getId(), event.getId()));
+		
+        request.getRequestDispatcher("/layout/header.jsp").include(request, response);
+        request.getRequestDispatcher("/EventDetails.jsp").include(request, response);
+        request.getRequestDispatcher("/layout/footer.jsp").include(request, response);
+	}
+	
+	public void attend(Integer id) throws IOException{
+		response.setContentType("application/json");
+		UserTable user = getCurrentUser();
+		if(user == null){
+			response.getOutputStream().println("{\"success\": false, \"error\": \"need_login\"}");
+			return;
+		}
+		
+		if(EventDriver.getEvent(id) == null)
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
+		else if(EventDriver.insertUsersInEvent(user.getId(), id))
+			response.getOutputStream().println("{\"success\": true}");
+		else
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
+	}
+	
+	public void unAttend(Integer id) throws IOException{
+		response.setContentType("application/json");
+		UserTable user = getCurrentUser();
+		if(user == null){
+			response.getOutputStream().println("{\"success\": false, \"error\": \"need_login\"}");
+			return;
+		}
+		
+		if(EventDriver.getEvent(id) == null)
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
+		else if(EventDriver.deleteUsersInEvent(user.getId(), id))
+			response.getOutputStream().println("{\"success\": true}");
+		else
+			response.getOutputStream().println("{\"success\": false, \"error\": \"unknown\"}");
+	}
+	
 	public void myEvents(Integer userId)throws IOException, ServletException{
 		if(getCurrentUser() == null){
 			request.getRequestDispatcher("/User/login").forward(request, response);
