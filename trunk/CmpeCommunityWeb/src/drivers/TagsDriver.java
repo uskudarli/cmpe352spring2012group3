@@ -248,4 +248,16 @@ public class TagsDriver {
 
 		}
 	}
+	public static TagsTable[] getRandomTags() {
+		try {
+			String query="SELECT id,tag,count(*) as count FROM tags_in_users INNER JOIN tags ON tag_id=id group by tag_id order by count desc limit 0,20";
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ResultSet set = ps.executeQuery();
+			return convertToArray(set);
+		} catch(SQLException e) {
+		} catch (Exception e) {
+		}
+		return new TagsTable[0];
+		
+	}
 }	
