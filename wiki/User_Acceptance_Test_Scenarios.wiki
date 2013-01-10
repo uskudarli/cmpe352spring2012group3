@@ -3,7 +3,7 @@
 
 <font color="#595d5e">1) <a href="http://cmpe352spring2012group3.googlecode.com/files/Registration.docx">Registering to the system </a></font>
 
-<font color="#595d5e">2) <a href="http://cmpe352spring2012group3.googlecode.com/files/Viewing%20Profile%20Page.docx">Viewing profile page (Wall+News feed) </a></font>
+<font color="#595d5e">2) <a href="http://cmpe352spring2012group3.googlecode.com/files/ViewingProfilePage.docx">Viewing profile page (Wall+News feed) </a></font>
 
 <font color="#595d5e">3) <a href="http://cmpe352spring2012group3.googlecode.com/files/Posting%20to%20Own%20Wall.docx">Posting to own wall </a></font>
 
