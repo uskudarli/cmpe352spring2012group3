@@ -248,9 +248,21 @@ public class TagsDriver {
 
 		}
 	}
-	public static TagsTable[] getRandomTags() {
+	public static TagsTable[] getPopularTags() {
 		try {
 			String query="SELECT id,tag,count(*) as count FROM tags_in_users INNER JOIN tags ON tag_id=id group by tag_id order by count desc limit 0,20";
+			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
+			ResultSet set = ps.executeQuery();
+			return convertToArray(set);
+		} catch(SQLException e) {
+		} catch (Exception e) {
+		}
+		return new TagsTable[0];
+		
+	}
+	public static TagsTable[] getRecentTags(int count) {
+		try {
+			String query="SELECT distinct tag_id as id,tag FROM tags_in_users INNER JOIN tags ON tag_id=id order by tagging_time desc limit 0,"+count;
 			PreparedStatement ps=(PreparedStatement) DBStatement.getMainConnection().prepareStatement(query);
 			ResultSet set = ps.executeQuery();
 			return convertToArray(set);
