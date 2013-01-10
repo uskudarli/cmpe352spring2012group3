@@ -33,6 +33,12 @@ public class Events extends ServletBase{
 			return;
 		request.setAttribute("event", event);
 		
+		UserTable[] users = UserDriver.getUsersByEvent(event.getId());
+		request.setAttribute("users", users);
+		
+		UserTable creator = UserDriver.getById(event.getUserId());
+		request.setAttribute("creator", creator);
+		
 		request.setAttribute("attending", EventDriver.isAttending(user.getId(), event.getId()));
 		
         request.getRequestDispatcher("/layout/header.jsp").include(request, response);
