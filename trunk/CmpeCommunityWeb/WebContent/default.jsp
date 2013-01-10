@@ -21,6 +21,15 @@ body {
 	text-align: center;
 	margin: auto;
 }
+
+	a.red { color: #f00 }
+	a.green { color: #0c0 }
+	a.purple { color: #f09 }
+	a.blue {color: #33B5E5}
+	a.huge { font-family: Impact,sans-serif; font-size: 40px }
+	a.large { font-family: 'Arial Black',sans-serif; font-size: 32px }
+	a.medium { font-family: Verdana,sans-serif; font-size: 28px }
+	a.small { font-family: Georgia,sans-serif; font-size: 22px }
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
@@ -161,16 +170,16 @@ body {
 
 				<div id="taglist" style="display: none">
 					<ul>
-						<li><a href="http://www.google.com" target="_blank">Google</a></li>
-						<li><a href="/fish">Fish</a></li>
-						<li><a href="/fish">451</a></li>
-						<li><a href="/fish">Cmpe</a></li>
-						<li><a href="/fish">Osman</a></li>
-						<li><a href="/fish">Orman</a></li>
-						<li><a href="/fish">Erdem</a></li>
-						<li><a href="/chips">Chips</a></li>
-						<li><a href="/salt">Salt</a></li>
-						<li><a href="/vinegar">Vinegar</a></li>
+					<%
+					String[] tags = {"Erdem", "Alper", "Cigdem", "Osman", "Emre",
+					                           "Cmpe", "451", "BOUN"};
+					String[] colors = {"red", "green", "purple", "blue"};
+					String[] sizes = {"smal", "medium", "large", "huge"};
+					for(int i = 0; i < tags.length; i++){ %>
+						<li><a class="<%= colors[i %colors.length]%> <%= sizes[i %sizes.length]%>" 
+						href="http://www.google.com" target="_blank"><%= tags[i] %></a></li>
+						
+					<%} %>
 					</ul>
 				</div>
 			</div>
@@ -186,41 +195,31 @@ body {
 		src="/CmpeCommunityWeb/js/bootstrap-tagmanager.js"></script>
 	<script>
 	  jQuery(".tagManager").tagsManager();
-	  var oopts = {
-				textFont: 'Impact,Arial Black,sans-serif',
-				textHeight: 20,
-				maxSpeed: 0.1,
-				decel: 0.9,
-				depth: 0.99,
-				outlineColour: '#f6f',
-				outlineThickness: 3,
-				pulsateTo: 0.2,
-				pulsateTime: 0.5,
-				wheelZoom: false
-			}, ttags = 'taglist', lock, shape = 'sphere';
-	  
-			window.onload = function() {
-				TagCanvas.textFont = 'Trebuchet MS, Helvetica, sans-serif';
-			  TagCanvas.textColour = '#0099CC';
-			  TagCanvas.textHeight = 25;
-			  TagCanvas.outlineColour = '#ff9999';
-			  TagCanvas.maxSpeed = 0.03;
-			  TagCanvas.minBrightness = 0.2;
-				TagCanvas.depth = 0.92;
-				TagCanvas.pulsateTo = 0.6;
-				TagCanvas.initial = [0.1,-0.1];
-				TagCanvas.decel = 0.98;
-				TagCanvas.reverse = true;
-				TagCanvas.hideTags = false;
-				TagCanvas.shadow = '#ccf';
-				TagCanvas.shadowBlur = 3;
-				TagCanvas.weight = false;
-				TagCanvas.imageScale = null;
-				try {
-					TagCanvas.Start('tagcanvas','taglist');
-				} catch(e) {
-			        document.getElementById('tagcanvas').style.display = 'none';
-				}};
+		window.onload = function() {
+			TagCanvas.textFont = 'Impact,"Arial Black",sans-serif';
+			TagCanvas.textColour = '#00f';
+			TagCanvas.textHeight = 25;
+			TagCanvas.outlineColour = '#f60';
+			TagCanvas.outlineThickness = 5;
+			TagCanvas.outlineOffset = 1;
+			TagCanvas.outlineMethod = 'block';
+			TagCanvas.maxSpeed = 0.06;
+			TagCanvas.minBrightness = 0.5;
+			TagCanvas.depth = 0.75;
+			TagCanvas.pulsateTo = 0.2;
+			TagCanvas.pulsateTime = 0.75;
+			TagCanvas.decel = 0.9;
+			TagCanvas.reverse = true;
+			TagCanvas.hideTags = false;
+			TagCanvas.shadow = '#ccf';
+			TagCanvas.shadowBlur = 3;
+			TagCanvas.wheelZoom = false;
+			try {
+				TagCanvas.Start('tagcanvas','taglist', {textFont:null, textColour:null, weight: true});
+			} catch(e) {
+		        document.getElementById('tagcanvas').style.display = 'none';
+			}
+		};
 	</script>
 </body>
 </html>
