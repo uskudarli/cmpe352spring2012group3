@@ -164,9 +164,6 @@ return $("<li></li>").data("item.autocomplete", item).append(MyHtml).appendTo(ul
                 <tr class="text-info">
                     <td><a href="/CmpeCommunityWeb/Profile/survey/<%=user.getId()%>">Surveys</a></td>
                 </tr>
-                <tr class="text-info">
-                    <td><a href="/CmpeCommunityWeb/Search">Advance Search</a></td>
-                </tr>
             
             </tbody>
         </table>
