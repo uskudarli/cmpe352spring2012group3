@@ -1,0 +1,1 @@
+I am a junior student in Computer Engineering department. As a very narrow minded person, I do not believe that it is possible to meet a person from 2 or 3 paragraphs. If you need to contact me, you can always find me in student lounge at department building. If you don't you can contact me via my email address or my facebook account.
